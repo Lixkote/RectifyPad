@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>C:\Users\Jd1ex\Desktop\rp.png</Source>
+    <SmallTileSource>C:\Users\Jd1ex\Desktop\rp.png</SmallTileSource>
+    <MediumTileSource>C:\Users\Jd1ex\Desktop\rp.png</MediumTileSource>
+    <WideTileSource>C:\Users\Jd1ex\Desktop\rp.png</WideTileSource>
+    <LargeTileSource>C:\Users\Jd1ex\Desktop\rp.png</LargeTileSource>
+    <AppIconSource>C:\Users\Jd1ex\Desktop\rp.png</AppIconSource>
+    <SplashScreenSource>C:\Users\Jd1ex\Desktop\rp.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\Jd1ex\Desktop\rp.png</PackageLogoSource>
+  </PropertyGroup>
+</Project>

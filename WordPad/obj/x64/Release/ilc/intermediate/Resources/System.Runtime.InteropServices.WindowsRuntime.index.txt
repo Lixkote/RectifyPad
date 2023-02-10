@@ -1,0 +1,2 @@
+System.Runtime.InteropServices.WindowsRuntime, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+  FxResources.System.Runtime.InteropServices.WindowsRuntime.SR.resources
