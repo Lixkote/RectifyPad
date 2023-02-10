@@ -9,6 +9,10 @@ The app provides simmilar functionality, as standard Windows WordPad program.
 - Standard WordPad functionality which offers basic text operations and inseting various multimedia items.
 - Modern Windows 11-fitting look and feel.
 
+## Many Thanks to:
+ - [Calculator](https://github.com/CalcuIator) for initial concept and visual recreation.
+ - [Ilovepcs](https://github.com/ilovepcs) for modern wordpad icon.
+ - [Ojas](https://github.com/ojask) for letting me to add it into the Rectify11 Project.
 
 ## Getting started
 Prerequisites:
