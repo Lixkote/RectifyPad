@@ -18,8 +18,6 @@ Prerequisites:
   - Install the optional "C++ Universal Windows Platform tools" component.
   - Install the latest Windows 11 SDK.
 
-  ![Visual Studio Installation Screenshot](docs/Images/VSInstallationScreenshot.png)
-- Install the [XAML Styler](https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler) Visual Studio extension.
 
 - Get the code:
     ```
