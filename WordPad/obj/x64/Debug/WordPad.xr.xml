@@ -32,7 +32,6 @@
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Padding" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
@@ -64,9 +63,13 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
       <RootProperty Name="Style" />
-      <RootProperty Name="Content" />
       <RootProperty Name="Width" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MaxWidth" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Content" />
+      <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetPlacement" />
@@ -78,6 +81,11 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Flyout" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalContentAlignment" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
@@ -92,6 +100,7 @@
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Style" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsTextSelectionEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RichEditBox">
@@ -274,12 +283,15 @@
     <RootType FullName="Windows.UI.Xaml.Media.ThemeShadow" />
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="Style" />
-      <RootProperty Name="Content" />
       <RootProperty Name="Width" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="Height" />
       <RootProperty Name="GroupName" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
@@ -299,11 +311,13 @@
       <RootProperty Name="UseLayoutRounding" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsEditable" />
       <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Microsoft.UI.Xaml.Controls.MenuBar">
       <RootProperty Name="Items" />

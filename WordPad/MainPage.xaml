@@ -156,8 +156,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="137"/>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
 
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -263,8 +264,9 @@
                         <ColumnDefinition Width="32" />
                         <ColumnDefinition Width="32" />
                         <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="77"/>
                         <ColumnDefinition Width="32" />
-                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="120" />
                     </Grid.ColumnDefinitions>
 
                     <Button Style="{StaticResource PaintUIButtonStyle}"
@@ -277,20 +279,6 @@
                             Grid.Row="0"
                             Visibility="Collapsed"/>
 
-                    <ComboBox x:Name="FontBox" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Lucida Console">
-                        
-                    </ComboBox>
-
-
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
-                            Content="&#xe8e9;"
-                            Width="32"
-                            MinWidth="32"
-                            MaxWidth="32"
-                            Height="32"
-                            Grid.Column="3"
-                            Grid.Row="0"/>
-
 
                     <Button Style="{StaticResource PaintUIButtonStyle}"
                             Content="&#xe8e8;"
@@ -298,7 +286,7 @@
                             MinWidth="32"
                             MaxWidth="32"
                             Height="32"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Grid.Row="0"
                             FontSize="20"/>
 
@@ -308,7 +296,7 @@
                             MinWidth="32"
                             MaxWidth="32"
                             Height="32"
-                            Grid.Column="5"
+                            Grid.Column="6"
                             Grid.Row="0"
                             FontSize="20"/>
 
@@ -336,7 +324,7 @@
                                   Width="32"
                                   Height="32"
                                   Grid.Column="2"
-                                  Grid.Row="1">
+                                  Grid.Row="1" Checked="ToggleButton_Checked">
                     </ToggleButton>
 
 
@@ -356,8 +344,8 @@
                                  Height="32"
                                  Grid.Column="4"
                                  Grid.Row="1"
-                                 GroupName="SubSuper">
-                        <Image Source="/WordPadUI/theme-light/Subscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                                 GroupName="SubSuper" Margin="2,0,0,0" Grid.ColumnSpan="2">
+                        <Image Source="/WordPadUI/theme-light/Subscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"  />
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -368,9 +356,14 @@
                                  Height="32"
                                  Grid.Column="5"
                                  Grid.Row="1"
-                                 GroupName="SubSuper" >
-                        <Image Source="/WordPadUI/theme-light/Superscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                                 GroupName="SubSuper" Margin="-40,0,0,0" Grid.ColumnSpan="2" >
+                        <Image Source="/WordPadUI/theme-light/Superscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"  />
                     </RadioButton>
+                    <ComboBox x:Name="FontBox_Copy" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Lucida Console"/>
+                    <ComboBox x:Name="FontBox_Copy1" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="14
+                              " Margin="4,0,172,0"/>
+                    <muxc:SplitButton Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16"/>
+                    <muxc:SplitButton Grid.Column="6" Content="" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16"/>
 
                 </Grid>
 
@@ -445,15 +438,32 @@
                                  Grid.Row="1"
                                  GroupName="Alignment" />
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
                                  Height="32"
                                  Grid.Column="4"
                                  Grid.Row="1" Padding="0">
-                        <Image Source="/WordPadUI/theme-light/Paragraph.svg" Width="16" Height="16" UseLayoutRounding="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
+                        <Image Source="/WordPadUI/theme-light/Paragraph.svg" Width="16" Height="16" UseLayoutRounding="True" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="none"/>
+                    </ToggleButton>
+                    <muxc:SplitButton Grid.Column="2" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Grid.ColumnSpan="3"/>
+                    <muxc:SplitButton Grid.Column="4" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Margin="2,0,0,0"/>
+                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                        Content=""
+                        Width="32"
+                        MinWidth="32"
+                        MaxWidth="32"
+                        Height="32"
+                        GroupName="Alignment" HorizontalAlignment="Center" />
+                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                        Content=""
+                        Width="32"
+                        MinWidth="32"
+                        MaxWidth="32"
+                        Height="32"
+                        Grid.Column="1"
+                        GroupName="Alignment" HorizontalAlignment="Center" />
 
                 </Grid>
 
@@ -482,7 +492,8 @@
                     </Grid.ColumnDefinitions>
 
                     <muxc:SplitButton Style="{StaticResource PaintUISplitButtonStyle}"
-                                      Grid.Column="0">
+                                      Grid.Column="0"
+                                      >
                         <muxc:SplitButton.Flyout>
                             <MenuFlyout Placement="Bottom">
                                 <MenuFlyoutItem Text="Picture">
@@ -502,35 +513,90 @@
                                 </MenuFlyoutItem>
                             </MenuFlyout>
                         </muxc:SplitButton.Flyout>
-                        <FontIcon FontSize="22" Glyph="&#xe8b9;"/>
+                        <FontIcon FontSize="16" Glyph="&#xe8b9;"/>
 
                     </muxc:SplitButton>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
-                                 Content="&#xe8e3;"
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                                 Content=""
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
                                  Height="32"
                                  Grid.Column="1"
-                                 Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 Grid.Row="1" VerticalAlignment="Top" Margin="0,10,0,0"
+                                 />
 
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
-                                 Content="&#xe8e2;"
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
                                  Height="32"
                                  Grid.Column="2"
                                  Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 GroupName="Alignment"
+                                 Content="" VerticalAlignment="Top" Margin="0,10,0,0">
+
+                    </RadioButton>
+
 
                 </Grid>
 
                 <TextBlock Text="Insert"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
                            Grid.Row="1" />
+
+            </Grid>
+            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+                BorderThickness="0,0,1,0"
+                Padding="0,12,0,0"
+                Grid.Column="4" Grid.ColumnSpan="2" Margin="4,0,0,5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid ColumnSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="32*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                Content=""
+                Width="132"
+                MinWidth="32"
+                MaxWidth="32"
+                Height="24"
+                Grid.Row="1" HorizontalAlignment="Left" Click="Button_Click" />
+                    <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Replace" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Select All" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Find" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+ <Button Style="{StaticResource PaintUIButtonStyle}"
+                Content="&#xE11A;"
+                Width="132"
+                MinWidth="32"
+                MaxWidth="32"
+                Height="24"
+                Grid.Row="0" HorizontalAlignment="Left" Click="Button_Click" />
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                Content=""
+                Width="132"
+                MinWidth="32"
+                MaxWidth="32"
+                Height="24"
+                Grid.Row="2" HorizontalAlignment="Left" Click="Button_Click" />
+
+                </Grid>
+
+                <TextBlock Text="Editing"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}"
+                    Grid.Row="1" />
 
             </Grid>
 

@@ -118,5 +118,15 @@ namespace RectifyPad
             await dialog.ShowAsync();
 
         }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

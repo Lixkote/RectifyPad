@@ -195,9 +195,14 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="WordPadUI\theme-light\Copy.svg" />
+    <Content Include="WordPadUI\theme-light\Cut.svg" />
+    <Content Include="WordPadUI\theme-light\insertobject.svg" />
     <Content Include="WordPadUI\theme-light\Paragraph.svg" />
+    <Content Include="WordPadUI\theme-light\Paste.svg" />
     <Content Include="WordPadUI\theme-light\Pictures.svg" />
     <Content Include="WordPadUI\theme-light\Subscript.svg" />
+    <Content Include="WordPadUI\theme-light\Superscript.svg" />
     <Content Include="WordPadUI\theme-light\Superscript.svg" />
   </ItemGroup>
   <ItemGroup>

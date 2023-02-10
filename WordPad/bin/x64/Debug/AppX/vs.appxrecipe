@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>CDFFCA7E3E529573B2E4FE3145581632A96F59536E714E69AFA78660664E0415</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>5C62FE537CFBC4E67C98D5CAD6516AEBFA5C2CD57FF0B3B562B75FF68C5DB5BC</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b36d39c6-c6c9-49b7-8519-9919bf164161_11.2302.1.0_x64__21w0x9xpg71k4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b36d39c6-c6c9-49b7-8519-9919bf164161_21w0x9xpg71k4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>b36d39c6-c6c9-49b7-8519-9919bf164161</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-10T15:56:24.386</Modified>
+      <Modified>2023-02-10T19:25:53.322</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\WordPad.exe">
       <PackagePath>entrypoint\WordPad.exe</PackagePath>
-      <Modified>2023-02-10T15:56:13.674</Modified>
+      <Modified>2023-02-10T19:25:52.361</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\.nuget\packages\microsoft.web.webview2\1.0.1264.42\build\..\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
@@ -82,13 +82,29 @@
       <PackagePath>Assets\Icons\Light\Cut.svg</PackagePath>
       <Modified>2023-02-10T15:53:12.092</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Copy.svg">
+      <PackagePath>WordPadUI\theme-light\Copy.svg</PackagePath>
+      <Modified>2023-02-10T15:53:12.079</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Cut.svg">
+      <PackagePath>WordPadUI\theme-light\Cut.svg</PackagePath>
+      <Modified>2023-02-10T15:53:12.092</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\insertobject.svg">
+      <PackagePath>WordPadUI\theme-light\insertobject.svg</PackagePath>
+      <Modified>2023-02-10T17:51:09.407</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Paragraph.svg">
       <PackagePath>WordPadUI\theme-light\Paragraph.svg</PackagePath>
-      <Modified>2023-02-10T15:53:42.754</Modified>
+      <Modified>2023-02-10T17:41:04.099</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Paste.svg">
+      <PackagePath>WordPadUI\theme-light\Paste.svg</PackagePath>
+      <Modified>2023-02-10T15:53:12.107</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Pictures.svg">
       <PackagePath>WordPadUI\theme-light\Pictures.svg</PackagePath>
-      <Modified>2023-02-10T15:53:42.767</Modified>
+      <Modified>2023-02-10T17:32:45.261</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\WordPadUI\theme-light\Subscript.svg">
       <PackagePath>WordPadUI\theme-light\Subscript.svg</PackagePath>
@@ -358,19 +374,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\WordPad.xr.xml">
       <PackagePath>WordPad.xr.xml</PackagePath>
-      <Modified>2023-02-10T15:53:27.587</Modified>
+      <Modified>2023-02-10T19:25:52.265</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-02-10T15:56:23.464</Modified>
+      <Modified>2023-02-10T19:25:52.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2023-02-10T15:56:23.472</Modified>
+      <Modified>2023-02-10T19:25:52.299</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\WordPadUI\AboutDialog.xbf">
       <PackagePath>WordPadUI\AboutDialog.xbf</PackagePath>
-      <Modified>2023-02-10T15:56:23.472</Modified>
+      <Modified>2023-02-10T19:25:52.300</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.22621.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -386,11 +402,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-02-10T15:56:14.125</Modified>
+      <Modified>2023-02-10T17:37:33.465</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Debug\Core\WordPad.exe">
       <PackagePath>WordPad.exe</PackagePath>
-      <Modified>2023-02-10T15:56:24.383</Modified>
+      <Modified>2023-02-10T19:25:53.319</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
