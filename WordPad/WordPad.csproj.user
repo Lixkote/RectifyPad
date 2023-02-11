@@ -9,5 +9,27 @@
     <AppIconSource>C:\Users\Jd1ex\Desktop\rp.png</AppIconSource>
     <SplashScreenSource>C:\Users\Jd1ex\Desktop\rp.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\Jd1ex\Desktop\rp.png</PackageLogoSource>
+    <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x64|arm64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <LayoutDir>C:\Users\lixkote\Desktop\WordPad11output11.02.2023\</LayoutDir>
   </PropertyGroup>
 </Project>

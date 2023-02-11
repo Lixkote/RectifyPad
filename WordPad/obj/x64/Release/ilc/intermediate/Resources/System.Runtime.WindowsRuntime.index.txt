@@ -1,2 +1,0 @@
-System.Runtime.WindowsRuntime, Version=4.0.14.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-  FxResources.System.Runtime.WindowsRuntime.SR.resources

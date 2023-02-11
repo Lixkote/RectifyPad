@@ -7,13 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Style="{StaticResource DefaultContentDialogStyle}"
-    Title="About WordPad"
+    Title="About WordPad11"
     PrimaryButtonText="OK">
 
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="PackageVersionText" Text="WordPad TargetOSver.yymm.day.revision" IsTextSelectionEnabled="True"/>
-        <TextBlock Text="PlaceholderText" Padding="0,0,0,16"/>
-        <HyperlinkButton Content="Source code" HorizontalAlignment="Stretch"/>
-        <HyperlinkButton Content="Discord server" HorizontalAlignment="Stretch"/>
+        <TextBlock Text="Made By Rectify11 Team" Padding="0,0,0,16"/>
+        <HyperlinkButton Content="sauce™ code" HorizontalAlignment="Stretch"/>
+        <HyperlinkButton Content="trashcord server" HorizontalAlignment="Stretch"/>
     </StackPanel>
 </ContentDialog>

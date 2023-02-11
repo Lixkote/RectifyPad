@@ -9,6 +9,17 @@
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals">
 
+    <Page.Resources>
+        <Flyout x:Key="myColorPickerFlyout">
+            <RelativePanel>
+                <ColorPicker x:Name="myColorPicker"
+                         IsColorChannelTextInputVisible="False"
+                         IsHexInputVisible="True"/>
+            </RelativePanel>
+        </Flyout>
+    </Page.Resources>
+    
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -32,11 +43,13 @@
                    Width="16"
                    Height="16"
                    Grid.Column="1" />
-            <TextBlock Text="{x:Bind FullString}"
+            <TextBlock
+                       x:Name="AppTitle"
+                       Text="Untitled - WordPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"
-                       x:Name="tea" />
+                                        />
         </Grid>
 
         <StackPanel x:Name="MenuStack"
@@ -68,7 +81,7 @@
                             <FontIcon Glyph="&#xe823;" />
                         </MenuFlyoutSubItem.Icon>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Save">
+                    <MenuFlyoutItem Text="Save" Click="SaveButton_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xe74e;" />
                         </MenuFlyoutItem.Icon>
@@ -114,6 +127,9 @@
                             <FontIcon Glyph="&#xe9a6;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
+                    <ToggleMenuFlyoutItem Text="Ruler"
+                                          IsChecked="False"
+                                          x:Name="RulerToggle" />
                     <MenuFlyoutSeparator />
                     <ToggleMenuFlyoutItem Text="Status bar"
                                           IsChecked="True"
@@ -124,7 +140,7 @@
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Save"
                     ToolTipService.Placement="Top"
-                    Content="&#xe74e;" />
+                    Content="&#xe74e;" Click="SaveButton_Click"/>
             <AppBarSeparator />
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Undo"
@@ -280,7 +296,7 @@
                             Visibility="Collapsed"/>
 
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <Button x:Name="fontlarger" Style="{StaticResource PaintUIButtonStyle}"
                             Content="&#xe8e8;"
                             Width="32"
                             MinWidth="32"
@@ -288,9 +304,9 @@
                             Height="32"
                             Grid.Column="5"
                             Grid.Row="0"
-                            FontSize="20"/>
+                            FontSize="20" Click="Button_Click_1"/>
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <Button x:Name="fontsmaller" Style="{StaticResource PaintUIButtonStyle}"
                             Content="&#xe8e7;"
                             Width="32"
                             MinWidth="32"
@@ -298,45 +314,45 @@
                             Height="32"
                             Grid.Column="6"
                             Grid.Row="0"
-                            FontSize="20"/>
+                            FontSize="20" Click="Button_Click_2"/>
 
 
-                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="BoldButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                   Content="&#xe8dd;"
                                   Width="32"
                                   Height="32"
                                   Grid.Column="0"
-                                  Grid.Row="1">
+                                  Grid.Row="1" Click="BoldButton_Click">
                     </ToggleButton>
 
 
-                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="ItalicButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                   Content="&#xe8db;"
                                   Width="32"
                                   Height="32"
                                   Grid.Column="1"
-                                  Grid.Row="1">
+                                  Grid.Row="1" Click="ItalicButton_Click">
                     </ToggleButton>
 
 
-                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="UnderlineButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                   Content="&#xe8dc;"
                                   Width="32"
                                   Height="32"
                                   Grid.Column="2"
-                                  Grid.Row="1" Checked="ToggleButton_Checked">
+                                  Grid.Row="1" Click="UnderlineButton_Click">
                     </ToggleButton>
 
 
-                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="StrikethroughButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                   Content="&#xede0;"
                                   Width="32"
                                   Height="32"
                                   Grid.Column="3"
-                                  Grid.Row="1">
+                                  Grid.Row="1" Click="StrikethroughButton_Click">
                     </ToggleButton>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="SubscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Padding="0"
                                  Width="32"
                                  MinWidth="32"
@@ -344,11 +360,11 @@
                                  Height="32"
                                  Grid.Column="4"
                                  Grid.Row="1"
-                                 GroupName="SubSuper" Margin="2,0,0,0" Grid.ColumnSpan="2">
-                        <Image Source="/WordPadUI/theme-light/Subscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"  />
+                                 GroupName="SubSuper" Margin="2,0,0,0" Grid.ColumnSpan="2" Click="SubscriptButton_Click">
+                        <Image Source="/WordPadUI/theme-light/Subscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="None"  />
                     </RadioButton>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="SuperscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Padding="0"
                                  Width="32"
                                  MinWidth="32"
@@ -356,14 +372,189 @@
                                  Height="32"
                                  Grid.Column="5"
                                  Grid.Row="1"
-                                 GroupName="SubSuper" Margin="-40,0,0,0" Grid.ColumnSpan="2" >
+                                 GroupName="SubSuper" Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="SuperScriptButton_Click">
                         <Image Source="/WordPadUI/theme-light/Superscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"  />
                     </RadioButton>
-                    <ComboBox x:Name="FontBox_Copy" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Lucida Console"/>
-                    <ComboBox x:Name="FontBox_Copy1" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="14
+                    <ComboBox x:Name="FontsCombo" ItemsSource="{x:Bind Fonts}" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Lucida Console" SelectionChanged="FontsCombo_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
+                        </DataTemplate>
+                        </ComboBox.ItemTemplate> </ComboBox>
+                    
+                    <ComboBox x:Name="FontSizeBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="14
                               " Margin="4,0,172,0"/>
-                    <muxc:SplitButton Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16"/>
-                    <muxc:SplitButton Grid.Column="6" Content="" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16"/>
+                    <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16" Click="fontcolorsplitbutton_Click">
+                        <muxc:SplitButton.Flyout>
+                            <Flyout Placement="Bottom">
+                                <RelativePanel>
+                                    <VariableSizedWrapGrid x:Name="colorGrid" Orientation="Horizontal" MaximumRowsOrColumns="4">
+                                        <VariableSizedWrapGrid.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width" Value="32"/>
+                                                <Setter Property="Height" Value="32"/>
+                                            </Style>
+
+                                            <Style TargetType="Button">
+                                                <Setter Property="Padding" Value="0"/>
+                                                <Setter Property="MinWidth" Value="0"/>
+                                                <Setter Property="MinHeight" Value="0"/>
+                                                <Setter Property="Margin" Value="5"/>
+                                                <Setter Property="CornerRadius" Value="8"/>
+                                            </Style>
+                                        </VariableSizedWrapGrid.Resources>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Red" AutomationProperties.Name="Red">
+                                            <Button.Content>
+                                                <Rectangle Fill="Red"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Orange" AutomationProperties.Name="Orange">
+                                            <Button.Content>
+                                                <Rectangle Fill="Orange"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Yellow" AutomationProperties.Name="Yellow">
+                                            <Button.Content>
+                                                <Rectangle Fill="Yellow"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Green" AutomationProperties.Name="Green">
+                                            <Button.Content>
+                                                <Rectangle Fill="Green"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Blue" AutomationProperties.Name="Blue">
+                                            <Button.Content>
+                                                <Rectangle Fill="Blue"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Light Blue" AutomationProperties.Name="LightBlue">
+                                            <Button.Content>
+                                                <Rectangle Fill="LightBlue"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo" AutomationProperties.Name="Indigo">
+                                            <Button.Content>
+                                                <Rectangle Fill="Indigo"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet" AutomationProperties.Name="Violet">
+                                            <Button.Content>
+                                                <Rectangle Fill="Violet"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray" AutomationProperties.Name="Gray">
+                                            <Button.Content>
+                                                <Rectangle Fill="Gray"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige" AutomationProperties.Name="Beige">
+                                            <Button.Content>
+                                                <Rectangle Fill="Beige"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black" AutomationProperties.Name="Black">
+                                            <Button.Content>
+                                                <Rectangle Fill="Black"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                            <Button.Content>
+                                                <Rectangle Fill="White"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </VariableSizedWrapGrid>
+                                    <Button Flyout="{StaticResource myColorPickerFlyout}" Margin="0,8,0,0" RelativePanel.Below="colorGrid" Content="More colors" Width="173" x:Name="colorPickerButton"/>
+                                </RelativePanel>
+                            </Flyout>
+                        </muxc:SplitButton.Flyout>
+                    </muxc:SplitButton>
+                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="Black" Click="fontbackgroundcolorsplitbutton_Click">
+                        <muxc:SplitButton.Flyout>
+                            <Flyout Placement="Bottom">
+                                <RelativePanel>
+                                    <VariableSizedWrapGrid x:Name="colorGrid2" Orientation="Horizontal" MaximumRowsOrColumns="4">
+                                        <VariableSizedWrapGrid.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width" Value="32"/>
+                                                <Setter Property="Height" Value="32"/>
+                                            </Style>
+
+                                            <Style TargetType="Button">
+                                                <Setter Property="Padding" Value="0"/>
+                                                <Setter Property="MinWidth" Value="0"/>
+                                                <Setter Property="MinHeight" Value="0"/>
+                                                <Setter Property="Margin" Value="5"/>
+                                                <Setter Property="CornerRadius" Value="8"/>
+                                            </Style>
+                                        </VariableSizedWrapGrid.Resources>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Red" AutomationProperties.Name="Red">
+                                            <Button.Content>
+                                                <Rectangle Fill="Red"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Orange" AutomationProperties.Name="Orange">
+                                            <Button.Content>
+                                                <Rectangle Fill="Orange"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Yellow" AutomationProperties.Name="Yellow">
+                                            <Button.Content>
+                                                <Rectangle Fill="Yellow"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Green" AutomationProperties.Name="Green">
+                                            <Button.Content>
+                                                <Rectangle Fill="Green"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Blue" AutomationProperties.Name="Blue">
+                                            <Button.Content>
+                                                <Rectangle Fill="Blue"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Light Blue" AutomationProperties.Name="LightBlue">
+                                            <Button.Content>
+                                                <Rectangle Fill="LightBlue"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Indigo" AutomationProperties.Name="Indigo">
+                                            <Button.Content>
+                                                <Rectangle Fill="Indigo"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Violet" AutomationProperties.Name="Violet">
+                                            <Button.Content>
+                                                <Rectangle Fill="Violet"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Gray" AutomationProperties.Name="Gray">
+                                            <Button.Content>
+                                                <Rectangle Fill="Gray"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Beige" AutomationProperties.Name="Beige">
+                                            <Button.Content>
+                                                <Rectangle Fill="Beige"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Black" AutomationProperties.Name="Black">
+                                            <Button.Content>
+                                                <Rectangle Fill="Black"/>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                            <Button.Content>
+                                                <Rectangle Fill="White"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </VariableSizedWrapGrid>
+                                    <Button Flyout="{StaticResource myColorPickerFlyout}" Margin="0,8,0,0" RelativePanel.Below="colorGrid2" Content="More colors" Width="173" x:Name="colorPickerButton2"/>
+                                </RelativePanel>
+                            </Flyout>
+                        </muxc:SplitButton.Flyout>
+                    </muxc:SplitButton>
+
 
                 </Grid>
 
@@ -398,7 +589,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="AlignLeftButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Content="&#xe8e4;"
                                  Width="32"
                                  MinWidth="32"
@@ -406,9 +597,9 @@
                                  Height="32"
                                  Grid.Column="0"
                                  Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 GroupName="Alignment" Click="AlignLeftButton_Click"/>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="AlignCenterButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Content="&#xe8e3;"
                                  Width="32"
                                  MinWidth="32"
@@ -416,9 +607,9 @@
                                  Height="32"
                                  Grid.Column="1"
                                  Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 GroupName="Alignment" Click="AlignCenterButton_Click" />
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="AlignRightButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Content="&#xe8e2;"
                                  Width="32"
                                  MinWidth="32"
@@ -426,9 +617,9 @@
                                  Height="32"
                                  Grid.Column="2"
                                  Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 GroupName="Alignment" Click="AlignRightButton_Click"/>
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="AlignAdjustedButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Content="&#xe700;"
                                  Width="32"
                                  MinWidth="32"
@@ -436,13 +627,15 @@
                                  Height="32"
                                  Grid.Column="3"
                                  Grid.Row="1"
-                                 GroupName="Alignment" />
+                                 GroupName="Alignment"
+                                 Click="AlignAdjustedButton_Click"/>
 
-                    <ToggleButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="ParagraphButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
                                  Height="32"
+                                 Click="ParagraphButton_Click"
                                  Grid.Column="4"
                                  Grid.Row="1" Padding="0">
                         <Image Source="/WordPadUI/theme-light/Paragraph.svg" Width="16" Height="16" UseLayoutRounding="True" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="none"/>
@@ -450,14 +643,14 @@
                     <muxc:SplitButton Grid.Column="2" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Grid.ColumnSpan="3"/>
                     <muxc:SplitButton Grid.Column="4" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Margin="2,0,0,0"/>
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
-                        Content=""
+                        Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
                         Height="32"
                         GroupName="Alignment" HorizontalAlignment="Center" />
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
-                        Content=""
+                        Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
@@ -567,30 +760,93 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <muxc:DropDownButton x:Name="replacebutton" Style="{StaticResource PaintUIButtonStyle}"
                 Content=""
                 Width="132"
                 MinWidth="32"
                 MaxWidth="32"
                 Height="24"
-                Grid.Row="1" HorizontalAlignment="Left" Click="Button_Click" />
+                Grid.Row="1" HorizontalAlignment="Left" Click="Button_Click">
+                        <muxc:DropDownButton.Flyout>
+                            <Flyout Placement="Bottom">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock
+                                    Margin="0,0,0,5"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Find" />
+
+                                    <TextBox
+                                    x:Name="findBox"
+                                    Width="330"
+                                    PlaceholderText="Text to look for" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="0,10,0,0" Click="FindButton_Click">Find</Button>
+                                        <Button Margin="5,10,0,0" Click="RemoveHighlightButton_Click">Remove highlights</Button>
+                                    </StackPanel>
+
+                                    <TextBlock
+                                    Margin="0,10,0,5"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Replace" />
+                                    <TextBox
+                                    x:Name="replaceBox"
+                                    Width="330"
+                                    PlaceholderText="New text" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="0,10,0,0" Click="ReplaceSelected_Click">Replace selected text</Button>
+                                        <Button Margin="5,10,0,0" Click="ReplaceAll_Click">Replace all occurrences</Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Flyout>
+                        </muxc:DropDownButton.Flyout>
+                    </muxc:DropDownButton>
+                    
+                    
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Replace" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Select All" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Find" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
- <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <muxc:DropDownButton x:Name="findbutton" Style="{StaticResource PaintUIButtonStyle}"
                 Content="&#xE11A;"
                 Width="132"
                 MinWidth="32"
                 MaxWidth="32"
                 Height="24"
-                Grid.Row="0" HorizontalAlignment="Left" Click="Button_Click" />
+                Grid.Row="0" HorizontalAlignment="Left" Click="Button_Click">
+                        <muxc:DropDownButton.Flyout>
+                            <Flyout Placement="Bottom">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock
+                                    Margin="0,0,0,5"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Find" />
+
+                                    <TextBox
+                                    x:Name="replacefindBox"
+                                    Width="330"
+                                    PlaceholderText="Text to look for" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="0,10,0,0" Click="FindButton_Click">Find</Button>
+                                        <Button Margin="5,10,0,0" Click="RemoveHighlightButton_Click">Remove highlights</Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Flyout>
+                        </muxc:DropDownButton.Flyout>
+                    </muxc:DropDownButton>
                     <Button Style="{StaticResource PaintUIButtonStyle}"
                 Content=""
                 Width="132"
                 MinWidth="32"
                 MaxWidth="32"
                 Height="24"
-                Grid.Row="2" HorizontalAlignment="Left" Click="Button_Click" />
+                Grid.Row="2" HorizontalAlignment="Left" Click="Button_Click">
+                        
+                    </Button>
 
                 </Grid>
 

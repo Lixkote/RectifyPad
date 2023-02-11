@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="b36d39c6-c6c9-49b7-8519-9919bf164161"
-    Publisher="CN=Jd1ex"
-    Version="11.2302.1.0" />
+    Name="WordPad11"
+    Publisher="CN=lixkote"
+    Version="11.2302.5.0" />
 
   <mp:PhoneIdentity PhoneProductId="b36d39c6-c6c9-49b7-8519-9919bf164161" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>RectifyPad</DisplayName>
-    <PublisherDisplayName>Jd1ex</PublisherDisplayName>
+    <DisplayName>WordPad11</DisplayName>
+    <PublisherDisplayName>Lixkote</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

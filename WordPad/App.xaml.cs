@@ -7,6 +7,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using WordPad.ViewModels;
 
 namespace RectifyPad
 {
@@ -24,6 +25,8 @@ namespace RectifyPad
             InitializeComponent();
             Suspending += OnSuspending;
         }
+
+        public static FontViewModel FViewModel { get; private set; }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

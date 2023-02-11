@@ -1,13 +1,27 @@
-﻿using System;
+﻿using Microsoft.Graphics.Canvas.Text;
+using Microsoft.Toolkit.Uwp.UI;
+using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI;
+using Windows.UI.Core.Preview;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using WordPad.WordPadUI;
+using WordPad.Helpers;
+using Windows.Storage.Provider;
+using Microsoft.VisualBasic;
+
+
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -18,11 +32,15 @@ namespace RectifyPad
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public string FileString => "Document";
-        public string SeparatorType => " - ";
+        private bool saved = true;   
+        private string appTitleStr => "WordPad" ;
+        
+        private bool updateFontFormat = true;
         public string ApplicationName => "WordPad";
-        public string FullString => FileString + SeparatorType + ApplicationName;
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
+        
+        private string fileNameWithPath = "";
+
         public MainPage()
         {
             InitializeComponent();
@@ -30,34 +48,104 @@ namespace RectifyPad
         }
         private async void Open_Click(object sender, RoutedEventArgs e)
         {
-            FileOpenPicker Picker = new FileOpenPicker();
-            Picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            Picker.FileTypeFilter.Add(".rtf");
-            Picker.FileTypeFilter.Add(".txt");
+            // Open a text file.
+            FileOpenPicker open = new FileOpenPicker();
+            open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            open.FileTypeFilter.Add(".rtf");
+            open.FileTypeFilter.Add(".txt");
 
-            StorageFile file = await Picker.PickSingleFileAsync();
-
-
+            StorageFile file = await open.PickSingleFileAsync();
 
             if (file != null)
             {
-                tea.Text = file.DisplayName + " - WordPad";
-
-
-                using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     IBuffer buffer = await FileIO.ReadBufferAsync(file);
                     var reader = DataReader.FromBuffer(buffer);
-                    reader.UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding.Utf8;
+                    reader.UnicodeEncoding = UnicodeEncoding.Utf8;
                     string text = reader.ReadString(buffer.Length);
-
-                    Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, stream);
-
+                    // Load the file into the Document property of the RichEditBox.
+                    Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+                    //editor.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                    AppTitle.Text = file.Name + " - " + appTitleStr;
+                    fileNameWithPath = file.Path;
                 }
-
-                //Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
-                //Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
+                saved = true;
+                Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
             }
+
+        }
+
+        private void FindButton_Click(object sender, RoutedEventArgs e)
+        {
+            FindBoxHighlightMatches();
+        }
+
+        private void FindBoxHighlightMatches()
+        {
+            FindBoxRemoveHighlights();
+
+            Color highlightBackgroundColor = (Color)Application.Current.Resources["SystemColorHighlightColor"];
+            Color highlightForegroundColor = (Color)Application.Current.Resources["SystemColorHighlightTextColor"];
+
+            string textToFind = findBox.Text;
+            if (textToFind != null)
+            {
+                ITextRange searchRange = Editor.Document.GetRange(0, 0);
+                while (searchRange.FindText(textToFind, TextConstants.MaxUnitCount, FindOptions.None) > 0)
+                {
+                    searchRange.CharacterFormat.BackgroundColor = highlightBackgroundColor;
+                    searchRange.CharacterFormat.ForegroundColor = highlightForegroundColor;
+                }
+            }
+        }
+
+        private void SubscriptButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Subscript);
+        }
+
+        private void SuperScriptButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Superscript);
+        }
+        private void StrikethroughButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Strikethrough);
+        }
+
+        private void AlignRightButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Right);
+            editor_SelectionChanged(sender, e);
+        }
+
+        private void AlignCenterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Center);
+            editor_SelectionChanged(sender, e);
+        }
+
+        private void AlignLeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Left);
+            editor_SelectionChanged(sender, e);
+        }
+
+        private void FindBoxRemoveHighlights()
+        {
+            ITextRange documentRange = Editor.Document.GetRange(0, TextConstants.MaxUnitCount);
+            SolidColorBrush defaultBackground = Editor.Background as SolidColorBrush;
+            SolidColorBrush defaultForeground = Editor.Foreground as SolidColorBrush;
+
+            documentRange.CharacterFormat.BackgroundColor = defaultBackground.Color;
+            documentRange.CharacterFormat.ForegroundColor = defaultForeground.Color;
+        }
+
+        private void RemoveHighlightButton_Click(object sender, RoutedEventArgs e)
+        {
+            FindBoxRemoveHighlights();
         }
 
         private void Undo_Click(object sender, RoutedEventArgs e)
@@ -124,9 +212,287 @@ namespace RectifyPad
 
         }
 
+        private void ReplaceSelected_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Replace(false, replaceBox.Text);
+        }
+
+        private void ReplaceAll_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Replace(true, find: findBox.Text, replace: replaceBox.Text);
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
-    }
+
+        private void ToggleButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            object value = Editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
+        }
+
+        private void ToggleButton_Unchecked_1(object sender, RoutedEventArgs e)
+        {
+            object value = Editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
+        }
+
+        private async void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        {
+
+        }
+
+            private void ToggleButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            object value = Editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
+        }
+
+        private void ToggleButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+            object value = Editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Toggle;
+        }
+
+        private void ColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Extract the color of the button that was clicked.
+            Button clickedColor = (Button)sender;
+            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+            var color = (rectangle.Fill as SolidColorBrush).Color;
+            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+            fontcolorsplitbutton.SetValue(ForegroundProperty, new SolidColorBrush(color));
+
+            // SplitButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void BackColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Extract the color of the button that was clicked.
+            Button clickedColor = (Button)sender;
+            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+            var color = (rectangle.Fill as SolidColorBrush).Color;
+            Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
+            fontbackgroundcolorsplitbutton.SetValue(ForegroundProperty, new SolidColorBrush(color));
+
+            // SplitButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Editor.ChangeFontSize((float)2);
+        }
+
+        private void ConfirmColor_Click(object sender, RoutedEventArgs e)
+        {
+            // Confirm color picker choice and apply color to text
+            Color color = myColorPicker.Color;
+            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+
+            // Hide flyout
+            colorPickerButton.Flyout.Hide();
+        }
+
+        private void SaveAsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFile(true);
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFile(false);
+        }
+
+        private async void SaveFile(bool isCopy)
+        {
+            string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
+            if (isCopy || fileName == "Untitled")
+            {
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+
+                // Dropdown of file types the user can save the file as
+                savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+
+                // Default file name if the user does not type one in or select a file to replace
+                savePicker.SuggestedFileName = "New Document";
+
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    // Prevent updates to the remote version of the file until we
+                    // finish making changes and call CompleteUpdatesAsync.
+                    CachedFileManager.DeferUpdates(file);
+                    // write to file
+                    using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                        await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                        switch (file.Name.EndsWith(".txt"))
+                        {
+                            case false:
+                                // RTF file, format for it
+                                {
+                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                                    randAccStream.Dispose();
+                                }
+                                break;
+                            case true:
+                                // TXT File, disable RTF formatting so that this is plain text
+                                {
+                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
+                                    randAccStream.Dispose();
+                                }
+                                break;
+                        }
+
+
+                    // Let Windows know that we're finished changing the file so the
+                    // other app can update the remote version of the file.
+                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                    if (status != FileUpdateStatus.Complete)
+                    {
+                        Windows.UI.Popups.MessageDialog errorBox =
+                            new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                        await errorBox.ShowAsync();
+                    }
+                    saved = true;
+                    fileNameWithPath = file.Path;
+                    AppTitle.Text = file.Name + " - " + appTitleStr;
+                    Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                }
+            }
+            else if (!isCopy || fileName != "Untitled")
+            {
+                string path = fileNameWithPath.Replace("\\" + fileName, "");
+                try
+                {
+                    StorageFile file = await Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.GetFileAsync("CurrentlyOpenFile");
+                    if (file != null)
+                    {
+                        // Prevent updates to the remote version of the file until we
+                        // finish making changes and call CompleteUpdatesAsync.
+                        CachedFileManager.DeferUpdates(file);
+                        // write to file
+                        using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                            if (file.Name.EndsWith(".txt"))
+                            {
+                                Editor.Document.SaveToStream(TextGetOptions.None, randAccStream);
+                                randAccStream.Dispose();
+                            }
+                            else
+                            {
+                                Editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
+                                randAccStream.Dispose();
+                            }
+
+
+                        // Let Windows know that we're finished changing the file so the
+                        // other app can update the remote version of the file.
+                        FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                        if (status != FileUpdateStatus.Complete)
+                        {
+                            Windows.UI.Popups.MessageDialog errorBox =
+                                new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                            await errorBox.ShowAsync();
+                        }
+                        saved = true;
+                        AppTitle.Text = file.Name + " - " + appTitleStr;
+                        Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Remove("CurrentlyOpenFile");
+                    }
+                }
+                catch (Exception)
+                {
+                    SaveFile(true);
+                }
+            }
+        }
+
+        private void CancelColor_Click(object sender, RoutedEventArgs e)
+        {
+            // Cancel flyout
+            colorPickerButton.Flyout.Hide();
+        }
+
+        public List<string> Fonts
+        {
+            get
+            {
+                return CanvasTextFormat.GetSystemFontFamilies().OrderBy(f => f).ToList();
+            }
+        }
+
+
+
+        private void FontsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Editor.Document.Selection.CharacterFormat.Name = FontsCombo.SelectedValue.ToString();
+        }
+
+        private void fontbackgroundcolorsplitbutton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+        {
+            // If you see this, remind me to look into the splitbutton color applying logic
+        }
+
+        private void fontcolorsplitbutton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+        {
+            // If you see this, remind me to look into the splitbutton color applying logic
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ItalicButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Italic);
+        }
+
+        private void BoldButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Bold);
+        }
+
+        private void UnderlineButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.FormatSelected(RichEditHelpers.FormattingMode.Underline);
+        }
+
+        private void AlignAdjustedButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ParagraphButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editor_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            BoldButton.IsChecked = Editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
+            ItalicButton.IsChecked = Editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On;
+            UnderlineButton.IsChecked = Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.None &&
+                                        Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.Undefined;
+            StrikethroughButton.IsChecked = Editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
+            SubscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Subscript == FormatEffect.On;
+            SuperscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Superscript == FormatEffect.On;
+            AlignLeftButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
+            AlignCenterButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
+            AlignRightButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
+            if (Editor.Document.Selection.CharacterFormat.Size > 0)
+            {
+                //font size is negative when selection contains multiple font sizes
+                //FontSizeBox. = Editor.Document.Selection.CharacterFormat.Size;
+            }
+            //prevent accidental font changes when selection contains multiple styles
+            updateFontFormat = false;
+            FontsCombo.SelectedItem = Editor.Document.Selection.CharacterFormat.Name;
+            updateFontFormat = true;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Editor.ChangeFontSize((float)-2);
+        }
+    }  
 }
