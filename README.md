@@ -3,7 +3,7 @@ The WordPad 11 app is a modern Windows app written in C# that ships an Rectify11
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
-  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/preview.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/previewnew.png)
 
 ## Features
 - Standard WordPad functionality which offers basic text operations and inseting various multimedia items.
@@ -34,7 +34,7 @@ Prerequisites:
 ## Contributing
 Want to contribute? The team encourages community feedback and contributions. Please find me under the name "u/Lixkote" on reddit and dm me about that.
 
-# Projects used
+## Projects used
  - [TowPad](https://github.com/itsWindows11/TowPad) for most of the mechanics.
 
 ## TO-DO
