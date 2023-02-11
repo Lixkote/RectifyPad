@@ -34,6 +34,9 @@ Prerequisites:
 ## Contributing
 Want to contribute? The team encourages community feedback and contributions. Please find me under the name "u/Lixkote" on reddit and dm me about that.
 
+# Projects used
+ - [TowPad](https://github.com/itsWindows11/TowPad) for most of the mechanics.
+
 ## TO-DO
   - Improve functionality.
   
