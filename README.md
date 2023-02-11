@@ -1,5 +1,5 @@
 # WordPad 11
-The WordPad 11 app is a modern Windows app written in C# that ships an Rectify11 extra.
+The WordPad 11 app is a modern Windows app written in C# that ships as an Rectify11 extra.
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
