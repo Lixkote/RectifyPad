@@ -1,5 +1,5 @@
-# WordPad 11
-The WordPad 11 app is a modern Windows app written in C# that ships as an Rectify11 extra.
+# RectifyPad
+The RectifyPad app is a modern Windows app written in C# that ships as an Rectify11 extra.
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
@@ -25,10 +25,10 @@ Prerequisites:
 
 - Get the code:
     ```
-    git clone https://github.com/Lixkote/WordPad11
+    git clone https://github.com/Lixkote/RectifyPad
     ```
 
-- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the WordPad 11 app.
+- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the RectifyPad app.
 - To test, compile it and run in debug mode.
 
 ## Contributing
