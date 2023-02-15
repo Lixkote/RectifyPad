@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Roots >
+  <Roots.RootTypes>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="ThemeDictionaries" />
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock">
+      <RootProperty Name="LinkForeground" />
+      <RootProperty Name="QuoteBackground" />
+      <RootProperty Name="QuoteForeground" />
+      <RootProperty Name="QuoteBorderBrush" />
+      <RootProperty Name="QuoteBorderThickness" />
+      <RootProperty Name="QuoteMargin" />
+      <RootProperty Name="QuotePadding" />
+      <RootProperty Name="CodeBackground" />
+      <RootProperty Name="CodeBorderBrush" />
+      <RootProperty Name="CodeBorderThickness" />
+      <RootProperty Name="CodeFontFamily" />
+      <RootProperty Name="CodeMargin" />
+      <RootProperty Name="CodePadding" />
+      <RootProperty Name="InlineCodeBorderThickness" />
+      <RootProperty Name="InlineCodePadding" />
+      <RootProperty Name="InlineCodeMargin" />
+      <RootProperty Name="InlineCodeBackground" />
+      <RootProperty Name="InlineCodeBorderBrush" />
+      <RootProperty Name="InlineCodeForeground" />
+      <RootProperty Name="InlineCodeFontFamily" />
+      <RootProperty Name="EmojiFontFamily" />
+      <RootProperty Name="Header1FontWeight" />
+      <RootProperty Name="Header1FontSize" />
+      <RootProperty Name="Header1Margin" />
+      <RootProperty Name="Header1Foreground" />
+      <RootProperty Name="Header2FontWeight" />
+      <RootProperty Name="Header2FontSize" />
+      <RootProperty Name="Header2Margin" />
+      <RootProperty Name="Header2Foreground" />
+      <RootProperty Name="Header3FontWeight" />
+      <RootProperty Name="Header3FontSize" />
+      <RootProperty Name="Header3Margin" />
+      <RootProperty Name="Header3Foreground" />
+      <RootProperty Name="Header4FontWeight" />
+      <RootProperty Name="Header4FontSize" />
+      <RootProperty Name="Header4Margin" />
+      <RootProperty Name="Header4Foreground" />
+      <RootProperty Name="Header5FontWeight" />
+      <RootProperty Name="Header5FontSize" />
+      <RootProperty Name="Header5Margin" />
+      <RootProperty Name="Header5Foreground" />
+      <RootProperty Name="Header6FontWeight" />
+      <RootProperty Name="Header6FontSize" />
+      <RootProperty Name="Header6Margin" />
+      <RootProperty Name="Header6Foreground" />
+      <RootProperty Name="HorizontalRuleBrush" />
+      <RootProperty Name="HorizontalRuleMargin" />
+      <RootProperty Name="HorizontalRuleThickness" />
+      <RootProperty Name="ListMargin" />
+      <RootProperty Name="ListGutterWidth" />
+      <RootProperty Name="ListBulletSpacing" />
+      <RootProperty Name="ParagraphMargin" />
+      <RootProperty Name="ParagraphLineHeight" />
+      <RootProperty Name="TableBorderBrush" />
+      <RootProperty Name="TableBorderThickness" />
+      <RootProperty Name="TableCellPadding" />
+      <RootProperty Name="YamlBorderThickness" />
+      <RootProperty Name="YamlBorderBrush" />
+      <RootProperty Name="TableMargin" />
+      <RootProperty Name="TextWrapping" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="Background" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Property" />
+      <RootProperty Name="Value" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
+      <RootProperty Name="TargetType" />
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Border">
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
+  </Roots.RootTypes>
+</Roots>

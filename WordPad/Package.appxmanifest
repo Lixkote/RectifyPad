@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="WordPad11"
+    Name="WordPaddev"
     Publisher="CN=lixkote"
-    Version="11.2302.5.0" />
+    Version="11.2302.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="b36d39c6-c6c9-49b7-8519-9919bf164161" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WordPad11</DisplayName>
+    <DisplayName>WordPad</DisplayName>
     <PublisherDisplayName>Lixkote</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

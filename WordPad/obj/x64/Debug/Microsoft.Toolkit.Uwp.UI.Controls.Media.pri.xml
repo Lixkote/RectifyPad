@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls.Media" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Media">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Eyedropper">
+					<NamedResource name="Eyedropper.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/Eyedropper/Eyedropper.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="EyedropperToolButton.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/Eyedropper/EyedropperToolButton.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ImageCropper">
+					<NamedResource name="ImageCropper.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/ImageCropper/ImageCropper.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageCropperThumb.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/ImageCropper/ImageCropperThumb.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="InfiniteCanvas">
+					<NamedResource name="InfiniteCanvas.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/InfiniteCanvas/InfiniteCanvas.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Media/Files/Microsoft.Toolkit.Uwp.UI.Controls.Media/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

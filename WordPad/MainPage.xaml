@@ -18,8 +18,8 @@
             </RelativePanel>
         </Flyout>
     </Page.Resources>
-    
-    
+
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -45,11 +45,10 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Untitled - WordPad"
+                       Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
-                       Grid.Column="3"
-                                        />
+                       Grid.Column="3"/>
         </Grid>
 
         <StackPanel x:Name="MenuStack"
@@ -221,7 +220,7 @@
                                Height="24"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="/Assets/Icons/Light/Paste.svg" />
+                               Source="/Assets/theme-light/Paste.svg" />
                     </muxc:SplitButton>
 
                     <Button Grid.Row="0"
@@ -234,7 +233,7 @@
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="/Assets/Icons/Light/Cut.svg" />
+                               Source="/Assets/theme-light/Cut.svg" />
                     </Button>
 
                     <Button Style="{StaticResource PaintUIButtonStyle}"
@@ -247,7 +246,7 @@
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="/Assets/Icons/Light/Copy.svg" />
+                               Source="/Assets/theme-light/Copy.svg" />
                     </Button>
 
                 </Grid>
@@ -302,9 +301,8 @@
                             MinWidth="32"
                             MaxWidth="32"
                             Height="32"
-                            Grid.Column="5"
-                            Grid.Row="0"
-                            FontSize="20" Click="Button_Click_1"/>
+                            Grid.Column="6"
+                            FontSize="20" Click="Button_Click_1" Margin="19,0,0,0" RenderTransformOrigin="0.836,0.508"/>
 
                     <Button x:Name="fontsmaller" Style="{StaticResource PaintUIButtonStyle}"
                             Content="&#xe8e7;"
@@ -313,8 +311,7 @@
                             MaxWidth="32"
                             Height="32"
                             Grid.Column="6"
-                            Grid.Row="0"
-                            FontSize="20" Click="Button_Click_2"/>
+                            FontSize="20" Click="Button_Click_2" Margin="57,0,0,0" RenderTransformOrigin="0.57,0.492"/>
 
 
                     <ToggleButton x:Name="BoldButton" Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -352,38 +349,39 @@
                                   Grid.Row="1" Click="StrikethroughButton_Click">
                     </ToggleButton>
 
-                    <RadioButton x:Name="SubscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="SubscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Padding="0"
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
+                                 Content=""
                                  Height="32"
                                  Grid.Column="4"
                                  Grid.Row="1"
-                                 GroupName="SubSuper" Margin="2,0,0,0" Grid.ColumnSpan="2" Click="SubscriptButton_Click">
-                        <Image Source="/WordPadUI/theme-light/Subscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="None"  />
-                    </RadioButton>
+                                 Margin="2,0,0,0" Grid.ColumnSpan="2" Click="SubscriptButton_Click" FontFamily="RecitfyPad Fluent Icons">
+                    </ToggleButton>
 
-                    <RadioButton x:Name="SuperscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <ToggleButton x:Name="SuperscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Padding="0"
                                  Width="32"
                                  MinWidth="32"
+                                 Content=""
                                  MaxWidth="32"
                                  Height="32"
                                  Grid.Column="5"
                                  Grid.Row="1"
-                                 GroupName="SubSuper" Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="SuperScriptButton_Click">
-                        <Image Source="/WordPadUI/theme-light/Superscript.svg" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"  />
-                    </RadioButton>
-                    <ComboBox x:Name="FontsCombo" ItemsSource="{x:Bind Fonts}" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Lucida Console" SelectionChanged="FontsCombo_SelectionChanged">
+                                 Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="SuperScriptButton_Click" FontFamily="RecitfyPad Fluent Icons">
+                    </ToggleButton>
+                    <ComboBox x:Name="FontsCombo" ItemsSource="{x:Bind Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font" SelectionChanged="FontsCombo_SelectionChanged" Margin="0,0,40,0">
                         <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
-                        </DataTemplate>
-                        </ComboBox.ItemTemplate> </ComboBox>
-                    
-                    <ComboBox x:Name="FontSizeBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="14
-                              " Margin="4,0,172,0"/>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox x:Name="FontSizeCombo" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Size
+                              " Margin="43,0,106,0" ItemsSource="{x:Bind FontSizes}" />
                     <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16" Click="fontcolorsplitbutton_Click">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
@@ -634,21 +632,21 @@
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
+                                 Content=""
                                  Height="32"
                                  Click="ParagraphButton_Click"
                                  Grid.Column="4"
-                                 Grid.Row="1" Padding="0">
-                        <Image Source="/WordPadUI/theme-light/Paragraph.svg" Width="16" Height="16" UseLayoutRounding="True" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="none"/>
+                                 Grid.Row="1" Padding="0" FontFamily="RecitfyPad Fluent Icons" FontSize="20">
                     </ToggleButton>
                     <muxc:SplitButton Grid.Column="2" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Grid.ColumnSpan="3"/>
-                    <muxc:SplitButton Grid.Column="4" Content="" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Margin="2,0,0,0"/>
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <muxc:SplitButton Grid.Column="4" Content="" Width="77" FontFamily="RecitfyPad Fluent Icons" FontSize="16" Margin="2,0,0,0"/>
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
                         Height="32"
-                        GroupName="Alignment" HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center" />
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
                         Content=""
                         Width="32"
@@ -684,14 +682,14 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <muxc:SplitButton Style="{StaticResource PaintUISplitButtonStyle}"
+                    <muxc:SplitButton x:Name="addimagesplitbutton" Style="{StaticResource PaintUISplitButtonStyle}" Click="AddImageButton_Click"
                                       Grid.Column="0"
                                       >
                         <muxc:SplitButton.Flyout>
                             <MenuFlyout Placement="Bottom">
                                 <MenuFlyoutItem Text="Picture">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xe91b;" />
+                                        <FontIcon Glyph="&#xe91b;" FontSize="22" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutItem Text="Change picture">
@@ -720,17 +718,16 @@
                                  Grid.Row="1" VerticalAlignment="Top" Margin="0,10,0,0"
                                  />
 
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
                                  Width="32"
                                  MinWidth="32"
                                  MaxWidth="32"
                                  Height="32"
                                  Grid.Column="2"
                                  Grid.Row="1"
-                                 GroupName="Alignment"
-                                 Content="" VerticalAlignment="Top" Margin="0,10,0,0">
+                                 Content="" VerticalAlignment="Top" Margin="0,10,0,0">
 
-                    </RadioButton>
+                    </Button>
 
 
                 </Grid>
@@ -743,7 +740,7 @@
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
                 BorderThickness="0,0,1,0"
                 Padding="0,12,0,0"
-                Grid.Column="4" Grid.ColumnSpan="2" Margin="4,0,0,5">
+                Grid.Column="4" Grid.ColumnSpan="2" Margin="2,0,0,5">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="72" />
@@ -764,9 +761,8 @@
                 Content=""
                 Width="132"
                 MinWidth="32"
-                MaxWidth="32"
                 Height="24"
-                Grid.Row="1" HorizontalAlignment="Left" Click="Button_Click">
+                Grid.Row="1" HorizontalAlignment="Stretch" Click="Button_Click" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0,0,0">
                         <muxc:DropDownButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <StackPanel Orientation="Vertical">
@@ -804,18 +800,16 @@
                             </Flyout>
                         </muxc:DropDownButton.Flyout>
                     </muxc:DropDownButton>
-                    
-                    
+
+
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Replace" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Select All" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
                     <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Find" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
                     <muxc:DropDownButton x:Name="findbutton" Style="{StaticResource PaintUIButtonStyle}"
                 Content="&#xE11A;"
                 Width="132"
-                MinWidth="32"
-                MaxWidth="32"
                 Height="24"
-                Grid.Row="0" HorizontalAlignment="Left" Click="Button_Click">
+                Grid.Row="0" HorizontalAlignment="Stretch" Click="Button_Click" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0,0,0">
                         <muxc:DropDownButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <StackPanel Orientation="Vertical">
@@ -842,11 +836,8 @@
                 Content=""
                 Width="132"
                 MinWidth="32"
-                MaxWidth="32"
                 Height="24"
-                Grid.Row="2" HorizontalAlignment="Left" Click="Button_Click">
-                        
-                    </Button>
+                Grid.Row="2" HorizontalAlignment="Stretch" Click="Button_Click" VerticalAlignment="Stretch" Padding="8,0,0,0" HorizontalContentAlignment="Left"/>
 
                 </Grid>
 
@@ -872,7 +863,7 @@
                     <ThemeShadow />
                 </Grid.Shadow>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" />
+                             Style="{StaticResource MinEditStyle}" FontSize="{x:Bind (x:Double)FontSizeCombo.SelectedValue, Mode=OneWay}"/>
             </Grid>
 
         </Grid>
@@ -902,6 +893,9 @@
                         Width="32"
                         VerticalAlignment="Stretch"
                         ToolTipService.ToolTip="Zoom out">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="PageDown" Modifiers="Control" />
+                    </Button.KeyboardAccelerators>
 
                 </Button>
 

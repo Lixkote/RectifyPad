@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls.Input" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>EN-US</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Input">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls.Input\Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="ColorPicker">
+					<NamedResource name="ColorPicker.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/ColorPicker/ColorPicker.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ColorPickerButton.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/ColorPicker/ColorPickerButton.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ColorPickerSlider.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/ColorPicker/ColorPickerSlider.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RadialGauge">
+					<NamedResource name="RadialGauge.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/RadialGauge/RadialGauge.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RangeSelector">
+					<NamedResource name="RangeSelector.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/RangeSelector/RangeSelector.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RemoteDevicePicker">
+					<NamedResource name="RemoteDevicePicker.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/RemoteDevicePicker/RemoteDevicePicker.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RichSuggestBox">
+					<NamedResource name="RichSuggestBox.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/RichSuggestBox/RichSuggestBox.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TokenizingTextBox">
+					<NamedResource name="TokenizingTextBox.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/TokenizingTextBox/TokenizingTextBox.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.AutoSuggestBox.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/TokenizingTextBox/TokenizingTextBoxItem.AutoSuggestBox.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.Token.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Files/Microsoft.Toolkit.Uwp.UI.Controls.Input/TokenizingTextBox/TokenizingTextBoxItem.Token.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Input">
+			<ResourceMapSubtree name="Resources">
+				<NamedResource name="WCT_TokenizingTextBoxItem_MenuFlyout_Remove" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Microsoft.Toolkit.Uwp.UI.Controls.Input/Resources/WCT_TokenizingTextBoxItem_MenuFlyout_Remove">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Remove</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TokenizingTextBox_MenuFlyout_SelectAll" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Input/Microsoft.Toolkit.Uwp.UI.Controls.Input/Resources/WCT_TokenizingTextBox_MenuFlyout_SelectAll">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Select All</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

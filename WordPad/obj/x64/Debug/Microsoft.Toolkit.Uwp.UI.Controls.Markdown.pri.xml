@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls.Markdown" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Markdown">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Markdown/Files/Microsoft.Toolkit.Uwp.UI.Controls.Markdown/Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls.Markdown\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="MarkdownTextBlock">
+					<NamedResource name="MarkdownTextBlock.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Markdown/Files/Microsoft.Toolkit.Uwp.UI.Controls.Markdown/MarkdownTextBlock/MarkdownTextBlock.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Markdown/Files/Microsoft.Toolkit.Uwp.UI.Controls.Markdown/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

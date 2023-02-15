@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls.Core" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>EN-US</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Core">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="CameraPreview">
+					<NamedResource name="CameraPreview.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/CameraPreview/CameraPreview.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="DropShadowPanel">
+					<NamedResource name="DropShadowPanel.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/DropShadowPanel/DropShadowPanel.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ImageEx">
+					<NamedResource name="ImageEx.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/ImageEx/ImageEx.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="InAppNotification">
+					<NamedResource name="InAppNotification.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/InAppNotification/InAppNotification.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<ResourceMapSubtree name="Styles">
+						<NamedResource name="MSEdgeNotificationStyle.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/InAppNotification/Styles/MSEdgeNotificationStyle.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="VSCodeNotificationStyle.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/InAppNotification/Styles/VSCodeNotificationStyle.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Loading">
+					<NamedResource name="Loading.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/Loading/Loading.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Menu">
+					<NamedResource name="Menu.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/Menu/Menu.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="MenuItem.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/Menu/MenuItem.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="MetadataControl">
+					<NamedResource name="MetadataControl.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/MetadataControl/MetadataControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RadialProgressBar">
+					<NamedResource name="RadialProgressBar.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/RadialProgressBar/RadialProgressBar.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RotatorTile">
+					<NamedResource name="RotatorTile.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/RotatorTile/RotatorTile.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TabbedCommandBar">
+					<NamedResource name="TabbedCommandBar.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TabbedCommandBar/TabbedCommandBar.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TabbedCommandBarItem.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TabbedCommandBar/TabbedCommandBarItem.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TextToolbar">
+					<NamedResource name="TextToolbar.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TextToolbar/TextToolbar.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<ResourceMapSubtree name="Symbols">
+						<NamedResource name="Symbols.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TextToolbar/Symbols/Symbols.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="ToolbarItems">
+						<NamedResource name="ToolbarButton.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TextToolbar/ToolbarItems/ToolbarButton.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="ToolbarSeparator.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TextToolbar/ToolbarItems/ToolbarSeparator.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TileControl">
+					<NamedResource name="TileControl.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Files/Microsoft.Toolkit.Uwp.UI.Controls.Core/TileControl/TileControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Core">
+			<ResourceMapSubtree name="Resources">
+				<NamedResource name="WCT_InAppNotification_DismissButton_AutomationName" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_InAppNotification_DismissButton_AutomationName">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Dismiss</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_BoldLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_BoldLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Bold</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_CancelLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_CancelLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cancel</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_CodeLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_CodeLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Code</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_CreateLinkLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_CreateLinkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Create Link</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_EmptyTextLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_EmptyTextLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Empty Text</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_HeaderLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_HeaderLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Header</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_ItalicsLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_ItalicsLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Italics</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_LabelLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_LabelLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Label</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_LinkInvalidLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_LinkInvalidLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Link Invalid</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_LinkLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_LinkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Link</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_ListLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_ListLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>List</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_OkLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_OkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Ok</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_OrderedListLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_OrderedListLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Ordered List</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_QuoteLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_QuoteLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Quote</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_RelativeLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_RelativeLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Relative</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_StrikethroughLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_StrikethroughLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Strikethrough</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_UnderlineLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_UnderlineLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Underline</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_UrlLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_UrlLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Url</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_TextToolbar_WarningLabel" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_TextToolbar_WarningLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Warning</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="WCT_InAppNotification_LandmarkProperty">
+					<NamedResource name="Value" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Core/Microsoft.Toolkit.Uwp.UI.Controls.Core/Resources/WCT_InAppNotification_LandmarkProperty/Value">
+						<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+							<Value>Notification</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

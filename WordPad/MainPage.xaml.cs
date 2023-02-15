@@ -1,9 +1,8 @@
 ﻿using Microsoft.Graphics.Canvas.Text;
-using Microsoft.Toolkit.Uwp.UI;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq;  
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -19,6 +18,8 @@ using WordPad.WordPadUI;
 using WordPad.Helpers;
 using Windows.Storage.Provider;
 using Microsoft.VisualBasic;
+using System.Threading.Tasks;
+using Windows.UI.ViewManagement;
 
 
 
@@ -33,18 +34,50 @@ namespace RectifyPad
     public sealed partial class MainPage : Page
     {
         private bool saved = true;   
-        private string appTitleStr => "WordPad" ;
-        
+        private string appTitleStr => "RectifyPad" ;
+
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
         private bool updateFontFormat = true;
-        public string ApplicationName => "WordPad";
+        public string ApplicationName => "RectifyPad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
         
         private string fileNameWithPath = "";
+
+        public List<string> Fonts
+        {
+            get
+            {
+                return CanvasTextFormat.GetSystemFontFamilies().OrderBy(f => f).ToList();
+            }
+        }
 
         public MainPage()
         {
             InitializeComponent();
             Window.Current.SetTitleBar(AppTitleBar);
+            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+
+            if (localSettings.Values["FontFamily"] is string fontSetting)
+            {
+                FontsCombo.SelectedItem = fontSetting;
+                Editor.FontFamily = new FontFamily(fontSetting);
+            }
+            else
+            {
+                FontsCombo.SelectedItem = "Calibri";
+                Editor.FontFamily = new FontFamily("Calibri");
+            }
+
+            string textWrapping = localSettings.Values["TextWrapping"] as string;
+            if (textWrapping == "enabled")
+            {
+                Editor.TextWrapping = TextWrapping.Wrap;
+            }
+            else if (textWrapping == "disabled")
+            {
+                Editor.TextWrapping = TextWrapping.NoWrap;
+            }
         }
         private async void Open_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +86,8 @@ namespace RectifyPad
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
             open.FileTypeFilter.Add(".txt");
+            open.FileTypeFilter.Add(".odt");
+            open.FileTypeFilter.Add(".docx");
 
             StorageFile file = await open.PickSingleFileAsync();
 
@@ -177,6 +212,7 @@ namespace RectifyPad
 
         }
 
+
         private void EditorContentHost_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -236,12 +272,83 @@ namespace RectifyPad
             object value = Editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
         }
 
-        private async void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        private void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
-
+            if (!saved) { e.Handled = true; ShowUnsavedDialog(); }
         }
 
-            private void ToggleButton_Checked_2(object sender, RoutedEventArgs e)
+        public List<double> FontSizes { get; } = new List<double>()
+            {
+                8,
+                9,
+                10,
+                11,
+                12,
+                14,
+                16,
+                18,
+                20,
+                24,
+                28,
+                36,
+                48,
+                72
+            };
+
+        private void FontSizeCombo_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+        {
+            bool isDouble = double.TryParse(sender.Text, out double newValue);
+
+            // Set the selected item if:
+            // - The value successfully parsed to double AND
+            // - The value is in the list of sizes OR is a custom value between 8 and 100
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
+            {
+                // Update the SelectedItem to the new value. 
+                sender.SelectedItem = newValue;
+            }
+            else
+            {
+                // If the item is invalid, reject it and revert the text. 
+                sender.Text = sender.SelectedValue.ToString();
+
+                var dialog = new ContentDialog
+                {
+                    Content = "The font size must be a number between 8 and 100.",
+                    CloseButtonText = "Close",
+                    DefaultButton = ContentDialogButton.Close
+                };
+                var task = dialog.ShowAsync();
+            }
+
+            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
+            args.Handled = true;
+        }
+
+        private async Task ShowUnsavedDialog()
+        {
+            string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
+            ContentDialog aboutDialog = new ContentDialog()
+            {
+                Title = "Do you want to save changes to " + fileName + "?",
+                Content = "There are unsaved changes, want to save them?",
+                CloseButtonText = "Cancel",
+                PrimaryButtonText = "Save changes",
+                SecondaryButtonText = "No (close app)",
+            };
+
+            ContentDialogResult result = await aboutDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                SaveFile(true);
+            }
+            else if (result == ContentDialogResult.Secondary)
+            {
+                await ApplicationView.GetForCurrentView().TryConsolidateAsync();
+            }
+        }
+
+        private void ToggleButton_Checked_2(object sender, RoutedEventArgs e)
         {
             object value = Editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
         }
@@ -302,17 +409,43 @@ namespace RectifyPad
             SaveFile(false);
         }
 
+
+        private async void AddImageButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+        {
+            // Open an image file.
+            FileOpenPicker open = new FileOpenPicker();
+            open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            open.FileTypeFilter.Add(".png");
+            open.FileTypeFilter.Add(".jpg");
+            open.FileTypeFilter.Add(".jpeg");
+
+            StorageFile file = await open.PickSingleFileAsync();
+
+            if (file != null)
+            {
+                IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.Read);
+                var properties = await file.Properties.GetImagePropertiesAsync();
+                int width = (int)properties.Width;
+                int height = (int)properties.Height;
+
+                // Load the file into the Document property of the RichEditBox.
+                Editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "img", randAccStream);
+            }
+        }
+
         private async void SaveFile(bool isCopy)
         {
             string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
-            if (isCopy || fileName == "Untitled")
+            if (isCopy || fileName == "Document")
             {
                 FileSavePicker savePicker = new FileSavePicker();
                 savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
                 // Dropdown of file types the user can save the file as
-                savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
-                savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+                savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+                savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
+                savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
 
                 // Default file name if the user does not type one in or select a file to replace
                 savePicker.SuggestedFileName = "New Document";
@@ -360,7 +493,7 @@ namespace RectifyPad
                     Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
                 }
             }
-            else if (!isCopy || fileName != "Untitled")
+            else if (!isCopy || fileName != "Document")
             {
                 string path = fileNameWithPath.Replace("\\" + fileName, "");
                 try
@@ -411,16 +544,6 @@ namespace RectifyPad
             // Cancel flyout
             colorPickerButton.Flyout.Hide();
         }
-
-        public List<string> Fonts
-        {
-            get
-            {
-                return CanvasTextFormat.GetSystemFontFamilies().OrderBy(f => f).ToList();
-            }
-        }
-
-
 
         private void FontsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Uwp.UI.Controls.Layout" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>EN-US</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Layout">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls.Layout\Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="BladeView">
+					<NamedResource name="BladeView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/BladeView/BladeView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Carousel">
+					<NamedResource name="Carousel.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Carousel/Carousel.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Expander">
+					<NamedResource name="Expander.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Expander/Expander.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="GridSplitter">
+					<NamedResource name="GridSplitter.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/GridSplitter/GridSplitter.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedContentControl">
+					<NamedResource name="HeaderedContentControl.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/HeaderedContentControl/HeaderedContentControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedItemsControl">
+					<NamedResource name="HeaderedItemsControl.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/HeaderedItemsControl/HeaderedItemsControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="LayoutTransformControl">
+					<NamedResource name="LayoutTransformControl.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/LayoutTransformControl/LayoutTransformControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ListDetailsView">
+					<NamedResource name="ListDetailsView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/ListDetailsView/ListDetailsView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="OrbitView">
+					<NamedResource name="OrbitView.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/OrbitView/OrbitView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Files/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls.Layout">
+			<ResourceMapSubtree name="Resources">
+				<NamedResource name="WCT_BladeView_ExpandButton_Collapsed" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Resources/WCT_BladeView_ExpandButton_Collapsed">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Collapse Blade</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_BladeView_ExpandButton_Expanded" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Resources/WCT_BladeView_ExpandButton_Expanded">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Expand Blade</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WCT_GridSplitter_AutomationName" uri="ms-resource://Microsoft.Toolkit.Uwp.UI.Controls.Layout/Microsoft.Toolkit.Uwp.UI.Controls.Layout/Resources/WCT_GridSplitter_AutomationName">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>GridSplitter</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>
