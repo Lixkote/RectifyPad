@@ -13718,11 +13718,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lixkote\\Desktop\\WordPad-fixed\\WordPad\\WordPad.csproj",
+      "projectUniqueName": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj",
       "projectName": "WordPad",
-      "projectPath": "C:\\Users\\lixkote\\Desktop\\WordPad-fixed\\WordPad\\WordPad.csproj",
+      "projectPath": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj",
       "packagesPath": "C:\\Users\\lixkote\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lixkote\\Desktop\\WordPad-fixed\\WordPad\\obj\\",
+      "outputPath": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

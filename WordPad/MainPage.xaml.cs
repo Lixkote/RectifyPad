@@ -20,6 +20,17 @@ using Windows.Storage.Provider;
 using Microsoft.VisualBasic;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Automation;
+using Windows.Globalization.DateTimeFormatting;
+using static Microsoft.Toolkit.Parsers.Markdown.Blocks.TableBlock;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.System;
+using Windows.UI.Xaml.Media.Imaging;
+using System.Text;
+using Windows.Graphics.Imaging;
+using Windows.Storage.Search;
+using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
 
 
 
@@ -79,6 +90,47 @@ namespace RectifyPad
                 Editor.TextWrapping = TextWrapping.NoWrap;
             }
         }
+
+        private MarkerType _type = MarkerType.Bullet;
+
+        private void BulletButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedBullet = (Button)sender;
+            SymbolIcon symbol = (SymbolIcon)clickedBullet.Content;
+
+            if (symbol.Symbol == Symbol.List)
+            {
+                _type = MarkerType.Bullet;
+                mySymbolIcon.Symbol = Symbol.List;
+                myListButton.SetValue(AutomationProperties.NameProperty, "Bullets");
+            }
+            else if (symbol.Symbol == Symbol.Bullets)
+            {
+                _type = MarkerType.UppercaseRoman;
+                mySymbolIcon.Symbol = Symbol.Bullets;
+                myListButton.SetValue(AutomationProperties.NameProperty, "Roman Numerals");
+            }
+            Editor.Document.Selection.ParagraphFormat.ListType = _type;
+
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
+        {
+            if (sender.IsChecked)
+            {
+                //add bulleted list
+                Editor.Document.Selection.ParagraphFormat.ListType = _type;
+            }
+            else
+            {
+                //remove bulleted list
+                Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+            }
+        }
+
         private async void Open_Click(object sender, RoutedEventArgs e)
         {
             // Open a text file.
@@ -233,7 +285,7 @@ namespace RectifyPad
 
         private async void Feedback_Click(object sender, RoutedEventArgs e)
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri(@"https://discord.com/invite/Btg3QTuS6c"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri(@"https://discord.gg/snjGXGg4"));
         }
 
         private async void About_Click(object sender, RoutedEventArgs e)
@@ -616,6 +668,167 @@ namespace RectifyPad
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Editor.ChangeFontSize((float)-2);
+        }
+
+        private async void Button_Click_3Async(object sender, RoutedEventArgs e)
+        {
+            // Create a ContentDialog
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = "Insert Object";
+
+            // Create a ListView for the user to select the insert option
+            ListView listView = new ListView();
+            listView.SelectionMode = ListViewSelectionMode.Single;
+
+            // Create a list of insert options to display in the ListView
+            List<string> insertOptions = new List<string>();
+            insertOptions.Add("Draw Image using mspaint");
+            insertOptions.Add("Insert Table");
+
+            // Set the ItemsSource of the ListView to the list of insert options
+            listView.ItemsSource = insertOptions;
+
+            // Set the content of the ContentDialog to the ListView
+            dialog.Content = listView;
+
+            // Make the default button BLU
+            dialog.DefaultButton = ContentDialogButton.Primary;
+
+            // Add an "Insert" button to the ContentDialog
+            dialog.PrimaryButtonText = "OK";
+            dialog.PrimaryButtonClick += async (s, args) =>
+            {
+                string selectedOption = listView.SelectedItem as string;
+
+                // Draw an image using mspaint and insert it into the RichEditBox
+                if (selectedOption == "Draw Image using mspaint")
+                {
+                    // Launch mspaint
+                    await Launcher.LaunchUriAsync(new Uri("mspaint:"));
+
+                    // Wait for the user to draw an image and save it to a temporary file
+                    StorageFile tempFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync("temp.bmp", CreationCollisionOption.ReplaceExisting);
+                    while (true)
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(6));
+                        if (await tempFile.GetBasicPropertiesAsync() != null) break;
+                    }
+
+                    // Load the image into a BitmapImage object
+                    BitmapImage bitmapImage = new BitmapImage();
+                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
+                    {
+                        bitmapImage.SetSource(stream);
+                    }
+
+                    // Insert the image into the RichEditBox
+                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
+                    {
+                        IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
+                        using (var imageStream = await imageStreamRef.OpenReadAsync())
+                        {
+                            Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
+                        }
+                    }
+
+                    // Delete the temporary file
+                    await tempFile.DeleteAsync();
+                }
+                // Insert a table into the RichEditBox
+                else if (selectedOption == "Insert Table")
+                {
+                    //CreateStringBuilder object
+                    StringBuilder strTable = new StringBuilder();
+
+                    //Beginning of rich text format,don’t alter this line
+                    strTable.Append(@"{\rtf1 ");
+
+                    //Create 5 rows with 4 columns
+                    for (int i = 0; i < 5; i++)
+                    {
+                        //Start the row
+                        strTable.Append(@"\trowd");
+
+                        //First cell with width 1000.
+                        strTable.Append(@"\cellx1000");
+
+                        //Second cell with width 1000.Ending point is 2000, which is 1000+1000.
+                        strTable.Append(@"\cellx2000");
+
+                        //Third cell with width 1000.Endingat3000,which is 2000+1000.
+                        strTable.Append(@"\cellx3000");
+
+                        //Last cell with width 1000.Ending at 4000 (which is 3000+1000)
+                        strTable.Append(@"\cellx4000");
+
+                        //Append the row in StringBuilder
+                        strTable.Append(@"\intbl \cell \row"); //create the row
+                    }
+
+                    strTable.Append(@"\pard");
+
+                    strTable.Append(@"}");
+
+                    var strTableString = strTable.ToString();
+
+
+                    Editor.Document.Selection.SetText(TextSetOptions.FormatRtf, strTableString);
+                }
+            };
+
+            // Add a "Cancel" button to the ContentDialog
+            dialog.SecondaryButtonText = "Cancel";
+
+            // Show the ContentDialog
+            await dialog.ShowAsync();
+        }
+
+        private void ParagraphButton_Checked(object sender, RoutedEventArgs e)
+        {
+           ParagraphDialog addobject = new ParagraphDialog();
+           addobject.ShowAsync();
+        }
+
+        private async void Button_Click_4Async(object sender, RoutedEventArgs e)
+        { // Create a ContentDialog
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = "Time and date";
+
+            // Create a ListView for the user to select the date format
+            ListView listView = new ListView();
+            listView.SelectionMode = ListViewSelectionMode.Single;
+
+            // Create a list of date formats to display in the ListView
+            List<string> dateFormats = new List<string>();
+            dateFormats.Add(DateTime.Now.ToString("dd.M.yyyy"));
+            dateFormats.Add(DateTime.Now.ToString("dd MMM yyyy"));
+            dateFormats.Add(DateTime.Now.ToString("dddd , dd MMMM yyyy"));
+            dateFormats.Add(DateTime.Now.ToString("dd MMMM yyyy"));
+            dateFormats.Add(DateTime.Now.ToString("hh:mm:ss"));
+
+            // Set the ItemsSource of the ListView to the list of date formats
+            listView.ItemsSource = dateFormats;
+
+            // Set the content of the ContentDialog to the ListView
+            dialog.Content = listView;
+
+            // Make the insert button colored
+            dialog.DefaultButton = ContentDialogButton.Primary;
+
+            // Add an "Insert" button to the ContentDialog
+            dialog.PrimaryButtonText = "OK";
+            dialog.PrimaryButtonClick += (s, args) =>
+            {
+                string selectedFormat = listView.SelectedItem as string;
+                string formattedDate = DateTime.Now.ToString(selectedFormat);
+                Editor.Document.Selection.Text = formattedDate;
+            };
+
+            // Add a "Cancel" button to the ContentDialog
+            dialog.SecondaryButtonText = "Cancel";
+
+            // Show the ContentDialog
+            await dialog.ShowAsync();
         }
     }  
 }

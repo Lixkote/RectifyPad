@@ -18,14 +18,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace WordPad.WordPadUI
 {
-    public sealed partial class AboutDialog : ContentDialog
+    public sealed partial class ObjectInsertion : ContentDialog
     {
-        public AboutDialog()
+        public ObjectInsertion()
         {
             this.InitializeComponent();
 
-            var Version = Package.Current.Id.Version;
-            PackageVersionText.Text = $"WordPad {string.Format("{0}.{1}.{2}.{3}", Version.Major, Version.Minor, Version.Build, Version.Revision)}";
 
         }
     }

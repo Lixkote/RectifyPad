@@ -7,10 +7,10 @@
 
     Po więcej informacji o plikach manifestu pakietów, zobacz http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="WordPaddev" Publisher="CN=lixkote" Version="11.2302.1.0" ProcessorArchitecture="x64" />
+  <Identity Name="RectifyPad" Publisher="CN=lixkote" Version="11.2302.1.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="b36d39c6-c6c9-49b7-8519-9919bf164161" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>WordPad</DisplayName>
+    <DisplayName>RectifyPad</DisplayName>
     <PublisherDisplayName>Lixkote</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -26,8 +26,8 @@
     <Resource Language="EN-US" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="WordPad.exe" EntryPoint="WordPad.App">
-      <uap:VisualElements DisplayName="WordPad" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="WordPad" BackgroundColor="transparent">
+    <Application Id="App" Executable="WordPad.exe" EntryPoint="RectifyPad.App">
+      <uap:VisualElements DisplayName="RectifyPad" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="RectifyPad is the basic word processor that has been included with Rectify11. It is more advanced than Windows Notepad, and simpler than Microsoft Word and Microsoft Works (last updated in 2007). RectifyPad is an alternative to Windows WordPad." BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
@@ -150,9 +150,9 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>Microsoft.Web.WebView2.Core.dll</Path>
-        <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2CompositionController" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2Controller" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2ControllerWindowReference" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Microsoft.Web.WebView2.Core.CoreWebView2Environment" ThreadingModel="both" />
       </InProcessServer>
@@ -163,7 +163,7 @@
     <build:Item Name="VisualStudio" Version="17.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2022" />
     <build:Item Name="OperatingSystem" Version="10.0.22621.1 (WinBuild.160101.0800)" />
-    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="17.4.33122.133" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="17.4.33403.182" />
     <build:Item Name="ProjectGUID" Value="{4B764E73-397A-44FD-82A6-7B8C97967985}" />
     <build:Item Name="OptimizingToolset" Value="None" />
     <build:Item Name="TargetRuntime" Value="Managed" />

@@ -12,8 +12,8 @@
 
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="PackageVersionText" Text="RectifyPad TargetOSver.yymm.day.revision" IsTextSelectionEnabled="True"/>
-        <TextBlock Text="Made By Rectify11 team." Padding="0,0,0,16"/>
-        <HyperlinkButton Content="Source code" HorizontalAlignment="Stretch"/>
-        <HyperlinkButton Content="Discord server" HorizontalAlignment="Stretch"/>
+        <TextBlock Text="© 2023 Rectify11 Team." Padding="0,0,0,16"/>
+        <HyperlinkButton Content="Rectify11 Discord server" HorizontalAlignment="Stretch" NavigateUri="https://discord.gg/snjGXGg4"/>
+        <HyperlinkButton Content="Source code" HorizontalAlignment="Stretch" NavigateUri="https://github.com/Lixkote/WritePad"/>
     </StackPanel>
 </ContentDialog>

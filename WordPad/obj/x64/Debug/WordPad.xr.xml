@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="ActualWidth" />
+  </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
       <RootProperty Name="Resources" />
@@ -34,6 +37,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Padding" />
       <RootProperty Name="MaxWidth" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="Flyout" />
@@ -69,15 +73,14 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
       <RootProperty Name="Style" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="MinWidth" />
-      <RootProperty Name="MaxWidth" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MaxWidth" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="FontFamily" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
@@ -264,6 +267,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Style" />
     </RootType>
     <RootType FullName="Microsoft.UI.Xaml.Controls.BackdropMaterial">
       <RootMethod Name="GetApplyToRootOrPageBackground" />
@@ -286,6 +290,7 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
@@ -295,6 +300,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Child" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Mode" />
@@ -312,6 +318,17 @@
     <RootType FullName="Windows.UI.Xaml.Input.KeyboardAccelerator">
       <RootProperty Name="Key" />
       <RootProperty Name="Modifiers" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.RangeSelector">
+      <RootProperty Name="Minimum" />
+      <RootProperty Name="Maximum" />
+      <RootProperty Name="StepFrequency" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.ThemeShadow" />
     <RootType FullName="Microsoft.UI.Xaml.Controls.DropDownButton">
@@ -350,7 +367,20 @@
       <RootProperty Name="Height" />
       <RootProperty Name="GroupName" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Padding" />
       <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.ToggleSplitButton">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Flyout" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
+      <RootProperty Name="Symbol" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="ItemsSource" />
@@ -399,15 +429,28 @@
       <RootProperty Name="Items" />
     </RootType>
     <RootType FullName="RectifyPad.MainPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="WordPad.WordPadUI.DateDialogContent" />
     <RootType FullName="Windows.UI.Xaml.Controls.ContentDialog">
       <RootProperty Name="Style" />
       <RootProperty Name="Title" />
       <RootProperty Name="PrimaryButtonText" />
+      <RootProperty Name="DefaultButton" />
+      <RootProperty Name="SecondaryButtonText" />
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="WordPad.WordPadUI.ParagraphDialog" />
+    <RootType FullName="WordPad.WordPadUI.ObjectInsertion" />
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="NavigateUri" />
     </RootType>
     <RootType FullName="WordPad.WordPadUI.AboutDialog" />
   </Roots.RootTypes>

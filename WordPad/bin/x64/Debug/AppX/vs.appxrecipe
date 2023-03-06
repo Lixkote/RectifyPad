@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-PLUU17R</Machine>
+    <Machine>DESKTOP-DITTI93</Machine>
     <WindowsUser>lixkote</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>b36d39c6-c6c9-49b7-8519-9919bf164161</PackageIdentityName>
     <PackageIdentityPublisher>CN=lixkote</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\lixkote\Desktop\RectifyPad\WordPad\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,25 +18,25 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>97D2B72CA08C6CA02CD2AEC35BF0BB9EE338AB34CB5AD46902D3778D5799FC06</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>WordPaddev_11.2302.1.0_x64__22264k86p1h6r</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>WordPaddev_22264k86p1h6r!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>WordPaddev</RegisteredPackageID>
+    <LayoutDir>C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>356E0F9A5CA9FADE77B6A539A61811D1C107CD3622335DB6E41C899DD392FD75</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>RectifyPad_11.2302.1.0_x64__22264k86p1h6r</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>RectifyPad_22264k86p1h6r!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>RectifyPad</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=lixkote</RegisteredPackagePublisher>
     <RegisteredVersion>11.2302.1.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-14T09:01:57.139</Modified>
+      <Modified>2023-03-06T19:56:11.636</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\WordPad.exe">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPad.exe">
       <PackagePath>entrypoint\WordPad.exe</PackagePath>
-      <Modified>2023-02-14T09:01:56.123</Modified>
+      <Modified>2023-03-06T19:55:17.879</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\.nuget\packages\microsoft.web.webview2\1.0.1264.42\build\..\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
@@ -130,6 +130,10 @@
       <PackagePath>Microsoft.Web.WebView2.Core.winmd</PackagePath>
       <Modified>2022-06-28T22:02:58.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\WordPad_TemporaryKey.pfx">
+      <PackagePath>WordPad_TemporaryKey.pfx</PackagePath>
+      <Modified>2023-02-21T10:53:17.386</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lixkote\.nuget\packages\microsoft.toolkit.uwp.ui.controls.core\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:58.000</Modified>
@@ -154,307 +158,315 @@
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LargeTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.771</Modified>
+      <Modified>2023-03-06T18:05:39.890</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LargeTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.788</Modified>
+      <Modified>2023-03-06T18:05:39.912</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LargeTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.811</Modified>
+      <Modified>2023-03-06T18:05:39.938</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LargeTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.845</Modified>
+      <Modified>2023-03-06T18:05:39.977</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LargeTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.962</Modified>
+      <Modified>2023-03-06T18:05:40.103</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SmallTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.551</Modified>
+      <Modified>2023-03-06T18:05:39.594</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SmallTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.557</Modified>
+      <Modified>2023-03-06T18:05:39.605</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SmallTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.563</Modified>
+      <Modified>2023-03-06T18:05:39.616</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SmallTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.570</Modified>
+      <Modified>2023-03-06T18:05:39.629</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SmallTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.582</Modified>
+      <Modified>2023-03-06T18:05:39.646</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.095</Modified>
+      <Modified>2023-03-06T18:05:40.356</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SplashScreen.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.121</Modified>
+      <Modified>2023-03-06T18:05:40.387</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SplashScreen.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.154</Modified>
+      <Modified>2023-03-06T18:05:40.425</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.411</Modified>
+      <Modified>2023-03-06T18:05:40.724</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.592</Modified>
+      <Modified>2023-03-06T18:05:39.661</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square150x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.600</Modified>
+      <Modified>2023-03-06T18:05:39.673</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square150x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.608</Modified>
+      <Modified>2023-03-06T18:05:39.688</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.654</Modified>
+      <Modified>2023-03-06T18:05:39.743</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.052</Modified>
+      <Modified>2023-03-06T18:05:40.282</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.056</Modified>
+      <Modified>2023-03-06T18:05:40.292</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.077</Modified>
+      <Modified>2023-03-06T18:05:40.333</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.060</Modified>
+      <Modified>2023-03-06T18:05:40.301</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.064</Modified>
+      <Modified>2023-03-06T18:05:40.310</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.023</Modified>
+      <Modified>2023-03-06T18:05:40.225</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.047</Modified>
+      <Modified>2023-03-06T18:05:40.273</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.031</Modified>
+      <Modified>2023-03-06T18:05:40.243</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.035</Modified>
+      <Modified>2023-03-06T18:05:40.253</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.966</Modified>
+      <Modified>2023-03-06T18:05:40.113</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.971</Modified>
+      <Modified>2023-03-06T18:05:40.122</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.975</Modified>
+      <Modified>2023-03-06T18:05:40.132</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.989</Modified>
+      <Modified>2023-03-06T18:05:40.155</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.994</Modified>
+      <Modified>2023-03-06T18:05:40.165</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.998</Modified>
+      <Modified>2023-03-06T18:05:40.174</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.019</Modified>
+      <Modified>2023-03-06T18:05:40.215</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.001</Modified>
+      <Modified>2023-03-06T18:05:40.187</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.005</Modified>
+      <Modified>2023-03-06T18:05:40.197</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.417</Modified>
+      <Modified>2023-03-06T18:05:40.735</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\StoreLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.421</Modified>
+      <Modified>2023-03-06T18:05:40.748</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\StoreLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.427</Modified>
+      <Modified>2023-03-06T18:05:40.761</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\StoreLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.434</Modified>
+      <Modified>2023-03-06T18:05:40.775</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\StoreLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.446</Modified>
+      <Modified>2023-03-06T18:05:40.799</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.662</Modified>
+      <Modified>2023-03-06T18:05:39.756</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Wide310x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.672</Modified>
+      <Modified>2023-03-06T18:05:39.771</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Wide310x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.684</Modified>
+      <Modified>2023-03-06T18:05:39.787</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.759</Modified>
+      <Modified>2023-03-06T18:05:39.871</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2023-02-10T15:53:11.398</Modified>
+      <Modified>2023-02-21T10:35:30.668</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.211</Modified>
+      <Modified>2023-03-06T18:05:40.486</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.621</Modified>
+      <Modified>2023-03-06T18:05:39.705</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.981</Modified>
+      <Modified>2023-03-06T18:05:40.142</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:46.027</Modified>
+      <Modified>2023-03-06T18:05:40.233</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-12T05:08:45.703</Modified>
+      <Modified>2023-03-06T18:05:39.810</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-dark\Copy.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-dark\Copy.svg">
       <PackagePath>Assets\theme-dark\Copy.svg</PackagePath>
-      <Modified>2023-02-10T15:53:42.708</Modified>
+      <Modified>2023-02-21T10:35:31.345</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-dark\Cut.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-dark\Cut.svg">
       <PackagePath>Assets\theme-dark\Cut.svg</PackagePath>
-      <Modified>2023-02-10T15:53:42.722</Modified>
+      <Modified>2023-02-21T10:35:31.361</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-dark\Paste.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-dark\Paste.svg">
       <PackagePath>Assets\theme-dark\Paste.svg</PackagePath>
-      <Modified>2023-02-10T15:53:42.736</Modified>
+      <Modified>2023-02-21T10:35:31.376</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-light\Copy.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-light\Copy.svg">
       <PackagePath>Assets\theme-light\Copy.svg</PackagePath>
-      <Modified>2023-02-10T15:53:12.079</Modified>
+      <Modified>2023-02-21T10:35:31.392</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-light\Cut.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-light\Cut.svg">
       <PackagePath>Assets\theme-light\Cut.svg</PackagePath>
-      <Modified>2023-02-10T15:53:12.092</Modified>
+      <Modified>2023-02-21T10:35:31.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\theme-light\Paste.svg">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Assets\theme-light\Paste.svg">
       <PackagePath>Assets\theme-light\Paste.svg</PackagePath>
-      <Modified>2023-02-10T15:53:12.107</Modified>
+      <Modified>2023-02-21T10:35:31.439</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2023-02-10T15:53:42.665</Modified>
+      <Modified>2023-02-21T10:35:31.532</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\Assets\RectifyPadIcons.ttf">
-      <PackagePath>Assets\RectifyPadIcons.ttf</PackagePath>
-      <Modified>2023-02-14T07:45:14.274</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\WordPad.xr.xml">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPad.xr.xml">
       <PackagePath>WordPad.xr.xml</PackagePath>
-      <Modified>2023-02-14T08:13:54.735</Modified>
+      <Modified>2023-03-06T18:23:44.457</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-02-14T09:01:55.978</Modified>
+      <Modified>2023-03-06T19:56:10.626</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2023-02-14T09:01:55.993</Modified>
+      <Modified>2023-03-06T19:56:10.646</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\WordPadUI\AboutDialog.xbf">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPadUI\DateTimeInsert.xbf">
+      <PackagePath>WordPadUI\DateTimeInsert.xbf</PackagePath>
+      <Modified>2023-03-06T19:56:10.651</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPadUI\Paragraph.xbf">
+      <PackagePath>WordPadUI\Paragraph.xbf</PackagePath>
+      <Modified>2023-03-06T19:56:10.651</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPadUI\ObjectInsert.xbf">
+      <PackagePath>WordPadUI\ObjectInsert.xbf</PackagePath>
+      <Modified>2023-03-06T19:56:10.651</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\WordPadUI\AboutDialog.xbf">
       <PackagePath>WordPadUI\AboutDialog.xbf</PackagePath>
-      <Modified>2023-02-14T09:01:55.994</Modified>
+      <Modified>2023-03-06T19:56:10.651</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.22621.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -468,13 +480,13 @@
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2022-12-16T01:17:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-02-14T08:57:47.366</Modified>
+      <Modified>2023-03-06T18:37:09.122</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\WordPad-fixed\WordPad\bin\x64\Debug\Core\WordPad.exe">
+    <AppxPackagedFile Include="C:\Users\lixkote\Desktop\RectifyPad\WordPad\bin\x64\Debug\Core\WordPad.exe">
       <PackagePath>WordPad.exe</PackagePath>
-      <Modified>2023-02-14T09:01:57.136</Modified>
+      <Modified>2023-03-06T19:56:11.626</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -619,6 +631,15 @@
       <Architecture>ARM</Architecture>
       <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.Desktop.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug.UWPDesktop</Name>
+      <Version>14.0.30704.0</Version>
+      <Architecture>ARM64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug.UWPDesktop, MinVersion = 14.0.30704.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs.Desktop\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.Desktop.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>

@@ -951,7 +951,7 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                  <FontFamily x:Key="CustomIconFont">/Assets/RectifyPadIcons.ttf#RectifyPadIcons</FontFamily>
+                  <FontFamily x:Key="CustomIconFont">/Assets/WordPadIcons.ttf#WordPadIcons</FontFamily>
                 </ResourceDictionary>
             </controls:XamlControlsResources.MergedDictionaries>
         </controls:XamlControlsResources>
