@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Source>C:\Users\lixkote\Desktop\new halal.png</Source>
-    <SmallTileSource>C:\Users\lixkote\Desktop\new halal.png</SmallTileSource>
-    <MediumTileSource>C:\Users\lixkote\Desktop\new halal.png</MediumTileSource>
-    <WideTileSource>C:\Users\lixkote\Desktop\new halal.png</WideTileSource>
-    <LargeTileSource>C:\Users\lixkote\Desktop\new halal.png</LargeTileSource>
-    <AppIconSource>C:\Users\lixkote\Desktop\new halal.png</AppIconSource>
-    <SplashScreenSource>C:\Users\lixkote\Desktop\new halal.png</SplashScreenSource>
-    <PackageLogoSource>C:\Users\lixkote\Desktop\new halal.png</PackageLogoSource>
+    <Source>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</Source>
+    <SmallTileSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</SmallTileSource>
+    <MediumTileSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</MediumTileSource>
+    <WideTileSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</WideTileSource>
+    <LargeTileSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</LargeTileSource>
+    <AppIconSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</AppIconSource>
+    <SplashScreenSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</SplashScreenSource>
+    <PackageLogoSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</PackageLogoSource>
+    <BadgeLogoSource>C:\Users\lixkote\Desktop\WritePad\WordPad\Assets\RectifyPadSVG.svg</BadgeLogoSource>
   </PropertyGroup>
 </Project>

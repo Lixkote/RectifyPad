@@ -34,6 +34,7 @@ using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
 using System.Drawing;
 using Color = Windows.UI.Color;
 using Windows.Foundation.Metadata;
+using System.Data;
 
 
 
@@ -84,6 +85,8 @@ namespace RectifyPad
                 72
             };
 
+
+
         public MainPage()
         {
             InitializeComponent();
@@ -110,10 +113,47 @@ namespace RectifyPad
             {
                 Editor.TextWrapping = TextWrapping.NoWrap;
             }
+            ribbongrid.DataContext = this;
         }
      
 
         private MarkerType _type = MarkerType.Bullet;
+
+        public SvgImageSource cutimgthemed
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "Cut.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource pasteimgthemed
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "Paste.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource copyimgthemed
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "Copy.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
 
         private void BulletButton_Click(object sender, RoutedEventArgs e)
         {
@@ -283,7 +323,7 @@ namespace RectifyPad
 
         private void ZoomSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
-
+        
         }
 
 

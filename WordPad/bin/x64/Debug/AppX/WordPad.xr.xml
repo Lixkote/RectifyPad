@@ -2,6 +2,9 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="ActualWidth" />
+    <RootPropertyPathName Name="copyimgthemed" />
+    <RootPropertyPathName Name="cutimgthemed" />
+    <RootPropertyPathName Name="pasteimgthemed" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -173,6 +176,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="DataContext" />
       <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Translation" />
@@ -379,6 +383,11 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Flyout" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Viewbox">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Child" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
       <RootProperty Name="Symbol" />
     </RootType>
@@ -412,6 +421,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
+      <RootProperty Name="RequestedTheme" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Source" />
