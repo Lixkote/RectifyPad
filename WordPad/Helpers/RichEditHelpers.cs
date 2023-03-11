@@ -10,9 +10,9 @@ namespace WordPad.Helpers
 {
     public static class RichEditHelpers
     {
-        public static void ChangeFontSize(this RichEditBox editor, float size)
+        public static void ChangeFontSize(this RichEditBox Editor, float size)
         {
-            ITextSelection selectedText = editor.Document.Selection;
+            ITextSelection selectedText = Editor.Document.Selection;
             ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
             charFormatting.Size = size;
             selectedText.CharacterFormat = charFormatting;

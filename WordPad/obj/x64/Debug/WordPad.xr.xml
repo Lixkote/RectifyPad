@@ -124,7 +124,7 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="SelectionFlyout" />
       <RootProperty Name="Style" />
-      <RootProperty Name="FontSize" />
+      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="HorizontalScrollMode" />
@@ -389,7 +389,10 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Items" />
       <RootEvent Name="SelectionChanged" />
+      <RootEvent Name="TextSubmitted" />
+      <RootEvent Name="Loaded" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.VariableSizedWrapGrid">
       <RootProperty Name="Orientation" />
@@ -399,6 +402,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />

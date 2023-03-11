@@ -31,6 +31,9 @@ using System.Text;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Search;
 using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
+using System.Drawing;
+using Color = Windows.UI.Color;
+using Windows.Foundation.Metadata;
 
 
 
@@ -63,6 +66,24 @@ namespace RectifyPad
             }
         }
 
+        public List<double> FontSizes { get; } = new List<double>()
+            {
+                8,
+                9,
+                10,
+                11,
+                12,
+                14,
+                16,
+                18,
+                20,
+                24,
+                28,
+                36,
+                48,
+                72
+            };
+
         public MainPage()
         {
             InitializeComponent();
@@ -90,6 +111,7 @@ namespace RectifyPad
                 Editor.TextWrapping = TextWrapping.NoWrap;
             }
         }
+     
 
         private MarkerType _type = MarkerType.Bullet;
 
@@ -311,7 +333,16 @@ namespace RectifyPad
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Editor != null)
+            {
+                Editor.Focus(FocusState.Programmatic);
 
+                // Get the position of the last character in the RichEditBox
+                int lastPosition = Editor.Document.Selection.EndPosition;
+
+                // Set the selection range to the entire document
+                Editor.Document.Selection.SetRange(0, lastPosition);
+            }
         }
 
         private void ToggleButton_Checked_1(object sender, RoutedEventArgs e)
@@ -327,54 +358,6 @@ namespace RectifyPad
         private void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
             if (!saved) { e.Handled = true; ShowUnsavedDialog(); }
-        }
-
-        public List<double> FontSizes { get; } = new List<double>()
-            {
-                8,
-                9,
-                10,
-                11,
-                12,
-                14,
-                16,
-                18,
-                20,
-                24,
-                28,
-                36,
-                48,
-                72
-            };
-
-        private void FontSizeCombo_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
-        {
-            bool isDouble = double.TryParse(sender.Text, out double newValue);
-
-            // Set the selected item if:
-            // - The value successfully parsed to double AND
-            // - The value is in the list of sizes OR is a custom value between 8 and 100
-            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
-            {
-                // Update the SelectedItem to the new value. 
-                sender.SelectedItem = newValue;
-            }
-            else
-            {
-                // If the item is invalid, reject it and revert the text. 
-                sender.Text = sender.SelectedValue.ToString();
-
-                var dialog = new ContentDialog
-                {
-                    Content = "The font size must be a number between 8 and 100.",
-                    CloseButtonText = "Close",
-                    DefaultButton = ContentDialogButton.Close
-                };
-                var task = dialog.ShowAsync();
-            }
-
-            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
-            args.Handled = true;
         }
 
         private async Task ShowUnsavedDialog()
@@ -663,11 +646,8 @@ namespace RectifyPad
             updateFontFormat = false;
             FontsCombo.SelectedItem = Editor.Document.Selection.CharacterFormat.Name;
             updateFontFormat = true;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Editor.ChangeFontSize((float)-2);
+            // Get a reference to the RichEditBox control
+            RichEditBox richEditBox = Editor;
         }
 
         private async void Button_Click_3Async(object sender, RoutedEventArgs e)
@@ -783,10 +763,77 @@ namespace RectifyPad
             await dialog.ShowAsync();
         }
 
+        private void FontSizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox)
+            {
+                if (comboBox.SelectedItem is double selectedValue)
+                {
+                    Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
+                }
+            }
+        }
+
+
+        private void FontSizeCombo_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+        {
+            bool isDouble = double.TryParse(sender.Text, out double newValue);
+
+            // Check if the user selected a predefined font size from the ComboBox.
+            if (sender.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is double predefinedSize)
+            {
+                newValue = predefinedSize;
+            }
+
+            // Set the selected item if:
+            // - The value successfully parsed to double AND
+            // - The value is in the list of sizes OR is a custom value between 8 and 100
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
+            {
+                // Update the SelectedItem to the new value. 
+                sender.SelectedItem = newValue;
+                Editor.Document.Selection.CharacterFormat.Size = (float)newValue;
+            }
+            else
+            {
+                // If the item is invalid, reject it and revert the text. 
+                sender.Text = sender.SelectedValue?.ToString();
+
+                var dialog = new ContentDialog
+                {
+                    Content = "The font size must be a number between 8 and 100.",
+                    CloseButtonText = "Close",
+                    DefaultButton = ContentDialogButton.Close
+                };
+                var task = dialog.ShowAsync();
+            }
+
+            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
+            args.Handled = true;
+        }
+
         private void ParagraphButton_Checked(object sender, RoutedEventArgs e)
         {
            ParagraphDialog addobject = new ParagraphDialog();
            addobject.ShowAsync();
+        }
+
+        private void DecreaseFontSize_Click(object sender, RoutedEventArgs e)
+        {
+            // Get a reference to the RichEditBox control
+            RichEditBox richEditBox = Editor;
+
+            // Decrease the font size of the currently selected text by 2 points
+            richEditBox.Document.Selection.CharacterFormat.Size -= 2;
+        }
+
+        private void IncreaseFontSize_Click(object sender, RoutedEventArgs e)
+        {
+            // Get a reference to the RichEditBox control
+            RichEditBox richEditBox = Editor;
+
+            // Increase the font size of the currently selected text by 2 points
+            richEditBox.Document.Selection.CharacterFormat.Size += 2;
         }
 
         private async void Button_Click_4Async(object sender, RoutedEventArgs e)
@@ -829,6 +876,18 @@ namespace RectifyPad
 
             // Show the ContentDialog
             await dialog.ShowAsync();
+        }
+
+        private void fontSizeComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            {
+                fontSizeComboBox.SelectedIndex = 2;
+
+                if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+                {
+                    fontSizeComboBox.TextSubmitted += FontSizeCombo_TextSubmitted;
+                }
+            }
         }
     }  
 }

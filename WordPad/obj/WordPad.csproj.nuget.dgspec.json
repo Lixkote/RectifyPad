@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj": {}
+    "C:\\Users\\lixkote\\Desktop\\WritePad\\WordPad\\WordPad.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj": {
+    "C:\\Users\\lixkote\\Desktop\\WritePad\\WordPad\\WordPad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj",
+        "projectUniqueName": "C:\\Users\\lixkote\\Desktop\\WritePad\\WordPad\\WordPad.csproj",
         "projectName": "WordPad",
-        "projectPath": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\WordPad.csproj",
+        "projectPath": "C:\\Users\\lixkote\\Desktop\\WritePad\\WordPad\\WordPad.csproj",
         "packagesPath": "C:\\Users\\lixkote\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lixkote\\Desktop\\RectifyPad\\WordPad\\obj\\",
+        "outputPath": "C:\\Users\\lixkote\\Desktop\\WritePad\\WordPad\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

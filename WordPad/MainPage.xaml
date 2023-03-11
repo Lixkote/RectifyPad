@@ -304,7 +304,7 @@
                             MaxWidth="32"
                             Height="32"
                             Grid.Column="6"
-                            FontSize="20" Click="Button_Click_1" Margin="19,0,0,0" RenderTransformOrigin="0.836,0.508"/>
+                            FontSize="20" Click="IncreaseFontSize_Click" Margin="19,0,0,0" RenderTransformOrigin="0.836,0.508"/>
 
                     <Button x:Name="fontsmaller" Style="{StaticResource PaintUIButtonStyle}"
                             Content="&#xe8e7;"
@@ -313,7 +313,7 @@
                             MaxWidth="32"
                             Height="32"
                             Grid.Column="6"
-                            FontSize="20" Click="Button_Click_2" Margin="57,0,0,0" RenderTransformOrigin="0.57,0.492"/>
+                            FontSize="20" Click="DecreaseFontSize_Click" Margin="57,0,0,0" RenderTransformOrigin="0.57,0.492"/>
 
 
                     <ToggleButton x:Name="BoldButton" Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -382,8 +382,25 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <ComboBox x:Name="FontSizeCombo" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Size
-                              " Margin="43,0,106,0" ItemsSource="{x:Bind FontSizes}" />
+                    <ComboBox x:Name="fontSizeComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
+                               Margin="43,0,106,0" TextSubmitted="FontSizeCombo_TextSubmitted" ItemsSource="{x:Bind FontSizes}" Loaded="fontSizeComboBox_Loaded" SelectionChanged="FontSizeCombo_SelectionChanged">
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>9</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>11</ComboBoxItem>
+                        <ComboBoxItem>12</ComboBoxItem>
+                        <ComboBoxItem>14</ComboBoxItem>
+                        <ComboBoxItem>16</ComboBoxItem>
+                        <ComboBoxItem>18</ComboBoxItem>
+                        <ComboBoxItem>20</ComboBoxItem>
+                        <ComboBoxItem>22</ComboBoxItem>
+                        <ComboBoxItem>24</ComboBoxItem>
+                        <ComboBoxItem>26</ComboBoxItem>
+                        <ComboBoxItem>28</ComboBoxItem>
+                        <ComboBoxItem>36</ComboBoxItem>
+                        <ComboBoxItem>48</ComboBoxItem>
+                        <ComboBoxItem>72</ComboBoxItem>
+                    </ComboBox>
                     <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16" Click="fontcolorsplitbutton_Click">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
@@ -857,7 +874,7 @@
                             </Flyout>
                         </muxc:DropDownButton.Flyout>
                     </muxc:DropDownButton>
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <Button x:Name="SelectAll" Style="{StaticResource PaintUIButtonStyle}"
                 Content=""
                 Width="132"
                 MinWidth="32"
@@ -888,7 +905,7 @@
                     <ThemeShadow />
                 </Grid.Shadow>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" FontSize="{x:Bind (x:Double)FontSizeCombo.SelectedValue, Mode=OneWay}"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged"/>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
