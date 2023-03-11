@@ -1,5 +1,5 @@
-# WritePad
-The WritePad app is a modern Windows app written in C#.
+# RectifyPad
+The RectifyPad app is a modern Windows app written in C#. It is planned to be included in Rectify11 future release.
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
@@ -12,6 +12,7 @@ The app provides simmilar functionality, as standard Windows WordPad program.
 ## Many Thanks to:
  - [Calculator](https://github.com/CalcuIator) for initial concept and visual recreation.
  - [dlphin] for help with modern wordpad icon.
+ - [OjasK] for allowing me to include in Rectify11
 
 ## Getting started
 Prerequisites:
@@ -24,10 +25,10 @@ Prerequisites:
 
 - Get the code:
     ```
-    git clone https://github.com/Lixkote/WritePad
+    git clone https://github.com/Lixkote/RectifyPad
     ```
 
-- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the WritePad app.
+- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the RectifyPad app.
 - To test, compile it and run in debug mode.
 
 ## Contributing
