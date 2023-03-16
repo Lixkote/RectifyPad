@@ -1,2 +1,0 @@
-MainPackage=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\x64\Release\WordPad_11.2302.5.0_x64.msix
-SymbolPackage=C:\Users\lixkote\Desktop\WordPad\WordPad\obj\x64\Release\Symbols\WordPad_11.2302.5.0_x64.appxsym
