@@ -1,6 +1,0 @@
-MainPackage=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\ARM64\Release\WordPad_11.2302.5.0_ARM64.msix
-SymbolPackage=C:\Users\lixkote\Desktop\WordPad\WordPad\obj\ARM64\Release\Symbols\WordPad_11.2302.5.0_ARM64.appxsym
-ResourcePack=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\ARM64\Release\WordPad_11.2302.5.0_scale-100.msix
-ResourcePack=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\ARM64\Release\WordPad_11.2302.5.0_scale-125.msix
-ResourcePack=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\ARM64\Release\WordPad_11.2302.5.0_scale-150.msix
-ResourcePack=C:\Users\lixkote\Desktop\WordPad\WordPad\bin\ARM64\Release\WordPad_11.2302.5.0_scale-400.msix
