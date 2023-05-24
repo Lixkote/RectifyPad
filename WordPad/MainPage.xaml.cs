@@ -35,6 +35,10 @@ using System.Drawing;
 using Color = Windows.UI.Color;
 using Windows.Foundation.Metadata;
 using System.Data;
+using Microsoft.Toolkit.Uwp.Helpers;
+using System.ComponentModel;
+using Windows.Graphics.Printing;
+using Windows.UI.Popups;
 
 
 
@@ -49,12 +53,12 @@ namespace RectifyPad
     public sealed partial class MainPage : Page
     {
         private bool saved = true;   
-        private string appTitleStr => "RectifyPad" ;
+        private string appTitleStr => "WritePad" ;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         private bool updateFontFormat = true;
-        public string ApplicationName => "RectifyPad";
+        public string ApplicationName => "WritePad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
         
         private string fileNameWithPath = "";
@@ -928,6 +932,26 @@ namespace RectifyPad
                     fontSizeComboBox.TextSubmitted += FontSizeCombo_TextSubmitted;
                 }
             }
+        }
+
+        private PrintHelper _printHelper;
+        private DataTemplate customPrintTemplate;
+        private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            string value = string.Empty;
+
+            Editor.Document.GetText(TextGetOptions.None, out value);
+
+            _printHelper = new PrintHelper(EditorContentHost);
+            var printHelperOptions = new PrintHelperOptions(false);
+            printHelperOptions.Orientation = PrintOrientation.Default;
+            await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
+        }
+        // Please take this code and f The error message you are seeing indicates that you are trying to convert a RichEditBox control to a Panel control. The PrintHelper class requires a Panel control as its parameter, which is why you are seeing this error, then send me fixed code
+
+        private void PrintHelper_OnPrintFailed()
+        {
+
         }
     }  
 }

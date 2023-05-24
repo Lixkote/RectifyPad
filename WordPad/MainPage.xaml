@@ -47,7 +47,7 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - RectifyPad"
+                       Text="Document - WritePad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
@@ -101,7 +101,7 @@
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe749;" />
                         </MenuFlyoutSubItem.Icon>
-                        <MenuFlyoutItem Text="Print">
+                        <MenuFlyoutItem Text="Print" Click="MenuFlyoutItem_Click">
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="P"
                                                      Modifiers="Control" />
