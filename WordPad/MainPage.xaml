@@ -20,6 +20,9 @@
             </RelativePanel>
         </Flyout>
     </Page.Resources>
+    <Page.Background>
+        <ThemeResource ResourceKey="SystemColorWindowBrush"/>
+    </Page.Background>
 
 
     <Grid>
@@ -108,7 +111,7 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem Text="Page setup" />
-                        <MenuFlyoutItem Text="Print preview" />
+                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Send">
                         <MenuFlyoutItem.Icon>
@@ -163,6 +166,208 @@
                 Grid.Row="1"
                 HorizontalAlignment="Right"
                 Click="Feedback_Click" />
+        <Grid x:Name="PrintPreviewRibbon" Background="{ThemeResource RibbonBackground}"
+            BorderBrush="{ThemeResource RibbonBorder}"
+            BorderThickness="0,1"
+            Padding="4" DataContext="{x:Bind}" Grid.Row="2" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="137"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0" />
+            </Grid.ColumnDefinitions>
+
+            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+                BorderThickness="0,0,1,0"
+                Padding="12">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Print"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}"
+                    Grid.Row="1" />
+                <Button x:Name="PrintPreviewPrintButton" Style="{StaticResource PaintUIButtonStyle}"
+                       
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="40"
+                        Height="40"
+                        VerticalAlignment="Top" Margin="3,16,0,0" Click="Button_Click_4Async"
+                                 >
+                    <Image x:Name="printicon" Width="32"
+                               Height="32"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Source="{Binding printpreviewprint}" />
+                </Button>
+
+            </Grid>
+
+            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+                BorderThickness="0,0,1,0"
+                Padding="12"
+                Grid.Column="3">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid ColumnSpacing="8">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="printpreviewzoomplusbutton" Style="{StaticResource PaintUIButtonStyle}"
+
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="40"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center"
+                                 >
+                        <Image x:Name="zoomminusicons" Width="32"
+                               Height="32"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Source="{Binding printpreviewzoomplus}" />
+                    </Button>
+
+
+                </Grid>
+
+                <TextBlock Text="Zoom"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}"
+                    Grid.Row="1" />
+
+            </Grid>
+            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+                BorderThickness="0,0,1,0"
+                Padding="12"
+                Grid.Column="4" Grid.ColumnSpan="2" Margin="4,5,133,5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid ColumnSpacing="8">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="onepage" Style="{StaticResource PaintUIButtonStyle}"
+
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="40"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center"
+                                 >
+                        <Image x:Name="onepageico" Width="32"
+                            Height="32"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{Binding printpreviewzoomplus}" />
+                    </Button>
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages"
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="32"
+                        Height="40"
+                        Grid.Column="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center">
+                        <Image x:Name="twopagesico" Width="32"
+                            Height="32"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{Binding printpreviewzoomminus}" />
+                    </Button>
+
+
+                </Grid>
+
+                <TextBlock Text="Display"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
+
+            </Grid>
+            <Grid
+                BorderThickness="0,0,1,0"
+                Padding="12"
+                Grid.Column="6" Margin="1013,5,-1107,9">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid ColumnSpacing="8">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="closeprintpreview"
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="32"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewclick" HorizontalAlignment="Center" Content="X"/>
+
+
+                </Grid>
+
+                <TextBlock Text="Close Preivew"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
+
+            </Grid>
+            <Grid
+                BorderThickness="0,0,1,0"
+                Padding="12"
+                Grid.Column="6" Margin="878,5,-987,4">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid ColumnSpacing="8">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                        <ColumnDefinition Width="Auto" MinWidth="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="onepage2" Style="{StaticResource PaintUIButtonStyle}"
+
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="40"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center" Content="\/"
+                                 />
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages2"
+                        Width="40"
+                        MinWidth="40"
+                        MaxWidth="32"
+                        Height="40"
+                        Grid.Column="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center" Content="/\"/>
+
+
+                </Grid>
+
+                <TextBlock Text="Pages"
+                    Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
+
+            </Grid>
+
+        </Grid>
 
         <Grid x:Name="ribbongrid" Background="{ThemeResource RibbonBackground}"
               BorderBrush="{ThemeResource RibbonBorder}"

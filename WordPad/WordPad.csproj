@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>DBFD301F083C775D48E529CBFB6FD54323E1BD03</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>2309C6A6189BACBB986C03A776008FED1A8086C4</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>WordPad_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -214,9 +214,19 @@
     <Content Include="Assets\theme-dark\Copy.svg" />
     <Content Include="Assets\theme-dark\Cut.svg" />
     <Content Include="Assets\theme-dark\Paste.svg" />
+    <Content Include="Assets\theme-dark\Print.svg" />
+    <Content Include="Assets\theme-dark\ZoomIn.svg" />
+    <Content Include="Assets\theme-dark\ZoomInDisabled.svg" />
+    <Content Include="Assets\theme-dark\ZoomOut.svg" />
+    <Content Include="Assets\theme-dark\ZoomOutDisabled.svg" />
     <Content Include="Assets\theme-light\Copy.svg" />
     <Content Include="Assets\theme-light\Cut.svg" />
     <Content Include="Assets\theme-light\Paste.svg" />
+    <Content Include="Assets\theme-light\Print.svg" />
+    <Content Include="Assets\theme-light\ZoomIn.svg" />
+    <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
+    <Content Include="Assets\theme-light\ZoomOut.svg" />
+    <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />

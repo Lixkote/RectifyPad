@@ -135,6 +135,65 @@ namespace RectifyPad
             }
         }
 
+        public SvgImageSource printpreviewprint
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "Print.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource printpreviewzoomminus
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomOut.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource printpreviewzoomminusdis
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomOutDisabled.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource printpreviewzoomplusdis
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomInDisabled.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+        public SvgImageSource printpreviewzoomplus
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomIn.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
         public SvgImageSource pasteimgthemed
         {
             get
@@ -947,11 +1006,23 @@ namespace RectifyPad
             printHelperOptions.Orientation = PrintOrientation.Default;
             await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
         }
-        // Please take this code and f The error message you are seeing indicates that you are trying to convert a RichEditBox control to a Panel control. The PrintHelper class requires a Panel control as its parameter, which is why you are seeing this error, then send me fixed code
+       
 
         private void PrintHelper_OnPrintFailed()
         {
 
         }
+
+        private void pintpreview_Click(object sender, RoutedEventArgs e)
+        {
+            ribbongrid.Visibility = Visibility.Collapsed;
+            PrintPreviewRibbon.Visibility = Visibility.Visible;
+        }
+        private void closeprintpreviewclick(object sender, RoutedEventArgs e)
+        {
+            ribbongrid.Visibility = Visibility.Visible;
+            PrintPreviewRibbon.Visibility = Visibility.Collapsed;
+        }
+
     }  
 }
