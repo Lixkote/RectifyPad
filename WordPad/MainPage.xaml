@@ -20,9 +20,6 @@
             </RelativePanel>
         </Flyout>
     </Page.Resources>
-    <Page.Background>
-        <ThemeResource ResourceKey="SystemColorWindowBrush"/>
-    </Page.Background>
 
 
     <Grid>
@@ -890,14 +887,14 @@
                             </Flyout>
                         </muxc:ToggleSplitButton.Flyout>
                     </muxc:ToggleSplitButton>
-                    <muxc:SplitButton Grid.Column="4" Content="" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0"/>
+                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0"/>
                     <Button Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
                         Height="32"
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center" Click="Button_Click_2"/>
                     <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
                         Content=""
                         Width="32"
@@ -1114,7 +1111,7 @@
                     <ThemeShadow />
                 </Grid.Shadow>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged"/>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"

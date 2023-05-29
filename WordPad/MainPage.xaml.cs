@@ -52,7 +52,10 @@ namespace RectifyPad
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private bool saved = true;   
+
+        private bool saved = true;
+
+        public bool _wasOpen = false;
         private string appTitleStr => "WritePad" ;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
@@ -93,9 +96,11 @@ namespace RectifyPad
 
         public MainPage()
         {
+            
             InitializeComponent();
             Window.Current.SetTitleBar(AppTitleBar);
-            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+
+            
 
             if (localSettings.Values["FontFamily"] is string fontSetting)
             {
@@ -118,6 +123,7 @@ namespace RectifyPad
                 Editor.TextWrapping = TextWrapping.NoWrap;
             }
             ribbongrid.DataContext = this;
+            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
         }
      
 
@@ -282,7 +288,7 @@ namespace RectifyPad
                     AppTitle.Text = file.Name + " - " + appTitleStr;
                     fileNameWithPath = file.Path;
                 }
-                saved = true;
+                saved = false;
                 Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
             }
@@ -458,23 +464,19 @@ namespace RectifyPad
             object value = Editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
         }
 
-        private void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
-        {
-            if (!saved) { e.Handled = true; ShowUnsavedDialog(); }
-        }
-
         private async Task ShowUnsavedDialog()
         {
             string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
             ContentDialog aboutDialog = new ContentDialog()
             {
-                Title = "Do you want to save changes to " + fileName + "?",
-                Content = "There are unsaved changes, want to save them?",
+                Title = "Do you want to save your work?",
+                Content = "There are unsaved changes in " + '\u0022' + fileName + '\u0022',
                 CloseButtonText = "Cancel",
-                PrimaryButtonText = "Save changes",
-                SecondaryButtonText = "No (close app)",
-            };
+                PrimaryButtonText = "Save",
+                SecondaryButtonText = "Don't save",
 
+            };
+            aboutDialog.DefaultButton = ContentDialogButton.Primary;
             ContentDialogResult result = await aboutDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
@@ -1024,5 +1026,34 @@ namespace RectifyPad
             PrintPreviewRibbon.Visibility = Visibility.Collapsed;
         }
 
+        bool isTextChanged = false;
+
+        private void Editor_TextChanged(object sender, RoutedEventArgs e)
+        {
+            string textStart;
+            Editor.Document.GetText(TextGetOptions.UseObjectText, out textStart);
+
+            if (textStart == "")
+            {
+                saved = true;
+            }
+            else
+            {
+                saved = false;
+            }
+
+            SolidColorBrush highlightBackgroundColor = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
+            Editor.Document.Selection.CharacterFormat.BackgroundColor = highlightBackgroundColor.Color;
+        }
+
+        private void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        {
+            if (saved == false) { e.Handled = true; ShowUnsavedDialog(); }
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }  
 }
