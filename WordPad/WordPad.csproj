@@ -164,6 +164,7 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\rtf.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -227,6 +228,7 @@
     <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOut.svg" />
     <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
+    <Content Include="Assets\txt.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />

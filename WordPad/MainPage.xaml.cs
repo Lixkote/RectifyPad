@@ -39,6 +39,7 @@ using Microsoft.Toolkit.Uwp.Helpers;
 using System.ComponentModel;
 using Windows.Graphics.Printing;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Navigation;
 
 
 
@@ -65,6 +66,9 @@ namespace RectifyPad
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
         
         private string fileNameWithPath = "";
+        
+        string originalDocText = "";
+
 
         public List<string> Fonts
         {
@@ -1055,5 +1059,31 @@ namespace RectifyPad
         {
 
         }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter is StorageFile file)
+            {
+                using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                {
+                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                    var reader = DataReader.FromBuffer(buffer);
+                    reader.UnicodeEncoding = UnicodeEncoding.Utf8;
+                    string text = reader.ReadString(buffer.Length);
+                    // Load the file into the Document property of the RichEditBox.
+                    Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+                    Editor.Document.GetText(TextGetOptions.UseObjectText, out originalDocText);
+                    //editor.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
+                    fileNameWithPath = file.Path;
+                }
+                saved = true;
+                fileNameWithPath = file.Path;
+                Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
+                _wasOpen = true;
+            }
+        }
+
     }  
 }
