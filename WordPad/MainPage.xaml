@@ -392,87 +392,119 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
-
-            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+            <Grid>
+                <Grid.Children>
+                    <Border x:Name="ContentHolder" Visibility="Collapsed" />
+                    <Button x:Name="CollapsedButton"
+                    Style="{StaticResource PaintUIButtonStyle}"
+                    Width="32"
+                    Height="48"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                        <Button.Content>
+                            <StackPanel>
+                                <StackPanel.Children>
+                                    <Image></Image>
+                                    <FontIcon FontSize="8" Glyph="" />
+                                </StackPanel.Children>
+                            </StackPanel>
+                        </Button.Content>
+                        <Button.ContextFlyout>
+                            <Flyout x:Name="CollapseFlyout" Placement="Bottom">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Padding" Value="6,4" />
+                                        <Setter Property="CornerRadius" Value="4" />
+                                        <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultSolidBrush}" />
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <Flyout.Content>
+                                    <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
                   BorderThickness="0,0,1,0"
                   Padding="12">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="72" />
-                    <RowDefinition Height="24" />
-                </Grid.RowDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="72" />
+                                            <RowDefinition Height="24" />
+                                        </Grid.RowDefinitions>
 
-                <Grid x:Name="ClipbrdHost"
+                                        <Grid x:Name="ClipbrdHost"
                       ColumnSpacing="12">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                    </Grid.RowDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*" />
+                                                <RowDefinition Height="1*" />
+                                            </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                    <muxc:SplitButton Style="{StaticResource PaintUISplitButtonStyle}"
+                                            <muxc:SplitButton Style="{StaticResource PaintUISplitButtonStyle}"
                                       Grid.RowSpan="2"
                                       Grid.Column="0"
                                       Click="Paste_Click">
-                        <muxc:SplitButton.Flyout>
-                            <MenuFlyout Placement="Bottom">
-                                <MenuFlyoutItem Text="Paste">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xe77f;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem Text="Paste special">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xf0e3;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                            </MenuFlyout>
-                        </muxc:SplitButton.Flyout>
-                        <Image x:Name="pasteimg" Width="24"
+                                                <muxc:SplitButton.Flyout>
+                                                    <MenuFlyout Placement="Bottom">
+                                                        <MenuFlyoutItem Text="Paste">
+                                                            <MenuFlyoutItem.Icon>
+                                                                <FontIcon Glyph="&#xe77f;" />
+                                                            </MenuFlyoutItem.Icon>
+                                                        </MenuFlyoutItem>
+                                                        <MenuFlyoutItem Text="Paste special">
+                                                            <MenuFlyoutItem.Icon>
+                                                                <FontIcon Glyph="&#xf0e3;" />
+                                                            </MenuFlyoutItem.Icon>
+                                                        </MenuFlyoutItem>
+                                                    </MenuFlyout>
+                                                </muxc:SplitButton.Flyout>
+                                                <Image x:Name="pasteimg" Width="24"
                                Height="24"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                 Source="{Binding pasteimgthemed}" />
-                    </muxc:SplitButton>
+                                            </muxc:SplitButton>
 
-                    <Button Grid.Row="0"
+                                            <Button Grid.Row="0"
                             Grid.Column="1"
                             Width="32"
                             Height="32"
                             Style="{StaticResource PaintUIButtonStyle}"
                             Click="Cut_Click">
-                        <Image x:Name="cutimg" Width="16"
+                                                <Image x:Name="cutimg" Width="16"
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Source="{Binding cutimgthemed}" />
-                    </Button>
+                                            </Button>
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                                            <Button Style="{StaticResource PaintUIButtonStyle}"
                             Grid.Row="1"
                             Grid.Column="1"
                             Width="32"
                             Height="32"
                             Click="Copy_Click">
-                        <Image x:Name="copyimg" Width="16"
+                                                <Image x:Name="copyimg" Width="16"
                                Height="16"
                                RequestedTheme="Light"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Source="{Binding copyimgthemed}" />
-                    </Button>
+                                            </Button>
 
-                </Grid>
+                                        </Grid>
 
-                <TextBlock Text="Clipboard"
+                                        <TextBlock Text="Clipboard"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
                            Grid.Row="1" />
 
+                                    </Grid>
+                                </Flyout.Content>
+                            </Flyout>
+                        </Button.ContextFlyout>
+                    </Button>
+                </Grid.Children>
             </Grid>
 
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"

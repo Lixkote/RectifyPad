@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>8584E9464C0B3DE8211868272BCD17A0FAED45AB</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>7A576BCA67BC0F88A6CD877905378B9DFB440A83</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>WordPad_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -139,6 +139,9 @@
     <Compile Include="WordPadUI\DateTimeInsert.xaml.cs">
       <DependentUpon>DateTimeInsert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WordPadUI\MyUserControl1.xaml.cs">
+      <DependentUpon>MyUserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WordPadUI\Paragraph.xaml.cs">
       <DependentUpon>Paragraph.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
     <Page Include="WordPadUI\DateTimeInsert.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WordPadUI\MyUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WordPadUI\Paragraph.xaml">
       <Generator>MSBuild:Compile</Generator>
