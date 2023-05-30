@@ -889,11 +889,11 @@
                                             <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
                                         </Style>
                                     </StackPanel.Resources>
-                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Bulleted list">
-                                        <SymbolIcon Symbol="List"/>
+                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
                                     </Button>
-                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list">
-                                        <SymbolIcon Symbol="Bullets"/>
+                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
                                     </Button>
                                 </StackPanel>
                             </Flyout>
@@ -907,14 +907,14 @@
                         MaxWidth="32"
                         Height="32"
                         HorizontalAlignment="Center" Click="Button_Click_2"/>
-                    <RadioButton Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
                         Height="32"
                         Grid.Column="1"
-                        GroupName="Alignment" HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center" />
 
                 </Grid>
 

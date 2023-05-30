@@ -255,21 +255,7 @@ namespace RectifyPad
         private void BulletButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedBullet = (Button)sender;
-            SymbolIcon symbol = (SymbolIcon)clickedBullet.Content;
-
-            if (symbol.Symbol == Symbol.List)
-            {
-                _type = MarkerType.Bullet;
-                mySymbolIcon.Symbol = Symbol.List;
-                myListButton.SetValue(AutomationProperties.NameProperty, "Bullets");
-            }
-            else if (symbol.Symbol == Symbol.Bullets)
-            {
-                _type = MarkerType.UppercaseRoman;
-                mySymbolIcon.Symbol = Symbol.Bullets;
-                myListButton.SetValue(AutomationProperties.NameProperty, "Roman Numerals");
-            }
-            Editor.Document.Selection.ParagraphFormat.ListType = _type;
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
 
             myListButton.IsChecked = true;
             myListButton.Flyout.Hide();

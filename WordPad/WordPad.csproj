@@ -155,6 +155,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\40002 %282%29.png" />
+    <Content Include="Assets\40006.png" />
+    <Content Include="Assets\40012.png" />
+    <Content Include="Assets\40018.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />
     <Content Include="Assets\BadgeLogo.scale-150.png" />
