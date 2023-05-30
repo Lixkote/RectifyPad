@@ -58,7 +58,7 @@
                     Orientation="Horizontal">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File" x:Name="FileMenuRoot">
-                    <MenuFlyoutItem Text="New">
+                    <MenuFlyoutItem Text="New" Click="NewDoc_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xe8a5;" />
                         </MenuFlyoutItem.Icon>
@@ -90,21 +90,21 @@
                             <KeyboardAccelerator Key="S"
                                                  Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
-                    </MenuFlyoutItem>
+                    </MenuFlyoutItem >
                     <MenuFlyoutSubItem Text="Save as">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe792;" />
                         </MenuFlyoutSubItem.Icon>
                         <MenuFlyoutSubItem.Items>
-                            <MenuFlyoutItem AccessKey="R" Text="RTF">
+                            <MenuFlyoutItem AccessKey="R" Text="RTF" x:Name="SaveAsRTF" Click="SaveAsRTF_Click">
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem AccessKey="D" Text="DOCX">
+                            <MenuFlyoutItem AccessKey="D" Text="DOCX" x:Name="SaveAsDOCX" Click="SaveAsDOCX_Click">
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem AccessKey="P" Text="ODT">
+                            <MenuFlyoutItem AccessKey="P" Text="ODT" x:Name="SaveAsODT" Click="SaveAsODT_Click">
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem AccessKey="T" Text="TXT">
+                            <MenuFlyoutItem AccessKey="T" Text="TXT" x:Name="SaveAsTXT" Click="SaveAsTXT_Click">
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem AccessKey="O" Text="Other Format">
+                            <MenuFlyoutItem AccessKey="O" Text="Other Format" x:Name="SaveAsOther" Click="SaveAsOther_Click">
                             </MenuFlyoutItem>
                         </MenuFlyoutSubItem.Items>
                     </MenuFlyoutSubItem>
@@ -122,7 +122,7 @@
                         <MenuFlyoutItem Text="Page setup" />
                         <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Send">
+                    <MenuFlyoutItem Text="Send" Click="SendButton_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xe72d;" />
                         </MenuFlyoutItem.Icon>
