@@ -40,6 +40,8 @@ using System.ComponentModel;
 using Windows.Graphics.Printing;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Navigation;
+using System.Reflection;
+using Windows.UI.Xaml.Input;
 
 
 
@@ -128,8 +130,25 @@ namespace RectifyPad
             }
             ribbongrid.DataContext = this;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+            PopulateRecents();
         }
-     
+
+        private async void PopulateRecents()
+        {
+                var recentlyUsedItems = await RecentlyUsedHelper.GetRecentlyUsedItems();
+                var recentItemsSubItem = RecentItemsSubItem;
+                foreach (var item in recentlyUsedItems)
+                {
+                    var menuItem = new MenuFlyoutItem { Text = item.Name };
+                    menuItem.Click += async (s, args) =>
+                    {
+                        var file = await StorageFile.GetFileFromPathAsync(item.Path);
+                        await RecentlyUsedHelper.AddToMostRecentlyUsedList(file);
+                        // Open the file here
+                    };
+                    recentItemsSubItem.Items.Add(menuItem);
+                }
+        }
 
         private MarkerType _type = MarkerType.Bullet;
 
@@ -295,6 +314,7 @@ namespace RectifyPad
                 saved = false;
                 Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
+
             }
 
         }
@@ -1085,5 +1105,5 @@ namespace RectifyPad
             }
         }
 
-    }  
+    }
 }

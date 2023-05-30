@@ -57,7 +57,7 @@
                     Grid.Row="1"
                     Orientation="Horizontal">
             <muxc:MenuBar>
-                <muxc:MenuBarItem Title="File">
+                <muxc:MenuBarItem Title="File" x:Name="FileMenuRoot">
                     <MenuFlyoutItem Text="New">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xe8a5;" />
@@ -77,7 +77,7 @@
                                                  Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutSubItem Text="Recent">
+                    <MenuFlyoutSubItem Text="Recent" x:Name="RecentItemsSubItem">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe823;" />
                         </MenuFlyoutSubItem.Icon>
@@ -95,6 +95,18 @@
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xe792;" />
                         </MenuFlyoutSubItem.Icon>
+                        <MenuFlyoutSubItem.Items>
+                            <MenuFlyoutItem AccessKey="R" Text="RTF">
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem AccessKey="D" Text="DOCX">
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem AccessKey="P" Text="ODT">
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem AccessKey="T" Text="TXT">
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem AccessKey="O" Text="Other Format">
+                            </MenuFlyoutItem>
+                        </MenuFlyoutSubItem.Items>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutSubItem Text="Print">

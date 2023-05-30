@@ -129,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\RecentlyUsedHelper.cs" />
+    <Compile Include="Helpers\RecentlyUsedViewModel.cs" />
     <Compile Include="Helpers\RichEditHelpers.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
