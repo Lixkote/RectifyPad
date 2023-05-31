@@ -383,6 +383,98 @@
               BorderThickness="0,1"
               Padding="4"
               Grid.Row="2" DataContext="{x:Bind}">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutVisualStates">
+                    <VisualStateGroup.States>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1200" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1178" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1156" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1134" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1112" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1000" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="980" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                                <Setter Target="clipcol.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="890" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                                <Setter Target="clipcol.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="810" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                                <Setter Target="clipcol.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                        </VisualState>
+                    </VisualStateGroup.States>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -392,15 +484,15 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
-            <Grid>
+
+            <Grid x:Name="clipcol">
                 <Grid.Children>
-                    <Border x:Name="ContentHolder" Visibility="Collapsed" />
+                    <Border x:Name="CollapsedClipboardToolbar" Visibility="Visible" />
                     <Button x:Name="CollapsedButton"
                     Style="{StaticResource PaintUIButtonStyle}"
-                    Width="32"
+                    Width="132"
                     Height="48"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    HorizontalAlignment="Center">
                         <Button.Content>
                             <StackPanel>
                                 <StackPanel.Children>
@@ -409,7 +501,7 @@
                                 </StackPanel.Children>
                             </StackPanel>
                         </Button.Content>
-                        <Button.ContextFlyout>
+                        <Button.Flyout>
                             <Flyout x:Name="CollapseFlyout" Placement="Bottom">
                                 <Flyout.FlyoutPresenterStyle>
                                     <Style TargetType="FlyoutPresenter">
@@ -502,11 +594,92 @@
                                     </Grid>
                                 </Flyout.Content>
                             </Flyout>
-                        </Button.ContextFlyout>
+                        </Button.Flyout>
                     </Button>
                 </Grid.Children>
             </Grid>
 
+            <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+                  BorderThickness="0,0,1,0"
+                  Padding="12" x:Name="ClipboardFull">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="ClipbrdHostfull"
+                      ColumnSpacing="12">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <muxc:SplitButton Style="{StaticResource PaintUISplitButtonStyle}"
+                                      Grid.RowSpan="2"
+                                      Grid.Column="0"
+                                      Click="Paste_Click">
+                        <muxc:SplitButton.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem Text="Paste">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xe77f;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Paste special">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xf0e3;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </muxc:SplitButton.Flyout>
+                        <Image x:Name="pasteimgfull" Width="24"
+                               Height="24"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Source="{Binding pasteimgthemed}" />
+                    </muxc:SplitButton>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource PaintUIButtonStyle}"
+                            Click="Cut_Click">
+                        <Image x:Name="cutimgfull" Width="16"
+                               Height="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Source="{Binding cutimgthemed}" />
+                    </Button>
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="32"
+                            Height="32"
+                            Click="Copy_Click">
+                        <Image x:Name="copyimgfull" Width="16"
+                               Height="16"
+                               RequestedTheme="Light"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Source="{Binding copyimgthemed}" />
+                    </Button>
+
+                </Grid>
+
+                <TextBlock Text="Clipboard"
+                           Style="{StaticResource ColumnDescriptionTextblockStyle}"
+                           Grid.Row="1" />
+
+            </Grid>
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
                   BorderThickness="0,0,1,0"
                   Padding="12"
