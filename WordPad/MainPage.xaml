@@ -23,6 +23,96 @@
 
 
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1200" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1178" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1156" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1134" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1112" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Visible" />
+                        <Setter Target="clipcol.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="980" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                        <Setter Target="clipcol.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="890" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                        <Setter Target="clipcol.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="810" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
+                        <Setter Target="clipcol.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
@@ -383,98 +473,6 @@
               BorderThickness="0,1"
               Padding="4"
               Grid.Row="2" DataContext="{x:Bind}">
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="LayoutVisualStates">
-                    <VisualStateGroup.States>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1200" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1178" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1156" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1134" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1112" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1000" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Visible" />
-                                <Setter Target="clipcol.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="980" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
-                                <Setter Target="clipcol.Visibility" Value="Visible" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="890" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
-                                <Setter Target="clipcol.Visibility" Value="Visible" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="810" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="ClipboardFull.Visibility" Value="Collapsed" />
-                                <Setter Target="clipcol.Visibility" Value="Visible" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                        </VisualState>
-                    </VisualStateGroup.States>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -485,19 +483,34 @@
                 <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="clipcol">
+            <Grid x:Name="clipcol" Visibility="Visible" BorderBrush="{ThemeResource RibbonColumnBorder}"
+                  BorderThickness="0,0,1,0"
+                  Padding="12">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+
                 <Grid.Children>
+                    <TextBlock Text="Clipboard"
+                           Style="{StaticResource ColumnDescriptionTextblockStyle}"
+                           Grid.Row="1" />
                     <Border x:Name="CollapsedClipboardToolbar" Visibility="Visible" />
                     <Button x:Name="CollapsedButton"
                     Style="{StaticResource PaintUIButtonStyle}"
-                    Width="132"
+                    Width="32"
                     Height="48"
                     HorizontalAlignment="Center">
                         <Button.Content>
                             <StackPanel>
                                 <StackPanel.Children>
-                                    <Image></Image>
-                                    <FontIcon FontSize="8" Glyph="" />
+                                    <Image x:Name="pasteimgfullm" Width="24"
+                               Height="24"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                                Source="{Binding pasteimgthemed}" Margin="0,0,0,2" />
+                                    <FontIcon FontSize="8" Glyph="" VerticalAlignment="Bottom" Margin="0,2,0,0" />
                                 </StackPanel.Children>
                             </StackPanel>
                         </Button.Content>
@@ -511,9 +524,7 @@
                                     </Style>
                                 </Flyout.FlyoutPresenterStyle>
                                 <Flyout.Content>
-                                    <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
-                  BorderThickness="0,0,1,0"
-                  Padding="12">
+                                    <Grid>
 
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="72" />
@@ -601,7 +612,7 @@
 
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
                   BorderThickness="0,0,1,0"
-                  Padding="12" x:Name="ClipboardFull">
+                  Padding="12" x:Name="ClipboardFull" Visibility="Collapsed">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="72" />
