@@ -169,6 +169,13 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\listnumbersimages\Bitmap40002.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40005.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40008.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40011.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40014.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40017.bmp" />
+    <Content Include="Assets\listnumbersimages\Bitmap40020.bmp" />
     <Content Include="Assets\rtf.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
