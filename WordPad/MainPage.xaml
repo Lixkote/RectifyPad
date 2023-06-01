@@ -115,7 +115,8 @@
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
+            <RowDefinition Height="12" />
+            <RowDefinition Height="20"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="120" />
             <RowDefinition Height="*" />
@@ -124,7 +125,7 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="AppTitleBar"
-              Background="Transparent">
+              Background="Transparent" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="16" />
                 <ColumnDefinition Width="Auto" />
@@ -144,7 +145,7 @@
         </Grid>
 
         <StackPanel x:Name="MenuStack"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Orientation="Horizontal">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File" x:Name="FileMenuRoot">
@@ -262,13 +263,12 @@
                 Content="&#xed15;"
                 ToolTipService.ToolTip="Send feedback"
                 ToolTipService.Placement="Bottom"
-                Grid.Row="1"
-                HorizontalAlignment="Right"
-                Click="Feedback_Click" />
+                Grid.Row="2"
+                Click="Feedback_Click" Margin="1464,0,0,0" />
         <Grid x:Name="PrintPreviewRibbon" Background="{ThemeResource RibbonBackground}"
             BorderBrush="{ThemeResource RibbonBorder}"
             BorderThickness="0,1"
-            Padding="4" DataContext="{x:Bind}" Grid.Row="2" Visibility="Collapsed">
+            Padding="4" DataContext="{x:Bind}" Grid.Row="3" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -472,7 +472,7 @@
               BorderBrush="{ThemeResource RibbonBorder}"
               BorderThickness="0,1"
               Padding="4"
-              Grid.Row="2" DataContext="{x:Bind}">
+              Grid.Row="3" DataContext="{x:Bind}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -1105,10 +1105,25 @@
                                             <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
                                         </Style>
                                     </StackPanel.Resources>
-                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
+                                    <Button x:Name="NoneNumeral"  Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
                                         <Image Source="/Assets/40006.png" Width="64" Height="64" />
                                     </Button>
-                                    <Button Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                    <Button x:Name="DottedNumeral"  Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Button>
+                                    <Button x:Name="NumberNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Button>
+                                    <Button x:Name="LetterSmallNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Button>
+                                    <Button x:Name="LetterBigNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Button>
+                                    <Button x:Name="SmalliNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
+                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Button>
+                                    <Button x:Name="BigINumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
                                         <Image Source="/Assets/40006.png" Width="64" Height="64" />
                                     </Button>
                                 </StackPanel>
@@ -1327,7 +1342,7 @@
 
         <Grid x:Name="EditorContentHost"
               Background="{ThemeResource EditorContentHost}"
-              Grid.Row="3"
+              Grid.Row="4"
               SizeChanged="EditorContentHost_SizeChanged">
 
             <Grid Background="White"
@@ -1361,7 +1376,7 @@
                 BorderBrush="{ThemeResource StatusBarBorder}"
                 BorderThickness="0,1,0,0"
                 Height="32"
-                Grid.Row="4"
+                Grid.Row="5"
                 Visibility="{x:Bind StatusbarToggle.IsChecked, Mode=OneWay}">
 
             <StackPanel Orientation="Horizontal"
