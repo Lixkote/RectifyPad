@@ -8,19 +8,34 @@
     x:Class="WordPad.WordPadUI.ParagraphDialog"
     mc:Ignorable="d"
     Style="{StaticResource DefaultContentDialogStyle}"
-    Title="Insert an object"
+    Title="Paragraph"
     PrimaryButtonText="OK"
     DefaultButton="Primary"
     SecondaryButtonText="Cancel">
-    
+    <Grid>
+        <Grid Row="0" Margin="0,0,0,0" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="42*"/>
+                <RowDefinition Height="42*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Indentation" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Left:" Grid.ColumnSpan="2" />
+            <TextBlock Margin="0,16,0,7" Grid.Row="2" FontSize="14" Text="Right:" Grid.ColumnSpan="2" />
+            <TextBlock Margin="0,16,0,4" Grid.Row="3" FontSize="14" Text="First line:" Grid.ColumnSpan="2" />
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="1" Width="135"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="2" Width="135"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="3" Width="135" Grid.RowSpan="2"/>
+        </Grid>
+    </Grid>
 
-    <StackPanel Orientation="Vertical">
-        <ListView SelectionMode="Single">
-            <ListViewItem>
-            Paint a picture
-        </ListViewItem>
-        </ListView>
-        <RadioButton Content="Create from file" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="8,7,0,0"/>
-        <RadioButton Content="Create new" HorizontalAlignment="Left"/>
-    </StackPanel>
+
+
 </ContentDialog>
