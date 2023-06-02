@@ -1095,39 +1095,51 @@
                         </Viewbox>
                         <muxc:ToggleSplitButton.Flyout>
                             <Flyout Placement="Bottom">
-                                <StackPanel Orientation="Horizontal">
-                                    <StackPanel.Resources>
+                                <Grid>
+                                    <Grid.Resources>
                                         <Style TargetType="Button">
                                             <Setter Property="Padding" Value="4"/>
                                             <Setter Property="MinWidth" Value="0"/>
                                             <Setter Property="MinHeight" Value="0"/>
                                             <Setter Property="Margin" Value="6"/>
                                             <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
+                                            <Setter Property="Background" Value="White" />
                                         </Style>
-                                    </StackPanel.Resources>
-                                    <Button x:Name="NoneNumeral"  Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    </Grid.Resources>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="BulletButton_Click" Width="64" Height="64">
+                                        <Image Source="/Assets/listnumbersimages/none.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="DottedNumeral"  Click="BulletButton_Click" AutomationProperties.Name="Bulleted list" Width="64" Height="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="BulletButton_Click" Width="64" Height="64">
+                                        <Image Source="/Assets/listnumbersimages/dot.bmp" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="NumberNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="BulletButton_Click" Height="64" Width="64">
+                                        <Image Source="/Assets/listnumbersimages/number.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="LetterSmallNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="BulletButton_Click" Height="64" Width="64">
+                                        <Image Source="/Assets/listnumbersimages/abc.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="LetterBigNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="BulletButton_Click" Height="64" Width="64">
+                                        <Image Source="/Assets/listnumbersimages/ABCB.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="SmalliNumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="BulletButton_Click" Height="64" Width="64">
+                                        <Image Source="/Assets/listnumbersimages/iii.png" Width="64" Height="64" />
                                     </Button>
-                                    <Button x:Name="BigINumeral" Click="BulletButton_Click" AutomationProperties.Name="Roman numerals list" Height="64" Width="64">
-                                        <Image Source="/Assets/40006.png" Width="64" Height="64" />
+                                    <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BulletButton_Click" Height="64" Width="64">
+                                        <Image Source="/Assets/listnumbersimages/IIII.png" Width="64" Height="64" />
                                     </Button>
-                                </StackPanel>
-                            </Flyout>
+                                </Grid>
+                            </Flyout>   
                         </muxc:ToggleSplitButton.Flyout>
                     </muxc:ToggleSplitButton>
                     <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0"/>
@@ -1362,10 +1374,11 @@
                 Grid.Row="4"
                 Visibility="{x:Bind RulerToggle.IsChecked, Mode=OneWay}" VerticalAlignment="Top">
                 <Grid Margin="0,0,0,-4">
-                    <controls:RangeSelector x:Name="RangeSelectorControl"
+                    <controls:RangeSelector x:Name="RulerSlider"
                     Minimum="10"
                     Maximum="100"
                     StepFrequency="5" Width="{Binding ActualWidth,  ElementName=Editor, Mode=OneWay}"  VerticalAlignment="Stretch" />
+                    
                 </Grid>
             </Border>
 

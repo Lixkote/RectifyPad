@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>7A576BCA67BC0F88A6CD877905378B9DFB440A83</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>EC92C262B7B749E5B51E03821F11254A7FF4ACEE</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>WordPad_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -155,10 +155,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\40002 %282%29.png" />
-    <Content Include="Assets\40006.png" />
-    <Content Include="Assets\40012.png" />
-    <Content Include="Assets\40018.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />
     <Content Include="Assets\BadgeLogo.scale-150.png" />
@@ -169,13 +165,14 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="Assets\listnumbersimages\Bitmap40002.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40005.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40008.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40011.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40014.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40017.bmp" />
-    <Content Include="Assets\listnumbersimages\Bitmap40020.bmp" />
+    <Content Include="Assets\listnumbersimages\abc.png" />
+    <Content Include="Assets\listnumbersimages\ABCB.png" />
+    <Content Include="Assets\listnumbersimages\dot.bmp" />
+    <Content Include="Assets\listnumbersimages\iii.bmp" />
+    <Content Include="Assets\listnumbersimages\iii.png" />
+    <Content Include="Assets\listnumbersimages\IIII.png" />
+    <Content Include="Assets\listnumbersimages\none.png" />
+    <Content Include="Assets\listnumbersimages\number.png" />
     <Content Include="Assets\rtf.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
