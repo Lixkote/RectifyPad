@@ -260,11 +260,11 @@
         </StackPanel>
 
         <Button Style="{StaticResource MenuButton}"
-                Content="&#xed15;"
+                Content=""
                 ToolTipService.ToolTip="Send feedback"
                 ToolTipService.Placement="Bottom"
                 Grid.Row="2"
-                Click="Feedback_Click" Margin="1464,0,0,0" />
+                Click="Feedback_Click" Margin="0,0,4,0" HorizontalAlignment="Right" />
         <Grid x:Name="PrintPreviewRibbon" Background="{ThemeResource RibbonBackground}"
             BorderBrush="{ThemeResource RibbonBorder}"
             BorderThickness="0,1"
