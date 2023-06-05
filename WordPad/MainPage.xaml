@@ -118,7 +118,7 @@
             <RowDefinition Height="12" />
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="130" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
 
@@ -219,9 +219,9 @@
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutItem Text="About FluentPad" Click="About_Click">
+                    <MenuFlyoutItem Text="Page Setup" x:Name="PageSetupMenuItem">
                         <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xe713;" />
+                            <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
@@ -264,7 +264,7 @@
                 ToolTipService.ToolTip="Send feedback"
                 ToolTipService.Placement="Bottom"
                 Grid.Row="2"
-                Click="Feedback_Click" Margin="0,0,4,0" HorizontalAlignment="Right" />
+                Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
         <Grid x:Name="PrintPreviewRibbon" Background="{ThemeResource RibbonBackground}"
             BorderBrush="{ThemeResource RibbonBorder}"
             BorderThickness="0,1"
@@ -472,7 +472,7 @@
               BorderBrush="{ThemeResource RibbonBorder}"
               BorderThickness="0,1"
               Padding="4"
-              Grid.Row="3" DataContext="{x:Bind}">
+              Grid.Row="3" DataContext="{x:Bind}" Height="130">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -1151,7 +1151,7 @@
                                 <ToggleMenuFlyoutItem Text="2" IsChecked="False"/>
                                 <MenuFlyoutSeparator/>
                                 <ToggleMenuFlyoutItem Text="Add 10pt space after paragraphs" IsChecked="True"/>
-                               
+
                             </MenuFlyout>
                         </muxc:SplitButton.Flyout>
                     </muxc:SplitButton>
@@ -1365,7 +1365,7 @@
         </Grid>
 
         <Grid x:Name="EditorContentHost"
-              Background="{ThemeResource EditorContentHost}"
+             
               Grid.Row="4"
               SizeChanged="EditorContentHost_SizeChanged">
 
@@ -1374,17 +1374,13 @@
                   Margin="40,40,40,0"
                   Translation="0,0,16"
                   RequestedTheme="Light">
-                <Grid.Shadow>
-                    <ThemeShadow />
-                </Grid.Shadow>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" BorderBrush="DarkGray" BorderThickness="1,1,1,1"/>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
                 Height="32"
-                Grid.Row="4"
-                Visibility="{x:Bind RulerToggle.IsChecked, Mode=OneWay}" VerticalAlignment="Top">
+                Visibility="{x:Bind RulerToggle.IsChecked, Mode=OneWay}" VerticalAlignment="Top" Margin="0,8,0,0">
                 <Grid Margin="0,0,0,-4">
                     <controls:RangeSelector x:Name="RulerSlider"
                     Minimum="10"
@@ -1396,27 +1392,27 @@
 
         </Grid>
 
-        <Border Background="{ThemeResource StatusBarBackground}"
+        <Border
                 BackgroundSizing="OuterBorderEdge"
-                BorderBrush="{ThemeResource StatusBarBorder}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}"
                 BorderThickness="0,1,0,0"
-                Height="32"
+                Height="36"
                 Grid.Row="5"
                 Visibility="{x:Bind StatusbarToggle.IsChecked, Mode=OneWay}">
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
 
-                <TextBlock Text="{x:Bind ZoomSlider.Value,Mode=OneWay}"
-                           TextAlignment="Right"
-                           Margin="0,0,8,0"
+
+                <ComboBox  Margin="0,0,8,0"
                            FontSize="12"
-                           VerticalAlignment="Center">
-                </TextBlock>
+                           VerticalAlignment="Center"
+                           Text="{x:Bind ZoomSlider.Value,Mode=OneWay}">
+                    
+                </ComboBox>
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"
-                        Content=""
                         Margin="4"
                         Width="32"
                         VerticalAlignment="Stretch"
@@ -1424,7 +1420,13 @@
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="PageDown" Modifiers="Control" />
                     </Button.KeyboardAccelerators>
-
+                    <Button.Content>
+                        <Image x:Name="zoomimgplyss" Width="16"
+                               Height="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Source="{Binding pasteimgthemed}" />
+                    </Button.Content>
                 </Button>
 
                 <!--
@@ -1448,12 +1450,18 @@
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"
-                        Content=""
+                        
                         Margin="4"
                         Width="32"
                         VerticalAlignment="Stretch"
                         ToolTipService.ToolTip="Zoom in">
-
+                    <Button.Content>
+                        <Image x:Name="zoomimgplys" Width="16"
+                               Height="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                                Source="{Binding printpreviewzoomplus}" />
+                    </Button.Content>
                 </Button>
 
             </StackPanel>
@@ -1461,7 +1469,6 @@
         </Border>
         <TextBlock x:Name="BackTextColorMarker" HorizontalAlignment="Left" Margin="456,62,0,0" TextWrapping="Wrap" Text="&#xE8FE;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
         <TextBlock x:Name="FontColorMarker" HorizontalAlignment="Left" Margin="375,61,0,0" TextWrapping="Wrap" Text="&#xE8FC;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
-        <TextBlock HorizontalAlignment="Left" Margin="173,0,0,0" TextWrapping="Wrap" Text="PREVIEW" VerticalAlignment="Center" Grid.RowSpan="2"/>
 
     </Grid>
 </Page>
