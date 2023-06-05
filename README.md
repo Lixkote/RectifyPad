@@ -1,5 +1,5 @@
-# WritePad
-The WritePad app is a modern Windows app written in C#. It is free and open source.
+# FluentPad
+The FluentPad app is a modern Windows app written in C#. It is free and open source.
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
@@ -24,10 +24,10 @@ Prerequisites:
 
 - Get the code:
     ```
-    git clone https://github.com/Lixkote/WritePad
+    git clone https://github.com/Lixkote/FluentPad
     ```
 
-- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the WritePad app.
+- Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the FluentPad app.
 - To test, compile it and run in debug mode.
 
 ## Contributing
