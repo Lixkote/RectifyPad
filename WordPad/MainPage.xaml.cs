@@ -66,12 +66,12 @@ namespace RectifyPad
         private bool saved = true;
 
         public bool _wasOpen = false;
-        private string appTitleStr => "WritePad" ;
+        private string appTitleStr => "FluentPad" ;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         private bool updateFontFormat = true;
-        public string ApplicationName => "WritePad";
+        public string ApplicationName => "FluentPad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
         
         private string fileNameWithPath = "";
@@ -526,14 +526,7 @@ namespace RectifyPad
             else if (result == ContentDialogResult.Secondary)
             {
                 // Clear the current document.
-                
-                Editor.Document.SetText(TextSetOptions.None, string.Empty);
-                Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Left);
-                FontsCombo.SelectedItem = "Calibri";
-                Editor.FontFamily = new FontFamily("Calibri");
-                Editor.Document.Selection.CharacterFormat.Size = (float)10;
-                Editor.Document.Selection.CharacterFormat.ForegroundColor = Windows.UI.Colors.Black;
-                Editor.Document.Selection.CharacterFormat.BackgroundColor = Windows.UI.Colors.Black;
+                this.Frame.Navigate(typeof(MainPage));
             }
         }
 
@@ -1704,6 +1697,7 @@ namespace RectifyPad
         private async void NewDoc_Click(object sender, RoutedEventArgs e)
         {
             await ShowUnsavedDialogSE();
+
         }
 
 

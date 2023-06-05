@@ -138,7 +138,7 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - WritePad"
+                       Text="Document - FluentPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
@@ -219,7 +219,7 @@
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutItem Text="About RectifyPad" Click="About_Click">
+                    <MenuFlyoutItem Text="About FluentPad" Click="About_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xe713;" />
                         </MenuFlyoutItem.Icon>
