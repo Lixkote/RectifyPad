@@ -136,6 +136,9 @@
                         <TextBlock Style="{StaticResource SectionHeader}" Text="About this app"/>
                         <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="FluentPad 11.2110.13.0"/>
                         <TextBlock x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2023 Lixkote. All rights reserved."/>
+                        <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad" >
+                            <TextBlock Text="Source Code"/>
+                        </HyperlinkButton>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad/blob/main/LICENSE" >
                             <TextBlock Text="MIT License"/>
                         </HyperlinkButton>

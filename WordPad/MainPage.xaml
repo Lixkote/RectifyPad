@@ -1375,7 +1375,7 @@
                   Translation="0,0,16"
                   RequestedTheme="Light" BorderBrush="LightGray" BorderThickness="1,1,1,0">
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False"/>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
