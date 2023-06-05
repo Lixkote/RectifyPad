@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>06A82FCEA8506CA2DEB5A67C646DB7588A847191</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>DB8BFD339213FE79CCA02C948E5BAD43691B6B14</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>WordPad_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -224,29 +224,35 @@
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
-    <Content Include="Assets\theme-dark\Copy.svg" />
-    <Content Include="Assets\theme-dark\Cut.svg" />
-    <Content Include="Assets\theme-dark\Paste.svg" />
-    <Content Include="Assets\theme-dark\Print.svg" />
+    <Content Include="Assets\theme-dark\Copy.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\theme-dark\Cut.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\theme-dark\Paste.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\theme-dark\Print.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\theme-dark\ZoomIn.svg" />
-    <Content Include="Assets\theme-dark\ZoomIn.svg" />
-    <Content Include="Assets\theme-dark\ZoomInDisabled.svg" />
-    <Content Include="Assets\theme-dark\ZoomOut.svg" />
-    <Content Include="Assets\theme-dark\ZoomOut.svg" />
-    <Content Include="Assets\theme-dark\ZoomOutDisabled.svg" />
+    <Content Include="Assets\theme-dark\ZoomInDisabled.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\theme-dark\ZoomOut.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\theme-dark\ZoomOutDisabled.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\theme-light\Copy.svg" />
     <Content Include="Assets\theme-light\Cut.svg" />
     <Content Include="Assets\theme-light\Paste.svg" />
-    <Content Include="Assets\theme-light\Paste.svg" />
-    <Content Include="Assets\theme-light\Print.svg" />
     <Content Include="Assets\theme-light\Print.svg" />
     <Content Include="Assets\theme-light\ZoomIn.svg" />
-    <Content Include="Assets\theme-light\ZoomIn.svg" />
-    <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOut.svg" />
-    <Content Include="Assets\theme-light\ZoomOut.svg" />
-    <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\txt.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />

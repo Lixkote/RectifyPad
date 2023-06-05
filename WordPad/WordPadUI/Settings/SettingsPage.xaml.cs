@@ -54,7 +54,7 @@ namespace WordPad.WordPadUI.Settings
             if (selectedTheme != null)
             {
                 // Set theme for app
-                App.Current.RequestedTheme = GetEnum<ApplicationTheme>(selectedTheme);
+                Application.Current.RequestedTheme = GetEnum<ApplicationTheme>(selectedTheme);
                 // Or set theme for root frame
                 // if (Window.Current.Content is FrameworkElement rootElement)
                 // {

@@ -9,7 +9,16 @@
                 <!-- Other app resources here -->
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
+                        
                         <ResourceDictionary x:Key="Light">
+                            <x:String x:Key="Print">ms-appx:///Assets/theme-light/Print.svg</x:String>
+                            <x:String x:Key="Copy">ms-appx:///Assets/theme-light/Copy.svg</x:String>
+                            <x:String x:Key="Cut">ms-appx:///Assets/theme-light/Cut.svg</x:String>
+                            <x:String x:Key="Paste">ms-appx:///Assets/theme-light/Paste.svg</x:String>
+                            <x:String x:Key="ZoomIn">ms-appx:///Assets/theme-light/ZoomIn.svg</x:String>
+                            <x:String x:Key="ZoomOut">ms-appx:///Assets/theme-light/ZoomOut.svg</x:String>
+                            <x:String x:Key="ZoomInDisabled">ms-appx:///Assets/theme-light/ZoomInDisabled.svg</x:String>
+                            <x:String x:Key="ZoomOutDisabled">ms-appx:///Assets/theme-light/ZoomOutDisabled.svg</x:String>
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"
                                              Color="#FFEBEBEB" />
@@ -32,6 +41,14 @@
 
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
+                            <x:String x:Key="Print">ms-appx:///Assets/theme-dark/Print.svg</x:String>
+                            <x:String x:Key="Copy">ms-appx:///Assets/theme-dark/Copy.svg</x:String>
+                            <x:String x:Key="Cut">ms-appx:///Assets/theme-dark/Cut.svg</x:String>
+                            <x:String x:Key="Paste">ms-appx:///Assets/theme-dark/Paste.svg</x:String>
+                            <x:String x:Key="ZoomIn">ms-appx:///Assets/theme-dark/ZoomIn.svg</x:String>
+                            <x:String x:Key="ZoomOut">ms-appx:///Assets/theme-dark/ZoomOut.svg</x:String>
+                            <x:String x:Key="ZoomInDisabled">ms-appx:///Assets/theme-dark/ZoomInDisabled.svg</x:String>
+                            <x:String x:Key="ZoomOutDisabled">ms-appx:///Assets/theme-dark/ZoomOutDisabled.svg</x:String>
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"
                                              Color="#1C1C1C" />

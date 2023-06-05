@@ -171,6 +171,30 @@ namespace RectifyPad
             }
         }
 
+        public SvgImageSource zoomin
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomIn.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
+        public SvgImageSource zoomout
+        {
+            get
+            {
+                var theme = Application.Current.RequestedTheme;
+                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
+                var imageName = "ZoomOut.svg";
+                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
+                return new SvgImageSource(new Uri(imagePath));
+            }
+        }
+
         public SvgImageSource printpreviewprint
         {
             get

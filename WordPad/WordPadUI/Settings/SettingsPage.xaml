@@ -62,23 +62,23 @@
                 </Grid.ColumnDefinitions>
                 <Grid.Children>
                     <Grid x:Name="AppTitleBar"
-                    Background="Transparent" Grid.ColumnSpan="2" Margin="-21,-13,-28,67" VerticalAlignment="Top">
+              Background="Transparent" Margin="-56,-22,-49,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="32.5" Width="1500">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="16" />
+                            <ColumnDefinition Width="8" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="16" />
+                            <ColumnDefinition Width="8" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Image Source="/Assets/StoreLogo.png"
-                        Width="16"
-                        Height="16"
-                        Grid.Column="1" />
+                   Width="16"
+                   Height="16"
+                   Grid.Column="1" />
                         <TextBlock
-                        x:Name="AppTitle"
-                        Text="FluentPad"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        VerticalAlignment="Center"
-                        Grid.Column="3"/>
+                       x:Name="AppTitle"
+                       Text="Document - FluentPad"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       VerticalAlignment="Center"
+                       Grid.Column="3"/>
                     </Grid>
                     <TextBlock Style="{StaticResource PageHeader}" Grid.ColumnSpan="2" Text="Settings" Margin="0,0,0,24.2" Height="30" VerticalAlignment="Bottom" />
                     <StackPanel Grid.Row="1" Margin="{StaticResource ContentBottomWideSpacing}">
@@ -146,7 +146,7 @@
                             To learn how you can contribute to FluentPad,  <LineBreak/>check out the project on its <Hyperlink NavigateUri="https://github.com/Lixkote/WritePad" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
                     </StackPanel>
-                    <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-50,-18,0,0" VerticalAlignment="Top" Height="24" Width="36" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="11"/>
+                    <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-55,23,0,0" VerticalAlignment="Top" Height="35" Width="44" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="16"/>
                 </Grid.Children>
             </Grid>
         </ScrollViewer.Content>

@@ -127,9 +127,9 @@
         <Grid x:Name="AppTitleBar"
               Background="Transparent" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Image Source="/Assets/StoreLogo.png"
@@ -654,7 +654,7 @@
                                Height="24"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                                Source="{Binding pasteimgthemed}" />
+                               Source="{ThemeResource ResourceKey=Paste}" />
                     </muxc:SplitButton>
 
                     <Button Grid.Row="0"
@@ -667,7 +667,7 @@
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="{Binding cutimgthemed}" />
+                               Source="{ThemeResource ResourceKey=Cut}" />
                     </Button>
 
                     <Button Style="{StaticResource PaintUIButtonStyle}"
@@ -681,14 +681,14 @@
                                RequestedTheme="Light"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="{Binding copyimgthemed}" />
+                               Source="{ThemeResource ResourceKey=Copy}" />
                     </Button>
 
                 </Grid>
 
                 <TextBlock Text="Clipboard"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
-                           Grid.Row="1" />
+                           Grid.Row="1" VerticalAlignment="Bottom" />
 
             </Grid>
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -918,7 +918,7 @@
                             </Flyout>
                         </muxc:SplitButton.Flyout>
                     </muxc:SplitButton>
-                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Black" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
+                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
@@ -1009,7 +1009,7 @@
 
                 <TextBlock Text="Font"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
-                           Grid.Row="1" />
+                           Grid.Row="1" VerticalAlignment="Bottom" />
 
             </Grid>
 
@@ -1175,7 +1175,7 @@
 
                 <TextBlock Text="Paragraph"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
-                           Grid.Row="1" />
+                           Grid.Row="1" VerticalAlignment="Bottom" />
 
             </Grid>
 
@@ -1249,7 +1249,7 @@
 
                 <TextBlock Text="Insert"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
-                           Grid.Row="1" />
+                           Grid.Row="1" VerticalAlignment="Bottom" />
 
             </Grid>
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -1358,7 +1358,7 @@
 
                 <TextBlock Text="Editing"
                     Style="{StaticResource ColumnDescriptionTextblockStyle}"
-                    Grid.Row="1" />
+                    Grid.Row="1" VerticalAlignment="Bottom" />
 
             </Grid>
 
@@ -1373,15 +1373,15 @@
                   Width="816"
                   Margin="40,40,40,0"
                   Translation="0,0,16"
-                  RequestedTheme="Light">
+                  RequestedTheme="Light" BorderBrush="LightGray" BorderThickness="1,1,1,0">
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" BorderBrush="DarkGray" BorderThickness="1,1,1,1"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged"/>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
                 Height="32"
                 Visibility="{x:Bind RulerToggle.IsChecked, Mode=OneWay}" VerticalAlignment="Top" Margin="0,8,0,0">
-                <Grid Margin="0,0,0,-4">
+                <Grid Margin="0,-8,0,4">
                     <controls:RangeSelector x:Name="RulerSlider"
                     Minimum="10"
                     Maximum="100"
@@ -1404,12 +1404,10 @@
                         HorizontalAlignment="Right">
 
 
-                <ComboBox  Margin="0,0,8,0"
+                <ComboBox  Margin="0,4,8,4"
                            FontSize="12"
                            VerticalAlignment="Center"
-                           Text="{x:Bind ZoomSlider.Value,Mode=OneWay}">
-                    
-                </ComboBox>
+                           Text="100%" IsEditable="True" Width="88"/>
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"
@@ -1421,11 +1419,11 @@
                         <KeyboardAccelerator Key="PageDown" Modifiers="Control" />
                     </Button.KeyboardAccelerators>
                     <Button.Content>
-                        <Image x:Name="zoomimgplyss" Width="16"
+                        <Image x:Name="pastesimgfull" Width="16"
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                                Source="{Binding pasteimgthemed}" />
+                               Source="{ThemeResource ResourceKey=ZoomOut}" Stretch="Fill" />
                     </Button.Content>
                 </Button>
 
@@ -1460,7 +1458,7 @@
                                Height="16"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                                Source="{Binding printpreviewzoomplus}" />
+                               Source="{ThemeResource ResourceKey=ZoomIn}" />
                     </Button.Content>
                 </Button>
 
