@@ -833,7 +833,7 @@
                         <ComboBoxItem>48</ComboBoxItem>
                         <ComboBoxItem>72</ComboBoxItem>
                     </ComboBox>
-                    <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" VerticalContentAlignment="Stretch" FontSize="16" Click="fontcolorsplitbutton_Click">
+                    <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="&#xE8FD;" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" VerticalContentAlignment="Stretch" FontSize="20" Click="fontcolorsplitbutton_Click" Height="27" Padding="11,3,11,3" UseLayoutRounding="True">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
@@ -918,7 +918,7 @@
                             </Flyout>
                         </muxc:SplitButton.Flyout>
                     </muxc:SplitButton>
-                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="Segoe Fluent Icons" FontSize="16" Foreground="Black" Click="fontbackgroundcolorsplitbutton_Click">
+                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Black" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
@@ -1068,7 +1068,7 @@
                                  Grid.Row="1"
                                  GroupName="Alignment" Click="AlignRightButton_Click"/>
 
-                    <RadioButton x:Name="AlignAdjustedButton" Style="{StaticResource PaintUIToggleButtonStyle}"
+                    <RadioButton x:Name="AlignJustifyButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                                  Content="&#xe700;"
                                  Width="32"
                                  MinWidth="32"
@@ -1077,7 +1077,7 @@
                                  Grid.Column="3"
                                  Grid.Row="1"
                                  GroupName="Alignment"
-                                 Click="AlignAdjustedButton_Click"/>
+                                 Click="AlignJustifyButton_Click"/>
 
                     <Button x:Name="ParagraphButton" Style="{StaticResource PaintUIButtonStyle}"
                                  Width="32"
@@ -1117,40 +1117,52 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="BulletButton_Click" Width="64" Height="64">
+                                    <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
                                         <Image Source="/Assets/listnumbersimages/none.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="BulletButton_Click" Width="64" Height="64">
+                                    <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
                                         <Image Source="/Assets/listnumbersimages/dot.bmp" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="BulletButton_Click" Height="64" Width="64">
+                                    <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
                                         <Image Source="/Assets/listnumbersimages/number.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="BulletButton_Click" Height="64" Width="64">
+                                    <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
                                         <Image Source="/Assets/listnumbersimages/abc.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="BulletButton_Click" Height="64" Width="64">
+                                    <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
                                         <Image Source="/Assets/listnumbersimages/ABCB.png" Width="60" Height="60" />
                                     </Button>
-                                    <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="BulletButton_Click" Height="64" Width="64">
+                                    <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
                                         <Image Source="/Assets/listnumbersimages/iii.png" Width="64" Height="64" />
                                     </Button>
-                                    <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BulletButton_Click" Height="64" Width="64">
+                                    <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
                                         <Image Source="/Assets/listnumbersimages/IIII.png" Width="64" Height="64" />
                                     </Button>
                                 </Grid>
-                            </Flyout>   
+                            </Flyout>
                         </muxc:ToggleSplitButton.Flyout>
                     </muxc:ToggleSplitButton>
-                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0"/>
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0">
+                        <muxc:SplitButton.Flyout>
+                            <MenuFlyout>
+                                <ToggleMenuFlyoutItem Text="1,0" IsChecked="False"/>
+                                <ToggleMenuFlyoutItem Text="1,15" IsChecked="True"/>
+                                <ToggleMenuFlyoutItem Text="1,5" IsChecked="False"/>
+                                <ToggleMenuFlyoutItem Text="2" IsChecked="False"/>
+                                <MenuFlyoutSeparator/>
+                                <ToggleMenuFlyoutItem Text="Add 10pt space after paragraphs" IsChecked="True"/>
+                               
+                            </MenuFlyout>
+                        </muxc:SplitButton.Flyout>
+                    </muxc:SplitButton>
+                    <Button x:Name="IndentationIncreaseLeft" Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
                         MinWidth="32"
                         MaxWidth="32"
                         Height="32"
                         HorizontalAlignment="Center" Click="Button_Click_2"/>
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <Button x:Name="IndentationIncreaseRight" Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
                         MinWidth="32"
@@ -1378,7 +1390,7 @@
                     Minimum="10"
                     Maximum="100"
                     StepFrequency="5" Width="{Binding ActualWidth,  ElementName=Editor, Mode=OneWay}"  VerticalAlignment="Stretch" />
-                    
+
                 </Grid>
             </Border>
 
@@ -1447,6 +1459,9 @@
             </StackPanel>
 
         </Border>
+        <TextBlock x:Name="BackTextColorMarker" HorizontalAlignment="Left" Margin="456,62,0,0" TextWrapping="Wrap" Text="&#xE8FE;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
+        <TextBlock x:Name="FontColorMarker" HorizontalAlignment="Left" Margin="375,61,0,0" TextWrapping="Wrap" Text="&#xE8FC;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
+        <TextBlock HorizontalAlignment="Left" Margin="173,0,0,0" TextWrapping="Wrap" Text="PREVIEW" VerticalAlignment="Center" Grid.RowSpan="2"/>
 
     </Grid>
 </Page>

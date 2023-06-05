@@ -554,7 +554,7 @@ namespace RectifyPad
             var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
             var color = (rectangle.Fill as SolidColorBrush).Color;
             Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
-            fontcolorsplitbutton.SetValue(ForegroundProperty, new SolidColorBrush(color));
+            FontColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
 
             // SplitButton.Flyout.Hide();
             Editor.Focus(FocusState.Keyboard);
@@ -567,7 +567,7 @@ namespace RectifyPad
             var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
             var color = (rectangle.Fill as SolidColorBrush).Color;
             Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
-            fontbackgroundcolorsplitbutton.SetValue(ForegroundProperty, new SolidColorBrush(color));
+            BackTextColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
 
             // SplitButton.Flyout.Hide();
             Editor.Focus(FocusState.Keyboard);
@@ -1717,7 +1717,66 @@ namespace RectifyPad
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
         }
 
+        private void NoneNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+            myListButton.IsChecked = false;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
 
+        private void DottedNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
 
+        private void NumberNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Arabic;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void LetterSmallNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseEnglishLetter;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void LetterBigNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseEnglishLetter;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void SmalliNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseRoman;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void BigINumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseRoman;
+            myListButton.IsChecked = true;
+            myListButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void AlignJustifyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Justify);
+            editor_SelectionChanged(sender, e);
+        }
     }
 }

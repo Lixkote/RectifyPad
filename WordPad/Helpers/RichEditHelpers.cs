@@ -51,6 +51,9 @@ namespace WordPad.Helpers
                     case AlignMode.Right:
                         selectedText.ParagraphFormat.Alignment = ParagraphAlignment.Right;
                         break;
+                    case AlignMode.Justify:
+                        selectedText.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
+                        break;
                 }
             }
         }
@@ -91,7 +94,8 @@ namespace WordPad.Helpers
         {
             Left,
             Right,
-            Center
+            Center,
+            Justify
         }
 
         public enum FormattingMode
