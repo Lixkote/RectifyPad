@@ -15,10 +15,11 @@
         <Flyout x:Key="myColorPickerFlyout">
             <RelativePanel>
                 <ColorPicker x:Name="myColorPicker"
-                         IsColorChannelTextInputVisible="False"
+                         IsColorChannelTextInputVisible="True"
                          IsHexInputVisible="True"/>
             </RelativePanel>
         </Flyout>
+        
     </Page.Resources>
 
 
@@ -833,172 +834,510 @@
                         <ComboBoxItem>48</ComboBoxItem>
                         <ComboBoxItem>72</ComboBoxItem>
                     </ComboBox>
-                    <muxc:SplitButton x:Name="fontcolorsplitbutton" Grid.Column="6" Content="&#xE8FD;" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" VerticalContentAlignment="Stretch" FontSize="20" Click="fontcolorsplitbutton_Click" Height="27" Padding="11,3,11,3" UseLayoutRounding="True">
+                    <muxc:SplitButton Style="{StaticResource PaintUIHorizontalSplitButton}" x:Name="fontcolorsplitbutton" Grid.Column="6" Content="&#xE8FD;" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" VerticalContentAlignment="Stretch" FontSize="20" Click="fontcolorsplitbutton_Click" Height="27" Padding="11,3,11,3" UseLayoutRounding="True">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
-                                    <VariableSizedWrapGrid x:Name="colorGrid" Orientation="Horizontal" MaximumRowsOrColumns="4">
+                                    <VariableSizedWrapGrid x:Name="colorGrid" MaximumRowsOrColumns="6" RelativePanel.Below="Autobutton" Width="155" Margin="0,3,0,3">
                                         <VariableSizedWrapGrid.Resources>
                                             <Style TargetType="Rectangle">
-                                                <Setter Property="Width" Value="32"/>
-                                                <Setter Property="Height" Value="32"/>
+                                                <Setter Property="Width" Value="25"/>
+                                                <Setter Property="Height" Value="25"/>
                                             </Style>
 
                                             <Style TargetType="Button">
                                                 <Setter Property="Padding" Value="0"/>
+                                                <Setter Property="Width" Value="25"/>
+                                                <Setter Property="Height" Value="25"/>
                                                 <Setter Property="MinWidth" Value="0"/>
                                                 <Setter Property="MinHeight" Value="0"/>
-                                                <Setter Property="Margin" Value="5"/>
-                                                <Setter Property="CornerRadius" Value="8"/>
+                                                <Setter Property="Margin" Value="3"/>
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                                <Setter Property="Background"
+                                Value="Transparent" />
+                                                <Setter Property="BackgroundSizing"
+                                Value="OuterBorderEdge" />
+                                                <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                                                <Setter Property="Padding"
+                                Value="0" />
+                                                <Setter Property="FontWeight"
+                                Value="Normal" />
+                                                <Setter Property="FontSize"
+                                Value="16" />
+
+
                                             </Style>
                                         </VariableSizedWrapGrid.Resources>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Red" AutomationProperties.Name="Red">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Red">
                                             <Button.Content>
-                                                <Rectangle Fill="Red"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ffffff"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Orange" AutomationProperties.Name="Orange">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Orange">
                                             <Button.Content>
-                                                <Rectangle Fill="Orange"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#a5a5a5"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Yellow" AutomationProperties.Name="Yellow">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Yellow">
                                             <Button.Content>
-                                                <Rectangle Fill="Yellow"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#666666"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Green" AutomationProperties.Name="Green">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Green">
                                             <Button.Content>
-                                                <Rectangle Fill="Green"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#666666"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Blue" AutomationProperties.Name="Blue">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Blue">
                                             <Button.Content>
-                                                <Rectangle Fill="Blue"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#333333"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Light Blue" AutomationProperties.Name="LightBlue">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Light Blue">
                                             <Button.Content>
-                                                <Rectangle Fill="LightBlue"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#000000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo" AutomationProperties.Name="Indigo">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo" >
                                             <Button.Content>
-                                                <Rectangle Fill="Indigo"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ff0000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet" AutomationProperties.Name="Violet">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet" >
                                             <Button.Content>
-                                                <Rectangle Fill="Violet"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ffc000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray" AutomationProperties.Name="Gray">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray" >
                                             <Button.Content>
-                                                <Rectangle Fill="Gray"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ffff00"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige" AutomationProperties.Name="Beige">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige" >
                                             <Button.Content>
-                                                <Rectangle Fill="Beige"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#00b050"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black" AutomationProperties.Name="Black">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black" >
                                             <Button.Content>
-                                                <Rectangle Fill="Black"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#004dbb"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White">
                                             <Button.Content>
-                                                <Rectangle Fill="White"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#9b00d3"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#c0504d"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#f79646"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#9bbb59"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#4bacc6"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#4f81bd"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#8064a2"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#d16349"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#d19049"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ccb400"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#8fb08c"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#646b86"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#9e7c7c"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Indigo" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#dd8484"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Violet" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#f3a447"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Gray" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#dfce04"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Beige" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#a5b592"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="Black" >
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#809ec2"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="ColorButton_Click" ToolTipService.ToolTip="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#9c85c0"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                     </VariableSizedWrapGrid>
-                                    <Button Flyout="{StaticResource myColorPickerFlyout}" Margin="0,8,0,0" RelativePanel.Below="colorGrid" Content="More colors" Width="173" x:Name="colorPickerButton"/>
+                                    <Button Style="{StaticResource PaintUIButtonStyle}" Flyout="{StaticResource myColorPickerFlyout}" RelativePanel.Below="colorGrid" Width="154" x:Name="colorPickerButton" FontFamily="Segoe UI" FontSize="11" Height="34">
+                                        <Button.Content>
+                                            <Grid>
+                                                <TextBlock Text="More colors..." Margin="25,0,0,0"></TextBlock>
+                                                <FontIcon Glyph="" HorizontalAlignment="Left" FontSize="16"></FontIcon>
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+                                    <ToggleButton Width="155" x:Name="Autobutton" Style="{StaticResource PaintUIToggleButtonStyle}" FontFamily="Segoe UI" Height="35">
+                                        <ToggleButton.Content>
+                                            <Grid>
+                                                <TextBlock Text="Automatical" Margin="25,0,0,0" FontSize="11"></TextBlock>
+                                                <FontIcon Glyph="" HorizontalAlignment="Left" FontSize="16"></FontIcon>
+                                            </Grid>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
                                 </RelativePanel>
                             </Flyout>
                         </muxc:SplitButton.Flyout>
                     </muxc:SplitButton>
-                    <muxc:SplitButton x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
+                    <muxc:SplitButton Style="{StaticResource PaintUIHorizontalSplitButton}" x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
-                                    <VariableSizedWrapGrid x:Name="colorGrid2" Orientation="Horizontal" MaximumRowsOrColumns="4">
+                                    <VariableSizedWrapGrid x:Name="colorGrid2" Orientation="Vertical" MaximumRowsOrColumns="3">
                                         <VariableSizedWrapGrid.Resources>
                                             <Style TargetType="Rectangle">
-                                                <Setter Property="Width" Value="32"/>
-                                                <Setter Property="Height" Value="32"/>
+                                                <Setter Property="Width" Value="30"/>
+                                                <Setter Property="Height" Value="30"/>
                                             </Style>
 
                                             <Style TargetType="Button">
                                                 <Setter Property="Padding" Value="0"/>
+                                                <Setter Property="Width" Value="30"/>
+                                                <Setter Property="Height" Value="30"/>
                                                 <Setter Property="MinWidth" Value="0"/>
                                                 <Setter Property="MinHeight" Value="0"/>
-                                                <Setter Property="Margin" Value="5"/>
-                                                <Setter Property="CornerRadius" Value="8"/>
+                                                <Setter Property="Margin" Value="2"/>
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                                <Setter Property="Background"
+                                Value="Transparent" />
+                                                <Setter Property="BackgroundSizing"
+                                Value="OuterBorderEdge" />
+                                                <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                                                <Setter Property="Padding"
+                                Value="0" />
+                                                <Setter Property="FontWeight"
+                                Value="Normal" />
+                                                <Setter Property="FontSize"
+                                Value="16" />
+
+
                                             </Style>
                                         </VariableSizedWrapGrid.Resources>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Red" AutomationProperties.Name="Red">
                                             <Button.Content>
-                                                <Rectangle Fill="Red"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ffff00"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Orange" AutomationProperties.Name="Orange">
                                             <Button.Content>
-                                                <Rectangle Fill="Orange"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ff0000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Yellow" AutomationProperties.Name="Yellow">
                                             <Button.Content>
-                                                <Rectangle Fill="Yellow"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#800000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Green" AutomationProperties.Name="Green">
                                             <Button.Content>
-                                                <Rectangle Fill="Green"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#00ff00"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Blue" AutomationProperties.Name="Blue">
                                             <Button.Content>
-                                                <Rectangle Fill="Blue"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#000080"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Light Blue" AutomationProperties.Name="LightBlue">
                                             <Button.Content>
-                                                <Rectangle Fill="LightBlue"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#808000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Indigo" AutomationProperties.Name="Indigo">
                                             <Button.Content>
-                                                <Rectangle Fill="Indigo"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#00ffff"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
-                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Violet" AutomationProperties.Name="Violet">
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Violet" AutomationProperties.Name="Violet" >
                                             <Button.Content>
-                                                <Rectangle Fill="Violet"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#008080"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Gray" AutomationProperties.Name="Gray">
                                             <Button.Content>
-                                                <Rectangle Fill="Gray"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#808080"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Beige" AutomationProperties.Name="Beige">
                                             <Button.Content>
-                                                <Rectangle Fill="Beige"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#ff00ff"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="Black" AutomationProperties.Name="Black">
                                             <Button.Content>
-                                                <Rectangle Fill="Black"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#008000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                         <Button Click="BackColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
                                             <Button.Content>
-                                                <Rectangle Fill="White"/>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#c0c0c0"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#0000ff"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#800080"/>
+                                                    </Border>
+                                                </Border>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Click="BackColorButton_Click" ToolTipService.ToolTip="White" AutomationProperties.Name="White">
+                                            <Button.Content>
+                                                <Border CornerRadius="100" BorderBrush="#FFB7B7B7" BorderThickness="1" >
+                                                    <Border CornerRadius="100" >
+                                                        <Rectangle Fill="#000000"/>
+                                                    </Border>
+                                                </Border>
                                             </Button.Content>
                                         </Button>
                                     </VariableSizedWrapGrid>
-                                    <Button Flyout="{StaticResource myColorPickerFlyout}" Margin="0,8,0,0" RelativePanel.Below="colorGrid2" Content="More colors" Width="173" x:Name="colorPickerButton2"/>
+                                    <Button RelativePanel.Below="colorGrid2" Width="177" x:Name="NoColorButton" Margin="0,5,0,0" Style="{StaticResource PaintUIButtonStyle}" Height="35">
+                                        <Grid>
+                                            <TextBlock Text="No color" Margin="31,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="24">
+                                            </TextBlock>
+                                            <Button x:Name="NoColorPreviewButton" Width="25" Height="25" Background="#FFCEE5FC" BorderBrush="#FF7EB5EB" IsEnabled="True" CornerRadius="1000"/>
+                                        </Grid>
+                                    </Button>
                                 </RelativePanel>
                             </Flyout>
                         </muxc:SplitButton.Flyout>
@@ -1087,12 +1426,8 @@
                                  Height="32"
                                  Click="ParagraphButton_Click"
                                  Grid.Column="4"
-                                 Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20">
-                    </Button>
-                    <muxc:ToggleSplitButton x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons">
-                        <Viewbox Width="16" Height="16">
-                            <SymbolIcon x:Name="mySymbolIcon" Symbol="List" />
-                        </Viewbox>
+                                 Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20"/>
+                    <muxc:ToggleSplitButton x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" Style="{StaticResource PaintUIHorizontalSplitButton}" Content="">
                         <muxc:ToggleSplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <Grid>
@@ -1142,7 +1477,7 @@
                             </Flyout>
                         </muxc:ToggleSplitButton.Flyout>
                     </muxc:ToggleSplitButton>
-                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0">
+                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0" Style="{StaticResource PaintUIHorizontalSplitButton}">
                         <muxc:SplitButton.Flyout>
                             <MenuFlyout>
                                 <ToggleMenuFlyoutItem Text="1,0" IsChecked="False"/>
@@ -1373,9 +1708,90 @@
                   Width="816"
                   Margin="40,40,40,0"
                   Translation="0,0,16"
-                  RequestedTheme="Light" BorderBrush="LightGray" BorderThickness="1,1,1,0">
+                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,0">
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False"/>
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False">
+                    <RichEditBox.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Cut">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph=""></FontIcon>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Copy">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph=""></FontIcon>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Paste">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph=""></FontIcon>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem Text="Paragraph">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xe903;" FontFamily="WordPad Fluent Icons"></FontIcon>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSubItem Text="Lists">
+                                <MenuFlyoutSubItem.Icon>
+                                    <FontIcon Glyph="&#xE8FD;"></FontIcon>
+                                </MenuFlyoutSubItem.Icon>
+                                <MenuFlyoutItem>
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <Grid.Resources>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Padding" Value="4"/>
+                                                        <Setter Property="MinWidth" Value="0"/>
+                                                        <Setter Property="MinHeight" Value="0"/>
+                                                        <Setter Property="Margin" Value="6"/>
+                                                        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
+                                                        <Setter Property="Background" Value="White" />
+                                                    </Style>
+                                                </Grid.Resources>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="NoneNumeral2" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
+                                                    <Image Source="/Assets/listnumbersimages/none.png" Width="60" Height="60" />
+                                                </Button>
+                                                <Button x:Name="DottedNumeral2" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
+                                                    <Image Source="/Assets/listnumbersimages/dot.bmp" Width="60" Height="60" />
+                                                </Button>
+                                                <Button x:Name="NumberNumeral2" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
+                                                    <Image Source="/Assets/listnumbersimages/number.png" Width="60" Height="60" />
+                                                </Button>
+                                                <Button x:Name="LetterSmallNumeral2" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
+                                                    <Image Source="/Assets/listnumbersimages/abc.png" Width="60" Height="60" />
+                                                </Button>
+                                                <Button x:Name="LetterBigNumeral2"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
+                                                    <Image Source="/Assets/listnumbersimages/ABCB.png" Width="60" Height="60" />
+                                                </Button>
+                                                <Button x:Name="SmalliNumeral2" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
+                                                    <Image Source="/Assets/listnumbersimages/iii.png" Width="64" Height="64" />
+                                                </Button>
+                                                <Button x:Name="BigINumeral2" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
+                                                    <Image Source="/Assets/listnumbersimages/IIII.png" Width="64" Height="64" />
+                                                </Button>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+                            </MenuFlyoutSubItem>
+                        </MenuFlyout>
+                    </RichEditBox.ContextFlyout>
+                </RichEditBox>
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
