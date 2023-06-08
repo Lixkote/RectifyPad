@@ -12,6 +12,11 @@
 
 
     <Page.Resources>
+        <DataTemplate x:Key="ComboBoxItemTemplate">
+            <!-- Your template here -->
+        </DataTemplate>
+        <local:ZoomConverter x:Key="ZoomConverter"/>
+        <local:HalfValueConverter x:Key="HalfValueConverter"/>
         <Flyout x:Key="myColorPickerFlyout">
             <RelativePanel>
                 <ColorPicker x:Name="myColorPicker"
@@ -1704,13 +1709,18 @@
               Grid.Row="4"
               SizeChanged="EditorContentHost_SizeChanged">
 
-            <Grid Background="White"
+            <Grid x:Name="EditorGrid" Background="White"
                   Width="816"
-                  Margin="40,40,40,0"
-                  Translation="0,0,16"
-                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,0">
+                  Margin="0,40,0,0"
+                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,0" HorizontalAlignment="Center">
+                <Grid.RenderTransform>
+                    <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}" CenterX="{Binding ElementName=EditorGrid, Path=Width, Converter={StaticResource HalfValueConverter}}" CenterY="{Binding ElementName=EditorGrid, Path=Height, Converter={StaticResource HalfValueConverter}}"/>
+                </Grid.RenderTransform>
                 <RichEditBox x:Name="Editor"
                              Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False">
+                    <RichEditBox.RenderTransform>
+                        <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}"/>
+                    </RichEditBox.RenderTransform>
                     <RichEditBox.ContextFlyout>
                         <MenuFlyout>
                             <MenuFlyoutItem Text="Cut">
@@ -1820,13 +1830,21 @@
                         HorizontalAlignment="Right">
 
 
-                <ComboBox  Margin="0,4,8,4"
+                <ComboBox x:Name="ZoomComboBox"  ItemsSource="{x:Bind ZoomOptions}" SelectedItem="{x:Bind ZoomSlider.Value, Mode=TwoWay}" Margin="0,4,8,4"
                            FontSize="12"
                            VerticalAlignment="Center"
-                           Text="100%" IsEditable="True" Width="88"/>
+                           IsEditable="True" Width="88">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Converter={StaticResource ZoomConverter}}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"
+                        x:Name="DecreaseZoomButton"
+                        Click="DecreaseZoomButton_Click"
                         Margin="4"
                         Width="32"
                         VerticalAlignment="Stretch"
@@ -1852,21 +1870,22 @@
                 
                 -->
                 <Slider x:Name="ZoomSlider"
-                        Value="100"
-                        Minimum="10"
-                        Maximum="500"
+                        Value="1"
+                        Minimum="0.1"
+                        Maximum="8"
                         Width="130"
-                        StepFrequency="1"
-                        SmallChange="1"
-                        LargeChange="4"
                         ValueChanged="ZoomSlider_ValueChanged">
+                    <ToolTipService.ToolTip>
+                        <TextBlock Text="{Binding Value, ElementName=ZoomSlider, Converter={StaticResource ZoomConverter}}"/>
+                    </ToolTipService.ToolTip>
                 </Slider>
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"
-                        
+                        x:Name="IncreaseZoomButton"
                         Margin="4"
                         Width="32"
+                        Click="IncreaseZoomButton_Click"
                         VerticalAlignment="Stretch"
                         ToolTipService.ToolTip="Zoom in">
                     <Button.Content>

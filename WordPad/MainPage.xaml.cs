@@ -49,6 +49,9 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.Devices.Enumeration;
 using WordPad.WordPadUI.Settings;
+using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Data;
 
 
 
@@ -57,6 +60,51 @@ using WordPad.WordPadUI.Settings;
 
 namespace RectifyPad
 {
+
+    public class ZoomConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is double zoom)
+            {
+                return $"{zoom * 100}%";
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string text && text.EndsWith("%"))
+            {
+                if (double.TryParse(text.TrimEnd('%'), out double zoom))
+                {
+                    return zoom / 100;
+                }
+            }
+            return value;
+        }
+    }
+    public class HalfValueConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is double number)
+            {
+                return number / 2;
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            if (value is double number)
+            {
+                return number * 2;
+            }
+            return value;
+        }
+    }
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -86,6 +134,8 @@ namespace RectifyPad
                 return CanvasTextFormat.GetSystemFontFamilies().OrderBy(f => f).ToList();
             }
         }
+
+        public ObservableCollection<double> ZoomOptions { get; } = new ObservableCollection<double> { 8, 7, 6, 5, 4, 3, 2, 1, 0.75, 0.5, 0.25, 0.125 };
 
         public List<double> FontSizes { get; } = new List<double>()
             {
@@ -433,7 +483,9 @@ namespace RectifyPad
 
         private void ZoomSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
-        
+            // Animate the zoom factor from the old value to the new value
+            AnimateZoom(e.OldValue, e.NewValue);
+            AnimateZoomSecond(e.OldValue, e.NewValue);
         }
 
 
@@ -1805,5 +1857,89 @@ namespace RectifyPad
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Justify);
             editor_SelectionChanged(sender, e);
         }
+
+        private void DecreaseZoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Decrease the zoom by 10%, but don't go below the minimum value of the slider
+            ZoomSlider.Value = Math.Max(ZoomSlider.Value - 0.1, ZoomSlider.Minimum);
+        }
+
+        private void IncreaseZoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Increase the zoom by 10%, but don't exceed the maximum value of the slider
+            ZoomSlider.Value = Math.Min(ZoomSlider.Value + 0.1, ZoomSlider.Maximum);
+        }
+
+        private void AnimateZoom(double fromValue, double toValue)
+        {
+            // Get the scale transform of the rich edit box
+            var scaleTransform = Editor.RenderTransform as ScaleTransform;
+
+            // Create a storyboard to animate the scale x and y properties
+            var storyboard = new Storyboard();
+            var animationX = new DoubleAnimation()
+            {
+                From = fromValue,
+                To = toValue,
+                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
+            };
+            var animationY = new DoubleAnimation()
+            {
+                From = fromValue,
+                To = toValue,
+                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
+            };
+            storyboard.Children.Add(animationX);
+            storyboard.Children.Add(animationY);
+
+            // Set the target of the animation to be the scale x and y properties of the scale transform
+            Storyboard.SetTarget(animationX, scaleTransform);
+            Storyboard.SetTargetProperty(animationX, "ScaleX");
+            Storyboard.SetTarget(animationY, scaleTransform);
+            Storyboard.SetTargetProperty(animationY, "ScaleY");
+
+            // Start the animation
+            storyboard.Begin();
+        }
+
+        private void AnimateZoomSecond(double fromValue, double toValue)
+        {
+            // Get the scale transform of the rich edit box
+            var scaleTransform = EditorGrid.RenderTransform as ScaleTransform;
+
+            // Create a storyboard to animate the scale x and y properties
+            var storyboard = new Storyboard();
+            var animationX = new DoubleAnimation()
+            {
+                From = fromValue,
+                To = toValue,
+                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
+            };
+            var animationY = new DoubleAnimation()
+            {
+                From = fromValue,
+                To = toValue,
+                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
+                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
+            };
+            storyboard.Children.Add(animationX);
+            storyboard.Children.Add(animationY);
+
+            // Set the target of the animation to be the scale x and y properties of the scale transform
+            Storyboard.SetTarget(animationX, scaleTransform);
+            Storyboard.SetTargetProperty(animationX, "ScaleX");
+            Storyboard.SetTarget(animationY, scaleTransform);
+            Storyboard.SetTargetProperty(animationY, "ScaleY");
+
+            // Start the animation
+            storyboard.Begin();
+        }
+
+
+
+
     }
 }
