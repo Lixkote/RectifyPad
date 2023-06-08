@@ -127,6 +127,8 @@ namespace RectifyPad
         string originalDocText = "";
 
 
+
+
         public List<string> Fonts
         {
             get
@@ -159,7 +161,35 @@ namespace RectifyPad
 
         public MainPage()
         {
-            
+            // Load the saved theme value
+            var value = Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
+            if (value != null)
+            {
+                string theme = value.ToString();
+                // Parse and apply the theme
+                App.RootTheme = App.GetEnum<ElementTheme>(theme);
+                // Change title bar color if needed
+                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (theme == "Dark")
+                {
+                    titleBar.ButtonForegroundColor = Colors.White;
+                }
+                else if (theme == "Light")
+                {
+                    titleBar.ButtonForegroundColor = Colors.Black;
+                }
+                else
+                {
+                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                    {
+                        titleBar.ButtonForegroundColor = Colors.White;
+                    }
+                    else
+                    {
+                        titleBar.ButtonForegroundColor = Colors.Black;
+                    }
+                }
+            }
             InitializeComponent();
             Window.Current.SetTitleBar(AppTitleBar);
 
@@ -1938,8 +1968,48 @@ namespace RectifyPad
             storyboard.Begin();
         }
 
+        private void MenuCut_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.Cut();
+        }
 
+        private void MenuCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.Copy();
+        }
 
+        private void MenuPaste_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.Paste(0);
+        }
 
+        private async void MenuParagraph_Click(object sender, RoutedEventArgs e)
+        {
+            // Create an instance of the ParagraphDialog
+            ParagraphDialog paragraphDialog = new ParagraphDialog();
+
+            // Show the dialog and wait for the user's input
+            ContentDialogResult result = await paragraphDialog.ShowAsync();
+
+            // If the user clicked the OK button, adjust the properties of the RichEditBox
+            if (result == ContentDialogResult.Primary)
+            {
+                // Get the values from the dialog's TextBoxes and ComboBoxes
+                TextBox leftTextBox = (TextBox)paragraphDialog.FindName("LeftTextBox");
+                TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightTextBox");
+                TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("FirstLineTextBox");
+                ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingComboBox");
+
+                // Parse the values and set the properties of the RichEditBox
+                double left = double.Parse(leftTextBox.Text);
+                double right = double.Parse(rightTextBox.Text);
+                double firstLine = double.Parse(firstLineTextBox.Text);
+                double lineSpacing = double.Parse(lineSpacingComboBox.SelectedItem.ToString());
+
+                Editor.Margin = new Thickness(left, 0, right, 0);
+                Editor.Document.Selection.ParagraphFormat.SetIndents((float)firstLine, 0, 0);
+                Editor.Document.Selection.ParagraphFormat.SetLineSpacing(Windows.UI.Text.LineSpacingRule.AtLeast, (float)lineSpacing);
+            }
+        }
     }
 }

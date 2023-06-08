@@ -102,10 +102,58 @@
                                     </StackPanel>
                                 </Grid>
                             </muxc:Expander.Header>
-                            <muxc:RadioButtons Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="LightRad" Checked="RadioButton_Checked"/>
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="DarkRad" Checked="RadioButton_Checked"/>
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="System setting" Tag="SysRad" Checked="RadioButton_Checked"/>
+                            <muxc:RadioButtons x:Name="radiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
+                                <RadioButton x:Name="LightRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="DarkRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System setting" Tag="Default" Checked="RadioButton_Checked"/>
+                            </muxc:RadioButtons>
+                        </muxc:Expander>
+                        <muxc:Expander
+                            x:Name="Theme_Copy"
+                            HorizontalContentAlignment="Stretch"
+                            IsExpanded="True" HorizontalAlignment="Stretch">
+                            <muxc:Expander.Header>
+                                <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
+                                    <d:Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </d:Grid.ColumnDefinitions>
+                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" HorizontalAlignment="Center" />
+                                    <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
+                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Word wrap" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
+                                    </StackPanel>
+                                </Grid>
+                            </muxc:Expander.Header>
+                            <muxc:RadioButtons x:Name="radiocontainer1" Margin="{StaticResource ContentLeftWideSpacing}">
+                                <RadioButton x:Name="LightRadio1" Content="No wrapping"/>
+                                <RadioButton x:Name="DarkRadio1" Content="Wrap by window"/>
+                                <RadioButton x:Name="SysRadio1" Content="Wrap according to the ruler" />
+                            </muxc:RadioButtons>
+                        </muxc:Expander>
+                        <muxc:Expander
+                            x:Name="Theme_Copy1"
+                            HorizontalContentAlignment="Stretch"
+                            IsExpanded="True" HorizontalAlignment="Stretch">
+                            <muxc:Expander.Header>
+                                <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
+                                    <d:Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </d:Grid.ColumnDefinitions>
+                                    <FontIcon x:Name="AppearanceIcon2" Glyph=""  HorizontalAlignment="Center" />
+                                    <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
+                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Measurement units" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select the measurement units for the ruler and page setup." TextWrapping="WrapWholeWords" />
+                                    </StackPanel>
+                                </Grid>
+                            </muxc:Expander.Header>
+                            <muxc:RadioButtons x:Name="radiocontainer2" Margin="{StaticResource ContentLeftWideSpacing}">
+                                <RadioButton x:Name="LightRadio2" Content="Inches"/>
+                                <RadioButton x:Name="DarkRadio2" Content="Centimeters
+"/>
+                                <RadioButton x:Name="SysRadio2" Content="Points" />
+                                <RadioButton x:Name="SysRadio2s" Content="Cicera" />
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <!--<muxc:Expander

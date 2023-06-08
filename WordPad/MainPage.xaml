@@ -596,7 +596,7 @@
                             Click="Copy_Click">
                                                 <Image x:Name="copyimg" Width="16"
                                Height="16"
-                               RequestedTheme="Light"
+               
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Source="{Binding copyimgthemed}" />
@@ -684,7 +684,6 @@
                             Click="Copy_Click">
                         <Image x:Name="copyimgfull" Width="16"
                                Height="16"
-                               RequestedTheme="Light"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                Source="{ThemeResource ResourceKey=Copy}" />
@@ -1432,7 +1431,7 @@
                                  Click="ParagraphButton_Click"
                                  Grid.Column="4"
                                  Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20"/>
-                    <muxc:ToggleSplitButton x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" Style="{StaticResource PaintUIHorizontalSplitButton}" Content="">
+                    <muxc:ToggleSplitButton x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" Style="{StaticResource PaintUIHorizontalSplitButton}" FontFamily="Segoe Fluent Icons" Content="" FontSize="16">
                         <muxc:ToggleSplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <Grid>
@@ -1723,23 +1722,23 @@
                     </RichEditBox.RenderTransform>
                     <RichEditBox.ContextFlyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Text="Cut">
+                            <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph=""></FontIcon>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Copy">
+                            <MenuFlyoutItem x:Name="MenuCopy" Text="Copy" Click="MenuCopy_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph=""></FontIcon>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Paste">
+                            <MenuFlyoutItem x:Name="MenuPaste" Text="Paste" Click="MenuPaste_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph=""></FontIcon>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                             <MenuFlyoutSeparator />
-                            <MenuFlyoutItem Text="Paragraph">
+                            <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xe903;" FontFamily="WordPad Fluent Icons"></FontIcon>
                                 </MenuFlyoutItem.Icon>
