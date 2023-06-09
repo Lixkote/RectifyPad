@@ -137,7 +137,7 @@ namespace RectifyPad
             }
         }
 
-        public ObservableCollection<double> ZoomOptions { get; } = new ObservableCollection<double> { 8, 7, 6, 5, 4, 3, 2, 1, 0.75, 0.5, 0.25, 0.125 };
+        public ObservableCollection<double> ZoomOptions { get; } = new ObservableCollection<double> { 5, 4, 3, 2, 1, 0.75, 0.5, 0.25, 0.125 };
 
         public List<double> FontSizes { get; } = new List<double>()
             {

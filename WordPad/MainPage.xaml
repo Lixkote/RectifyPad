@@ -25,6 +25,7 @@
             </RelativePanel>
         </Flyout>
         
+        
     </Page.Resources>
 
 
@@ -271,7 +272,7 @@
                 ToolTipService.Placement="Bottom"
                 Grid.Row="2"
                 Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
-        <Grid x:Name="PrintPreviewRibbon" Background="{ThemeResource RibbonBackground}"
+        <Grid x:Name="PrintPreviewRibbon"
             BorderBrush="{ThemeResource RibbonBorder}"
             BorderThickness="0,1"
             Padding="4" DataContext="{x:Bind}" Grid.Row="3" Visibility="Collapsed">
@@ -838,7 +839,13 @@
                         <ComboBoxItem>48</ComboBoxItem>
                         <ComboBoxItem>72</ComboBoxItem>
                     </ComboBox>
-                    <muxc:SplitButton Style="{StaticResource PaintUIHorizontalSplitButton}" x:Name="fontcolorsplitbutton" Grid.Column="6" Content="&#xE8FD;" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" VerticalContentAlignment="Stretch" FontSize="20" Click="fontcolorsplitbutton_Click" Height="27" Padding="11,3,11,3" UseLayoutRounding="True">
+                    <muxc:SplitButton x:Name="p" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontcolorsplitbutton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
+                        <muxc:SplitButton.Content>
+                            <Grid>
+                                <FontIcon Glyph="" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
+                                <TextBlock x:Name="FontColorMarker" Text="&#xE8FC;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
+                            </Grid>
+                        </muxc:SplitButton.Content>
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
@@ -1164,7 +1171,13 @@
                             </Flyout>
                         </muxc:SplitButton.Flyout>
                     </muxc:SplitButton>
-                    <muxc:SplitButton Style="{StaticResource PaintUIHorizontalSplitButton}" x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Content="&#xE8FF;" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="11,3,11,3">
+                    <muxc:SplitButton Template="{StaticResource PaintUIHorizontalSplitButton}" x:Name="fontbackgroundcolorsplitbutton" Grid.Column="6" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="fontbackgroundcolorsplitbutton_Click" Height="27" Padding="0,0,0.2,0">
+                        <muxc:SplitButton.Content>
+                            <Grid>
+                                <FontIcon Glyph="&#xE8FF;" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
+                                <TextBlock x:Name="BackTextColorMarker" Text="&#xE8FE;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
+                            </Grid>
+                        </muxc:SplitButton.Content>
                         <muxc:SplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <RelativePanel>
@@ -1431,7 +1444,7 @@
                                  Click="ParagraphButton_Click"
                                  Grid.Column="4"
                                  Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20"/>
-                    <muxc:ToggleSplitButton x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" Style="{StaticResource PaintUIHorizontalSplitButton}" FontFamily="Segoe Fluent Icons" Content="" FontSize="16">
+                    <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalSplitButton}" x:Name="myListButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20">
                         <muxc:ToggleSplitButton.Flyout>
                             <Flyout Placement="Bottom">
                                 <Grid>
@@ -1457,32 +1470,61 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
-                                        <Image Source="/Assets/listnumbersimages/none.png" Width="60" Height="60" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/none.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
-                                        <Image Source="/Assets/listnumbersimages/dot.bmp" Width="60" Height="60" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/dot.bmp" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
-                                        <Image Source="/Assets/listnumbersimages/number.png" Width="60" Height="60" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/number.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
-                                        <Image Source="/Assets/listnumbersimages/abc.png" Width="60" Height="60" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/abc.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
-                                        <Image Source="/Assets/listnumbersimages/ABCB.png" Width="60" Height="60" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/ABCB.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
-                                        <Image Source="/Assets/listnumbersimages/iii.png" Width="64" Height="64" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/iii.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                     <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
-                                        <Image Source="/Assets/listnumbersimages/IIII.png" Width="64" Height="64" />
+                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                            <Image Source="/Assets/listnumbersimages/IIII.png" Width="50" Height="50" />
+                                        </Border>
                                     </Button>
                                 </Grid>
                             </Flyout>
                         </muxc:ToggleSplitButton.Flyout>
                     </muxc:ToggleSplitButton>
-                    <muxc:SplitButton Grid.Column="4" Content="" Height="29" Width="77" FontFamily="WordPad Fluent Icons" FontSize="18" Margin="2,0,0,0" Style="{StaticResource PaintUIHorizontalSplitButton}">
-                        <muxc:SplitButton.Flyout>
+                    <Button Grid.Column="4" Height="29" Width="77" Margin="2,0,0,0" Style="{StaticResource PaintUIButtonStyle}" HorizontalContentAlignment="Stretch" Padding="0,0,0,0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon FontSize="18" Grid.Column="0" FontFamily="WordPad Fluent Icons" Glyph=""></FontIcon>
+                                <muxc:AnimatedIcon Grid.Column="1" AutomationProperties.AccessibilityView="Raw" Height="12" VerticalAlignment="Center" Width="12">
+                                    <muxc:AnimatedIcon.FallbackIconSource>
+                                        <muxc:FontIconSource FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="8" Glyph="&#xE96E;" IsTextScaleFactorEnabled="False"/>
+                                    </muxc:AnimatedIcon.FallbackIconSource>
+                                    <animatedvisuals:AnimatedChevronDownSmallVisualSource/>
+                                </muxc:AnimatedIcon>
+                            </Grid>
+                        </Button.Content>
+                        <Button.Flyout>
                             <MenuFlyout>
                                 <ToggleMenuFlyoutItem Text="1,0" IsChecked="False"/>
                                 <ToggleMenuFlyoutItem Text="1,15" IsChecked="True"/>
@@ -1492,8 +1534,8 @@
                                 <ToggleMenuFlyoutItem Text="Add 10pt space after paragraphs" IsChecked="True"/>
 
                             </MenuFlyout>
-                        </muxc:SplitButton.Flyout>
-                    </muxc:SplitButton>
+                        </Button.Flyout>
+                    </Button>
                     <Button x:Name="IndentationIncreaseLeft" Style="{StaticResource PaintUIButtonStyle}"
                         Content=""
                         Width="32"
@@ -1711,12 +1753,12 @@
             <Grid x:Name="EditorGrid" Background="White"
                   Width="816"
                   Margin="0,40,0,0"
-                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,0" HorizontalAlignment="Center">
+                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,1" HorizontalAlignment="Center">
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}" CenterX="{Binding ElementName=EditorGrid, Path=Width, Converter={StaticResource HalfValueConverter}}" CenterY="{Binding ElementName=EditorGrid, Path=Height, Converter={StaticResource HalfValueConverter}}"/>
                 </Grid.RenderTransform>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False">
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,-141">
                     <RichEditBox.RenderTransform>
                         <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}"/>
                     </RichEditBox.RenderTransform>
@@ -1871,8 +1913,9 @@
                 <Slider x:Name="ZoomSlider"
                         Value="1"
                         Minimum="0.1"
-                        Maximum="8"
+                        Maximum="5"
                         Width="130"
+                        StepFrequency="0.1"
                         ValueChanged="ZoomSlider_ValueChanged">
                     <ToolTipService.ToolTip>
                         <TextBlock Text="{Binding Value, ElementName=ZoomSlider, Converter={StaticResource ZoomConverter}}"/>
@@ -1899,8 +1942,8 @@
             </StackPanel>
 
         </Border>
-        <TextBlock x:Name="BackTextColorMarker" HorizontalAlignment="Left" Margin="456,62,0,0" TextWrapping="Wrap" Text="&#xE8FE;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
-        <TextBlock x:Name="FontColorMarker" HorizontalAlignment="Left" Margin="375,61,0,0" TextWrapping="Wrap" Text="&#xE8FC;" VerticalAlignment="Top" FontFamily="WordPad Fluent Icons" FontSize="20" Grid.Row="3" Foreground="#00000000"/>
+       
+      
 
     </Grid>
 </Page>
