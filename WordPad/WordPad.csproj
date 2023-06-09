@@ -173,7 +173,6 @@
     <Content Include="Assets\listnumbersimages\IIII.png" />
     <Content Include="Assets\listnumbersimages\none.png" />
     <Content Include="Assets\listnumbersimages\number.png" />
-    <Content Include="Assets\rtf.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -256,6 +255,14 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-128.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-16.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-256.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-32.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-48.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-64.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-80.png" />
+    <Content Include="Assets\wordpaddocument.targetsize-96.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

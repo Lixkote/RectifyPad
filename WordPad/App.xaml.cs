@@ -3,6 +3,7 @@ using System.Reflection;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -94,6 +95,18 @@ namespace RectifyPad
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+        }
+
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            // Get the file that was opened
+            var file = args.Files[0] as StorageFile;
+
+            // Create a new frame and navigate to your main page
+            var frame = new Frame();
+            frame.Navigate(typeof(MainPage), file);
+            Window.Current.Content = frame;
+            Window.Current.Activate();
         }
 
         public static ElementTheme RootTheme
