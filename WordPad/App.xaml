@@ -271,7 +271,245 @@
                             <Grid x:Name="DividerBackgroundGrid" Grid.Column="1" Width="1"/>
                             <Grid x:Name="SecondaryBackgroundGrid" Grid.Column="2"/>
                             <Button x:Name="PrimaryButton" AutomationProperties.AccessibilityView="Raw" Style="{StaticResource PaintUIButtonStyle}"  Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}" Grid.Column="0" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" VerticalAlignment="Stretch"/>
-                            <Button x:Name="SecondaryButton" AutomationProperties.AccessibilityView="Raw"  Style="{StaticResource PaintUIButtonStyle}" BorderThickness="0" Grid.Column="2" Foreground="{ThemeResource SplitButtonForegroundSecondary}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsTabStop="False" Padding="0,0,12,0" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Button x:Name="SecondaryButton" AutomationProperties.AccessibilityView="Raw"  Style="{StaticResource PaintUIButtonStyle}" Grid.Column="2" Foreground="{ThemeResource SplitButtonForegroundSecondary}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsTabStop="False" Padding="0,0,12,0" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                                <muxc:AnimatedIcon AutomationProperties.AccessibilityView="Raw" HorizontalAlignment="Right" Height="12" VerticalAlignment="Center" Width="12">
+                                    <muxc:AnimatedIcon.FallbackIconSource>
+                                        <muxc:FontIconSource FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="8" Glyph="&#xE96E;" IsTextScaleFactorEnabled="False"/>
+                                    </muxc:AnimatedIcon.FallbackIconSource>
+                                    <animatedvisuals:AnimatedChevronDownSmallVisualSource/>
+                                </muxc:AnimatedIcon>
+                            </Button>
+                            <Grid x:Name="Border" Grid.ColumnSpan="3"/>
+                        </Grid>
+                    </ControlTemplate>
+
+                    <ControlTemplate x:Key="PaintUIHorizontalToggleSplitButton" TargetType="muxc:SplitButton">
+                        <Grid x:Name="RootGrid" Background="Transparent">
+                            <Grid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="{ThemeResource SplitButtonBorderThemeThickness}"/>
+                                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                    <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+                                    <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+                                    <Setter Property="FocusVisualMargin" Value="-3"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid x:Name="RootGrid" Background="Transparent">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal"/>
+                                                            <VisualState x:Name="PointerOver">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ContentPresenter.(controls:AnimatedIcon.State)" Value="PointerOver"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ContentPresenter.(controls:AnimatedIcon.State)" Value="Pressed"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Disabled">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource SplitButtonForegroundDisabled}"/>
+                                                                    <Setter Target="RootGrid.Background" Value="{ThemeResource SplitButtonBackgroundDisabled}"/>
+                                                                    <Setter Target="ContentPresenter.BorderBrush" Value="Transparent"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" muxc:AnimatedIcon.State="Normal" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.CornerRadius>
+                                <ThemeResource ResourceKey="ControlCornerRadius"/>
+                            </Grid.CornerRadius>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="PrimaryButtonColumn" MinWidth="{ThemeResource SplitButtonPrimaryButtonSize}" Width="*"/>
+                                <ColumnDefinition x:Name="Separator" Width="1"/>
+                                <ColumnDefinition x:Name="SecondaryButtonColumn" Width="{ThemeResource SplitButtonSecondaryButtonSize}"/>
+                            </Grid.ColumnDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="Border.BorderBrush" Value="{ThemeResource SplitButtonBorderBrushDisabled}"/>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="RootGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="FlyoutOpen">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource MenuBarItemBackgroundPressed}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="TouchPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="{ThemeResource SplitButtonBackgroundPressed}"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="{ThemeResource SplitButtonBackgroundPressed}"/>
+                                            <Setter Target="Border.BorderBrush" Value="{ThemeResource SplitButtonBorderBrushPressed}"/>
+                                            <Setter Target="PrimaryButton.Foreground" Value="{ThemeResource SplitButtonForegroundPressed}"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForegroundSecondaryPressed}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PrimaryPointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource CButtonBorderPointerOver}"/>
+                                            <Setter Target="PrimaryButton.Background" Value="{ThemeResource CButtonBackgroundPointerOver}"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="PrimaryPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background"  Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="SecondaryPointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background"  Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background"  Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="{ThemeResource SplitButtonBorderBrushPointerOver}"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForegroundPointerOver}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="SecondaryPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource MenuBarItemBackgroundPressed}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Checked">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedFlyoutOpen">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource MenuBarItemBackgroundPressed}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedTouchPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource MenuBarItemBackgroundPressed}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPrimaryPointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background"  Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPrimaryPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background"  Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedSecondaryPointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource CButtonBackgroundPointerOver}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedSecondaryPressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Background" Value="{ThemeResource MenuBarItemBackgroundPressed}"/>
+                                            <Setter Target="SecondaryButton.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            <Setter Target="PrimaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="SecondaryBackgroundGrid.Background" Value="Transparent"/>
+                                            <Setter Target="Border.BorderBrush" Value="Transparent"/>
+                                            <Setter Target="PrimaryButton.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                            <Setter Target="PrimaryButton.BorderThickness" Value="1,1,1,1"/>
+                                            <Setter Target="SecondaryButton.Foreground" Value="{ThemeResource SplitButtonForeground}"/>
+                                            <Setter Target="DividerBackgroundGrid.Background" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SecondaryButtonPlacementStates">
+                                    <VisualState x:Name="SecondaryButtonRight"/>
+                                    <VisualState x:Name="SecondaryButtonSpan">
+                                        <VisualState.Setters>
+                                            <Setter Target="SecondaryButton.(Grid.Column)" Value="0"/>
+                                            <Setter Target="SecondaryButton.(Grid.ColumnSpan)" Value="3"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="PrimaryBackgroundGrid" Grid.ColumnSpan="2"/>
+                            <Grid x:Name="DividerBackgroundGrid" Grid.Column="1" Width="1"/>
+                            <Grid x:Name="SecondaryBackgroundGrid" Grid.Column="2"/>
+                            <Button x:Name="PrimaryButton" AutomationProperties.AccessibilityView="Raw" BorderThickness="1,1,1,1" Style="{StaticResource PaintUIButtonStyle}"  Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}" Grid.Column="0" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" VerticalAlignment="Stretch"/>
+                            <Button x:Name="SecondaryButton" AutomationProperties.AccessibilityView="Raw"  Style="{StaticResource PaintUIButtonStyle}" Grid.Column="2" Foreground="{ThemeResource SplitButtonForegroundSecondary}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsTabStop="False" Padding="0,0,12,0" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
                                 <muxc:AnimatedIcon AutomationProperties.AccessibilityView="Raw" HorizontalAlignment="Right" Height="12" VerticalAlignment="Center" Width="12">
                                     <muxc:AnimatedIcon.FallbackIconSource>
                                         <muxc:FontIconSource FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="8" Glyph="&#xE96E;" IsTextScaleFactorEnabled="False"/>
@@ -447,6 +685,251 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ToggleButton">
+                                    <ContentPresenter x:Name="ContentPresenter"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          Background="{TemplateBinding Background}"
+                                          BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Padding="{TemplateBinding Padding}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="PointerOver">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource CButtonBackgroundPointerOver}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource CButtonBorderPointerOver}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ContentPresenter.(BorderThickness)"
+                                                    Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource MenuBarItemBackgroundPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonForegroundPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonForegroundDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Checked">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource MenuBarItemBackgroundPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                                    </Storyboard>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ContentPresenter.(BorderThickness)"
+                                                    Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="CheckedPointerOver">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource MenuBarItemBackgroundPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ContentPresenter.(BorderThickness)"
+                                                    Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="CheckedPressed">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource MenuBarItemBackgroundPressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ContentPresenter.(BorderThickness)"
+                                                    Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="CheckedDisabled">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundCheckedDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonForegroundCheckedDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushCheckedDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Indeterminate">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundIndeterminate}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushIndeterminate}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="IndeterminatePointerOver">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundIndeterminatePointerOver}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePointerOver}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="IndeterminatePressed">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundIndeterminatePressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePressed}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="IndeterminateDisabled">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBackgroundIndeterminateDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ToggleButtonBorderBrushIndeterminateDisabled}" />
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </ContentPresenter>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <Style x:Key="PaintUINONToggleButtonStyle"
+               TargetType="Button">
+                        <Setter Property="Background"
+                    Value="Transparent" />
+                        <Setter Property="BackgroundSizing"
+                    Value="InnerBorderEdge" />
+                        <Setter Property="BorderBrush"
+                    Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                        <Setter Property="Foreground"
+                    Value="{ThemeResource ButtonForeground}" />
+                        <Setter Property="BackgroundSizing"
+                    Value="OuterBorderEdge" />
+                        <Setter Property="BorderThickness"
+                    Value="0" />
+                        <Setter Property="FontFamily"
+                    Value="Segoe Fluent Icons" />
+                        <Setter Property="FontWeight"
+                    Value="Normal" />
+                        <Setter Property="FontSize"
+                    Value="16" />
+                        <Setter Property="HorizontalContentAlignment"
+                    Value="Center" />
+                        <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+                        <Setter Property="VerticalAlignment"
+                    Value="Center" />
+                        <Setter Property="CornerRadius"
+                    Value="4" />
+                        <Setter Property="Padding"
+                    Value="0" />
+                        <Setter Property="ToolTipService.Placement"
+                    Value="Mouse" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
                                     <ContentPresenter x:Name="ContentPresenter"
                                           AutomationProperties.AccessibilityView="Raw"
                                           Background="{TemplateBinding Background}"
