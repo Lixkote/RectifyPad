@@ -45,7 +45,7 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
 		<Extensions>
-			<uap3:Extension Category="windows.appExecutionAlias" EntryPoint="Windows.FullTrustApplication">
+			<uap3:Extension Category="windows.appExecutionAlias" EntryPoint="FluentPad.App">
 				<uap3:AppExecutionAlias>
 					<desktop:ExecutionAlias Alias="wordpad.exe"/>
 					<desktop:ExecutionAlias Alias="write.exe"/>
@@ -70,14 +70,6 @@
 					</uap:SupportedFileTypes>
 				</uap:FileTypeAssociation>
 			</uap:Extension>
-			<rescap3:Extension Category="windows.desktopAppMigration">
-				<rescap3:DesktopAppMigration>
-					<rescap3:DesktopApp AumId="{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\wordpad.exe"/>
-
-					<rescap3:DesktopApp AumId="{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\write.exe"/>
-
-				</rescap3:DesktopAppMigration>
-			</rescap3:Extension>
 		</Extensions>
     </Application>
   </Applications>
