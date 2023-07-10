@@ -3,7 +3,7 @@ The RectifyPad app is a modern Windows app written in C#. It is free and open so
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
-  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/previewnew.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/previewR11.png)
 
 ## Features
 - Standard WordPad functionality which offers basic text operations and inserting various multimedia items.
