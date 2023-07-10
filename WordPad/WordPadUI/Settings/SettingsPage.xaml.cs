@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.UI;
+using Windows.System;
 
 //Szablon elementu Pusta strona jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -126,6 +127,9 @@ namespace WordPad.WordPadUI.Settings
             return (TEnum)Enum.Parse(typeof(TEnum), text);
         }
 
-
+        private async void feedback_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://discord.gg/gsgu9GCtsk"));
+        }
     }
 }

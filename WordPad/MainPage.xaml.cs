@@ -114,12 +114,12 @@ namespace RectifyPad
         private bool saved = true;
 
         public bool _wasOpen = false;
-        private string appTitleStr => "FluentPad" ;
+        private string appTitleStr => "RectifyPad" ;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         private bool updateFontFormat = true;
-        public string ApplicationName => "FluentPad";
+        public string ApplicationName => "RectifyPad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
         
         private string fileNameWithPath = "";

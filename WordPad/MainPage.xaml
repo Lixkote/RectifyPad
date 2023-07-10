@@ -145,11 +145,10 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - FluentPad"
+                       Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
-            <TextBlock HorizontalAlignment="Left" Margin="125,0,0,0" TextWrapping="Wrap" Text="PREVIEW" VerticalAlignment="Center" Opacity="0.5" Grid.Column="3" FontSize="12"/>
         </Grid>
 
         <StackPanel x:Name="MenuStack"
@@ -1761,7 +1760,7 @@
                 <RichEditBox x:Name="Editor"
                              Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,-141">
                     <RichEditBox.RenderTransform>
-                        <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}"/>
+                        <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}" CenterX="{Binding ElementName=EditorGrid, Path=Width, Converter={StaticResource HalfValueConverter}}" CenterY="{Binding ElementName=Editor, Path=Height, Converter={StaticResource HalfValueConverter}}"/>
                     </RichEditBox.RenderTransform>
                     <RichEditBox.ContextFlyout>
                         <MenuFlyout>

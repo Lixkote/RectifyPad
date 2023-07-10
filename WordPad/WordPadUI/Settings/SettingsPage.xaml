@@ -75,7 +75,7 @@
                    Grid.Column="1" />
                         <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - FluentPad"
+                       Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
@@ -118,7 +118,7 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" HorizontalAlignment="Center" />
+                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" VerticalAlignment="Center" />
                                     <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
                                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Word wrap" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
@@ -141,7 +141,7 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon2" Glyph=""  HorizontalAlignment="Center" />
+                                    <FontIcon x:Name="AppearanceIcon2" Glyph="" VerticalAlignment="Center" />
                                     <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
                                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Measurement units" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select the measurement units for the ruler and page setup." TextWrapping="WrapWholeWords" />
@@ -182,19 +182,16 @@
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" Text="About this app"/>
-                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="FluentPad 11.2110.13.0"/>
-                        <TextBlock x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2023 Lixkote. All rights reserved."/>
+                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2110.13.0"/>
+                        <TextBlock x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2023 Rectify11 Team. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad" >
                             <TextBlock Text="Source Code"/>
                         </HyperlinkButton>
-                        <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad/blob/main/LICENSE" >
-                            <TextBlock Text="MIT License"/>
-                        </HyperlinkButton>
 
 
-                        <Button Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="Button_Click" />
+                        <Button x:Name="feedback" Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="feedback_Click" />
                         <TextBlock x:Name="GithubText" Margin="0,15,0,24">
-                            To learn how you can contribute to FluentPad,  <LineBreak/>check out the project on its <Hyperlink NavigateUri="https://github.com/Lixkote/WritePad" TextDecorations="None"> GitHub</Hyperlink> page
+                            To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/MishaProductions/Rectify11Installer" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
                     </StackPanel>
                     <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-55,23,0,0" VerticalAlignment="Top" Height="35" Width="44" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="16"/>
