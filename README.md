@@ -3,7 +3,10 @@ The RectifyPad app is a modern Windows Wordpad alternative written in C#. It is 
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
-  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/previewR11.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/lightpreviewapp.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/darkpreviewapp.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/lightpreviewsettings.png)
+  ![Wordpad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/darkpreviewsettings.png)
 
 ## Features
 - Standard WordPad functionality which offers basic text operations and inserting various multimedia items.
