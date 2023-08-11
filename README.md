@@ -1,5 +1,5 @@
 # RectifyPad
-The RectifyPad app is a modern Windows app written in C#. It is free and open source.
+The RectifyPad app is a modern Windows Wordpad alternative written in C#. It is free and open source.
 The app provides simmilar functionality, as standard Windows WordPad program.
 
 
@@ -10,12 +10,12 @@ The app provides simmilar functionality, as standard Windows WordPad program.
 - Modern Windows 11-fitting look and feel based on new paint redesign.
 
 ## Many Thanks to:
- - [Jd]([https://github.com/CalcuIator](https://github.com/Jd-1206)) for initial concept and visual recreation.
- - [dlphin] for help with modern wordpad icon.
+ - [Jd](https://github.com/Jd-1206) for the initial concept and visual recreation of the lost application.
+ - [WinEX](https://github.com/WinExperiments) from the Rectify11 Team for inspirating me with icon design, and help.
 
 ## Getting started
 Prerequisites:
-- Your computer must be running Windows 11, build 22000 or newer.
+- Your computer must be running Windows 11 21H1, build 22000 or newer(Windows 10 support will be coming soon).
 - Install the latest version of [Visual Studio](https://developer.microsoft.com/en-us/windows/downloads) (the free community edition is sufficient).
   - Install the "Universal Windows Platform Development" workload.
   - Install the optional "C++ Universal Windows Platform tools" component.
