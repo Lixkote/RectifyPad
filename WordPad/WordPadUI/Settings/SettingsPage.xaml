@@ -108,9 +108,11 @@
                                 <RadioButton x:Name="SysRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System setting" Tag="Default" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Words" />
                         <muxc:Expander
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"
+                        VerticalAlignment="Top"
                             IsExpanded="True" HorizontalAlignment="Stretch">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
@@ -118,8 +120,8 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" VerticalAlignment="Center" />
-                                    <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
+                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
                                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Word wrap" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
                                     </StackPanel>
@@ -131,9 +133,11 @@
                                 <RadioButton x:Name="SysRadio1" Content="Wrap according to the ruler" />
                             </muxc:RadioButtons>
                         </muxc:Expander>
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" />
                         <muxc:Expander
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
+                        VerticalAlignment="Top"
                             IsExpanded="True" HorizontalAlignment="Stretch">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
@@ -141,8 +145,8 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon2" Glyph="" VerticalAlignment="Center" />
-                                    <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
+                                    <FontIcon x:Name="AppearanceIcon2" Glyph="" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
                                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Measurement units" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select the measurement units for the ruler and page setup." TextWrapping="WrapWholeWords" />
                                     </StackPanel>

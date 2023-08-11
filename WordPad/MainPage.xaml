@@ -1455,7 +1455,7 @@
                                             <Setter Property="MinHeight" Value="0"/>
                                             <Setter Property="Margin" Value="6"/>
                                             <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
-                                            <Setter Property="Background" Value="White" />
+                                            <Setter Property="Background" Value="Transparent" />
                                         </Style>
                                     </Grid.Resources>
                                     <Grid.RowDefinitions>
@@ -1471,37 +1471,37 @@
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/none.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=none}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/dot.bmp" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=dot}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/number.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=number}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/abc.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=abc}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/ABCB.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=ABCB}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/iii.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=iii}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                     <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
                                         <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                            <Image Source="/Assets/listnumbersimages/IIII.png" Width="50" Height="50" />
+                                            <Image Source="{ThemeResource ResourceKey=IIII}" Width="50" Height="50" />
                                         </Border>
                                     </Button>
                                 </Grid>
@@ -1753,7 +1753,7 @@
             <Grid x:Name="EditorGrid" Background="White"
                   Width="816"
                   Margin="0,40,0,0"
-                  RequestedTheme="Light" BorderBrush="#e8e8e8" BorderThickness="1,1,1,0" HorizontalAlignment="Center">
+                  BorderBrush="#e8e8e8" BorderThickness="1,1,1,0" HorizontalAlignment="Center">
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="{x:Bind ZoomSlider.Value, Mode=OneWay}" ScaleY="{x:Bind ZoomSlider.Value, Mode=OneWay}" CenterX="{Binding ElementName=EditorGrid, Path=Width, Converter={StaticResource HalfValueConverter}}" CenterY="{Binding ElementName=EditorGrid, Path=Height, Converter={StaticResource HalfValueConverter}}"/>
                 </Grid.RenderTransform>
@@ -1818,7 +1818,7 @@
                                                     <Image Source="/Assets/listnumbersimages/none.png" Width="60" Height="60" />
                                                 </Button>
                                                 <Button x:Name="DottedNumeral2" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
-                                                    <Image Source="/Assets/listnumbersimages/dot.bmp" Width="60" Height="60" />
+                                                    <Image Source="/Assets/listnumbersimages/dot.png" Width="60" Height="60" />
                                                 </Button>
                                                 <Button x:Name="NumberNumeral2" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
                                                     <Image Source="/Assets/listnumbersimages/number.png" Width="60" Height="60" />

@@ -167,8 +167,14 @@
     <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\listnumbersimages\abc.png" />
     <Content Include="Assets\listnumbersimages\ABCB.png" />
-    <Content Include="Assets\listnumbersimages\dot.bmp" />
-    <Content Include="Assets\listnumbersimages\iii.bmp" />
+    <Content Include="Assets\listnumbersimages\Dark\abc.png" />
+    <Content Include="Assets\listnumbersimages\Dark\ABCB.png" />
+    <Content Include="Assets\listnumbersimages\Dark\dot.png" />
+    <Content Include="Assets\listnumbersimages\Dark\iii.png" />
+    <Content Include="Assets\listnumbersimages\Dark\IIII.png" />
+    <Content Include="Assets\listnumbersimages\Dark\none.png" />
+    <Content Include="Assets\listnumbersimages\Dark\number.png" />
+    <Content Include="Assets\listnumbersimages\dot.png" />
     <Content Include="Assets\listnumbersimages\iii.png" />
     <Content Include="Assets\listnumbersimages\IIII.png" />
     <Content Include="Assets\listnumbersimages\none.png" />
