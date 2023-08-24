@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="WordPad.WordPadUI.Ribbon.InsertToolbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WordPad.WordPadUI.Ribbon"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="120"
+    d:DesignWidth="137">
+
+    <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
+      BorderThickness="0,0,0,0"
+      Padding="12"
+      Grid.Column="3">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72" />
+            <RowDefinition Height="24" />
+        </Grid.RowDefinitions>
+
+        <Grid ColumnSpacing="8">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click"
+                          Grid.Column="0"
+                          >
+                <muxc:SplitButton.Flyout>
+                    <MenuFlyout Placement="Bottom">
+                        <MenuFlyoutItem x:Name="MenuPicture" Text="Picture">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xe91b;" FontSize="22" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="MenuChangePicture" Text="Change picture">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xf0e3;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem x:Name="MenuResizePicture" Text="Resize picture">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xf0e3;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </muxc:SplitButton.Flyout>
+                <FontIcon FontSize="16" Glyph="&#xe8b9;"/>
+
+            </muxc:SplitButton>
+
+            <Button x:Name="InsertDateAndTimeButton" Style="{StaticResource PaintUIButtonStyle}"
+                     Content=""
+                     Width="32"
+                     MinWidth="32"
+                     MaxWidth="32"
+                     Height="32"
+                     Grid.Column="1"
+                     Grid.Row="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="InsertDateAndTimeButton_Click"
+                     />
+
+            <Button x:Name="InsertObjectButton" Style="{StaticResource PaintUIButtonStyle}"
+                     Width="32"
+                     MinWidth="32"
+                     MaxWidth="32"
+                     Height="32"
+                     Grid.Column="2"
+                     Grid.Row="1"
+                     Content="" VerticalAlignment="Top" Margin="0,10,0,0" Click="InsertObjectButton_Click">
+
+            </Button>
+
+
+        </Grid>
+
+        <TextBlock Text="Insert"
+               Style="{StaticResource ColumnDescriptionTextblockStyle}"
+               Grid.Row="1" VerticalAlignment="Bottom" />
+
+    </Grid>
+</UserControl>

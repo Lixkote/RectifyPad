@@ -193,19 +193,6 @@ namespace RectifyPad
             InitializeComponent();
             Window.Current.SetTitleBar(AppTitleBar);
 
-            
-
-            if (localSettings.Values["FontFamily"] is string fontSetting)
-            {
-                FontsCombo.SelectedItem = fontSetting;
-                Editor.FontFamily = new FontFamily(fontSetting);
-            }
-            else
-            {
-                FontsCombo.SelectedItem = "Calibri";
-                Editor.FontFamily = new FontFamily("Calibri");
-            }
-
             string textWrapping = localSettings.Values["TextWrapping"] as string;
             if (textWrapping == "enabled")
             {
@@ -218,6 +205,21 @@ namespace RectifyPad
             ribbongrid.DataContext = this;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             PopulateRecents();
+            ConnectRibbonToolbars();
+        }
+
+        private void ConnectRibbonToolbars()
+        {
+            editribbontoolbar.Editor = Editor;
+            insertribbontoolbar.Editor = Editor;
+            pararibbontoolbar.Editor = Editor;
+            fontribbontoolbar.Editor = Editor;
+
+            //collapsed variants also need to be 'connected'
+            editribbontoolbarcol.Editor = Editor;
+            insertribbontoolbarcol.Editor = Editor;
+            pararibbontoolbarcol.Editor = Editor;
+            fontribbontoolbarcol.Editor = Editor;
         }
 
         private async void PopulateRecents()
@@ -358,16 +360,6 @@ namespace RectifyPad
             }
         }
 
-        private void BulletButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedBullet = (Button)sender;
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
-
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
         private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
         {
             if (sender.IsChecked)
@@ -416,30 +408,6 @@ namespace RectifyPad
 
         }
 
-        private void FindButton_Click(object sender, RoutedEventArgs e)
-        {
-            FindBoxHighlightMatches();
-        }
-
-        private void FindBoxHighlightMatches()
-        {
-            FindBoxRemoveHighlights();
-
-            Color highlightBackgroundColor = (Color)Application.Current.Resources["SystemColorHighlightColor"];
-            Color highlightForegroundColor = (Color)Application.Current.Resources["SystemColorHighlightTextColor"];
-
-            string textToFind = findBox.Text;
-            if (textToFind != null)
-            {
-                ITextRange searchRange = Editor.Document.GetRange(0, 0);
-                while (searchRange.FindText(textToFind, TextConstants.MaxUnitCount, FindOptions.None) > 0)
-                {
-                    searchRange.CharacterFormat.BackgroundColor = highlightBackgroundColor;
-                    searchRange.CharacterFormat.ForegroundColor = highlightForegroundColor;
-                }
-            }
-        }
-
         private void SubscriptButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Subscript);
@@ -453,6 +421,50 @@ namespace RectifyPad
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Strikethrough);
         }
+
+
+        private void NoneNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void DottedNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void NumberNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Arabic;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void LetterSmallNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseEnglishLetter;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void LetterBigNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseEnglishLetter;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void SmalliNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseRoman;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        private void BigINumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseRoman;
+            Editor.Focus(FocusState.Keyboard);
+        }
+
 
         private void AlignRightButton_Click(object sender, RoutedEventArgs e)
         {
@@ -553,16 +565,6 @@ namespace RectifyPad
         {
 
         }
-
-        private void ReplaceSelected_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Replace(false, replaceBox.Text);
-        }
-
-        private void ReplaceAll_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Replace(true, find: findBox.Text, replace: replaceBox.Text);
-        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (Editor != null)
@@ -646,49 +648,9 @@ namespace RectifyPad
             object value = Editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Toggle;
         }
 
-        private void ColorButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Extract the color of the button that was clicked.
-            Button clickedColor = (Button)sender;
-            var borderone = (Windows.UI.Xaml.Controls.Border)clickedColor.Content;
-            var bordertwo = (Windows.UI.Xaml.Controls.Border)borderone.Child;
-            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)bordertwo.Child;
-            var color = (rectangle.Fill as SolidColorBrush).Color;
-            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
-            FontColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
-
-            // SplitButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void BackColorButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Extract the color of the button that was clicked.
-            Button clickedColor = (Button)sender;
-            var borderone = (Windows.UI.Xaml.Controls.Border)clickedColor.Content;
-            var bordertwo = (Windows.UI.Xaml.Controls.Border)borderone.Child;
-            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)bordertwo.Child;
-            var color = (rectangle.Fill as SolidColorBrush).Color;
-            Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
-            BackTextColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
-
-            // SplitButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Editor.ChangeFontSize((float)2);
-        }
-
-        private void ConfirmColor_Click(object sender, RoutedEventArgs e)
-        {
-            // Confirm color picker choice and apply color to text
-            Color color = myColorPicker.Color;
-            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
-
-            // Hide flyout
-            colorPickerButton.Flyout.Hide();
         }
 
         private void SaveAsButton_Click(object sender, RoutedEventArgs e)
@@ -834,13 +796,6 @@ namespace RectifyPad
 
         private void CancelColor_Click(object sender, RoutedEventArgs e)
         {
-            // Cancel flyout
-            colorPickerButton.Flyout.Hide();
-        }
-
-        private void FontsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Editor.Document.Selection.CharacterFormat.Name = FontsCombo.SelectedValue.ToString();
         }
 
         private void fontbackgroundcolorsplitbutton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
@@ -894,7 +849,7 @@ namespace RectifyPad
                 TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightTextBox");
                 TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("FirstLineTextBox");
                 ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingComboBox");
-
+                
                 // Parse the values and set the properties of the RichEditBox
                 double left = double.Parse(leftTextBox.Text);
                 double right = double.Parse(rightTextBox.Text);
@@ -909,16 +864,7 @@ namespace RectifyPad
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            BoldButton.IsChecked = Editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
-            ItalicButton.IsChecked = Editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On;
-            UnderlineButton.IsChecked = Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.None &&
-                                        Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.Undefined;
-            StrikethroughButton.IsChecked = Editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
-            SubscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Subscript == FormatEffect.On;
-            SuperscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Superscript == FormatEffect.On;
-            AlignLeftButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
-            AlignCenterButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
-            AlignRightButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
+            
             if (Editor.Document.Selection.CharacterFormat.Size > 0)
             {
                 //font size is negative when selection contains multiple font sizes
@@ -926,7 +872,6 @@ namespace RectifyPad
             }
             //prevent accidental font changes when selection contains multiple styles
             updateFontFormat = false;
-            FontsCombo.SelectedItem = Editor.Document.Selection.CharacterFormat.Name;
             updateFontFormat = true;
             // Get a reference to the RichEditBox control
             RichEditBox richEditBox = Editor;
@@ -1163,18 +1108,6 @@ namespace RectifyPad
 
             // Show the ContentDialog
             await dialog.ShowAsync();
-        }
-
-        private void fontSizeComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            {
-                fontSizeComboBox.SelectedIndex = 2;
-
-                if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
-                {
-                    fontSizeComboBox.TextSubmitted += FontSizeCombo_TextSubmitted;
-                }
-            }
         }
 
         private PrintHelper _printHelper;
@@ -1824,62 +1757,6 @@ namespace RectifyPad
             Editor.Document.GetText(TextGetOptions.None, out value);
             emailMessage.Body = value;
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
-        }
-
-        private void NoneNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
-            myListButton.IsChecked = false;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void DottedNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void NumberNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Arabic;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void LetterSmallNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseEnglishLetter;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void LetterBigNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseEnglishLetter;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void SmalliNumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.LowercaseRoman;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
-        }
-
-        private void BigINumeral_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.UppercaseRoman;
-            myListButton.IsChecked = true;
-            myListButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
         }
 
         private void AlignJustifyButton_Click(object sender, RoutedEventArgs e)
