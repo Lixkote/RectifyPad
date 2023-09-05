@@ -18,9 +18,8 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>9D88615D0BCF170A26C4E5AEE3CEF6D391E5D48D</PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>
-    </PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>9A4198FC98938B48A6646523887FE90511072A0E</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>WordPad_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
@@ -359,7 +358,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </PRIResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="WordPad_TemporaryKey.pfx" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
