@@ -135,7 +135,7 @@
                      Grid.Row="1"
                      Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="TextSuperscriptButton_Click" FontFamily="WordPad Fluent Icons">
             </ToggleButton>
-            <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font"  SelectionChanged="FontsComboBox_SelectionChanged" Margin="0,0,40,0">
+            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font"  SelectionChanged="FontsComboBox_SelectionChanged" Margin="0,0,40,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
@@ -143,25 +143,8 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <ComboBox x:Name="FontSizesComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
-                   Margin="43,0,106,0" TextSubmitted="FontSizesComboBox_TextSubmitted" ItemsSource="{Binding FontSizes}" Loaded="FontSizesComboBox_Loaded" SelectionChanged="FontSizesComboBox_SelectionChanged">
-                <ComboBoxItem>8</ComboBoxItem>
-                <ComboBoxItem>9</ComboBoxItem>
-                <ComboBoxItem>10</ComboBoxItem>
-                <ComboBoxItem>11</ComboBoxItem>
-                <ComboBoxItem>12</ComboBoxItem>
-                <ComboBoxItem>14</ComboBoxItem>
-                <ComboBoxItem>16</ComboBoxItem>
-                <ComboBoxItem>18</ComboBoxItem>
-                <ComboBoxItem>20</ComboBoxItem>
-                <ComboBoxItem>22</ComboBoxItem>
-                <ComboBoxItem>24</ComboBoxItem>
-                <ComboBoxItem>26</ComboBoxItem>
-                <ComboBoxItem>28</ComboBoxItem>
-                <ComboBoxItem>36</ComboBoxItem>
-                <ComboBoxItem>48</ComboBoxItem>
-                <ComboBoxItem>72</ComboBoxItem>
-            </ComboBox>
+            <ComboBox x:Name="FontSizesComboBox" SelectedIndex="5" ItemsSource="{x:Bind FontSizes, Mode=OneWay}" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
+                   Margin="43,0,106,0" TextSubmitted="FontSizesComboBox_TextSubmitted" Loaded="FontSizesComboBox_Loaded" SelectionChanged="FontSizesComboBox_SelectionChanged"/>
             <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
                 <muxc:SplitButton.Content>
                     <Grid>

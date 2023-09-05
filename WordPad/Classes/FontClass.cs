@@ -4,11 +4,11 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace WordPad.ViewModels
+namespace WordPad.Classes
 {
-    public class FontViewModel
+    public class FontClass
     {
-        public FontViewModel() { }
+        public FontClass() { }
 
         public List<string> Fonts
         {

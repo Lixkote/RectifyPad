@@ -130,19 +130,22 @@ namespace WordPad.WordPadUI.Ribbon
                     {
                         bitmapImage.SetSource(stream);
                     }
-
-                    // Insert the image into the RichEditBox
-                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
+                    try
                     {
-                        IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
-                        using (var imageStream = await imageStreamRef.OpenReadAsync())
+                        // Insert the image into the RichEditBox
+                        using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
                         {
-                            Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
+                            IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
+                            using (var imageStream = await imageStreamRef.OpenReadAsync())
+                            {
+                                Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
+                            }
                         }
-                    }
 
-                    // Delete the temporary file
-                    await tempFile.DeleteAsync();
+                        // Delete the temporary file
+                        await tempFile.DeleteAsync();
+                    }
+                    catch { }
                 }
                 // Insert a table into the RichEditBox
                 else if (selectedOption == "Insert Table")

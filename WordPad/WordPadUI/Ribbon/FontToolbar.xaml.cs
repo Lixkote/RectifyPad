@@ -96,25 +96,25 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void FontSizesComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            {
-                FontsComboBox.SelectedIndex = 2;
-
                 if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
                 {
                     FontSizesComboBox.TextSubmitted += FontSizesComboBox_TextSubmitted;
                 }
-            }
         }
 
         private void FontSizesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ComboBox comboBox)
+            try
             {
-                if (comboBox.SelectedItem is double selectedValue)
+                if (sender is ComboBox comboBox)
                 {
-                    Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
+                    if (comboBox.SelectedItem is double selectedValue)
+                    {
+                        Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
+                    }
                 }
             }
+            catch { }
         }
 
         private void FontsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

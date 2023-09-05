@@ -52,6 +52,8 @@ using WordPad.WordPadUI.Settings;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Data;
+using FanKit.Transformers;
+using Microsoft.Graphics.Canvas.Effects;
 
 
 
@@ -206,6 +208,14 @@ namespace RectifyPad
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             PopulateRecents();
             ConnectRibbonToolbars();
+
+            this.CanvasTransformer.ReloadMatrix();
+            this.CanvasControl.Invalidate();//Invalidate
+            this.CanvasControl.Draw += (sender, args) =>
+            {
+                args.DrawingSession.DrawRuler(this.CanvasTransformer);
+            };
+
         }
 
         private void ConnectRibbonToolbars()
@@ -696,10 +706,10 @@ namespace RectifyPad
                 savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
                 // Dropdown of file types the user can save the file as
-                savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
-                savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
-                savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
+                savePicker.FileTypeChoices.Add("Formatted Document  .rtf", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("Text Document  .txt", new List<string>() { ".txt" });
+              //  savePicker.FileTypeChoices.Add("OpenDocument Text   .odt", new List<string>() { ".odt" });
+                savePicker.FileTypeChoices.Add("Office Open XML Document   .docx", new List<string>() { ".docx" });
 
                 // Default file name if the user does not type one in or select a file to replace
                 savePicker.SuggestedFileName = "New Document";
@@ -714,19 +724,26 @@ namespace RectifyPad
                     // write to file
                     using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
                         await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
-                        switch (file.Name.EndsWith(".txt"))
+                        switch (file.FileType)
                         {
-                            case false:
+                            case ".rtf":
                                 // RTF file, format for it
                                 {
                                     Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
                                     randAccStream.Dispose();
                                 }
                                 break;
-                            case true:
+                            case ".txt":
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
                                     Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
+                                    randAccStream.Dispose();
+                                }
+                                break;
+                            case ".docx":
+                                // TXT File, disable RTF formatting so that this is plain text
+                                {
+                                    
                                     randAccStream.Dispose();
                                 }
                                 break;
@@ -1809,6 +1826,7 @@ namespace RectifyPad
 
             // Start the animation
             storyboard.Begin();
+
         }
 
         private void AnimateZoomSecond(double fromValue, double toValue)

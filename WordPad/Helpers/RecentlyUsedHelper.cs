@@ -11,7 +11,7 @@ public static class RecentlyUsedHelper
     private const string MRU_LIST_TOKEN = "mruListToken";
     private const int MAX_MRU_ENTRIES = 5;
 
-    public static async Task<List<RecentlyUsedViewModel>> GetRecentlyUsedItems()
+    public static async Task<List<RecentlyUsedClass>> GetRecentlyUsedItems()
     {
         var mru = StorageApplicationPermissions.MostRecentlyUsedList;
         var mruEntries = await Task.WhenAll(mru.Entries.Select(async entry =>
@@ -19,7 +19,7 @@ public static class RecentlyUsedHelper
             try
             {
                 var file = await mru.GetFileAsync(entry.Token);
-                return new RecentlyUsedViewModel { Name = file.Name, Path = file.Path, OriginalFile = file, Token = entry.Token };
+                return new RecentlyUsedClass { Name = file.Name, Path = file.Path, OriginalFile = file, Token = entry.Token };
             }
             catch (Exception)
             {

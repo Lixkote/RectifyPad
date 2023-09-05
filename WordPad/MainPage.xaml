@@ -6,13 +6,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-      xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" xmlns:Custom="using:WordPad.WordPadUI.Ribbon" x:Class="RectifyPad.MainPage"
+      xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" xmlns:Custom="using:WordPad.WordPadUI.Ribbon" xmlns:transformers="using:FanKit.Transformers" xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml" x:Class="RectifyPad.MainPage"
       mc:Ignorable="d"
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       >
 
 
     <Page.Resources>
+        <!--CanvasOperator-->
+        <transformers:CanvasOperator x:Name="CanvasOperator" DestinationControl="{Binding ElementName=CanvasControl}"/>
+        <!--CanvasTransformer-->
+        <transformers:CanvasTransformer x:Name="CanvasTransformer"/>
+
+        
         <DataTemplate x:Key="ComboBoxItemTemplate">
             <!-- Your template here -->
         </DataTemplate>
@@ -245,7 +251,7 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - RectifyPad"
+                       Text="Document - RectifyPad (PREVIEW)"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
@@ -827,6 +833,8 @@ VerticalAlignment="Top"
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" ScaleY="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" CenterX="{Binding Width, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}" CenterY="{Binding Height, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}"/>
                 </Grid.RenderTransform>
+
+                <canvas:CanvasControl x:Name="CanvasControl" Width="816" Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}"/>
                 <RichEditBox x:Name="Editor"
                              Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,-141" x:FieldModifier="public">
                     <RichEditBox.RenderTransform>
@@ -916,8 +924,8 @@ VerticalAlignment="Top"
             </Grid>
             <Border
                 BackgroundSizing="OuterBorderEdge"
-                Height="32"
-                Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}" VerticalAlignment="Top" Margin="0,8,0,0">
+                Height="32" Visibility="Collapsed"
+                 VerticalAlignment="Top" Margin="0,8,0,0">
                 <Grid Margin="0,-8,0,4">
                     <controls:RangeSelector x:Name="RulerSlider"
                     Minimum="10"
