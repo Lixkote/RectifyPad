@@ -40,7 +40,7 @@
         DisplayName="RectifyPad"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="RectifyPad is a lightweight word processor that supports the RTF format. It is more advanced than windows notepad, and less advanced than word. It is a more modern alternative to Windows Wordpad. In the future, the application will also be available in the Rectify11 project as Extra"
+        Description="RectifyPad is a word processor application that supports rich text format (RTF). It is designed to be a modern and consistent alternative to Wordpad, which was discontinued by Microsoft. Its a part of Rectify11, a software that enhances the Windows operating system. Developed by lixkote as a hobby project."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
 		<uap:SplashScreen Image="Assets\HolderSplash.png" />
@@ -64,7 +64,7 @@
 			<uap:Extension Category="windows.fileTypeAssociation">
 				<uap:FileTypeAssociation Name="txt">
 					<!--remember here to update the txt icon here to the app's main icon, as it is wordpad-->
-					<uap:Logo>assets\txt.png</uap:Logo>
+					<uap:Logo>Assets\txt.png</uap:Logo>
 					<uap:SupportedFileTypes>
 						<uap:FileType>.txt</uap:FileType>
 						<uap:FileType>.odt</uap:FileType>

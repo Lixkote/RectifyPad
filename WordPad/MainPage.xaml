@@ -245,13 +245,13 @@
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Image Source="/Assets/StoreLogo.png"
+            <Image Source="/Assets/rpad16.png"
                    Width="16"
                    Height="16"
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - RectifyPad (PREVIEW)"
+                       Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>

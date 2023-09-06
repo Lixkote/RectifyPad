@@ -135,7 +135,7 @@
                      Grid.Row="1"
                      Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="TextSuperscriptButton_Click" FontFamily="WordPad Fluent Icons">
             </ToggleButton>
-            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font"  SelectionChanged="FontsComboBox_SelectionChanged" Margin="0,0,40,0">
+            <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font"  Margin="0,0,40,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
