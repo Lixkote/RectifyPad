@@ -1129,7 +1129,7 @@ namespace RectifyPad
 
 
             _printHelper = new PrintHelper(EditorContentHost);
-            var printHelperOptions = new PrintHelperOptions(false);
+            var printHelperOptions = new PrintHelperOptions(true);
             printHelperOptions.Orientation = PrintOrientation.Default;
             await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
         }

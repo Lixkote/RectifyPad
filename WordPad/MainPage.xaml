@@ -822,16 +822,20 @@ VerticalAlignment="Top"
               Grid.Row="4"
               SizeChanged="EditorContentHost_SizeChanged">
 
-            <Grid x:Name="EditorGrid" Background="White"
+            <Grid x:Name="EditorGrid" 
                   Width="816"
                   Height="1154"
                   Margin="0,40,0,0"
-                  BorderBrush="#e8e8e8" BorderThickness="1,1,1,0" HorizontalAlignment="Center">
+                  RequestedTheme="Light"
+                  BorderBrush="#e8e8e8"
+                  Background="White"
+                  BorderThickness="1,1,1,1"
+                  HorizontalAlignment="Center">
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" ScaleY="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" CenterX="{Binding Width, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}" CenterY="{Binding Height, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}"/>
                 </Grid.RenderTransform>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,-5" x:FieldModifier="public">
+                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,0" x:FieldModifier="public">
                     <RichEditBox.ContextFlyout>
                         <MenuFlyout>
                             <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">
@@ -915,7 +919,7 @@ VerticalAlignment="Top"
                 </RichEditBox>
             </Grid>
             <Border BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Top" Height="36">
-                <my:TextRuler HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <my:TextRuler HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}"/>
             </Border>
 
         </Grid>

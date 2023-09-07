@@ -36,7 +36,7 @@
                             <SolidColorBrush x:Key="RibbonColumnBorder"
                                              Color="#0F000000" />
                             <SolidColorBrush x:Key="EditorContentHost"
-                                             Color="#F8F8F8" />
+                                             Color="White" />
                             <SolidColorBrush x:Key="CButtonBackgroundPointerOver"
                                              Color="#11000000" />
                             <SolidColorBrush x:Key="CButtonBorderPointerOver"
@@ -55,7 +55,7 @@
                                 <Setter Property="Foreground"
                                 Value="#E4000000" />
                                 <Setter Property="Background"
-                                Value="Transparent" />
+                                Value="White" />
                                 <Setter Property="ContentLinkForegroundColor"
                                 Value="{ThemeResource ContentLinkForegroundColor}" />
                                 <Setter Property="ContentLinkBackgroundColor"
@@ -237,7 +237,7 @@
                             <SolidColorBrush x:Key="RibbonColumnBorder"
                                              Color="#15FFFFFF" />
                             <SolidColorBrush x:Key="EditorContentHost"
-                                             Color="#303030" />
+                                             Color="White" />
                             <SolidColorBrush x:Key="CButtonBackgroundPointerOver"
                                              Color="#10FFFFFF" />
                             <SolidColorBrush x:Key="CButtonBorderPointerOver"
