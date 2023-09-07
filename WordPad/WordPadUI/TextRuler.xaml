@@ -1,14 +1,14 @@
-﻿<Page
+﻿<UserControl
     x:Class="WordPad.WordPadUI.TextRuler"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WordPad.WordPadUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d" Width="812"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml" Height="36">
 
-    <Grid>
-
+    <Grid x:Name="hargrid" Margin="0,0,0,0" Width="812">
+        <canvas:CanvasControl CornerRadius="2" x:Name="canvas" Height="20" VerticalAlignment="Center"></canvas:CanvasControl>
     </Grid>
-</Page>
+</UserControl>

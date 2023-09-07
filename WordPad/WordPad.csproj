@@ -170,7 +170,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\HolderSplash.png" />
     <Content Include="Assets\HolderSplash.scale-100.png" />
     <Content Include="Assets\HolderSplash.scale-125.png" />
     <Content Include="Assets\HolderSplash.scale-150.png" />
@@ -195,7 +194,10 @@
     <Content Include="Assets\listnumbersimages\IIII.png" />
     <Content Include="Assets\listnumbersimages\none.png" />
     <Content Include="Assets\listnumbersimages\number.png" />
+    <Content Include="Assets\l_indent_pos_lower.png" />
+    <Content Include="Assets\l_indet_pos_upper.png" />
     <Content Include="Assets\rpad16.png" />
+    <Content Include="Assets\r_indent_pos.png" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -244,6 +246,7 @@
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\tab_pos.png" />
     <Content Include="Assets\theme-dark\Copy.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

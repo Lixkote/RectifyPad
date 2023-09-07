@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:my="using:WordPad.WordPadUI"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals" xmlns:Custom="using:WordPad.WordPadUI.Ribbon" xmlns:transformers="using:FanKit.Transformers" xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml" x:Class="RectifyPad.MainPage"
       mc:Ignorable="d"
@@ -922,17 +923,8 @@ VerticalAlignment="Top"
                     </RichEditBox.ContextFlyout>
                 </RichEditBox>
             </Grid>
-            <Border
-                BackgroundSizing="OuterBorderEdge"
-                Height="32" Visibility="Collapsed"
-                 VerticalAlignment="Top" Margin="0,8,0,0">
-                <Grid Margin="0,-8,0,4">
-                    <controls:RangeSelector x:Name="RulerSlider"
-                    Minimum="10"
-                    Maximum="100"
-                    StepFrequency="5" Width="{Binding ActualWidth, ElementName=Editor, Mode=OneWay}"  VerticalAlignment="Stretch" />
-
-                </Grid>
+            <Border BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Top" Height="36">
+                    <my:TextRuler HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Border>
 
         </Grid>
