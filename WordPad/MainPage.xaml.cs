@@ -209,13 +209,6 @@ namespace RectifyPad
             PopulateRecents();
             ConnectRibbonToolbars();
 
-            this.CanvasTransformer.ReloadMatrix();
-            this.CanvasControl.Invalidate();//Invalidate
-            this.CanvasControl.Draw += (sender, args) =>
-            {
-                args.DrawingSession.DrawRuler(this.CanvasTransformer);
-            };
-
         }
 
         private void ConnectRibbonToolbars()
@@ -536,7 +529,6 @@ namespace RectifyPad
         private void ZoomSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
             // Animate the zoom factor from the old value to the new value
-            AnimateZoom(e.OldValue, e.NewValue);
             AnimateZoomSecond(e.OldValue, e.NewValue);
         }
 
@@ -1792,41 +1784,6 @@ namespace RectifyPad
         {
             // Increase the zoom by 10%, but don't exceed the maximum value of the slider
             ZoomSlider.Value = Math.Min(ZoomSlider.Value + 0.1, ZoomSlider.Maximum);
-        }
-
-        private void AnimateZoom(double fromValue, double toValue)
-        {
-            // Get the scale transform of the rich edit box
-            var scaleTransform = Editor.RenderTransform as ScaleTransform;
-
-            // Create a storyboard to animate the scale x and y properties
-            var storyboard = new Storyboard();
-            var animationX = new DoubleAnimation()
-            {
-                From = fromValue,
-                To = toValue,
-                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
-            };
-            var animationY = new DoubleAnimation()
-            {
-                From = fromValue,
-                To = toValue,
-                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
-            };
-            storyboard.Children.Add(animationX);
-            storyboard.Children.Add(animationY);
-
-            // Set the target of the animation to be the scale x and y properties of the scale transform
-            Storyboard.SetTarget(animationX, scaleTransform);
-            Storyboard.SetTargetProperty(animationX, "ScaleX");
-            Storyboard.SetTarget(animationY, scaleTransform);
-            Storyboard.SetTargetProperty(animationY, "ScaleY");
-
-            // Start the animation
-            storyboard.Begin();
-
         }
 
         private void AnimateZoomSecond(double fromValue, double toValue)
