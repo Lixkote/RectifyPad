@@ -14,6 +14,7 @@ using Microsoft.Graphics.Canvas.Text;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace WordPad.WordPadUI
 {
@@ -28,6 +29,10 @@ namespace WordPad.WordPadUI
         private CanvasBitmap aa;
         private CanvasBitmap bb;
         private CanvasBitmap cc;
+        private CanvasBitmap dd;
+
+        private Point initialPointerPosition;
+        private Rect capturedMarginHandle;
 
         private int lMargin = 20, rMargin = 15, llIndent = 20, luIndent = 20, rIndent = 15;
         Color _strokeColor = Colors.Black;
@@ -36,7 +41,7 @@ namespace WordPad.WordPadUI
         bool mCaptured = false;
         bool noMargins = false;
         int capObject = -1, capTab = -1;
-        bool _tabsEnabled = false;
+        bool _tabsEnabled = true;
         float dotsPermm;
 
         internal enum ControlItems
@@ -84,6 +89,96 @@ namespace WordPad.WordPadUI
             dotsPermm = (float)(96.0 / 25.4); // Assuming 96 DPI
             canvas.Draw += CanvasControl_Draw;
 
+            canvas.PointerPressed += OnPointerPressed;
+            canvas.PointerReleased += OnPointerReleased;
+            canvas.PointerMoved += OnPointerMoved;
+
+        }
+
+        /// <summary>
+        /// Specifies left margin
+        /// </summary>
+        [Category("Margins")]
+        [Description("Gets or sets left margin. This value is in millimeters.")]
+        [DefaultValue(20)]
+        public int LeftMargin
+        {
+            get { return lMargin; }
+            set
+            {
+                if (noMargins != true)
+                {
+                    lMargin = value;
+                }
+                canvas.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Specifies right margin
+        /// </summary>
+        [Category("Margins")]
+        [Description("Gets or sets right margin. This value is in millimeters.")]
+        [DefaultValue(15)]
+        public int RightMargin
+        {
+            get { return rMargin; }
+            set
+            {
+                if (noMargins != true)
+                {
+                    rMargin = value;
+                }
+                canvas.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets indentation of the first line of the paragraph
+        /// </summary>
+        [Category("Indents")]
+        [Description("Gets or sets left hanging indent. This value is in millimeters.")]
+        [DefaultValue(20)]
+        public int LeftHangingIndent
+        {
+            get { return llIndent - 1; }
+            set
+            {
+                llIndent = value + 1;
+                canvas.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets indentation from the left of the base text of the paragraph
+        /// </summary>
+        [Category("Indents")]
+        [Description("Gets or sets left indent. This value is in millimeters.")]
+        [DefaultValue(20)]
+        public int LeftIndent
+        {
+            get { return luIndent - 1; }
+            set
+            {
+                luIndent = value + 1;
+                canvas.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets right indentation of the paragraph
+        /// </summary>
+        [Category("Indents")]
+        [Description("Gets or sets right indent. This value is in millimeters.")]
+        [DefaultValue(15)]
+        public int RightIndent
+        {
+            get { return rIndent - 1; }
+            set
+            {
+                rIndent = value + 1;
+                canvas.Invalidate();
+            }
         }
 
         private void DrawBackGround(CanvasDrawingSession drawingSession)
@@ -197,6 +292,9 @@ namespace WordPad.WordPadUI
 
                 Uri c = new Uri("ms-appx:///Assets/r_indent_pos.png");
                 cc = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), c);
+
+                Uri d = new Uri("ms-appx:///Assets/r_indent_pos.png");
+                dd = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), d);
             }
             catch (Exception ex)
             {
@@ -225,6 +323,7 @@ namespace WordPad.WordPadUI
                     drawingSession.DrawImage(aa, items[2]);
                     drawingSession.DrawImage(bb, items[3]);
                     drawingSession.DrawImage(cc, items[4]);
+                    canvas.Invalidate();
                 }
             }
             catch (Exception ex)
@@ -239,18 +338,13 @@ namespace WordPad.WordPadUI
 
         private async void DrawTabs(CanvasDrawingSession drawingSession)
         {
-            string tab_posUri = $"ms-appx:///Assets/tab_pos.png"; // Update this with the correct image path
-
-            // Load the image as a CanvasBitmap
-            CanvasBitmap tab_pos = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), new Uri(tab_posUri));
-
             if (!_tabsEnabled || tabs.Count == 0)
                 return;
 
             foreach (var tab in tabs)
             {
-                // Assuming 'tabs' is a collection of Rect objects where you want to draw the images
-                drawingSession.DrawImage(tab_pos, tab);
+                drawingSession.DrawImage(dd, tab);
+                canvas.Invalidate();
             }
         }
 
@@ -291,21 +385,23 @@ namespace WordPad.WordPadUI
         }
 
 
-        protected override void OnPointerPressed(PointerRoutedEventArgs e)
+        private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
             base.OnPointerPressed(e);
 
             mCaptured = false;
 
-            // Check if any item is clicked
-            for (int i = 0; i <= 6; i++)
+            // Check if any margin handle is clicked
+            for (int i = 0; i <= 1; i++)
             {
-                if (items[i].Contains(e.GetCurrentPoint(this).Position) && i != 3)
+                if (items[i].Contains(e.GetCurrentPoint(this).Position))
                 {
-                    if (noMargins && (i == 0 || i == 1))
+                    if (noMargins)
                         break;
 
                     capObject = i;
+                    capturedMarginHandle = items[i]; // Store the clicked margin handle
+                    initialPointerPosition = e.GetCurrentPoint(this).Position;
                     mCaptured = true;
                     break;
                 }
@@ -357,5 +453,159 @@ namespace WordPad.WordPadUI
 
         // ... (rest of the event handlers)
         #endregion
+
+        private void OnPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            if (!e.Handled)
+            {
+                if (e.Pointer.PointerDeviceType != Windows.Devices.Input.PointerDeviceType.Mouse)
+                    return;
+
+                if (!workArea.Contains(e.GetCurrentPoint(this).Position))
+                {
+                    if (mCaptured && capTab != -1 && _tabsEnabled)
+                    {
+                        try
+                        {
+                            float pos = (float)(tabs[capTab].X * dotsPermm);
+                            tabs.RemoveAt(capTab);
+                            TabRemoved?.Invoke(CreateTabArgs(pos));
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+                else
+                {
+                    if (!mCaptured && _tabsEnabled)
+                    {
+                        AddTab((float)e.GetCurrentPoint(this).Position.X);
+                    }
+                    else if (mCaptured && capTab != -1)
+                    {
+                        TabChanged?.Invoke(CreateTabArgs((float)e.GetCurrentPoint(this).Position.X));
+                    }
+                }
+
+                capTab = -1;
+                mCaptured = false;
+                capObject = -1;
+                canvas.Invalidate();
+            }
+        }
+
+        private void OnPointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            if (mCaptured && capObject != -1)
+            {
+                switch (capObject)
+                {
+                    case 0:
+                        if (noMargins)
+                            return;
+                        if (e.GetCurrentPoint(canvas).Position.X <= me.Width - rMargin * dotsPermm - 35f)
+                        {
+                            lMargin = (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm);
+                            if (lMargin < 1)
+                                lMargin = 1;
+                            LeftMarginChanging?.Invoke(lMargin);
+                            canvas.Invalidate();
+                        }
+                        break;
+
+                    case 1:
+                        if (noMargins)
+                            return;
+                        if (e.GetCurrentPoint(canvas).Position.X >= lMargin * dotsPermm + 35f)
+                        {
+                            rMargin = (int)((drawZone.Width / dotsPermm) - (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm));
+                            if (rMargin < 1)
+                                rMargin = 1;
+                            RightMarginChanging?.Invoke(rMargin);
+                            canvas.Invalidate();
+                        }
+                        break;
+
+                    case 2:
+                        if (e.GetCurrentPoint(canvas).Position.X <= me.Width - rIndent * dotsPermm - 35f)
+                        {
+                            luIndent = (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm);
+                            if (luIndent < 1)
+                                luIndent = 1;
+                            LeftIndentChanging?.Invoke(luIndent - 1);
+                            canvas.Invalidate();
+                        }
+                        break;
+
+                    case 4:
+                        if (e.GetCurrentPoint(canvas).Position.X >= Math.Max(llIndent, luIndent) * dotsPermm + 35f)
+                        {
+                            rIndent = (int)((me.Width / dotsPermm) - (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm));
+                            if (rIndent < 1)
+                                rIndent = 1;
+                            RightIndentChanging?.Invoke(rIndent - 1);
+                            canvas.Invalidate();
+                        }
+                        break;
+
+                    case 5:
+                        if (e.GetCurrentPoint(canvas).Position.X <= drawZone.Width - rIndent * dotsPermm - 35f)
+                        {
+                            llIndent = (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm);
+                            if (llIndent < 1)
+                                llIndent = 1;
+                            LeftHangingIndentChanging?.Invoke(llIndent - 1);
+                            canvas.Invalidate();
+                        }
+                        break;
+
+                    case 6:
+                        if (e.GetCurrentPoint(canvas).Position.X <= drawZone.Width - rIndent * dotsPermm - 35f)
+                        {
+                            luIndent = luIndent + (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm) - llIndent;
+                            llIndent = (int)(e.GetCurrentPoint(canvas).Position.X / dotsPermm);
+                            if (llIndent < 1)
+                                llIndent = 1;
+                            if (luIndent < 1)
+                                luIndent = 1;
+                            BothLeftIndentsChanged?.Invoke(luIndent - 1, llIndent - 1);
+                            canvas.Invalidate();
+                        }
+                        break;
+                }
+            }
+            else if (mCaptured && capTab != -1)
+            {
+                if (workArea.Contains(e.GetCurrentPoint(canvas).Position))
+                {
+                    tabs[capTab] = new Rect(e.GetCurrentPoint(canvas).Position.X, tabs[capTab].Y, tabs[capTab].Width, tabs[capTab].Height);
+                    canvas.Invalidate();
+                }
+            }
+            else
+            {
+                int i = 0;
+
+                for (i = 0; i <= 4; i++)
+                {
+                    if (items[i].Contains(e.GetCurrentPoint(canvas).Position))
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                            case 1:
+                                if (noMargins)
+                                    return;
+                                Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.SizeWestEast, 1);
+                                break;
+                        }
+                        break;
+                    }
+                    Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Arrow, 1);
+                }
+            }
+        }
+
     }
 }
