@@ -27,10 +27,18 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Images}}" Stretch="Fill" Margin="0,0,0,10" />
-            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Stretch" Height="43" VerticalAlignment="Stretch"
-                          >
-                <muxc:SplitButton.Flyout>
+            <Button x:Name="InsertImageButton"  Style="{StaticResource PaintUIButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                       Width="32"
+                     MinWidth="32"
+                     MaxWidth="32"
+                     Height="30" FontSize="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <Button.Content>
+                    <Grid>
+                        <TextBlock FontFamily="Segoe UI" Text="Image" FontSize="9" VerticalAlignment="Top" Margin="0,0,0,11" HorizontalAlignment="Center"/>
+                        <TextBlock FontFamily="Segoe Fluent Icons" Text="" FontSize="9" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+                <Button.Flyout>
                     <MenuFlyout Placement="Bottom">
                         <MenuFlyoutItem x:Name="MenuPicture" Text="Picture">
                             <MenuFlyoutItem.Icon>
@@ -48,10 +56,18 @@
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>
-                </muxc:SplitButton.Flyout>
+                </Button.Flyout>
 
 
-            </muxc:SplitButton>
+            </Button>
+
+            <Button x:Name="InsertImageButtona"  Style="{StaticResource PaintUIButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Stretch" Margin="0,0,0,20"
+              >
+
+                <Grid>
+                    <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Images}}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Grid>
+            </Button>
 
             <Button x:Name="InsertDateAndTimeButton" Style="{StaticResource PaintUIButtonStyle}"
                      Width="32"

@@ -999,61 +999,6 @@ namespace RectifyPad
             await dialog.ShowAsync();
         }
 
-        private void FontSizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is ComboBox comboBox)
-            {
-                if (comboBox.SelectedItem is double selectedValue)
-                {
-                    Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
-                }
-            }
-        }
-
-
-        private void FontSizeCombo_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
-        {
-            bool isDouble = double.TryParse(sender.Text, out double newValue);
-
-            // Check if the user selected a predefined font size from the ComboBox.
-            if (sender.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is double predefinedSize)
-            {
-                newValue = predefinedSize;
-            }
-
-            // Set the selected item if:
-            // - The value successfully parsed to double AND
-            // - The value is in the list of sizes OR is a custom value between 8 and 100
-            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
-            {
-                // Update the SelectedItem to the new value. 
-                sender.SelectedItem = newValue;
-                Editor.Document.Selection.CharacterFormat.Size = (float)newValue;
-            }
-            else
-            {
-                // If the item is invalid, reject it and revert the text. 
-                sender.Text = sender.SelectedValue?.ToString();
-
-                var dialog = new ContentDialog
-                {
-                    Content = "The font size must be a number between 8 and 100.",
-                    CloseButtonText = "Close",
-                    DefaultButton = ContentDialogButton.Close
-                };
-                var task = dialog.ShowAsync();
-            }
-
-            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
-            args.Handled = true;
-        }
-
-        private void ParagraphButton_Checked(object sender, RoutedEventArgs e)
-        {
-           ParagraphDialog addobject = new ParagraphDialog();
-           addobject.ShowAsync();
-        }
-
         private void DecreaseFontSize_Click(object sender, RoutedEventArgs e)
         {
             // Get a reference to the RichEditBox control

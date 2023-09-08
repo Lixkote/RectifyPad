@@ -305,7 +305,7 @@
                                 <Setter Property="Foreground"
                                 Value="#E4000000" />
                                 <Setter Property="Background"
-                                Value="Transparent" />
+                                Value="White" />
                                 <Setter Property="ContentLinkForegroundColor"
                                 Value="{ThemeResource ContentLinkForegroundColor}" />
                                 <Setter Property="ContentLinkBackgroundColor"

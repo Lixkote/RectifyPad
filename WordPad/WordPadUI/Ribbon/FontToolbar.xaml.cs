@@ -70,7 +70,7 @@ namespace WordPad.WordPadUI.Ribbon
             // Set the selected item if:
             // - The value successfully parsed to double AND
             // - The value is in the list of sizes OR is a custom value between 8 and 100
-            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 200 && newValue > 8)))
             {
                 // Update the SelectedItem to the new value. 
                 sender.SelectedItem = newValue;
@@ -83,7 +83,7 @@ namespace WordPad.WordPadUI.Ribbon
 
                 var dialog = new ContentDialog
                 {
-                    Content = "The font size must be a number between 8 and 100.",
+                    Content = "The font size must be a number between 8 and 200.",
                     CloseButtonText = "Close",
                     DefaultButton = ContentDialogButton.Close
                 };

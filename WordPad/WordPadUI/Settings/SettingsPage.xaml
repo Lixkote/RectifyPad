@@ -133,7 +133,7 @@
                                 <RadioButton x:Name="SysRadio1" Content="Wrap according to the ruler" />
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                     <!--   <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" />
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" />
                         <muxc:Expander
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
@@ -159,7 +159,7 @@
                                 <RadioButton x:Name="SysRadio2" Content="Points" />
                                 <RadioButton x:Name="SysRadio2s" Content="Cicera" />
                             </muxc:RadioButtons>
-                        </muxc:Expander>-->
+                        </muxc:Expander>
                         <!--<muxc:Expander
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"

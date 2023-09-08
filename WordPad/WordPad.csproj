@@ -285,7 +285,7 @@
     <Content Include="Assets\theme-light\Date.svg" />
     <Content Include="Assets\theme-light\FontDecrease.svg" />
     <Content Include="Assets\theme-light\FontSizeIncrease.svg" />
-    <Content Include="Assets\theme-light\Image.svg" />
+    <Content Include="Assets\theme-light\Images.svg" />
     <Content Include="Assets\theme-light\List.svg" />
     <Content Include="Assets\theme-light\l_indent_pos_lower.png" />
     <Content Include="Assets\theme-light\l_indet_pos_upper.png" />

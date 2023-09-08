@@ -153,7 +153,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <ComboBox x:Name="FontSizesComboBox" SelectedIndex="5" ItemsSource="{x:Bind FontSizes, Mode=OneWay}" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
+            <ComboBox x:Name="FontSizesComboBox" SelectedIndex="3" ItemsSource="{x:Bind FontSizes, Mode=OneWay}" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
                    Margin="43,0,106,0" TextSubmitted="FontSizesComboBox_TextSubmitted" Loaded="FontSizesComboBox_Loaded" SelectionChanged="FontSizesComboBox_SelectionChanged"/>
             <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
                 <muxc:SplitButton.Content>

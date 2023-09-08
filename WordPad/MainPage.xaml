@@ -835,7 +835,7 @@ VerticalAlignment="Top"
                     <ScaleTransform ScaleX="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" ScaleY="{x:Bind Mode=OneWay, Path=ZoomSlider.Value}" CenterX="{Binding Width, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}" CenterY="{Binding Height, Converter={StaticResource HalfValueConverter}, ElementName=EditorGrid}"/>
                 </Grid.RenderTransform>
                 <RichEditBox x:Name="Editor"
-                             Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,0" x:FieldModifier="public">
+                                               RequestedTheme="Light" Style="{StaticResource MinEditStyle}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" IsSpellCheckEnabled="False" Margin="1,1,1,0" x:FieldModifier="public">
                     <RichEditBox.ContextFlyout>
                         <MenuFlyout>
                             <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">

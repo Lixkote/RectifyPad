@@ -196,7 +196,7 @@ namespace WordPad.WordPadUI.Ribbon
             await dialog.ShowAsync();
         }
 
-        private async void InsertImageButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+        private async void InsertImageButton_Click(object sender, RoutedEventArgs e)
         {
             // Open an image file.
             FileOpenPicker open = new FileOpenPicker();
