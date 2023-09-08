@@ -235,6 +235,9 @@ namespace WordPad.WordPadUI
             FontFamily fontFamily = new FontFamily("Arial");
             string fontFamilyName = fontFamily.Source;
 
+            // Predefined TextVerticalOffset
+            float TextVerticalOffset = (float)(drawZone.Height - 10) / 2 + (float)drawZone.Top;
+
             // Retrieve the font color from the ThemeResource
             var rulerTextColor = (SolidColorBrush)Application.Current.Resources["RulerText"];
             Color fontColor = rulerTextColor.Color;
@@ -256,7 +259,9 @@ namespace WordPad.WordPadUI
 
                     var textLayout = new CanvasTextLayout(drawingSession, text, textFormat, 0, 0);
                     float textX = i * range - (float)textLayout.LayoutBounds.Width / 2 + (float)drawZone.Left;
-                    float textY = (float)(drawZone.Height - textLayout.LayoutBounds.Height) / 2 + (float)drawZone.Top;
+
+                    // Use the predefined TextVerticalOffset
+                    float textY = TextVerticalOffset;
 
                     // Use the retrieved font color
                     drawingSession.DrawText(text, textX, textY, fontColor, textFormat);
@@ -268,11 +273,18 @@ namespace WordPad.WordPadUI
                     float x2 = i * range + (float)drawZone.Left;
                     float y2 = 12 + (float)drawZone.Top;
 
+                    // Use the predefined TextVerticalOffset
+                    float textY = TextVerticalOffset;
+
                     // Use the retrieved font color
                     drawingSession.DrawLine(x1, y1, x2, y2, fontColor);
                 }
             }
         }
+
+
+
+
 
 
 
