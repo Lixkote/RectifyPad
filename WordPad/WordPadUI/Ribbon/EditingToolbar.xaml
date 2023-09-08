@@ -36,7 +36,7 @@
     Height="24"
     Grid.Row="1" HorizontalAlignment="Stretch" Click="ReplaceButton_Click" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0,0,0">
                 <muxc:DropDownButton.Content>
-                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Replace}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Image Width="19" Height="16" Source="{Binding Source={ThemeResource Replace}}" VerticalAlignment="Center" HorizontalAlignment="Left" Stretch="Fill" Margin="-2,0,0,0" />
                 </muxc:DropDownButton.Content>
                 <muxc:DropDownButton.Flyout>
                     <Flyout Placement="Bottom">
@@ -113,7 +113,7 @@
     Height="24"
     Grid.Row="2" HorizontalAlignment="Stretch" Click="SelectAllButton_Click" VerticalAlignment="Stretch" Padding="8,0,0,0" HorizontalContentAlignment="Left">
                 <Button.Content>
-                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource SelectAll}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Image Width="18" Height="16" Source="{Binding Source={ThemeResource SelectAll}}" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="Fill" Margin="-1,0,0,0" />
                 </Button.Content>
             </Button>
 

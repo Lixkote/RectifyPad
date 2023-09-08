@@ -31,7 +31,7 @@
 
                             <x:String x:Key="BottomScript">ms-appx:///Assets/theme-light/BottomScript.svg</x:String>
                             <x:String x:Key="FontDecrease">ms-appx:///Assets/theme-light/FontDecrease.svg</x:String>
-                            <x:String x:Key="FontIncrease">ms-appx:///Assets/theme-light/FontIncrease.svg</x:String>
+                            <x:String x:Key="FontIncrease">ms-appx:///Assets/theme-light/FontSizeIncrease.svg</x:String>
                             <x:String x:Key="Images">ms-appx:///Assets/theme-light/Images.svg</x:String>
                             <x:String x:Key="List">ms-appx:///Assets/theme-light/List.svg</x:String>
                             <x:String x:Key="MarginL">ms-appx:///Assets/theme-light/MarginL.svg</x:String>
@@ -257,7 +257,7 @@
 
                             <x:String x:Key="BottomScript">ms-appx:///Assets/theme-dark/BottomScript.svg</x:String>
                             <x:String x:Key="FontDecrease">ms-appx:///Assets/theme-dark/FontDecrease.svg</x:String>
-                            <x:String x:Key="FontIncrease">ms-appx:///Assets/theme-dark/FontIncrease.svg</x:String>
+                            <x:String x:Key="FontIncrease">ms-appx:///Assets/theme-dark/FontSizeIncrease.svg</x:String>
                             <x:String x:Key="Images">ms-appx:///Assets/theme-dark/Images.svg</x:String>
                             <x:String x:Key="List">ms-appx:///Assets/theme-dark/List.svg</x:String>
                             <x:String x:Key="MarginL">ms-appx:///Assets/theme-dark/MarginL.svg</x:String>

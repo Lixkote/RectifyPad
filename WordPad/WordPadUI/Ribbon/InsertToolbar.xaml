@@ -14,6 +14,7 @@
       BorderThickness="0,0,0,0"
       Padding="12"
       Grid.Column="3">
+        
 
         <Grid.RowDefinitions>
             <RowDefinition Height="72" />
@@ -21,13 +22,13 @@
         </Grid.RowDefinitions>
 
         <Grid ColumnSpacing="8">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Center" Height="43"
+            <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Images}}" Stretch="Fill" Margin="0,0,0,10" />
+            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Stretch" Height="43" VerticalAlignment="Stretch"
                           >
                 <muxc:SplitButton.Flyout>
                     <MenuFlyout Placement="Bottom">
@@ -48,8 +49,7 @@
                         </MenuFlyoutItem>
                     </MenuFlyout>
                 </muxc:SplitButton.Flyout>
-                <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Images}}" VerticalAlignment="Top" Margin="0,0,0,20" />
-     
+
 
             </muxc:SplitButton>
 
@@ -61,7 +61,7 @@
                      Grid.Column="1" Click="InsertDateAndTimeButton_Click" HorizontalAlignment="Center"
                      >
                 <Grid>
-                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Date}}" VerticalAlignment="Top" Margin="0,0,0,20" Stretch="UniformToFill" />
+                    <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Date}}" VerticalAlignment="Top" Margin="0,0,0,20" Stretch="UniformToFill" />
                     <TextBlock FontFamily="Segoe UI" Text="Date" FontSize="9" Margin="0,25,0,0"></TextBlock>
                 </Grid>
             </Button>
@@ -74,7 +74,7 @@
                      Grid.Column="2" Click="InsertObjectButton_Click" HorizontalAlignment="Center">
                 <Button.Content>
                     <Grid>
-                        <Image Width="20" Height="20" Source="{Binding Source={ThemeResource ObjectCube}}" VerticalAlignment="Top" Margin="0,0,0,20" Stretch="UniformToFill" />
+                        <Image Width="19" Height="16" Source="{Binding Source={ThemeResource ObjectCube}}" VerticalAlignment="Top" Margin="3,0,0,20" Stretch="Fill" HorizontalAlignment="Left" />
                         <TextBlock FontFamily="Segoe UI" Text="Object" FontSize="9" Margin="0,25,0,0"></TextBlock>
                     </Grid>
                 </Button.Content>
