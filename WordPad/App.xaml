@@ -13,6 +13,13 @@
                     <ResourceDictionary.ThemeDictionaries>
                         
                         <ResourceDictionary x:Key="Light">
+                            <SolidColorBrush x:Key="RulerBack"
+                                             Color="White" />
+                            <SolidColorBrush x:Key="RulerMargins"
+                                             Color="#f7f7f7" />
+                            <SolidColorBrush x:Key="RulerText"
+                                             Color="#000000" />
+
                             <x:String x:Key="Print">ms-appx:///Assets/theme-light/Print.svg</x:String>
                             <x:String x:Key="Copy">ms-appx:///Assets/theme-light/Copy.svg</x:String>
                             <x:String x:Key="Cut">ms-appx:///Assets/theme-light/Cut.svg</x:String>
@@ -29,7 +36,11 @@
                             <x:String x:Key="IIII">ms-appx:///Assets/listnumberimages/IIII.png</x:String>
                             <x:String x:Key="none">ms-appx:///Assets/listnumberimages/none.png</x:String>
                             <x:String x:Key="number">ms-appx:///Assets/listnumberimages/number.png</x:String>
-                            
+
+                            <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-light/l_indent_pos_lower.png</x:String>
+                            <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-light/l_indet_pos_upper.png</x:String>
+                            <x:String x:Key="r_indent_pos">ms-appx:///Assets/theme-light/r_indent_pos.png</x:String>
+
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"
                                              Color="#FFEBEBEB" />
@@ -214,6 +225,12 @@
 
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
+                            <SolidColorBrush x:Key="RulerBack"
+                                             Color="#3D3D3D" />
+                            <SolidColorBrush x:Key="RulerMargins"
+                                             Color="#282828" />
+                            <SolidColorBrush x:Key="RulerText"
+                                             Color="#FFFFFF" />
                             <x:String x:Key="Print">ms-appx:///Assets/theme-dark/Print.svg</x:String>
                             <x:String x:Key="Copy">ms-appx:///Assets/theme-dark/Copy.svg</x:String>
                             <x:String x:Key="Cut">ms-appx:///Assets/theme-dark/Cut.svg</x:String>
@@ -230,6 +247,10 @@
                             <x:String x:Key="IIII">ms-appx:///Assets/listnumberimages/dark/IIII.png</x:String>
                             <x:String x:Key="none">ms-appx:///Assets/listnumberimages/dark/none.png</x:String>
                             <x:String x:Key="number">ms-appx:///Assets/listnumberimages/dark/number.png</x:String>
+
+                            <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-dark/l_indent_pos_lower.png</x:String>
+                            <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-dark/l_indet_pos_upper.png</x:String>
+                            <x:String x:Key="r_indent_pos">ms-appx:///Assets/theme-dark/r_indent_pos.png</x:String>
 
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"

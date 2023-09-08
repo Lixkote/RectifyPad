@@ -253,12 +253,15 @@
     <Content Include="Assets\theme-dark\Cut.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\theme-dark\l_indent_pos_lower.png" />
+    <Content Include="Assets\theme-dark\l_indet_pos_upper.png" />
     <Content Include="Assets\theme-dark\Paste.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\theme-dark\Print.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\theme-dark\r_indent_pos.png" />
     <Content Include="Assets\theme-dark\ZoomIn.svg" />
     <Content Include="Assets\theme-dark\ZoomInDisabled.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -271,8 +274,11 @@
     </Content>
     <Content Include="Assets\theme-light\Copy.svg" />
     <Content Include="Assets\theme-light\Cut.svg" />
+    <Content Include="Assets\theme-light\l_indent_pos_lower.png" />
+    <Content Include="Assets\theme-light\l_indet_pos_upper.png" />
     <Content Include="Assets\theme-light\Paste.svg" />
     <Content Include="Assets\theme-light\Print.svg" />
+    <Content Include="Assets\theme-light\r_indent_pos.png" />
     <Content Include="Assets\theme-light\ZoomIn.svg" />
     <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOut.svg" />

@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Microsoft.Graphics.Canvas.Geometry;
 
 namespace WordPad.WordPadUI
 {
@@ -183,8 +184,19 @@ namespace WordPad.WordPadUI
 
         private void DrawBackGround(CanvasDrawingSession drawingSession)
         {
-            drawingSession.FillRectangle(new Rect(me.Left, me.Top, me.Width, me.Height), Colors.Transparent);
-            drawingSession.FillRectangle(drawZone, _baseColor);
+            // Set the corner radius
+            float cornerRadius = 2.0f; // Change this value as needed
+
+            // Calculate the position and size of the rounded background rectangle
+            Rect backgroundRect = new Rect(me.Left, me.Top, me.Width, me.Height);
+
+            // Fill the background rectangle with rounded corners
+            drawingSession.FillRoundedRectangle(backgroundRect, cornerRadius, cornerRadius, Colors.Transparent);
+
+            var rulerBackColor = (SolidColorBrush)Application.Current.Resources["RulerBack"];
+
+            // Fill the drawZone rectangle (assuming _baseColor is defined elsewhere)
+            drawingSession.FillRoundedRectangle(drawZone, cornerRadius, cornerRadius, rulerBackColor.Color);
         }
 
         private void DrawMargins(CanvasDrawingSession drawingSession)
@@ -199,29 +211,41 @@ namespace WordPad.WordPadUI
             Rect leftMarginRect = new Rect(0, 3, leftMarginWidth, 14);
             Rect rightMarginRect = new Rect(drawZone.Width - rightMarginWidth + 1, 3, rightMarginWidth + 5, 14);
 
-            // Fill margin areas
-            drawingSession.FillRectangle(leftMarginRect, Colors.DarkGray);
-            drawingSession.FillRectangle(rightMarginRect, Colors.DarkGray);
+            // Set the corner radius
+            float cornerRadius = 2.0f; // Change this value as needed
 
-            // Draw border
-            double borderThickness = 1;
+            var rulerBackColor = (SolidColorBrush)Application.Current.Resources["RulerMargins"];
+
+            // Fill margin areas with rounded corners
+            drawingSession.FillRoundedRectangle(leftMarginRect, cornerRadius, cornerRadius, rulerBackColor.Color);
+            drawingSession.FillRoundedRectangle(rightMarginRect, cornerRadius, cornerRadius, rulerBackColor.Color);
+
+            // Draw border with rounded corners
+            double borderThickness = 0;
             double borderOffset = borderThickness / 2;
 
             Rect borderRect = new Rect(borderOffset, 3 + borderOffset, me.Width - borderThickness, 14 - borderThickness);
-            drawingSession.DrawRectangle(borderRect, Colors.Black, (float)borderThickness);
+            drawingSession.DrawRoundedRectangle(borderRect, cornerRadius, cornerRadius, Colors.Black, (float)borderThickness);
         }
-
         private void DrawTextAndMarks(CanvasDrawingSession drawingSession)
         {
             int points = (int)(drawZone.Width / dotsPermm) / 10;
             float range = 5 * dotsPermm;
             int i = 0;
+            FontFamily fontFamily = new FontFamily("Arial");
+            string fontFamilyName = fontFamily.Source;
+
+            // Retrieve the font color from the ThemeResource
+            var rulerTextColor = (SolidColorBrush)Application.Current.Resources["RulerText"];
+            Color fontColor = rulerTextColor.Color;
+
             var textFormat = new CanvasTextFormat
             {
                 FontStyle = FontStyle,
+                FontFamily = fontFamilyName,
                 FontWeight = FontWeight,
                 FontStretch = FontStretch,
-                FontSize = (float)FontSize
+                FontSize = (float)10
             };
 
             for (i = 0; i <= points * 2 + 1; i++)
@@ -234,7 +258,8 @@ namespace WordPad.WordPadUI
                     float textX = i * range - (float)textLayout.LayoutBounds.Width / 2 + (float)drawZone.Left;
                     float textY = (float)(drawZone.Height - textLayout.LayoutBounds.Height) / 2 + (float)drawZone.Top;
 
-                    drawingSession.DrawText(text, textX, textY, Colors.Black, textFormat);
+                    // Use the retrieved font color
+                    drawingSession.DrawText(text, textX, textY, fontColor, textFormat);
                 }
                 else
                 {
@@ -242,7 +267,9 @@ namespace WordPad.WordPadUI
                     float y1 = 7 + (float)drawZone.Top;
                     float x2 = i * range + (float)drawZone.Left;
                     float y2 = 12 + (float)drawZone.Top;
-                    drawingSession.DrawLine(x1, y1, x2, y2, Colors.Black);
+
+                    // Use the retrieved font color
+                    drawingSession.DrawLine(x1, y1, x2, y2, fontColor);
                 }
             }
         }
@@ -284,23 +311,31 @@ namespace WordPad.WordPadUI
         {
             try
             {
-                Uri a = new Uri("ms-appx:///Assets/l_indet_pos_upper.png");
+                // Retrieve URIs from ThemeResources
+                string uriStringA = (string)Application.Current.Resources["indent_pos_upper"];
+                string uriStringB = (string)Application.Current.Resources["indent_pos_lower"];
+                string uriStringC = (string)Application.Current.Resources["r_indent_pos"];
+                string uriStringD = (string)Application.Current.Resources["r_indent_pos"];
+
+                // Create Uri objects from the retrieved strings
+                Uri a = new Uri(uriStringA);
                 aa = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), a);
 
-                Uri b = new Uri("ms-appx:///Assets/l_indent_pos_lower.png");
+                Uri b = new Uri(uriStringB);
                 bb = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), b);
 
-                Uri c = new Uri("ms-appx:///Assets/r_indent_pos.png");
+                Uri c = new Uri(uriStringC);
                 cc = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), c);
 
-                Uri d = new Uri("ms-appx:///Assets/r_indent_pos.png");
+                Uri d = new Uri(uriStringD);
                 dd = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), d);
             }
             catch (Exception ex)
             {
-                // Handle any exceptions (e.g., file not found, loading error)
-                Debug.WriteLine($"error reading ruler images: {ex.Message}");
+                // Handle exceptions if any
+                Debug.WriteLine(ex.Message);
             }
+
         }
 
         private async void DrawIndents(CanvasControl sender, CanvasDrawingSession drawingSession)

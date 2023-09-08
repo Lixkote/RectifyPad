@@ -5,7 +5,7 @@
     xmlns:local="using:WordPad.WordPadUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="812"
+    mc:Ignorable="d" 
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml" Height="36">
 
     <Grid x:Name="hargrid" Margin="0,0,0,0" Width="812">
