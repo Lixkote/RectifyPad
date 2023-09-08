@@ -919,7 +919,7 @@ VerticalAlignment="Top"
                 </RichEditBox>
             </Grid>
             <Border BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Top" Height="36">
-                <my:TextRuler HorizontalAlignment="Stretch" Width="{x:Bind Mode=OneWay, Path=EditorGrid.Width}" VerticalAlignment="Stretch" Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}"/>
+                <my:TextRuler x:Name="TextRuler" HorizontalAlignment="Stretch" Width="{x:Bind Mode=OneWay, Path=EditorGrid.Width}" VerticalAlignment="Stretch" Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}"/>
             </Border>
 
         </Grid>

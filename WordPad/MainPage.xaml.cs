@@ -54,6 +54,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Data;
 using FanKit.Transformers;
 using Microsoft.Graphics.Canvas.Effects;
+using Windows.Graphics.Display;
 
 
 
@@ -209,7 +210,91 @@ namespace RectifyPad
             PopulateRecents();
             ConnectRibbonToolbars();
 
+            TextRuler.LeftHangingIndentChanging += TextRuler_LeftHangingIndentChanging;
+            TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
+            TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
+            TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
         }
+
+        private void TextRuler_LeftIndentChanging(int NewValue)
+        {
+            try
+            {
+                var paragraph = Editor.Document.Selection.ParagraphFormat;
+                if (paragraph != null)
+                {
+                    var textIndentInMillimeters = TextRuler.LeftIndent;
+                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
+                    paragraph.SetIndents((float)textIndentInPixels, 0, 0);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+
+
+        private double ConvertDipsToPixels(double dips)
+        {
+            var dpiFactor = DisplayInformation.GetForCurrentView().LogicalDpi / 96.0; // Convert from DIPs to physical pixels
+            return dips * dpiFactor;
+        }
+
+        private void TextRuler_LeftHangingIndentChanging(int NewValue)
+        {
+            try
+            {
+                var paragraph = Editor.Document.Selection.ParagraphFormat;
+                if (paragraph != null)
+                {
+                    var textIndentInMillimeters = TextRuler.LeftIndent;
+                    var hangingIndentInMillimeters = TextRuler.LeftHangingIndent;
+                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
+                    var hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
+                    Editor.Document.Selection.ParagraphFormat.SetIndents((float)textIndentInPixels, (float)hangingIndentInPixels, 0);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private void TextRuler_BothLeftIndentsChanged(int leftIndent, int hangIndent)
+        {
+            var paragraph = Editor.Document.Selection.ParagraphFormat;
+            if (paragraph != null)
+            {
+                double indentInMillimeters = leftIndent;
+                double hangingIndentInMillimeters = hangIndent;
+
+                double indentInPixels = ConvertDipsToPixels(indentInMillimeters);
+                double hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
+
+                Editor.Document.Selection.ParagraphFormat.SetIndents((float)indentInPixels, (float)hangingIndentInPixels, 0);
+            }
+        }
+
+
+        private void TextRuler_RightIndentChanging(int NewValue)
+        {
+            try
+            {
+                var paragraph = Editor.Document.Selection.ParagraphFormat;
+                if (paragraph != null)
+                {
+                    var textIndentInMillimeters = TextRuler.RightIndent;
+                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
+                    Editor.Document.Selection.ParagraphFormat.SetIndents(0, (float)textIndentInPixels, 0);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
 
         private void ConnectRibbonToolbars()
         {
