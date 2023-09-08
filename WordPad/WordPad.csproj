@@ -247,41 +247,63 @@
     <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="Assets\tab_pos.png" />
-    <Content Include="Assets\theme-dark\Copy.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\theme-dark\Cut.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\theme-dark\BottomScript.svg" />
+    <Content Include="Assets\theme-dark\Copy.svg" />
+    <Content Include="Assets\theme-dark\Cut.svg" />
+    <Content Include="Assets\theme-dark\Date.svg" />
+    <Content Include="Assets\theme-dark\FontDecrease.svg" />
+    <Content Include="Assets\theme-dark\FontSizeIncrease.svg" />
+    <Content Include="Assets\theme-dark\Images.svg" />
+    <Content Include="Assets\theme-dark\List.svg" />
     <Content Include="Assets\theme-dark\l_indent_pos_lower.png" />
     <Content Include="Assets\theme-dark\l_indet_pos_upper.png" />
-    <Content Include="Assets\theme-dark\Paste.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\theme-dark\Print.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\theme-dark\l_indet_pos_upper.png" />
+    <Content Include="Assets\theme-dark\MarginL.svg" />
+    <Content Include="Assets\theme-dark\MarginR.svg" />
+    <Content Include="Assets\theme-dark\ObjectCube.svg" />
+    <Content Include="Assets\theme-dark\Paragraph.svg" />
+    <Content Include="Assets\theme-dark\Paste.svg" />
+    <Content Include="Assets\theme-dark\Print.svg" />
+    <Content Include="Assets\theme-dark\Replace.svg" />
     <Content Include="Assets\theme-dark\r_indent_pos.png" />
+    <Content Include="Assets\theme-dark\SelectAll.svg" />
+    <Content Include="Assets\theme-dark\Spacing.svg" />
+    <Content Include="Assets\theme-dark\UpScript.svg" />
     <Content Include="Assets\theme-dark\ZoomIn.svg" />
     <Content Include="Assets\theme-dark\ZoomInDisabled.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\theme-dark\ZoomOut.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\theme-dark\ZoomInDisabled.svg" />
+    <Content Include="Assets\theme-dark\ZoomOut.svg" />
     <Content Include="Assets\theme-dark\ZoomOutDisabled.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\theme-dark\ZoomOutDisabled.svg" />
+    <Content Include="Assets\theme-light\BottomScript.svg" />
     <Content Include="Assets\theme-light\Copy.svg" />
     <Content Include="Assets\theme-light\Cut.svg" />
+    <Content Include="Assets\theme-light\Date.svg" />
+    <Content Include="Assets\theme-light\FontDecrease.svg" />
+    <Content Include="Assets\theme-light\FontSizeIncrease.svg" />
+    <Content Include="Assets\theme-light\Image.svg" />
+    <Content Include="Assets\theme-light\List.svg" />
     <Content Include="Assets\theme-light\l_indent_pos_lower.png" />
     <Content Include="Assets\theme-light\l_indet_pos_upper.png" />
+    <Content Include="Assets\theme-light\MarginL.svg" />
+    <Content Include="Assets\theme-light\MarginR.svg" />
+    <Content Include="Assets\theme-light\ObjectCube.svg" />
+    <Content Include="Assets\theme-light\Paragraph.svg" />
     <Content Include="Assets\theme-light\Paste.svg" />
     <Content Include="Assets\theme-light\Print.svg" />
+    <Content Include="Assets\theme-light\Replace.svg" />
     <Content Include="Assets\theme-light\r_indent_pos.png" />
+    <Content Include="Assets\theme-light\SelectAll.svg" />
+    <Content Include="Assets\theme-light\Spacing.svg" />
+    <Content Include="Assets\theme-light\UpScript.svg" />
     <Content Include="Assets\theme-light\ZoomIn.svg" />
     <Content Include="Assets\theme-light\ZoomInDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOut.svg" />
+    <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\txt.png" />
     <Content Include="Assets\txt.png" />

@@ -59,22 +59,28 @@
 
 
             <Button x:Name="FontEnlargeButton" Style="{StaticResource PaintUIButtonStyle}"
-                Content="&#xe8e8;"
                 Width="32"
                 MinWidth="32"
                 MaxWidth="32"
                 Height="32"
                 Grid.Column="6"
-                FontSize="20" Click="FontEnlargeButton_Click" Margin="19,0,0,0" RenderTransformOrigin="0.836,0.508"/>
+                FontSize="20" Click="FontEnlargeButton_Click" Margin="19,0,0,0" RenderTransformOrigin="0.836,0.508">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource FontDecrease}}" />
+                </Button.Content>
+            </Button>
 
             <Button x:Name="FontDislargeButton" Style="{StaticResource PaintUIButtonStyle}"
-                Content="&#xe8e7;"
                 Width="32"
                 MinWidth="32"
                 MaxWidth="32"
                 Height="32"
                 Grid.Column="6"
-                FontSize="20" Click="FontDislargeButton_Click" Margin="57,0,0,0" RenderTransformOrigin="0.57,0.492"/>
+                FontSize="20" Click="FontDislargeButton_Click" Margin="57,0,0,0" RenderTransformOrigin="0.57,0.492">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource FontIncrease}}" />
+                </Button.Content>
+            </Button>
 
 
             <ToggleButton x:Name="TextBoldButton" Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -117,23 +123,27 @@
                      Width="32"
                      MinWidth="32"
                      MaxWidth="32"
-                     Content="&#xe900;"
                      Height="32"
                      Grid.Column="4"
                      Grid.Row="1"
                      Margin="2,0,0,0" Grid.ColumnSpan="2" Click="TextSubscriptButton_Click" FontFamily="WordPad Fluent Icons">
+                <ToggleButton.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource BottomScript}}" />
+                </ToggleButton.Content>
             </ToggleButton>
 
             <ToggleButton x:Name="TextSuperscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Padding="0"
                      Width="32"
                      MinWidth="32"
-                     Content="&#xe901;"
                      MaxWidth="32"
                      Height="32"
                      Grid.Column="5"
                      Grid.Row="1"
                      Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="TextSuperscriptButton_Click" FontFamily="WordPad Fluent Icons">
+                <ToggleButton.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource BottomScript}}" />
+                </ToggleButton.Content>
             </ToggleButton>
             <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding Fonts}" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font"  Margin="0,0,40,0">
                 <ComboBox.ItemTemplate>

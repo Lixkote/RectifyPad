@@ -81,11 +81,14 @@
                      Width="32"
                      MinWidth="32"
                      MaxWidth="32"
-                     Content="&#xe903;"
                      Height="32"
                      Click="ParagraphButton_Click"
                      Grid.Column="4"
-                     Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20"/>
+                     Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Paragraph}}" />
+                </Button.Content>
+            </Button>
             <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalToggleSplitButton}" x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20">
                 <muxc:ToggleSplitButton.Flyout>
                     <Flyout Placement="Bottom">
@@ -157,7 +160,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <FontIcon FontSize="18" Grid.Column="0" FontFamily="WordPad Fluent Icons" Glyph=""></FontIcon>
+                        <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Spacing}}" />
                         <muxc:AnimatedIcon Grid.Column="1" AutomationProperties.AccessibilityView="Raw" Height="12" VerticalAlignment="Center" Width="12">
                             <muxc:AnimatedIcon.FallbackIconSource>
                                 <muxc:FontIconSource FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="8" Glyph="&#xE96E;" IsTextScaleFactorEnabled="False"/>
@@ -179,20 +182,26 @@
                 </Button.Flyout>
             </Button>
             <Button x:Name="IndentationIncreaseLeft" Style="{StaticResource PaintUIButtonStyle}"
-            Content=""
             Width="32"
             MinWidth="32"
             MaxWidth="32"
             Height="32"
-            HorizontalAlignment="Center" Click="IndentationIncreaseLeft_Click"/>
+            HorizontalAlignment="Center" Click="IndentationIncreaseLeft_Click">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource MarginL}}" />
+                </Button.Content>
+            </Button>
             <Button x:Name="IndentationIncreaseRight" Style="{StaticResource PaintUIButtonStyle}"
-            Content=""
             Width="32"
             MinWidth="32"
             MaxWidth="32"
             Height="32"
             Grid.Column="1"
-            HorizontalAlignment="Center" Click="IndentationIncreaseRight_Click"/>
+            HorizontalAlignment="Center" Click="IndentationIncreaseRight_Click">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource MarginR}}" />
+                </Button.Content>
+            </Button>
 
         </Grid>
 

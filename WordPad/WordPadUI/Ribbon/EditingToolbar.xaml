@@ -31,11 +31,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <muxc:DropDownButton x:Name="ReplaceButton" Style="{StaticResource PaintUIButtonStyle}"
-    Content=""
     Width="132"
     MinWidth="32"
     Height="24"
     Grid.Row="1" HorizontalAlignment="Stretch" Click="ReplaceButton_Click" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0,0,0">
+                <muxc:DropDownButton.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Replace}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </muxc:DropDownButton.Content>
                 <muxc:DropDownButton.Flyout>
                     <Flyout Placement="Bottom">
                         <StackPanel Orientation="Vertical">
@@ -106,11 +108,14 @@
                 </muxc:DropDownButton.Flyout>
             </muxc:DropDownButton>
             <Button x:Name="SelectAllButton" Style="{StaticResource PaintUIButtonStyle}"
-    Content=""
     Width="132"
     MinWidth="32"
     Height="24"
-    Grid.Row="2" HorizontalAlignment="Stretch" Click="SelectAllButton_Click" VerticalAlignment="Stretch" Padding="8,0,0,0" HorizontalContentAlignment="Left"/>
+    Grid.Row="2" HorizontalAlignment="Stretch" Click="SelectAllButton_Click" VerticalAlignment="Stretch" Padding="8,0,0,0" HorizontalContentAlignment="Left">
+                <Button.Content>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource SelectAll}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button.Content>
+            </Button>
 
         </Grid>
 

@@ -27,9 +27,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-
-            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click"
-                          Grid.Column="0"
+            <muxc:SplitButton x:Name="InsertImageButton" Style="{StaticResource PaintUISplitButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Center" Height="43"
                           >
                 <muxc:SplitButton.Flyout>
                     <MenuFlyout Placement="Bottom">
@@ -45,33 +43,41 @@
                         </MenuFlyoutItem>
                         <MenuFlyoutItem x:Name="MenuResizePicture" Text="Resize picture">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xf0e3;" />
+                                <FontIcon Glyph="&#xf0e3;" Margin="0,20,0,0" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>
                 </muxc:SplitButton.Flyout>
-                <FontIcon FontSize="16" Glyph="&#xe8b9;"/>
+                <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Images}}" VerticalAlignment="Top" Margin="0,0,0,20" />
+     
 
             </muxc:SplitButton>
 
             <Button x:Name="InsertDateAndTimeButton" Style="{StaticResource PaintUIButtonStyle}"
-                     Content=""
                      Width="32"
                      MinWidth="32"
                      MaxWidth="32"
-                     Height="32"
-                     Grid.Column="1"
-                     Grid.Row="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="InsertDateAndTimeButton_Click"
-                     />
+                     Height="51"
+                     Grid.Column="1" Click="InsertDateAndTimeButton_Click" HorizontalAlignment="Center"
+                     >
+                <Grid>
+                    <Image Width="20" Height="20" Source="{Binding Source={ThemeResource Date}}" VerticalAlignment="Top" Margin="0,0,0,20" Stretch="UniformToFill" />
+                    <TextBlock FontFamily="Segoe UI" Text="Date" FontSize="9" Margin="0,25,0,0"></TextBlock>
+                </Grid>
+            </Button>
 
             <Button x:Name="InsertObjectButton" Style="{StaticResource PaintUIButtonStyle}"
                      Width="32"
                      MinWidth="32"
                      MaxWidth="32"
-                     Height="32"
-                     Grid.Column="2"
-                     Grid.Row="1"
-                     Content="" VerticalAlignment="Top" Margin="0,10,0,0" Click="InsertObjectButton_Click">
+                     Height="50"
+                     Grid.Column="2" Click="InsertObjectButton_Click" HorizontalAlignment="Center">
+                <Button.Content>
+                    <Grid>
+                        <Image Width="20" Height="20" Source="{Binding Source={ThemeResource ObjectCube}}" VerticalAlignment="Top" Margin="0,0,0,20" Stretch="UniformToFill" />
+                        <TextBlock FontFamily="Segoe UI" Text="Object" FontSize="9" Margin="0,25,0,0"></TextBlock>
+                    </Grid>
+                </Button.Content>
 
             </Button>
 
