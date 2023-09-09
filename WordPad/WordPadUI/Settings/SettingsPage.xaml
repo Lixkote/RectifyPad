@@ -50,7 +50,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <ScrollViewer.Content>
-            <Grid Padding="56,24,56,0" ColumnSpacing="56" Height="1066">
+            <Grid Padding="56.1,24,56,0" ColumnSpacing="56" Height="1066">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
                     <RowDefinition Height="Auto" />
@@ -62,14 +62,14 @@
                 </Grid.ColumnDefinitions>
                 <Grid.Children>
                     <Grid x:Name="AppTitleBar"
-              Background="Transparent" Margin="-56,-22,-49,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="32.5" Width="1500">
+              Background="Transparent" Margin="-54,-13,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="8" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="8" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="/Assets/StoreLogo.png"
+                        <Image Source="/Assets/rpad16.png"
                    Width="16"
                    Height="16"
                    Grid.Column="1" />

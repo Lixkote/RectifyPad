@@ -16,6 +16,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.Graphics.Canvas.Geometry;
+using Windows.Graphics.Display;
 
 namespace WordPad.WordPadUI
 {
@@ -87,7 +88,7 @@ namespace WordPad.WordPadUI
             items.Add(new Rect());
             items.Add(new Rect());
 
-            dotsPermm = (float)(96.0 / 25.4); // Assuming 96 DPI
+            dotsPermm = (float)(DisplayInformation.GetForCurrentView().LogicalDpi / 25.4); // Assuming 96 DPI
             canvas.Draw += CanvasControl_Draw;
 
             canvas.PointerPressed += OnPointerPressed;
@@ -352,10 +353,10 @@ namespace WordPad.WordPadUI
 
         private async void DrawIndents(CanvasControl sender, CanvasDrawingSession drawingSession)
         {
-            Rect[] items = new Rect[7];
-
             items[2] = new Rect(luIndent * dotsPermm - 4.5, 0, 9, 8);
             items[3] = new Rect(llIndent * dotsPermm - 4.5, 8.2, 9, 11.8);
+
+
             items[4] = new Rect(drawZone.Width - (rIndent * dotsPermm - 4.5) - 7, 11, 9, 8);
 
             // Regions for moving left indentation marks
@@ -410,6 +411,7 @@ namespace WordPad.WordPadUI
         #endregion
 
         #region Overriders
+
         private void CanvasControl_Draw(CanvasControl sender, CanvasDrawEventArgs args)
         {
             CanvasDrawingSession drawingSession = args.DrawingSession;
@@ -439,7 +441,7 @@ namespace WordPad.WordPadUI
             mCaptured = false;
 
             // Check if any margin handle is clicked
-            for (int i = 0; i <= 1; i++)
+            for (int i = 0; i <= 6; i++)
             {
                 if (items[i].Contains(e.GetCurrentPoint(this).Position))
                 {
@@ -542,8 +544,12 @@ namespace WordPad.WordPadUI
             }
         }
 
+
+
         private void OnPointerMoved(object sender, PointerRoutedEventArgs e)
         {
+            base.OnPointerMoved(e);
+
             if (mCaptured && capObject != -1)
             {
                 switch (capObject)

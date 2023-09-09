@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;  
+using System.Linq;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -117,16 +117,16 @@ namespace RectifyPad
         private bool saved = true;
 
         public bool _wasOpen = false;
-        private string appTitleStr => "RectifyPad" ;
+        private string appTitleStr => "RectifyPad";
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         private bool updateFontFormat = true;
         public string ApplicationName => "RectifyPad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
-        
+
         private string fileNameWithPath = "";
-        
+
         string originalDocText = "";
 
 
@@ -238,7 +238,7 @@ namespace RectifyPad
 
         private double ConvertDipsToPixels(double dips)
         {
-            var dpiFactor = DisplayInformation.GetForCurrentView().LogicalDpi / 96.0; // Convert from DIPs to physical pixels
+            var dpiFactor = DisplayInformation.GetForCurrentView().LogicalDpi / 33; // Convert from DIPs to physical pixels
             return dips * dpiFactor;
         }
 
@@ -284,9 +284,9 @@ namespace RectifyPad
                 var paragraph = Editor.Document.Selection.ParagraphFormat;
                 if (paragraph != null)
                 {
-                    var textIndentInMillimeters = TextRuler.RightIndent;
-                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
-                    Editor.Document.Selection.ParagraphFormat.SetIndents(0, (float)textIndentInPixels, 0);
+                    var rightIndentInMillimeters = TextRuler.RightIndent;
+                    var rightIndentInPixels = ConvertDipsToPixels(rightIndentInMillimeters);
+                    Editor.Document.Selection.ParagraphFormat.SetIndents(0, 0, -(float)rightIndentInPixels);
                 }
             }
             catch (Exception)
@@ -312,19 +312,19 @@ namespace RectifyPad
 
         private async void PopulateRecents()
         {
-                var recentlyUsedItems = await RecentlyUsedHelper.GetRecentlyUsedItems();
-                var recentItemsSubItem = RecentItemsSubItem;
-                foreach (var item in recentlyUsedItems)
+            var recentlyUsedItems = await RecentlyUsedHelper.GetRecentlyUsedItems();
+            var recentItemsSubItem = RecentItemsSubItem;
+            foreach (var item in recentlyUsedItems)
+            {
+                var menuItem = new MenuFlyoutItem { Text = item.Name };
+                menuItem.Click += async (s, args) =>
                 {
-                    var menuItem = new MenuFlyoutItem { Text = item.Name };
-                    menuItem.Click += async (s, args) =>
-                    {
-                        var file = await StorageFile.GetFileFromPathAsync(item.Path);
-                        await RecentlyUsedHelper.AddToMostRecentlyUsedList(file);
-                        // Open the file here
-                    };
-                    recentItemsSubItem.Items.Add(menuItem);
-                }
+                    var file = await StorageFile.GetFileFromPathAsync(item.Path);
+                    await RecentlyUsedHelper.AddToMostRecentlyUsedList(file);
+                    // Open the file here
+                };
+                recentItemsSubItem.Items.Add(menuItem);
+            }
         }
 
         private MarkerType _type = MarkerType.Bullet;
@@ -785,7 +785,7 @@ namespace RectifyPad
                 // Dropdown of file types the user can save the file as
                 savePicker.FileTypeChoices.Add("Formatted Document  .rtf", new List<string>() { ".rtf" });
                 savePicker.FileTypeChoices.Add("Text Document  .txt", new List<string>() { ".txt" });
-              //  savePicker.FileTypeChoices.Add("OpenDocument Text   .odt", new List<string>() { ".odt" });
+                //  savePicker.FileTypeChoices.Add("OpenDocument Text   .odt", new List<string>() { ".odt" });
                 savePicker.FileTypeChoices.Add("Office Open XML Document   .docx", new List<string>() { ".docx" });
 
                 // Default file name if the user does not type one in or select a file to replace
@@ -820,7 +820,7 @@ namespace RectifyPad
                             case ".docx":
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    
+
                                     randAccStream.Dispose();
                                 }
                                 break;
@@ -943,7 +943,7 @@ namespace RectifyPad
                 TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightTextBox");
                 TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("FirstLineTextBox");
                 ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingComboBox");
-                
+
                 // Parse the values and set the properties of the RichEditBox
                 double left = double.Parse(leftTextBox.Text);
                 double right = double.Parse(rightTextBox.Text);
@@ -958,7 +958,7 @@ namespace RectifyPad
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            
+
             if (Editor.Document.Selection.CharacterFormat.Size > 0)
             {
                 //font size is negative when selection contains multiple font sizes
@@ -1163,7 +1163,7 @@ namespace RectifyPad
             printHelperOptions.Orientation = PrintOrientation.Default;
             await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
         }
-       
+
 
         private void PrintHelper_OnPrintFailed()
         {
@@ -1239,47 +1239,87 @@ namespace RectifyPad
 
         private async void SaveAsRTF_Click(object sender, RoutedEventArgs e)
         {
-                string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
-                if (isCopy || fileName == "Document")
+            string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
+            if (isCopy || fileName == "Document")
+            {
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+
+                // Dropdown of file types the user can save the file as
+                savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
+                savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
+                savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
+
+                // Default file name if the user does not type one in or select a file to replace
+                savePicker.SuggestedFileName = "New Document";
+
+
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                if (file != null)
                 {
-                    FileSavePicker savePicker = new FileSavePicker();
-                    savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                    // Prevent updates to the remote version of the file until we
+                    // finish making changes and call CompleteUpdatesAsync.
+                    CachedFileManager.DeferUpdates(file);
+                    // write to file
+                    using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                        await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                        switch (file.Name.EndsWith(".txt"))
+                        {
+                            case false:
+                                // RTF file, format for it
+                                {
+                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                                    randAccStream.Dispose();
+                                }
+                                break;
+                            case true:
+                                // TXT File, disable RTF formatting so that this is plain text
+                                {
+                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
+                                    randAccStream.Dispose();
+                                }
+                                break;
+                        }
 
-                    // Dropdown of file types the user can save the file as
-                    savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
-                    savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                    savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
-                    savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
 
-                    // Default file name if the user does not type one in or select a file to replace
-                    savePicker.SuggestedFileName = "New Document";
-
-
-                    StorageFile file = await savePicker.PickSaveFileAsync();
+                    // Let Windows know that we're finished changing the file so the
+                    // other app can update the remote version of the file.
+                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                    if (status != FileUpdateStatus.Complete)
+                    {
+                        Windows.UI.Popups.MessageDialog errorBox =
+                            new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                        await errorBox.ShowAsync();
+                    }
+                    saved = true;
+                    fileNameWithPath = file.Path;
+                    AppTitle.Text = file.Name + " - " + appTitleStr;
+                    Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                }
+            }
+            else if (!isCopy || fileName != "Document")
+            {
+                string path = fileNameWithPath.Replace("\\" + fileName, "");
+                try
+                {
+                    StorageFile file = await Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.GetFileAsync("CurrentlyOpenFile");
                     if (file != null)
                     {
                         // Prevent updates to the remote version of the file until we
                         // finish making changes and call CompleteUpdatesAsync.
                         CachedFileManager.DeferUpdates(file);
                         // write to file
-                        using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                            await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
-                            switch (file.Name.EndsWith(".txt"))
+                        using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                            if (file.Name.EndsWith(".txt"))
                             {
-                                case false:
-                                    // RTF file, format for it
-                                    {
-                                        Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
-                                        randAccStream.Dispose();
-                                    }
-                                    break;
-                                case true:
-                                    // TXT File, disable RTF formatting so that this is plain text
-                                    {
-                                        Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                        randAccStream.Dispose();
-                                    }
-                                    break;
+                                Editor.Document.SaveToStream(TextGetOptions.None, randAccStream);
+                                randAccStream.Dispose();
+                            }
+                            else
+                            {
+                                Editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
+                                randAccStream.Dispose();
                             }
 
 
@@ -1293,55 +1333,15 @@ namespace RectifyPad
                             await errorBox.ShowAsync();
                         }
                         saved = true;
-                        fileNameWithPath = file.Path;
                         AppTitle.Text = file.Name + " - " + appTitleStr;
-                        Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
+                        Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Remove("CurrentlyOpenFile");
                     }
                 }
-                else if (!isCopy || fileName != "Document")
+                catch (Exception)
                 {
-                    string path = fileNameWithPath.Replace("\\" + fileName, "");
-                    try
-                    {
-                        StorageFile file = await Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.GetFileAsync("CurrentlyOpenFile");
-                        if (file != null)
-                        {
-                            // Prevent updates to the remote version of the file until we
-                            // finish making changes and call CompleteUpdatesAsync.
-                            CachedFileManager.DeferUpdates(file);
-                            // write to file
-                            using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
-                                if (file.Name.EndsWith(".txt"))
-                                {
-                                    Editor.Document.SaveToStream(TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
-                                }
-                                else
-                                {
-                                    Editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
-                                    randAccStream.Dispose();
-                                }
+                    SaveFile(true);
+                }
 
-
-                            // Let Windows know that we're finished changing the file so the
-                            // other app can update the remote version of the file.
-                            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-                            if (status != FileUpdateStatus.Complete)
-                            {
-                                Windows.UI.Popups.MessageDialog errorBox =
-                                    new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
-                                await errorBox.ShowAsync();
-                            }
-                            saved = true;
-                            AppTitle.Text = file.Name + " - " + appTitleStr;
-                            Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Remove("CurrentlyOpenFile");
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        SaveFile(true);
-                    }
-                
             }
         }
 
@@ -1678,7 +1678,7 @@ namespace RectifyPad
                 savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
                 // Dropdown of file types the user can save the file as
-                
+
                 savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
                 savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
                 savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
