@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<default>
+	<qualifier name="MarginUnit" value="Inches" />
+	<qualifier name="Theme" value="Light" />
+	<qualifier name="FontName" value="Calibri" />
+	<qualifier name="FontSize" value="11" />
+	<qualifier name="PaperSize" value="A4" />
+	<qualifier name="PaperSource" value="AutoSelect" />
+	<qualifier name="PageSetupLeftMarginInches" value="1.25" />
+	<qualifier name="PageSetupRightMarginInches" value="1.25" />
+	<qualifier name="PageSetupBottomMarginInches" value="1" />
+	<qualifier name="PageSetupTopMarginInches" value="1" />
+	<qualifier name="PageSetupPrintPageNumbers" value="yes" />
+	<qualifier name="Orientation" value="Portrait" />
+
+	<qualifier name="IndentationLeft" value="0" />
+	<qualifier name="IndentationRight" value="0" />
+	<qualifier name="IndentationFirstLine" value="0" />
+
+	<qualifier name="LineSpacing" value="0" />
+	<qualifier name="Is10ptEnabled" value="no" />
+	<qualifier name="Alignment" value="Left" />
+</default>
+

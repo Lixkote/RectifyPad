@@ -55,6 +55,9 @@ using Windows.UI.Xaml.Data;
 using FanKit.Transformers;
 using Microsoft.Graphics.Canvas.Effects;
 using Windows.Graphics.Display;
+using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Resources.Core;
+using System.Diagnostics;
 
 
 
@@ -161,40 +164,47 @@ namespace RectifyPad
             };
 
 
-
         public MainPage()
         {
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             // Load the saved theme value
-            var value = Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
+            InitializeComponent();
+            CheckFirstRun();
+            string value = Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"].ToString();
             if (value != null)
             {
-                string theme = value.ToString();
-                // Parse and apply the theme
-                App.RootTheme = App.GetEnum<ElementTheme>(theme);
-                // Change title bar color if needed
-                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                if (theme == "Dark")
-                {
-                    titleBar.ButtonForegroundColor = Colors.White;
-                }
-                else if (theme == "Light")
-                {
-                    titleBar.ButtonForegroundColor = Colors.Black;
-                }
-                else
-                {
-                    if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                try
+                { // Parse and apply the theme
+                    App.RootTheme = App.GetEnum<ElementTheme>(value);
+                    // Change title bar color if needed
+                    ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                    if (value == "Dark")
                     {
                         titleBar.ButtonForegroundColor = Colors.White;
                     }
-                    else
+                    else if (value == "Light")
                     {
                         titleBar.ButtonForegroundColor = Colors.Black;
                     }
+                    else
+                    {
+                        if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+                        {
+                            titleBar.ButtonForegroundColor = Colors.White;
+                        }
+                        else
+                        {
+                            titleBar.ButtonForegroundColor = Colors.Black;
+                        }
+                    }
                 }
+                catch (Exception ex)
+                {
+                    // Handle the exception
+                    Debug.WriteLine($"An exception occurred: {ex.Message}");
+                }
+
             }
-            InitializeComponent();
             Window.Current.SetTitleBar(AppTitleBar);
 
             string textWrapping = localSettings.Values["TextWrapping"] as string;
@@ -215,6 +225,7 @@ namespace RectifyPad
             TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
             TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
             TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
+            
         }
 
         private void TextRuler_LeftIndentChanging(int NewValue)
@@ -1213,7 +1224,62 @@ namespace RectifyPad
 
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        private void CheckFirstRun()
+        {
+            // Get the default resource context for the app
+            ResourceContext defaultContext = ResourceContext.GetForCurrentView();
+
+            // Get the default values for the custom settings
+            string marginUnit = defaultContext.QualifierValues["MarginUnit"];
+            string fontName = defaultContext.QualifierValues["FontName"];
+            string fontSize = defaultContext.QualifierValues["FontSize"];
+            string theme = defaultContext.QualifierValues["Theme"];
+            string papersize = defaultContext.QualifierValues["FontName"];
+            string papersource = defaultContext.QualifierValues["FontSize"];
+            string pagesetupBmargin = defaultContext.QualifierValues["PageSetupBottomMarginInches"];
+            string pagesetupRmargin = defaultContext.QualifierValues["PageSetupRightMarginInches"];
+            string pagesetupTmargin = defaultContext.QualifierValues["PageSetupTopMarginInches"];
+            string pagesetupLmargin = defaultContext.QualifierValues["PageSetupLeftMarginInches"];
+            string isprintpagenumbers = defaultContext.QualifierValues["PageSetupPrintPageNumbers"];
+            string orientation = defaultContext.QualifierValues["Orientation"];
+            string indentationL = defaultContext.QualifierValues["IndentationLeft"];
+            string indentationR = defaultContext.QualifierValues["IndentationRight"];
+            string indentationFL = defaultContext.QualifierValues["IndentationFirstLine"];
+            string linespacing = defaultContext.QualifierValues["LineSpacing"];
+            string is10ptenabled = defaultContext.QualifierValues["Is10ptEnabled"];
+            string alignment = defaultContext.QualifierValues["Alignment"];
+            // Get the local settings
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            // Check if the app has been launched before
+            if (localSettings.Values["FirstRun"] == null)
+            {
+                // Set the settings values to the default ones
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = marginUnit;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = theme;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontfamilySetting"] = fontName;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontSizeSetting"] = fontSize;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersize"] = papersize;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersource"] = papersource;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = pagesetupBmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = pagesetupRmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = pagesetupTmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = pagesetupLmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["isprintpagenumbers"] = isprintpagenumbers;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationL"] = indentationL;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationR"] = indentationR;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationFL"] = indentationFL;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["is10ptenabled"] = is10ptenabled;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["alignment"] = alignment;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["orientation"] = orientation;
+
+                // Set the value to indicate that the app has been launched
+                localSettings.Values["FirstRun"] = false;
+            }
+        }
+
+
+    protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (e.Parameter is StorageFile file)
@@ -1892,6 +1958,66 @@ namespace RectifyPad
                 Editor.Margin = new Thickness(left, 0, right, 0);
                 Editor.Document.Selection.ParagraphFormat.SetIndents((float)firstLine, 0, 0);
                 Editor.Document.Selection.ParagraphFormat.SetLineSpacing(Windows.UI.Text.LineSpacingRule.AtLeast, (float)lineSpacing);
+            }
+        }
+
+        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void PageSetup_Click(object sender, RoutedEventArgs e)
+        {
+            // Create an instance of the ParagraphDialog
+            Pageprop pageprop = new Pageprop();
+
+            // Show the dialog and wait for the user's input
+            ContentDialogResult result = await pageprop.ShowAsync();
+
+            // If the user clicked the OK button, adjust the properties of the RichEditBox
+            if (result == ContentDialogResult.Primary)
+            {
+                // Get the values from the dialog's TextBoxes and ComboBoxes
+                TextBox leftTextBox = (TextBox)pageprop.FindName("LeftMarginTextBox");
+                TextBox rightTextBox = (TextBox)pageprop.FindName("RightMarginTextBox");
+                TextBox firstLineTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
+                ComboBox lineSpacingComboBox = (ComboBox)pageprop.FindName("BottomMarginTextBox");
+
+                // Get the values from the textboxes
+                double left = double.Parse(leftTextBox.Text);
+                double right = double.Parse(rightTextBox.Text);
+                double top = double.Parse(firstLineTextBox.Text);
+                double bottom = double.Parse(lineSpacingComboBox.Text);
+
+                // Load the saved unit value
+                var unit = Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+
+                // Convert the values to pixels based on the unit
+                double pixelsPerUnit = 0;
+                switch (unit)
+                {
+                    case "Inches":
+                        pixelsPerUnit = 96; // 96 pixels per inch
+                        break;
+                    case "Centimeters":
+                        pixelsPerUnit = 37.8; // 37.8 pixels per centimeter
+                        break;
+                    case "Points":
+                        pixelsPerUnit = 1.33; // 1.33 pixels per point
+                        break;
+                    case "Cicera":
+                        pixelsPerUnit = 4.5; // 4.5 pixels per cicero
+                        break;
+                }
+
+                // Create a Thickness object with the converted values
+                Thickness margin = new Thickness(
+                    left * pixelsPerUnit,
+                    top * pixelsPerUnit,
+                    right * pixelsPerUnit,
+                    bottom * pixelsPerUnit);
+
+                Editor.Margin = margin;
             }
         }
     }

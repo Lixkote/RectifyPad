@@ -1,0 +1,116 @@
+﻿<ContentDialog
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WordPad.WordPadUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    x:Class="WordPad.WordPadUI.Pageprop"
+    mc:Ignorable="d"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    Title="Page Setup"
+    PrimaryButtonText="OK"
+    DefaultButton="Primary"
+    SecondaryButtonText="Cancel">
+    <Grid Height="623">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto">
+
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+
+            </RowDefinition>
+            <RowDefinition Height="Auto">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid Width="120" Height="165" HorizontalAlignment="Center" VerticalAlignment="Center"                  BorderBrush="#e8e8e8"
+                  Background="White"
+                  BorderThickness="1,1,1,1">
+                <TextBlock Loaded="exampletext_Loaded" x:Name="exampletext" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet, tortor in pellentesque semper, diam magna aliquet ipsum, nec cursus ipsum ante nec ex. Nullam vel urna sed lectus commodo tempus. Proin vel ipsum at orci scelerisque volutpat. Nullam leo nulla, luctus ac ullamcorper ut, ullamcorper a libero. Nam consequat, nisl in consectetur molestie, neque odio varius mi, in hendrerit nisi elit quis odio. In pretium faucibus tortor eget sagittis. Ut scelerisque elit leo, id lacinia erat faucibus finibus. Pellentesque consectetur pulvinar hendrerit. Etiam interdum, ipsum sit amet convallis feugiat, tellus turpis imperdiet magna, quis commodo erat felis placerat est. In id sagittis justo, vitae efficitur quam. Quisque sodales orci feugiat justo pretium, at gravida velit laoreet. Vivamus vel viverra nisi. In dapibus elit non nunc laoreet, a fringilla nunc tincidunt. Fusce in aliquam felis, et tincidunt nulla.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet, tortor in pellentesque semper, diam magna aliquet ipsum, nec cursus ipsum ante nec ex. Nullam vel urna sed lectus commodo tempus. Proin vel ipsum at orci scelerisque volutpat. Nullam leo nulla, luctus ac ullamcorper ut, ullamcorper a libero. Nam consequat, nisl in consectetur molestie, neque odio varius mi, in hendrerit nisi elit quis odio. In pretium faucibus tortor eget sagittis. Ut scelerisque elit leo, id lacinia erat faucibus finibus. Pellentesque consectetur pulvinar hendrerit. Etiam interdum, ipsum sit amet convallis feugiat, tellus turpis imperdiet magna, quis commodo erat felis placerat est. In id sagittis justo, vitae efficitur quam. Quisque sodales orci feugiat justo pretium, at gravida velit laoreet. Vivamus vel viverra nisi. In dapibus elit non nunc laoreet, a fringilla nunc tincidunt. Fusce in aliquam felis, et tincidunt nulla. " FontSize="6"/>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,0,0,0" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="42*"/>
+                <RowDefinition Height="42*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Paper" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold" Height="20"/>
+            <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Size:" Grid.ColumnSpan="2" />
+            <TextBlock Margin="0,16,0,7" Grid.Row="2" FontSize="14" Text="Source:" Grid.ColumnSpan="2" />
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,6,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,6,0,10" VerticalAlignment="Top" Grid.Row="2"/>
+
+        </Grid>
+        <Grid x:Name="Orientcontainer" Grid.Row="2" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Orientation" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <RadioButton x:Name="orientationlandscape" Tag="Landscape" Content="Landscape" Grid.Row="2" Margin="0,3,0,10" />
+            <RadioButton x:Name="orientationportait" Tag="Portrait" Content="Portrait" Grid.Row="1" Margin="0,3,0,1" />
+        </Grid>
+        <Grid Grid.Row="3" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*">
+
+                </RowDefinition>
+                <RowDefinition Height="Auto">
+
+                </RowDefinition>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="42">
+
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="112*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="112*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Margins (inches)" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <TextBox x:Name="RightMarginTextBox" Grid.Row="1" Grid.Column="3" Margin="0,0,0,10" Grid.RowSpan="2"/>
+            <TextBox x:Name="BottomMarginTextBox" Grid.Row="3" Grid.Column="3" Margin="0,0,0,10"/>
+            <TextBox x:Name="TopMarginTextBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
+            <TextBox x:Name="LeftMarginTextBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Grid.RowSpan="2"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Left:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Right:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Top:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Bottom:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <CheckBox x:Name="printpagenumbers" Content="Print Page Numbers" Margin="0,10,0,0"  Loaded="printpagenumbers_Loaded"/>
+        </Grid>
+    </Grid>
+
+
+
+</ContentDialog>

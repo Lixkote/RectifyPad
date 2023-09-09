@@ -36,7 +36,7 @@ namespace WordPad.WordPadUI.Settings
             // Load theme from settings
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             var settings = ApplicationData.Current.LocalSettings;
-            if (settings.Values.TryGetValue("AppTheme", out object value))
+            if (settings.Values.TryGetValue("themeSetting", out object value))
             {
                 var theme = GetEnum<ApplicationTheme>(value.ToString());
                 App.Current.RequestedTheme = theme;
@@ -60,12 +60,37 @@ namespace WordPad.WordPadUI.Settings
                     radioButton.IsChecked = true;
                 }
             }
+            // Load the saved unit value
+            var valueu = Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+            if (valueu != null)
+            {
+                string unit = valueu.ToString();
+                // Find and check the corresponding radio button
+                var radioButton = FindRadioButtonByTagU(unit);
+                if (radioButton != null)
+                {
+                    radioButton.IsChecked = true;
+                }
+            }
         }
 
         private RadioButton FindRadioButtonByTag(string tag)
         {
             // Assuming your muxc:RadioButtons control is named radiocontainer
             foreach (var item in radiocontainer.Items)
+            {
+                if (item is RadioButton rb && rb.Tag.ToString() == tag)
+                {
+                    return rb;
+                }
+            }
+            return null;
+        }
+
+        private RadioButton FindRadioButtonByTagU(string tag)
+        {
+            // Assuming your muxc:RadioButtons control is named radiocontainer
+            foreach (var item in unitradiocontainer.Items)
             {
                 if (item is RadioButton rb && rb.Tag.ToString() == tag)
                 {
@@ -117,6 +142,14 @@ namespace WordPad.WordPadUI.Settings
                 // Save the theme in app data
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = selectedTheme;
             }
+        }
+
+        private void UnitRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var selectedUnit = ((RadioButton)sender)?.Tag?.ToString();
+            // Save the unit in app data
+            Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = selectedUnit;
+            
         }
 
         public static TEnum GetEnum<TEnum>(string text) where TEnum : struct

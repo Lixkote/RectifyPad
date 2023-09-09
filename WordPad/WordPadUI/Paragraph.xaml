@@ -41,9 +41,9 @@
             <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Left:" Grid.ColumnSpan="2" />
             <TextBlock Margin="0,16,0,7" Grid.Row="2" FontSize="14" Text="Right:" Grid.ColumnSpan="2" />
             <TextBlock Margin="0,16,0,10" Grid.Row="3" FontSize="14" Text="First line:" Grid.ColumnSpan="2" />
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="1" Width="135"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="2" Width="135"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,8,0,10" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="3" Width="135" Grid.RowSpan="2"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="1" Width="135"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="2" Width="135"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,10" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="3" Width="135" Grid.RowSpan="2"/>
             
         </Grid>
         <Grid Grid.Row="1" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">

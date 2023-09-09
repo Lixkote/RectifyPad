@@ -152,12 +152,11 @@
                                     </StackPanel>
                                 </Grid>
                             </muxc:Expander.Header>
-                            <muxc:RadioButtons x:Name="radiocontainer2" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="LightRadio2" Content="Inches"/>
-                                <RadioButton x:Name="DarkRadio2" Content="Centimeters
-"/>
-                                <RadioButton x:Name="SysRadio2" Content="Points" />
-                                <RadioButton x:Name="SysRadio2s" Content="Cicera" />
+                            <muxc:RadioButtons x:Name="unitradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
+                                <RadioButton x:Name="LightRadio2" Content="Inches" Tag="Inches" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="DarkRadio2" Content="Centimeters" Tag="Centimeters" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio2" Content="Points" Tag="Points" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio2s" Content="Cicera" Tag="Cicera" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <!--<muxc:Expander

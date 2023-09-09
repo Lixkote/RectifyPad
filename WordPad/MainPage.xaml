@@ -311,7 +311,7 @@
                                                      Modifiers="Control" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="Page setup" />
+                        <MenuFlyoutItem x:Name="PageSetup" Text="Page setup" Click="PageSetup_Click"/>
                         <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Send" Click="SendButton_Click">

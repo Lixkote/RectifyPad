@@ -136,6 +136,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\FontClass.cs" />
+    <Compile Include="WordPadUI\Pageprop.xaml.cs">
+      <DependentUpon>Pageprop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WordPadUI\Paragraph.xaml.cs">
       <DependentUpon>Paragraph.xaml</DependentUpon>
     </Compile>
@@ -316,6 +319,7 @@
     <Content Include="Assets\wordpaddocument.targetsize-64.png" />
     <Content Include="Assets\wordpaddocument.targetsize-80.png" />
     <Content Include="Assets\wordpaddocument.targetsize-96.png" />
+    <Content Include="priconfig.default.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -331,6 +335,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WordPadUI\Pageprop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WordPadUI\Paragraph.xaml">
       <Generator>MSBuild:Compile</Generator>
