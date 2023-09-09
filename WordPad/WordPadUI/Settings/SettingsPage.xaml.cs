@@ -34,6 +34,7 @@ namespace WordPad.WordPadUI.Settings
         {
             this.InitializeComponent();
             // Load theme from settings
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             var settings = ApplicationData.Current.LocalSettings;
             if (settings.Values.TryGetValue("AppTheme", out object value))
             {

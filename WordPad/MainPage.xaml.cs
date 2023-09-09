@@ -164,6 +164,7 @@ namespace RectifyPad
 
         public MainPage()
         {
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             // Load the saved theme value
             var value = Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
             if (value != null)
@@ -983,7 +984,7 @@ namespace RectifyPad
 
             // Create a list of insert options to display in the ListView
             List<string> insertOptions = new List<string>();
-            insertOptions.Add("Draw Image using mspaint");
+            insertOptions.Add("Paint a picture");
             insertOptions.Add("Insert Table");
 
             // Set the ItemsSource of the ListView to the list of insert options

@@ -43,7 +43,7 @@
         Description="RectifyPad is a word processor application that supports rich text format (RTF). It is designed to be a modern and consistent alternative to Wordpad, which was discontinued by Microsoft. Its a part of Rectify11, a software that enhances the Windows operating system. Developed by lixkote as a hobby project."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
-		<uap:SplashScreen Image="Assets\splash.png" />
+		<uap:SplashScreen Image="Assets\splashw.png" />
 
       </uap:VisualElements>
 		<Extensions>

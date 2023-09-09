@@ -44,16 +44,11 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Create a list of date formats to display in the ListView
             List<string> dateFormats = new List<string>();
-            dateFormats.Add(DateTime.Now.ToString("dd.M.yyyy"));
-            dateFormats.Add(DateTime.Now.ToString("M.dd.yyyy"));
+            dateFormats.Add(DateTime.Now.ToString("dd.MM.yyyy"));
             dateFormats.Add(DateTime.Now.ToString("dd MMM yyyy"));
             dateFormats.Add(DateTime.Now.ToString("dddd, dd MMMM yyyy"));
             dateFormats.Add(DateTime.Now.ToString("dd MMMM yyyy"));
-            dateFormats.Add(DateTime.Now.ToString("hh:mm:ss tt"));
             dateFormats.Add(DateTime.Now.ToString("HH:mm:ss"));
-            dateFormats.Add(DateTime.Now.ToString("dddd, dd MMMM yyyy, HH:mm:ss"));
-            dateFormats.Add(DateTime.Now.ToString("dd MMMM yyyy, HH:mm:ss"));
-            dateFormats.Add(DateTime.Now.ToString("MMM dd, yyyy"));
 
             // Set the ItemsSource of the ListView to the list of date formats
             listView.ItemsSource = dateFormats;
@@ -92,7 +87,7 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Create a list of insert options to display in the ListView
             List<string> insertOptions = new List<string>();
-            insertOptions.Add("Draw Image using mspaint");
+            insertOptions.Add("Paint a picture");
             insertOptions.Add("Insert Table");
 
             // Set the ItemsSource of the ListView to the list of insert options
@@ -111,7 +106,7 @@ namespace WordPad.WordPadUI.Ribbon
                 string selectedOption = listView.SelectedItem as string;
 
                 // Draw an image using mspaint and insert it into the RichEditBox
-                if (selectedOption == "Draw Image using mspaint")
+                if (selectedOption == "Paint a picture")
                 {
                     // Launch mspaint
                     await Launcher.LaunchUriAsync(new Uri("mspaint:"));
