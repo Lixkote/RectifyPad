@@ -20,6 +20,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage.Pickers;
+using Windows.ApplicationModel.Core;
+using Windows.Management.Deployment;
 
 // Szablon elementu Kontrolka użytkownika jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -75,6 +77,18 @@ namespace WordPad.WordPadUI.Ribbon
             await dialog.ShowAsync();
         }
 
+        static async Task<AppListEntry> GetAppByPackageFamilyNameAsync(string packageFamilyName)
+        {
+            var pkgManager = new PackageManager();
+            var pkg = pkgManager.FindPackagesForUser("", packageFamilyName).FirstOrDefault();
+
+            if (pkg == null) return null;
+
+            var apps = await pkg.GetAppListEntriesAsync();
+            var firstApp = apps.FirstOrDefault();
+            return firstApp;
+        }
+
         private async void InsertObjectButton_Click(object sender, RoutedEventArgs e)
         {
             // Create a ContentDialog
@@ -108,8 +122,12 @@ namespace WordPad.WordPadUI.Ribbon
                 // Draw an image using mspaint and insert it into the RichEditBox
                 if (selectedOption == "Paint a picture")
                 {
-                    // Launch mspaint
-                    await Launcher.LaunchUriAsync(new Uri("mspaint:"));
+                    var app = await GetAppByPackageFamilyNameAsync("Microsoft.Paint_8wekyb3d8bbwe");
+
+                    if (app != null)
+                    {
+                        await app.LaunchAsync();
+                    }
 
                     // Wait for the user to draw an image and save it to a temporary file
                     StorageFile tempFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync("temp.bmp", CreationCollisionOption.ReplaceExisting);
@@ -125,22 +143,21 @@ namespace WordPad.WordPadUI.Ribbon
                     {
                         bitmapImage.SetSource(stream);
                     }
-                    try
-                    {
-                        // Insert the image into the RichEditBox
-                        using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
-                        {
-                            IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
-                            using (var imageStream = await imageStreamRef.OpenReadAsync())
-                            {
-                                Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
-                            }
-                        }
 
-                        // Delete the temporary file
-                        await tempFile.DeleteAsync();
+                    // Insert the image into the RichEditBox
+                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
+                    {
+                        IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
+                        using (var imageStream = await imageStreamRef.OpenReadAsync())
+                        {
+                            // Insert the object into the RichEditBox
+                            Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
+
+                        }
                     }
-                    catch { }
+
+                    // Delete the temporary file
+                    await tempFile.DeleteAsync();
                 }
                 // Insert a table into the RichEditBox
                 else if (selectedOption == "Insert Table")

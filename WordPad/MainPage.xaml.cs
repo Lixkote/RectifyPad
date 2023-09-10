@@ -32,6 +32,8 @@ using Windows.UI.Xaml.Data;
 using Windows.Graphics.Display;
 using Windows.ApplicationModel.Resources.Core;
 using System.Diagnostics;
+using Windows.ApplicationModel.Core;
+using Windows.Management.Deployment;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -1117,115 +1119,7 @@ namespace RectifyPad
 
         private async void Button_Click_3Async(object sender, RoutedEventArgs e)
         {
-            // Create a ContentDialog
-            ContentDialog dialog = new ContentDialog();
-            dialog.Title = "Insert Object";
-
-            // Create a ListView for the user to select the insert option
-            ListView listView = new ListView();
-            listView.SelectionMode = ListViewSelectionMode.Single;
-
-            // Create a list of insert options to display in the ListView
-            List<string> insertOptions = new List<string>();
-            insertOptions.Add("Paint a picture");
-            insertOptions.Add("Insert Table");
-
-            // Set the ItemsSource of the ListView to the list of insert options
-            listView.ItemsSource = insertOptions;
-
-            // Set the content of the ContentDialog to the ListView
-            dialog.Content = listView;
-
-            // Make the default button BLU
-            dialog.DefaultButton = ContentDialogButton.Primary;
-
-            // Add an "Insert" button to the ContentDialog
-            dialog.PrimaryButtonText = "OK";
-            dialog.PrimaryButtonClick += async (s, args) =>
-            {
-                string selectedOption = listView.SelectedItem as string;
-
-                // Draw an image using mspaint and insert it into the RichEditBox
-                if (selectedOption == "Draw Image using mspaint")
-                {
-                    // Launch mspaint
-                    await Launcher.LaunchUriAsync(new Uri("mspaint:"));
-
-                    // Wait for the user to draw an image and save it to a temporary file
-                    StorageFile tempFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync("temp.bmp", CreationCollisionOption.ReplaceExisting);
-                    while (true)
-                    {
-                        await Task.Delay(TimeSpan.FromSeconds(6));
-                        if (await tempFile.GetBasicPropertiesAsync() != null) break;
-                    }
-
-                    // Load the image into a BitmapImage object
-                    BitmapImage bitmapImage = new BitmapImage();
-                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
-                    {
-                        bitmapImage.SetSource(stream);
-                    }
-
-                    // Insert the image into the RichEditBox
-                    using (IRandomAccessStream stream = await tempFile.OpenAsync(FileAccessMode.Read))
-                    {
-                        IRandomAccessStreamReference imageStreamRef = RandomAccessStreamReference.CreateFromStream(stream);
-                        using (var imageStream = await imageStreamRef.OpenReadAsync())
-                        {
-                            Editor.Document.Selection.InsertImage(200, 200, 0, VerticalCharacterAlignment.Baseline, "img", imageStream);
-                        }
-                    }
-
-                    // Delete the temporary file
-                    await tempFile.DeleteAsync();
-                }
-                // Insert a table into the RichEditBox
-                else if (selectedOption == "Insert Table")
-                {
-                    //CreateStringBuilder object
-                    StringBuilder strTable = new StringBuilder();
-
-                    //Beginning of rich text format,don’t alter this line
-                    strTable.Append(@"{\rtf1 ");
-
-                    //Create 5 rows with 4 columns
-                    for (int i = 0; i < 5; i++)
-                    {
-                        //Start the row
-                        strTable.Append(@"\trowd");
-
-                        //First cell with width 1000.
-                        strTable.Append(@"\cellx1000");
-
-                        //Second cell with width 1000.Ending point is 2000, which is 1000+1000.
-                        strTable.Append(@"\cellx2000");
-
-                        //Third cell with width 1000.Endingat3000,which is 2000+1000.
-                        strTable.Append(@"\cellx3000");
-
-                        //Last cell with width 1000.Ending at 4000 (which is 3000+1000)
-                        strTable.Append(@"\cellx4000");
-
-                        //Append the row in StringBuilder
-                        strTable.Append(@"\intbl \cell \row"); //create the row
-                    }
-
-                    strTable.Append(@"\pard");
-
-                    strTable.Append(@"}");
-
-                    var strTableString = strTable.ToString();
-
-
-                    Editor.Document.Selection.SetText(TextSetOptions.FormatRtf, strTableString);
-                }
-            };
-
-            // Add a "Cancel" button to the ContentDialog
-            dialog.SecondaryButtonText = "Cancel";
-
-            // Show the ContentDialog
-            await dialog.ShowAsync();
+            
         }
 
         private void DecreaseFontSize_Click(object sender, RoutedEventArgs e)
