@@ -82,7 +82,7 @@
                     </Grid>
                     <TextBlock Style="{StaticResource PageHeader}" Grid.ColumnSpan="2" Text="Settings" Margin="0,0,0,24.2" Height="30" VerticalAlignment="Bottom" />
                     <StackPanel Grid.Row="1" Margin="{StaticResource ContentBottomWideSpacing}">
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Appearance" />
+                        <TextBlock x:Name="appe" Style="{StaticResource SectionHeader}" Text="Appearance" />
                         <muxc:Expander
                         x:Name="Theme"
                         HorizontalAlignment="Stretch"
@@ -103,9 +103,9 @@
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="radiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="LightRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="DarkRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="SysRadio" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System setting" Tag="Default" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="LightRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="DarkRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="Default" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <TextBlock Style="{StaticResource SectionHeader}" Text="Words" />
@@ -153,10 +153,10 @@
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="unitradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="LightRadio2" Content="Inches" Tag="Inches" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="DarkRadio2" Content="Centimeters" Tag="Centimeters" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="SysRadio2" Content="Points" Tag="Points" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="SysRadio2s" Content="Cicera" Tag="Cicera" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="inchesr" GroupName="u" Content="Inches" Tag="Inches" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="centir" GroupName="u" Content="Centimeters" Tag="Centimeters" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="poinr" GroupName="u" Content="Points" Tag="Points" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="cicr" GroupName="u" Content="Cicera" Tag="Cicera" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <!--<muxc:Expander

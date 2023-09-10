@@ -170,24 +170,26 @@ namespace RectifyPad
             // Load the saved theme value
             InitializeComponent();
             CheckFirstRun();
-            string value = Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"].ToString();
+            string value = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
             if (value != null)
             {
                 try
-                { // Parse and apply the theme
-                    App.RootTheme = App.GetEnum<ElementTheme>(value);
+                { 
                     // Change title bar color if needed
                     ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
                     if (value == "Dark")
                     {
                         titleBar.ButtonForegroundColor = Colors.White;
+                        App.RootTheme = ElementTheme.Dark;
                     }
                     else if (value == "Light")
                     {
                         titleBar.ButtonForegroundColor = Colors.Black;
+                        App.RootTheme = ElementTheme.Light;
                     }
                     else
                     {
+                        App.RootTheme = ElementTheme.Default;
                         if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
                         {
                             titleBar.ButtonForegroundColor = Colors.White;
@@ -1230,24 +1232,24 @@ namespace RectifyPad
             ResourceContext defaultContext = ResourceContext.GetForCurrentView();
 
             // Get the default values for the custom settings
-            string marginUnit = defaultContext.QualifierValues["MarginUnit"];
-            string fontName = defaultContext.QualifierValues["FontName"];
-            string fontSize = defaultContext.QualifierValues["FontSize"];
-            string theme = defaultContext.QualifierValues["Theme"];
-            string papersize = defaultContext.QualifierValues["FontName"];
-            string papersource = defaultContext.QualifierValues["FontSize"];
-            string pagesetupBmargin = defaultContext.QualifierValues["PageSetupBottomMarginInches"];
-            string pagesetupRmargin = defaultContext.QualifierValues["PageSetupRightMarginInches"];
-            string pagesetupTmargin = defaultContext.QualifierValues["PageSetupTopMarginInches"];
-            string pagesetupLmargin = defaultContext.QualifierValues["PageSetupLeftMarginInches"];
-            string isprintpagenumbers = defaultContext.QualifierValues["PageSetupPrintPageNumbers"];
-            string orientation = defaultContext.QualifierValues["Orientation"];
-            string indentationL = defaultContext.QualifierValues["IndentationLeft"];
-            string indentationR = defaultContext.QualifierValues["IndentationRight"];
-            string indentationFL = defaultContext.QualifierValues["IndentationFirstLine"];
-            string linespacing = defaultContext.QualifierValues["LineSpacing"];
-            string is10ptenabled = defaultContext.QualifierValues["Is10ptEnabled"];
-            string alignment = defaultContext.QualifierValues["Alignment"];
+            string marginUnit = "Inches";
+            string fontName = "Calibri";
+            string fontSize = "11";
+            string theme = "Light";
+            string papersize = "A4";
+            string papersource = "Auto";
+            string pagesetupBmargin = "1.25";
+            string pagesetupRmargin = "1.25";
+            string pagesetupTmargin = "1";
+            string pagesetupLmargin = "1";
+            string isprintpagenumbers = "yes";
+            string orientation = "Portrait";
+            string indentationL = "0";
+            string indentationR = "0";
+            string indentationFL = "0";
+            string linespacing = "0";
+            string is10ptenabled = "no";
+            string alignment = "Left";
             // Get the local settings
             var localSettings = ApplicationData.Current.LocalSettings;
 
@@ -1272,6 +1274,7 @@ namespace RectifyPad
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["is10ptenabled"] = is10ptenabled;
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["alignment"] = alignment;
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["orientation"] = orientation;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = linespacing;
 
                 // Set the value to indicate that the app has been launched
                 localSettings.Values["FirstRun"] = false;
