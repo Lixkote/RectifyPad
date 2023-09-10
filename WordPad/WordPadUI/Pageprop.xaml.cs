@@ -2,148 +2,152 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// Szablon elementu Kontrolka użytkownika jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace WordPad.WordPadUI
 {
     public sealed partial class Pageprop : ContentDialog
     {
+        private Dictionary<string, (double Width, double Height)> paperSizes;
+        private Thickness currentMargins;
+        private bool isOrientationChanged = false;
+
         public Pageprop()
         {
-            this.InitializeComponent();
-            // Load the saved unit value
+            InitializeComponent();
+            LoadUI();
+        }
 
-
+        private void LoadUI()
+        {
             var settings = ApplicationData.Current.LocalSettings;
-            if (settings.Values.TryGetValue("orientation", out object value))
+
+            // Define the dimensions for each paper size based on A4 as a reference
+            paperSizes = new Dictionary<string, (double Width, double Height)>
             {
-                string yesorno = value.ToString();
-                if (yesorno != null)
+                { "A3", (165 * 297 / 210, 165 * 210 / 297) },
+                { "A4", (165, 120) },
+                { "B5_1", (120 * 176 / 250, 165 * 250 / 176) },
+                { "B5_2", (120 * 176 / 250, 165 * 250 / 176) },
+                { "Executive", (120 * 184 / 215, 165 * 215 / 184) },
+                { "Legal", (120 * 216 / 356, 165 * 356 / 216) },
+                { "Letter", (120 * 216 / 279, 165 * 279 / 216) },
+                { "Tabloid", (120 * 279 / 432, 165 * 432 / 279) }
+            };
+
+            if (settings.Values.TryGetValue("papersize", out object value))
+            {
+                string orientation = (string)settings.Values["orientation"];
+                string selectedPaperSize = value.ToString();
+
+                if (paperSizes.TryGetValue(selectedPaperSize, out var dimensions))
                 {
-                    if (yesorno == "Portrait")
-                    {
-                        orientationportait.IsChecked = true;
-                        orientationlandscape.IsChecked = false;
-                    }
-                    if (yesorno == "Landscape")
-                    {
-                        orientationportait.IsChecked = false;
-                        orientationlandscape.IsChecked = true;
-                    }
+                    SetPaperSizeAndOrientation(dimensions.Width, dimensions.Height, orientation);
+                    PaperTypeCombo.SelectedIndex = paperSizes.Keys.ToList().IndexOf(selectedPaperSize);
                 }
             }
-            // Load the saved unit value
-            string valueb = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
-            if (valueb != null)
+
+            // Load the saved margin values
+            LoadMarginValues();
+
+            // Load the Print Page Numbers setting
+            LoadPrintPageNumbersSetting();
+        }
+
+        private void SetPaperSizeAndOrientation(double width, double height, string orientation)
+        {
+            // Swap width and height if orientation is Landscape
+            if (orientation == "Portrait")
             {
-                BottomMarginTextBox.Text = valueb;
+                double temp = width;
+                width = height;
+                height = temp;
+                isOrientationChanged = true;
             }
-            string valuet = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
-            if (valuet != null)
+
+            Paper.Width = width;
+            Paper.Height = height;
+
+            // Update the exampletextgrid margin
+            UpdateMarginPreview();
+
+            // Update the orientation radio buttons
+            orientationportait.IsChecked = orientation == "Landscape";
+            orientationlandscape.IsChecked = orientation == "Portrait";
+        }
+
+        private void LoadMarginValues()
+        {
+            // Load margin values and set limits
+            string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+            double maxMargin = 100.0; // Set a maximum margin value
+
+            LoadAndLimitMarginValue(LeftMarginTextBox, "pagesetupLmargin", unit, maxMargin);
+            LoadAndLimitMarginValue(RightMarginTextBox, "pagesetupRmargin", unit, maxMargin);
+            LoadAndLimitMarginValue(TopMarginTextBox, "pagesetupTmargin", unit, maxMargin);
+            LoadAndLimitMarginValue(BottomMarginTextBox, "pagesetupBmargin", unit, maxMargin);
+
+            // Update the exampletextgrid margin based on the loaded values
+            UpdateMarginPreview();
+        }
+
+        private void LoadAndLimitMarginValue(TextBox textBox, string settingKey, string unit, double maxMargin)
+        {
+            var settings = ApplicationData.Current.LocalSettings;
+
+            if (settings.Values.TryGetValue(settingKey, out object value))
             {
-                TopMarginTextBox.Text = valuet;
-            }
-            string valuel = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
-            if (valuel != null)
-            {
-                LeftMarginTextBox.Text = valuel;
-            }
-            string valuer = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
-            if (valuer != null)
-            {
-                RightMarginTextBox.Text = valuer;
+                double margin = Convert.ToDouble(value);
+
+                // Limit the margin value
+                margin = Math.Min(maxMargin, margin);
+                textBox.Text = margin.ToString();
             }
         }
 
-        private void exampletext_Loaded(object sender, RoutedEventArgs e)
+        private void UpdateMarginPreview()
         {
             try
             {
-                // Get the values from the textboxes
                 double left = double.Parse(LeftMarginTextBox.Text);
                 double right = double.Parse(RightMarginTextBox.Text);
                 double top = double.Parse(TopMarginTextBox.Text);
                 double bottom = double.Parse(BottomMarginTextBox.Text);
 
-                // Load the saved unit value
-                string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+                double maxWidth = exampletextgrid.Width;
+                double maxHeight = exampletextgrid.Height;
 
-                // Default pixels per unit
-                double pixelsPerUnit = 1.0; // Default to 1 pixel per unit (no scaling)
+                double maxLeftMargin = maxWidth - right;
+                double maxRightMargin = maxWidth - left;
+                double maxTopMargin = maxHeight - bottom;
+                double maxBottomMargin = maxHeight - top;
 
-                if (unit != null)
-                {
-                    switch (unit)
-                    {
-                        case "Inches":
-                            pixelsPerUnit = 96.0; // 96 pixels per inch
-                            break;
-                        case "Centimeters":
-                            pixelsPerUnit = 37.8; // 37.8 pixels per centimeter
-                            break;
-                        case "Points":
-                            pixelsPerUnit = 1.33; // 1.33 pixels per point
-                            break;
-                        case "Cicera":
-                            pixelsPerUnit = 4.5; // 4.5 pixels per cicero
-                            break;
-                        default:
-                            // Handle unexpected unit values here, e.g., set a default or show an error message.
-                            break;
-                    }
-                }
-                else
-                {
-                    // Handle the exception
-                    Debug.WriteLine("Unit not found");
-                }
+                double finalLeftMargin = Math.Max(0, Math.Min(left, maxLeftMargin));
+                double finalRightMargin = Math.Max(0, Math.Min(right, maxRightMargin));
+                double finalTopMargin = Math.Max(0, Math.Min(top, maxTopMargin));
+                double finalBottomMargin = Math.Max(0, Math.Min(bottom, maxBottomMargin));
 
-                // Calculate the margin based on the unit and values
-                double maxWidth = 117; // Width of your TextBlock
-                double maxHeight = 343; // Height of your TextBlock
-
-                double maxLeftMargin = maxWidth - right * pixelsPerUnit;
-                double maxRightMargin = maxWidth - left * pixelsPerUnit;
-                double maxTopMargin = maxHeight - bottom * pixelsPerUnit;
-                double maxBottomMargin = maxHeight - top * pixelsPerUnit;
-
-                double finalLeftMargin = Math.Max(0, Math.Min(left * pixelsPerUnit, maxLeftMargin));
-                double finalRightMargin = Math.Max(0, Math.Min(right * pixelsPerUnit, maxRightMargin));
-                double finalTopMargin = Math.Max(0, Math.Min(top * pixelsPerUnit, maxTopMargin));
-                double finalBottomMargin = Math.Max(0, Math.Min(bottom * pixelsPerUnit, maxBottomMargin));
-
-                Thickness margin = new Thickness(
+                currentMargins = new Thickness(
                     finalLeftMargin,
                     finalTopMargin,
                     finalRightMargin,
                     finalBottomMargin);
 
-                // Set the margin of the textblock
-                exampletext.Margin = margin;
+                exampletextgrid.Margin = currentMargins;
             }
             catch (Exception ex)
             {
                 // Handle any exceptions that might occur during parsing or margin calculation
                 Debug.WriteLine("An error occurred: " + ex.Message);
             }
-
         }
 
-        private void printpagenumbers_Loaded(object sender, RoutedEventArgs e)
+        private void LoadPrintPageNumbersSetting()
         {
             string no = "no";
             var settings = ApplicationData.Current.LocalSettings;
@@ -165,6 +169,80 @@ namespace WordPad.WordPadUI
             // Load the saved unit value
             string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
             marginsname.Text = "Margins (" + unit + ")";
+        }
+
+        private void orientationportait_Checked(object sender, RoutedEventArgs e)
+        {
+            if (isOrientationChanged)
+            {
+                // Swap width and height back to Portrait orientation
+                double temp = Paper.Width;
+                Paper.Width = Paper.Height;
+                Paper.Height = temp;
+                isOrientationChanged = false;
+            }
+
+            UpdateMarginPreview();
+        }
+
+        private void orientationlandscape_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!isOrientationChanged)
+            {
+                // Swap width and height for Landscape orientation
+                double temp = Paper.Width;
+                Paper.Width = Paper.Height;
+                Paper.Height = temp;
+                isOrientationChanged = true;
+            }
+
+            UpdateMarginPreview();
+        }
+
+        private void PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            // Save the selected paper size and orientation
+            var settings = ApplicationData.Current.LocalSettings;
+            if (PaperTypeCombo.SelectedItem != null)
+            {
+                string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
+                settings.Values["papersize"] = selectedPaperSize;
+            }
+
+            settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
+
+            // Save margin values
+            settings.Values["pagesetupLmargin"] = LeftMarginTextBox.Text;
+            settings.Values["pagesetupRmargin"] = RightMarginTextBox.Text;
+            settings.Values["pagesetupTmargin"] = TopMarginTextBox.Text;
+            settings.Values["pagesetupBmargin"] = BottomMarginTextBox.Text;
+
+            // Save Print Page Numbers setting
+            settings.Values["is10ptenabled"] = printpagenumbers.IsChecked == true ? "yes" : "no";
+        }
+
+        private void PaperTypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PaperTypeCombo.SelectedItem != null)
+                {
+                    string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
+                    if (paperSizes.TryGetValue(selectedPaperSize, out var dimensions))
+                    {
+                        double width = dimensions.Width;
+                        double height = dimensions.Height;
+
+                        // Swap width and height if the orientation is Landscape
+                        if (orientationlandscape.IsChecked == true)
+                        {
+                            double temp = width;
+                            width = height;
+                            height = temp;
+                        }
+
+                        Paper.Width = width;
+                        Paper.Height = height;
+                    }
+                }
         }
     }
 }

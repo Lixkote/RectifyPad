@@ -23,6 +23,9 @@ namespace WordPad.WordPadUI.Settings
 
             // Initialize unit radio buttons
             InitializeUnitRadioButtons();
+
+            // Initialize text wrapping radio buttons
+            InitializeWrapRadioButtons();
         }
 
         private void InitializeThemeRadioButtons()
@@ -43,6 +46,22 @@ namespace WordPad.WordPadUI.Settings
             }
         }
 
+        private void InitializeWrapRadioButtons()
+        {
+            string selectedWrap = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"];
+            if (!string.IsNullOrEmpty(selectedWrap))
+            {
+                // Find the RadioButton with a matching Tag
+                foreach (var item in wrapradiocontainer.Items)
+                {
+                    if (item is RadioButton radioButton && radioButton.Tag is string tag && tag == selectedWrap)
+                    {
+                        radioButton.IsChecked = true;
+                        break; // Exit the loop once a match is found
+                    }
+                }
+            }
+        }
 
         private void InitializeUnitRadioButtons()
         {
@@ -133,6 +152,14 @@ namespace WordPad.WordPadUI.Settings
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void WrapRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            string selectedWrap = ((RadioButton)sender)?.Tag?.ToString();
+
+            // Save the selected unit in app data
+            Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"] = selectedWrap;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Graphics.Canvas.Text;
-using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,57 +11,30 @@ using Windows.UI.Core.Preview;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using WordPad.WordPadUI;
 using WordPad.Helpers;
 using Windows.Storage.Provider;
-using Microsoft.VisualBasic;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Automation;
-using Windows.Globalization.DateTimeFormatting;
-using static Microsoft.Toolkit.Parsers.Markdown.Blocks.TableBlock;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Text;
-using Windows.Graphics.Imaging;
-using Windows.Storage.Search;
 using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
-using System.Drawing;
-using Color = Windows.UI.Color;
-using Windows.Foundation.Metadata;
-using System.Data;
 using Microsoft.Toolkit.Uwp.Helpers;
-using System.ComponentModel;
 using Windows.Graphics.Printing;
-using Windows.UI.Popups;
 using Windows.UI.Xaml.Navigation;
-using System.Reflection;
-using Windows.UI.Xaml.Input;
-using ColorCode.Parsing;
-using System.IO;
 using Windows.ApplicationModel.Email;
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using Windows.Devices.Enumeration;
 using WordPad.WordPadUI.Settings;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Data;
-using FanKit.Transformers;
-using Microsoft.Graphics.Canvas.Effects;
 using Windows.Graphics.Display;
-using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources.Core;
 using System.Diagnostics;
 
-
-
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// RectifyPad made by Lixkote with help of some others for Rectify11.
+// Main page c# source code.
 
 namespace RectifyPad
 {
@@ -132,9 +104,6 @@ namespace RectifyPad
 
         string originalDocText = "";
 
-
-
-
         public List<string> Fonts
         {
             get
@@ -166,15 +135,114 @@ namespace RectifyPad
 
         public MainPage()
         {
+            // Enable navigation cache
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            // Load the saved theme value
+
+            // Run the startup voids
             InitializeComponent();
             CheckFirstRun();
+            LoadThemeFromSettings();
+            LoadSettingsValues();
+            PopulateRecents();
+            ConnectRibbonToolbars();
+
+            // Connect the events and others
+            TextRuler.LeftHangingIndentChanging += TextRuler_LeftHangingIndentChanging;
+            TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
+            TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
+            TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
+            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+            ribbongrid.DataContext = this;
+
+        }
+
+        private void CheckFirstRun()
+        {
+            /// This function is responsible for applying the default settings on the app's first startup.
+            /// Modifying these will change the default settings of the application:            
+
+
+            // Get the default resource context for the app
+            ResourceContext defaultContext = ResourceContext.GetForCurrentView();
+
+            // Set the default settings:
+            string marginUnit = "Inches";
+            string fontName = "Calibri";
+            string fontSize = "11";
+            string theme = "Light";
+            string papersize = "A4";
+            string papersource = "Auto";
+            string pagesetupBmargin = "1.25";
+            string pagesetupRmargin = "1.25";
+            string pagesetupTmargin = "1";
+            string pagesetupLmargin = "1";
+            string isprintpagenumbers = "yes";
+            string orientation = "Portrait";
+            string indentationL = "0";
+            string indentationR = "0";
+            string indentationFL = "0";
+            string linespacing = "0";
+            string is10ptenabled = "no";
+            string alignment = "Left";
+            string textwrapping = "wrapruler";
+            // Get the local settings
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            // Check if the app has been launched before and if not, set the default settings.
+            if (localSettings.Values["FirstRun"] == null)
+            {
+                // Set the settings values to the default ones
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = marginUnit;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = theme;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontfamilySetting"] = fontName;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontSizeSetting"] = fontSize;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersize"] = papersize;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersource"] = papersource;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = pagesetupBmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = pagesetupRmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = pagesetupTmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = pagesetupLmargin;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["isprintpagenumbers"] = isprintpagenumbers;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationL"] = indentationL;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationR"] = indentationR;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationFL"] = indentationFL;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["is10ptenabled"] = is10ptenabled;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["alignment"] = alignment;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["orientation"] = orientation;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = linespacing;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"] = textwrapping;
+
+                // Set the value to indicate that the app has been launched
+                localSettings.Values["FirstRun"] = false;
+            }
+        }
+
+        private void LoadSettingsValues()
+        {
+            // Load text wrapping value from settings:
+            string textWrapping = localSettings.Values["textwrapping"] as string;
+            if (textWrapping == "wrapwindow")
+            {
+                Editor.TextWrapping = TextWrapping.Wrap;
+            }
+            else if (textWrapping == "nowrap")
+            {
+                Editor.TextWrapping = TextWrapping.NoWrap;
+            }
+            else if (textWrapping == "wrapruler")
+            {
+                /// Add a function here that will do the ruler based wrapping
+            }
+
+        }
+
+        private void LoadThemeFromSettings()
+        {
             string value = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
             if (value != null)
             {
                 try
-                { 
+                {
                     // Change title bar color if needed
                     ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
                     if (value == "Dark")
@@ -208,26 +276,6 @@ namespace RectifyPad
 
             }
             Window.Current.SetTitleBar(AppTitleBar);
-
-            string textWrapping = localSettings.Values["TextWrapping"] as string;
-            if (textWrapping == "enabled")
-            {
-                Editor.TextWrapping = TextWrapping.Wrap;
-            }
-            else if (textWrapping == "disabled")
-            {
-                Editor.TextWrapping = TextWrapping.NoWrap;
-            }
-            ribbongrid.DataContext = this;
-            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
-            PopulateRecents();
-            ConnectRibbonToolbars();
-
-            TextRuler.LeftHangingIndentChanging += TextRuler_LeftHangingIndentChanging;
-            TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
-            TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
-            TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
-            
         }
 
         private void TextRuler_LeftIndentChanging(int NewValue)
@@ -268,6 +316,8 @@ namespace RectifyPad
                     var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
                     var hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
                     Editor.Document.Selection.ParagraphFormat.SetIndents((float)textIndentInPixels, (float)hangingIndentInPixels, 0);
+                    // Set the margins for the RichEditBox
+                    Editor.Margin = new Thickness((float)textIndentInPixels, (float)hangingIndentInPixels, 0, 0);
                 }
             }
             catch (Exception)
@@ -286,7 +336,7 @@ namespace RectifyPad
                 double indentInPixels = ConvertDipsToPixels(indentInMillimeters);
                 double hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
 
-                Editor.Document.Selection.ParagraphFormat.SetIndents((float)indentInPixels, (float)hangingIndentInPixels, 0);
+                Editor.Margin = new Thickness((float)indentInPixels, 0, (float)hangingIndentInPixels, 0);
             }
         }
 
@@ -300,7 +350,7 @@ namespace RectifyPad
                 {
                     var rightIndentInMillimeters = TextRuler.RightIndent;
                     var rightIndentInPixels = ConvertDipsToPixels(rightIndentInMillimeters);
-                    Editor.Document.Selection.ParagraphFormat.SetIndents(0, 0, -(float)rightIndentInPixels);
+                    Editor.Margin = new Thickness(0, 0, -(float)rightIndentInPixels, 0);
                 }
             }
             catch (Exception)
@@ -1168,22 +1218,11 @@ namespace RectifyPad
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             string value = string.Empty;
-
-
-
-
             _printHelper = new PrintHelper(EditorContentHost);
             var printHelperOptions = new PrintHelperOptions(true);
             printHelperOptions.Orientation = PrintOrientation.Default;
             await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
         }
-
-
-        private void PrintHelper_OnPrintFailed()
-        {
-
-        }
-
         private void pintpreview_Click(object sender, RoutedEventArgs e)
         {
             ribbongrid.Visibility = Visibility.Collapsed;
@@ -1220,69 +1259,7 @@ namespace RectifyPad
         {
             if (saved == false) { e.Handled = true; ShowUnsavedDialog(); }
         }
-
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CheckFirstRun()
-        {
-            // Get the default resource context for the app
-            ResourceContext defaultContext = ResourceContext.GetForCurrentView();
-
-            // Get the default values for the custom settings
-            string marginUnit = "Inches";
-            string fontName = "Calibri";
-            string fontSize = "11";
-            string theme = "Light";
-            string papersize = "A4";
-            string papersource = "Auto";
-            string pagesetupBmargin = "1.25";
-            string pagesetupRmargin = "1.25";
-            string pagesetupTmargin = "1";
-            string pagesetupLmargin = "1";
-            string isprintpagenumbers = "yes";
-            string orientation = "Portrait";
-            string indentationL = "0";
-            string indentationR = "0";
-            string indentationFL = "0";
-            string linespacing = "0";
-            string is10ptenabled = "no";
-            string alignment = "Left";
-            // Get the local settings
-            var localSettings = ApplicationData.Current.LocalSettings;
-
-            // Check if the app has been launched before
-            if (localSettings.Values["FirstRun"] == null)
-            {
-                // Set the settings values to the default ones
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = marginUnit;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = theme;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontfamilySetting"] = fontName;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontSizeSetting"] = fontSize;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersize"] = papersize;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersource"] = papersource;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = pagesetupBmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = pagesetupRmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = pagesetupTmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = pagesetupLmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["isprintpagenumbers"] = isprintpagenumbers;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationL"] = indentationL;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationR"] = indentationR;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationFL"] = indentationFL;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["is10ptenabled"] = is10ptenabled;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["alignment"] = alignment;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["orientation"] = orientation;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = linespacing;
-
-                // Set the value to indicate that the app has been launched
-                localSettings.Values["FirstRun"] = false;
-            }
-        }
-
-
-    protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (e.Parameter is StorageFile file)
@@ -1983,14 +1960,14 @@ namespace RectifyPad
                 // Get the values from the dialog's TextBoxes and ComboBoxes
                 TextBox leftTextBox = (TextBox)pageprop.FindName("LeftMarginTextBox");
                 TextBox rightTextBox = (TextBox)pageprop.FindName("RightMarginTextBox");
-                TextBox firstLineTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
-                ComboBox lineSpacingComboBox = (ComboBox)pageprop.FindName("BottomMarginTextBox");
+                TextBox topTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
+                TextBox bottomTextBox = (TextBox)pageprop.FindName("BottomMarginTextBox");
 
                 // Get the values from the textboxes
                 double left = double.Parse(leftTextBox.Text);
                 double right = double.Parse(rightTextBox.Text);
-                double top = double.Parse(firstLineTextBox.Text);
-                double bottom = double.Parse(lineSpacingComboBox.Text);
+                double top = double.Parse(topTextBox.Text);
+                double bottom = double.Parse(bottomTextBox.Text);
 
                 // Load the saved unit value
                 var unit = Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
@@ -2013,15 +1990,46 @@ namespace RectifyPad
                         break;
                 }
 
-                // Create a Thickness object with the converted values
-                Thickness margin = new Thickness(
-                    left * pixelsPerUnit,
-                    top * pixelsPerUnit,
-                    right * pixelsPerUnit,
-                    bottom * pixelsPerUnit);
+                // Calculate the margin values in pixels
+                double leftMargin = left * pixelsPerUnit;
+                double rightMargin = right * pixelsPerUnit;
+                double topMargin = top * pixelsPerUnit;
+                double bottomMargin = bottom * pixelsPerUnit;
 
-                Editor.Margin = margin;
+                // Set the margins for the RichEditBox
+                Editor.Margin = new Thickness(leftMargin, topMargin, rightMargin, bottomMargin);
+
+
+                // Save the settings:
+
+                // Get the values from the dialog's TextBoxes and ComboBoxes
+                TextBox LeftMarginTextBox = (TextBox)pageprop.FindName("LeftMarginTextBox");
+                TextBox RightMarginTextBox = (TextBox)pageprop.FindName("RightMarginTextBox");
+                TextBox TopMarginTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
+                TextBox BottomMarginTextBox = (TextBox)pageprop.FindName("BottomMarginTextBox");
+                ComboBox PaperTypeCombo = (ComboBox)pageprop.FindName("PaperTypeCombo");
+                CheckBox printpagenumbers = (CheckBox)pageprop.FindName("printpagenumbers");
+                RadioButton orientationportait = (RadioButton)pageprop.FindName("orientationportait");
+                // Save the selected paper size and orientation
+                var settings = ApplicationData.Current.LocalSettings;
+                if (PaperTypeCombo.SelectedItem != null)
+                {
+                    string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
+                    settings.Values["papersize"] = selectedPaperSize;
+                }
+
+                settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
+
+                // Save margin values
+                settings.Values["pagesetupLmargin"] = LeftMarginTextBox.Text;
+                settings.Values["pagesetupRmargin"] = RightMarginTextBox.Text;
+                settings.Values["pagesetupTmargin"] = TopMarginTextBox.Text;
+                settings.Values["pagesetupBmargin"] = BottomMarginTextBox.Text;
+
+                // Save Print Page Numbers setting
+                settings.Values["is10ptenabled"] = printpagenumbers.IsChecked == true ? "yes" : "no";
             }
+
         }
     }
 }
