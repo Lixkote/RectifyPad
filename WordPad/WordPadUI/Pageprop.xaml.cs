@@ -13,10 +13,9 @@ namespace WordPad.WordPadUI
 {
     public sealed partial class Pageprop : ContentDialog
     {
-        private Dictionary<string, (double Width, double Height)> paperSizes;
+        public Dictionary<string, (double Width, double Height)> paperSizes;
         private Thickness currentMargins;
         private bool isOrientationChanged = false;
-
         public Pageprop()
         {
             InitializeComponent();
@@ -52,11 +51,15 @@ namespace WordPad.WordPadUI
                 }
             }
 
-            // Load the saved margin values
+            // Load margin values and set limits
             LoadMarginValues();
 
             // Load the Print Page Numbers setting
             LoadPrintPageNumbersSetting();
+
+            // Load the saved unit value
+            string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+            marginsname.Text = "Margins (" + unit + ")";
         }
 
         private void SetPaperSizeAndOrientation(double width, double height, string orientation)
@@ -102,11 +105,13 @@ namespace WordPad.WordPadUI
 
             if (settings.Values.TryGetValue(settingKey, out object value))
             {
-                double margin = Convert.ToDouble(value);
+                double margin = ConvertFromUnit(Convert.ToDouble(value), "Inches");
 
                 // Limit the margin value
                 margin = Math.Min(maxMargin, margin);
-                textBox.Text = margin.ToString();
+
+                string formattedMargin = ConvertToUnit(margin, unit).ToString("0.##"); // Display with up to 2 decimal places
+                textBox.Text = formattedMargin.TrimEnd('0').TrimEnd('.'); // Remove trailing "00" or "." if present
             }
         }
 
@@ -119,18 +124,20 @@ namespace WordPad.WordPadUI
                 double top = double.Parse(TopMarginTextBox.Text);
                 double bottom = double.Parse(BottomMarginTextBox.Text);
 
+                string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+
                 double maxWidth = exampletextgrid.Width;
                 double maxHeight = exampletextgrid.Height;
 
-                double maxLeftMargin = maxWidth - right;
-                double maxRightMargin = maxWidth - left;
-                double maxTopMargin = maxHeight - bottom;
-                double maxBottomMargin = maxHeight - top;
+                double maxLeftMargin = maxWidth - ConvertToUnit(right, unit);
+                double maxRightMargin = maxWidth - ConvertToUnit(left, unit);
+                double maxTopMargin = maxHeight - ConvertToUnit(bottom, unit);
+                double maxBottomMargin = maxHeight - ConvertToUnit(top, unit);
 
-                double finalLeftMargin = Math.Max(0, Math.Min(left, maxLeftMargin));
-                double finalRightMargin = Math.Max(0, Math.Min(right, maxRightMargin));
-                double finalTopMargin = Math.Max(0, Math.Min(top, maxTopMargin));
-                double finalBottomMargin = Math.Max(0, Math.Min(bottom, maxBottomMargin));
+                double finalLeftMargin = Math.Max(0, Math.Min(ConvertToUnit(left, unit), maxLeftMargin));
+                double finalRightMargin = Math.Max(0, Math.Min(ConvertToUnit(right, unit), maxRightMargin));
+                double finalTopMargin = Math.Max(0, Math.Min(ConvertToUnit(top, unit), maxTopMargin));
+                double finalBottomMargin = Math.Max(0, Math.Min(ConvertToUnit(bottom, unit), maxBottomMargin));
 
                 currentMargins = new Thickness(
                     finalLeftMargin,
@@ -164,13 +171,6 @@ namespace WordPad.WordPadUI
             }
         }
 
-        private void marginsname_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Load the saved unit value
-            string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-            marginsname.Text = "Margins (" + unit + ")";
-        }
-
         private void orientationportait_Checked(object sender, RoutedEventArgs e)
         {
             if (isOrientationChanged)
@@ -199,50 +199,74 @@ namespace WordPad.WordPadUI
             UpdateMarginPreview();
         }
 
-        private void PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private double ConvertToUnit(double value, string unit)
         {
-            // Save the selected paper size and orientation
-            var settings = ApplicationData.Current.LocalSettings;
-            if (PaperTypeCombo.SelectedItem != null)
+            switch (unit)
             {
-                string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
-                settings.Values["papersize"] = selectedPaperSize;
+                case "Inches":
+                    return value;
+                case "Centimeters":
+                    return value * 2.54; // Convert inches to centimeters
+                case "Points":
+                    return value * 72; // Convert inches to points
+                case "Picas":
+                    return value * 6; // Convert inches to picas
+                default:
+                    return value; // Default to inches
             }
+        }
 
-            settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
-
-            // Save margin values
-            settings.Values["pagesetupLmargin"] = LeftMarginTextBox.Text;
-            settings.Values["pagesetupRmargin"] = RightMarginTextBox.Text;
-            settings.Values["pagesetupTmargin"] = TopMarginTextBox.Text;
-            settings.Values["pagesetupBmargin"] = BottomMarginTextBox.Text;
-
-            // Save Print Page Numbers setting
-            settings.Values["is10ptenabled"] = printpagenumbers.IsChecked == true ? "yes" : "no";
+        private double ConvertFromUnit(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Inches":
+                    return value;
+                case "Centimeters":
+                    return value / 2.54; // Convert centimeters to inches
+                case "Points":
+                    return value / 72; // Convert points to inches
+                case "Picas":
+                    return value / 6; // Convert picas to inches
+                default:
+                    return value; // Default to inches
+            }
         }
 
         private void PaperTypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (PaperTypeCombo.SelectedItem != null)
+            {
+                string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
+                if (paperSizes.TryGetValue(selectedPaperSize, out var dimensions))
                 {
-                    string selectedPaperSize = (PaperTypeCombo.SelectedItem as ComboBoxItem).Content.ToString();
-                    if (paperSizes.TryGetValue(selectedPaperSize, out var dimensions))
+                    double width = dimensions.Width;
+                    double height = dimensions.Height;
+
+                    // Calculate the new width and height based on proportions
+                    double originalWidth = 812; // Original RichEditBox width
+                    double originalHeight = 1151; // Original RichEditBox height
+
+                    if (width > height)
                     {
-                        double width = dimensions.Width;
-                        double height = dimensions.Height;
-
-                        // Swap width and height if the orientation is Landscape
-                        if (orientationlandscape.IsChecked == true)
-                        {
-                            double temp = width;
-                            width = height;
-                            height = temp;
-                        }
-
-                        Paper.Width = width;
-                        Paper.Height = height;
+                        // Landscape paper size, adjust height while maintaining proportions
+                        double scaleFactor = height / originalHeight;
+                        height = dimensions.Height;
+                        width = originalWidth * scaleFactor;
                     }
+                    else
+                    {
+                        // Portrait paper size, adjust width while maintaining proportions
+                        double scaleFactor = width / originalWidth;
+                        width = dimensions.Width;
+                        height = originalHeight * scaleFactor;
+                    }
+
+                    // Set the size of the Paper grid
+                    Paper.Width = width;
+                    Paper.Height = height;
                 }
+            }
         }
     }
 }

@@ -824,7 +824,7 @@ VerticalAlignment="Top"
 
             <Grid x:Name="EditorGrid" 
                   Width="816"
-                  Height="1154"
+                  Height="1116"
                   Margin="0,40,0,0"
                   RequestedTheme="Light"
                   BorderBrush="#e8e8e8"

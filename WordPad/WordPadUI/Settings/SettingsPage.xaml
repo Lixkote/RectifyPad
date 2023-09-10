@@ -129,8 +129,8 @@
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="wrapradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
                                 <RadioButton x:Name="NoWrap" GroupName="w" Tag="nowrap" Content="No wrap" Checked="WrapRadioButton_Checked"/>
-                                <RadioButton x:Name="WrapWindow" GroupName="w" Tag="wrapwindow" Content="Wrap to window"/>
-                                <RadioButton x:Name="WrapRuler" GroupName="w" Tag="wrapruler" Content="Wrap to ruler" />
+                                <RadioButton x:Name="WrapWindow" GroupName="w" Tag="wrapwindow" Content="Wrap to window" Checked="WrapRadioButton_Checked"/>
+                                <RadioButton x:Name="WrapRuler" GroupName="w" Tag="wrapruler" Content="Wrap to ruler" Checked="WrapRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" />
@@ -156,7 +156,7 @@
                                 <RadioButton x:Name="inchesr" GroupName="u" Content="Inches" Tag="Inches" Checked="UnitRadioButton_Checked"/>
                                 <RadioButton x:Name="centir" GroupName="u" Content="Centimeters" Tag="Centimeters" Checked="UnitRadioButton_Checked"/>
                                 <RadioButton x:Name="poinr" GroupName="u" Content="Points" Tag="Points" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="Cicera" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="Picas" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <!--<muxc:Expander

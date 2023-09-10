@@ -219,22 +219,102 @@ namespace RectifyPad
 
         private void LoadSettingsValues()
         {
-            // Load text wrapping value from settings:
-            string textWrapping = localSettings.Values["textwrapping"] as string;
-            if (textWrapping == "wrapwindow")
+            try
             {
-                Editor.TextWrapping = TextWrapping.Wrap;
-            }
-            else if (textWrapping == "nowrap")
-            {
-                Editor.TextWrapping = TextWrapping.NoWrap;
-            }
-            else if (textWrapping == "wrapruler")
-            {
-                /// Add a function here that will do the ruler based wrapping
-            }
+                // Load text wrapping value from settings:
+                string textWrapping = localSettings.Values["textwrapping"] as string;
+                if (textWrapping == "wrapwindow")
+                {
+                    Editor.TextWrapping = TextWrapping.Wrap;
+                }
+                else if (textWrapping == "nowrap")
+                {
+                    Editor.TextWrapping = TextWrapping.NoWrap;
+                }
+                else if (textWrapping == "wrapruler")
+                {
+                    // Add a function here that will do the ruler-based wrapping
+                }
 
+                // Load margin values from the settings:
+                var settings = ApplicationData.Current.LocalSettings;
+
+                string unit = settings.Values["unitSetting"] as string;
+                string Lmargin = settings.Values["pagesetupLmargin"] as string;
+                string Rmargin = settings.Values["pagesetupRmargin"] as string;
+                string Tmargin = settings.Values["pagesetupTmargin"] as string;
+                string Bmargin = settings.Values["pagesetupBmargin"] as string;
+
+                // Debugging output to check retrieved values and their types
+                Debug.WriteLine($"unit: {unit}, Lmargin: {Lmargin}, Rmargin: {Rmargin}, Tmargin: {Tmargin}, Bmargin: {Bmargin}");
+
+                // Check if any of the values retrieved are null or not of type string
+                if (!string.IsNullOrEmpty(unit) && !string.IsNullOrEmpty(Lmargin) && !string.IsNullOrEmpty(Rmargin) && !string.IsNullOrEmpty(Tmargin) && !string.IsNullOrEmpty(Bmargin))
+                {
+                    // Convert margin values to match the unit and format them as needed
+                    double left = ConvertToUnitAndFormat(Lmargin, unit);
+                    double right = ConvertToUnitAndFormat(Rmargin, unit);
+                    double top = ConvertToUnitAndFormat(Tmargin, unit);
+                    double bottom = ConvertToUnitAndFormat(Bmargin, unit);
+
+                    Editor.Margin = new Thickness(left, top, right, bottom);
+                }
+                else
+                {
+                    // Handle the case where one or more values are missing or not of type string
+                    Debug.WriteLine("One or more settings values are missing or not of type string.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception
+                Debug.WriteLine($"An exception occurred: {ex.Message}");
+            }
         }
+
+
+        private double ConvertFromUnit(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Inches":
+                    return value;
+                case "Centimeters":
+                    return value / 2.54; // Convert centimeters to inches
+                case "Points":
+                    return value / 72; // Convert points to inches
+                case "Picas":
+                    return value / 6; // Convert picas to inches
+                default:
+                    return value; // Default to inches
+            }
+        }
+
+        private double ConvertToUnitAndFormat(string value, string unit)
+        {
+            if (double.TryParse(value, out double margin))
+            {
+                // Convert margin values to inches
+                margin = ConvertToUnit(margin, unit);
+
+                // Limit the margin value
+                double maxMargin = 100.0; // Set a maximum margin value
+                margin = Math.Min(maxMargin, margin);
+
+                // Format the margin value as needed
+                string formattedMargin = margin.ToString("0.##"); // Display with up to 2 decimal places
+                return double.Parse(formattedMargin);
+            }
+            else
+            {
+                // Handle the case where the input value is not a valid number
+                Debug.WriteLine($"Invalid numeric value: {value}");
+                return 0.0; // or some default value
+            }
+        }
+
+
+
 
         private void LoadThemeFromSettings()
         {
@@ -1255,9 +1335,9 @@ namespace RectifyPad
             Editor.Document.Selection.CharacterFormat.BackgroundColor = highlightBackgroundColor.Color;
         }
 
-        private void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        private async void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
-            if (saved == false) { e.Handled = true; ShowUnsavedDialog(); }
+            if (saved == false) { e.Handled = true; await ShowUnsavedDialog(); }
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -1946,7 +2026,29 @@ namespace RectifyPad
 
         }
 
-        private async void PageSetup_Click(object sender, RoutedEventArgs e)
+        private void PageSetup_Click(object sender, RoutedEventArgs e)
+        {
+            openpageprop();
+        }
+
+        private double ConvertToUnit(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Inches":
+                    return value;
+                case "Centimeters":
+                    return value * 2.54; // Convert inches to centimeters
+                case "Points":
+                    return value * 72; // Convert inches to points
+                case "Picas":
+                    return value * 6; // Convert inches to picas
+                default:
+                    return value; // Default to inches
+            }
+        }
+
+        private async void openpageprop()
         {
             // Create an instance of the ParagraphDialog
             Pageprop pageprop = new Pageprop();
@@ -1957,59 +2059,19 @@ namespace RectifyPad
             // If the user clicked the OK button, adjust the properties of the RichEditBox
             if (result == ContentDialogResult.Primary)
             {
-                // Get the values from the dialog's TextBoxes and ComboBoxes
-                TextBox leftTextBox = (TextBox)pageprop.FindName("LeftMarginTextBox");
-                TextBox rightTextBox = (TextBox)pageprop.FindName("RightMarginTextBox");
-                TextBox topTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
-                TextBox bottomTextBox = (TextBox)pageprop.FindName("BottomMarginTextBox");
-
-                // Get the values from the textboxes
-                double left = double.Parse(leftTextBox.Text);
-                double right = double.Parse(rightTextBox.Text);
-                double top = double.Parse(topTextBox.Text);
-                double bottom = double.Parse(bottomTextBox.Text);
-
-                // Load the saved unit value
-                var unit = Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-
-                // Convert the values to pixels based on the unit
-                double pixelsPerUnit = 0;
-                switch (unit)
-                {
-                    case "Inches":
-                        pixelsPerUnit = 96; // 96 pixels per inch
-                        break;
-                    case "Centimeters":
-                        pixelsPerUnit = 37.8; // 37.8 pixels per centimeter
-                        break;
-                    case "Points":
-                        pixelsPerUnit = 1.33; // 1.33 pixels per point
-                        break;
-                    case "Cicera":
-                        pixelsPerUnit = 4.5; // 4.5 pixels per cicero
-                        break;
-                }
-
-                // Calculate the margin values in pixels
-                double leftMargin = left * pixelsPerUnit;
-                double rightMargin = right * pixelsPerUnit;
-                double topMargin = top * pixelsPerUnit;
-                double bottomMargin = bottom * pixelsPerUnit;
-
-                // Set the margins for the RichEditBox
-                Editor.Margin = new Thickness(leftMargin, topMargin, rightMargin, bottomMargin);
-
-
-                // Save the settings:
 
                 // Get the values from the dialog's TextBoxes and ComboBoxes
                 TextBox LeftMarginTextBox = (TextBox)pageprop.FindName("LeftMarginTextBox");
                 TextBox RightMarginTextBox = (TextBox)pageprop.FindName("RightMarginTextBox");
                 TextBox TopMarginTextBox = (TextBox)pageprop.FindName("TopMarginTextBox");
                 TextBox BottomMarginTextBox = (TextBox)pageprop.FindName("BottomMarginTextBox");
+
+                TextBlock marginsname = (TextBlock)pageprop.FindName("marginsname");
+
                 ComboBox PaperTypeCombo = (ComboBox)pageprop.FindName("PaperTypeCombo");
-                CheckBox printpagenumbers = (CheckBox)pageprop.FindName("printpagenumbers");
                 RadioButton orientationportait = (RadioButton)pageprop.FindName("orientationportait");
+                CheckBox printpagenumbers = (CheckBox)pageprop.FindName("printpagenumbers");
+
                 // Save the selected paper size and orientation
                 var settings = ApplicationData.Current.LocalSettings;
                 if (PaperTypeCombo.SelectedItem != null)
@@ -2021,15 +2083,54 @@ namespace RectifyPad
                 settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
 
                 // Save margin values
-                settings.Values["pagesetupLmargin"] = LeftMarginTextBox.Text;
-                settings.Values["pagesetupRmargin"] = RightMarginTextBox.Text;
-                settings.Values["pagesetupTmargin"] = TopMarginTextBox.Text;
-                settings.Values["pagesetupBmargin"] = BottomMarginTextBox.Text;
+                settings.Values["pagesetupLmargin"] = ConvertToUnit(double.Parse(LeftMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupRmargin"] = ConvertToUnit(double.Parse(RightMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupTmargin"] = ConvertToUnit(double.Parse(TopMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupBmargin"] = ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
 
                 // Save Print Page Numbers setting
                 settings.Values["is10ptenabled"] = printpagenumbers.IsChecked == true ? "yes" : "no";
-            }
 
+                Dictionary<string, (double Width, double Height)> paperSizes = pageprop.paperSizes;
+
+                string selectedPaperSizea = (PaperTypeCombo.SelectedItem as ComboBoxItem)?.Content?.ToString();
+                if (!string.IsNullOrEmpty(selectedPaperSizea) && paperSizes.TryGetValue(selectedPaperSizea, out var dimensions))
+                {
+                    double originalWidth = 812; // Original RichEditBox width
+                    double originalHeight = 1116; // Original RichEditBox height
+
+                    double width = dimensions.Width;
+                    double height = dimensions.Height;
+
+                    // Calculate the scaling factors for width and height to maintain the aspect ratio
+                    double widthScaleFactor = width / originalWidth;
+                    double heightScaleFactor = height / originalHeight;
+
+                    // Determine the scaling factor that fits the width within the original width
+                    double widthFitScaleFactor = originalWidth / width;
+
+                    // Determine the scaling factor that fits the height within the original height
+                    double heightFitScaleFactor = originalHeight / height;
+
+                    // Choose the minimum scaling factor to ensure the content fits entirely within the original dimensions
+                    double minScaleFactor = Math.Min(widthFitScaleFactor, heightFitScaleFactor);
+
+                    // Apply the minimum scaling factor to both width and height to maintain the aspect ratio
+                    width *= minScaleFactor;
+                    height *= minScaleFactor;
+
+                    // Set the UWP's RichEditBox width and height
+                    EditorGrid.Width = width;
+                    EditorGrid.Height = height;
+                }
+
+
+
+
+
+
+
+            }
         }
     }
 }

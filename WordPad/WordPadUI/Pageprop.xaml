@@ -104,7 +104,7 @@
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="112*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="marginsname" Loaded="marginsname_Loaded" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Margins (unitplaceholder)" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <TextBlock x:Name="marginsname" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Margins (unitplaceholder)" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBox x:Name="RightMarginTextBox" Grid.Row="1" Grid.Column="3" Margin="0,0,0,10" Grid.RowSpan="2"/>
             <TextBox x:Name="BottomMarginTextBox" Grid.Row="3" Grid.Column="3" Margin="0,0,0,10"/>
             <TextBox x:Name="TopMarginTextBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
