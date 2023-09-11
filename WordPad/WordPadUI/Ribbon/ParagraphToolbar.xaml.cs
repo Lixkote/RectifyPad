@@ -1,64 +1,88 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using Microsoft.UI.Xaml.Controls;
+using System;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using WordPad.Helpers;
-
-// Szablon elementu Kontrolka użytkownika jest udokumentowany na stronie https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace WordPad.WordPadUI.Ribbon
 {
     public sealed partial class ParagraphToolbar : UserControl
     {
         public RichEditBox Editor { get; set; }
+
         public ParagraphToolbar()
         {
             this.InitializeComponent();
         }
 
-        private void NoneNumeral_Click(object sender, RoutedEventArgs e)
+        private void LoadSettings()
         {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
-            TextBulletingButton.IsChecked = false;
-            TextBulletingButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
+            string linespacingval = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"];
+            double lineSpacingValue = 1.0;
+
+            if (linespacingval == "1,0")
+                lineSpacingValue = 1.0;
+            else if (linespacingval == "1,15")
+                lineSpacingValue = 1.15;
+            else if (linespacingval == "1,5")
+                lineSpacingValue = 1.5;
+            else if (linespacingval == "2")
+                lineSpacingValue = 2.0;
+
+            SetLineSpacing(lineSpacingValue);
         }
 
-        private void DottedNumeral_Click(object sender, RoutedEventArgs e)
+        private void SetLineSpacing(double lineSpacingValue)
         {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
-            TextBulletingButton.IsChecked = true;
-            TextBulletingButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
+            ITextDocument document = Editor.Document;
+            ITextSelection selection = document.Selection;
+            ITextParagraphFormat paragraphFormat = selection.ParagraphFormat;
+            paragraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)lineSpacingValue);
         }
 
-        private void BulletButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedBullet = (Button)sender;
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
+        // Handle the bullet and numbering buttons' click events here (similar to your existing code)
 
-            TextBulletingButton.IsChecked = true;
-            TextBulletingButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
+        private void AlignButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton alignButton)
+            {
+                RichEditHelpers.AlignMode alignMode = RichEditHelpers.AlignMode.Left;
+
+                if (alignButton == AlignCenterButton)
+                    alignMode = RichEditHelpers.AlignMode.Center;
+                else if (alignButton == AlignRightButton)
+                    alignMode = RichEditHelpers.AlignMode.Right;
+
+                Editor.AlignSelectedTo(alignMode);
+                editor_SelectionChanged(sender, e);
+            }
         }
 
-        private void NumberNumeral_Click(object sender, RoutedEventArgs e)
+        private void IndentationIncreaseRight_Click(object sender, RoutedEventArgs e)
         {
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Arabic;
-            TextBulletingButton.IsChecked = true;
-            TextBulletingButton.Flyout.Hide();
-            Editor.Focus(FocusState.Keyboard);
+            // Handle the increase right indentation here
+        }
+
+        private void IndentationIncreaseLeft_Click(object sender, RoutedEventArgs e)
+        {
+            // Handle the increase left indentation here
+        }
+
+        private void RadioMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioMenuFlyoutItem selectedItem)
+            {
+                string selectedItemText = selectedItem.Text;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = selectedItemText;
+
+                if (double.TryParse(selectedItemText, out double lineSpacingValue))
+                {
+                    SetLineSpacing(lineSpacingValue);
+                }
+            }
         }
 
         private void LetterSmallNumeral_Click(object sender, RoutedEventArgs e)
@@ -93,27 +117,31 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Focus(FocusState.Keyboard);
         }
 
-        private void AlignJustifyButton_Click(object sender, RoutedEventArgs e)
+        private void NumberNumeral_Click(object sender, RoutedEventArgs e)
         {
-            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Justify);
-            editor_SelectionChanged(sender, e);
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Arabic;
+            TextBulletingButton.IsChecked = true;
+            TextBulletingButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
         }
 
-        private void editor_SelectionChanged(object sender, RoutedEventArgs e)
+        private void DottedNumeral_Click(object sender, RoutedEventArgs e)
         {
-            AlignLeftButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
-            AlignCenterButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
-            AlignRightButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
-            if (Editor.Document.Selection.CharacterFormat.Size > 0)
-            {
-                //font size is negative when selection contains multiple font sizes
-                //FontSizeBox. = Editor.Document.Selection.CharacterFormat.Size;
-            }
-            //prevent accidental font changes when selection contains multiple styles
-            // Get a reference to the RichEditBox control
-            RichEditBox richEditBox = Editor;
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
+            TextBulletingButton.IsChecked = true;
+            TextBulletingButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
         }
 
+        private void NoneNumeral_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+            TextBulletingButton.IsChecked = false;
+            TextBulletingButton.Flyout.Hide();
+            Editor.Focus(FocusState.Keyboard);
+        }
+
+        // Add this method to the revised code I provided earlier.
 
         private async void ParagraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -144,32 +172,19 @@ namespace WordPad.WordPadUI.Ribbon
             }
         }
 
-        private void AlignRightButton_Click(object sender, RoutedEventArgs e)
+        // Add this method to the revised code I provided earlier.
+
+
+
+
+        private void ParagraphSettingButton_Loaded(object sender, RoutedEventArgs e)
         {
-            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Right);
-            editor_SelectionChanged(sender, e);
+            LoadSettings();
         }
 
-        private void AlignLeftButton_Click(object sender, RoutedEventArgs e)
+        private void editor_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Left);
-            editor_SelectionChanged(sender, e);
-        }
-
-        private void AlignCenterButton_Click(object sender, RoutedEventArgs e)
-        {
-            Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Center);
-            editor_SelectionChanged(sender, e);
-        }
-
-        private void IndentationIncreaseRight_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void IndentationIncreaseLeft_Click(object sender, RoutedEventArgs e)
-        {
-
+            // Handle selection changes here (similar to your existing code)
         }
     }
 }

@@ -183,7 +183,7 @@ namespace RectifyPad
             string indentationL = "0";
             string indentationR = "0";
             string indentationFL = "0";
-            string linespacing = "0";
+            string linespacing = "1,0";
             string is10ptenabled = "no";
             string alignment = "Left";
             string textwrapping = "wrapruler";
