@@ -320,7 +320,7 @@
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutItem Text="Page Setup" x:Name="PageSetupMenuItem">
+                    <MenuFlyoutItem Text="Page Setup" x:Name="PageSetupMenuItem" Click="PageSetupMenuItem_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE160;" />
                         </MenuFlyoutItem.Icon>

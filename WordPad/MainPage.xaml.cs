@@ -1119,7 +1119,7 @@ namespace RectifyPad
 
         private async void Button_Click_3Async(object sender, RoutedEventArgs e)
         {
-            
+                
         }
 
         private void DecreaseFontSize_Click(object sender, RoutedEventArgs e)
@@ -2017,14 +2017,12 @@ namespace RectifyPad
                     EditorGrid.Width = width;
                     EditorGrid.Height = height;
                 }
-
-
-
-
-
-
-
             }
+        }
+
+        private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            openpageprop();
         }
     }
 }
