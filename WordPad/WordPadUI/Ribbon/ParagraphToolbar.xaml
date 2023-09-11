@@ -44,7 +44,7 @@
                      Height="32"
                      Grid.Column="0"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignButton_Click"/>
+                     GroupName="Alignment" Click="AlignLeftButton_Click"/>
 
             <RadioButton x:Name="AlignCenterButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe8e3;"
@@ -54,7 +54,7 @@
                      Height="32"
                      Grid.Column="1"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignButton_Click" />
+                     GroupName="Alignment" Click="AlignCenterButton_Click" />
 
             <RadioButton x:Name="AlignRightButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe8e2;"
@@ -64,7 +64,7 @@
                      Height="32"
                      Grid.Column="2"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignButton_Click"/>
+                     GroupName="Alignment" Click="AlignRightButton_Click"/>
 
             <RadioButton x:Name="AlignJustifyButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe700;"
@@ -75,7 +75,7 @@
                      Grid.Column="3"
                      Grid.Row="1"
                      GroupName="Alignment"
-                     Click="AlignButton_Click"/>
+                     Click="AlignJustifyButton_Click"/>
 
             <Button x:Name="ParagraphButton" Style="{StaticResource PaintUIButtonStyle}"
                      Width="32"
@@ -171,12 +171,12 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout>
-                        <muxc:RadioMenuFlyoutItem x:Name="spacingradio1" Text="1,0" Click="RadioMenuFlyoutItem_Click"/>
-                        <muxc:RadioMenuFlyoutItem x:Name="spacingradio2" Text="1,15" Click="RadioMenuFlyoutItem_Click"/>
-                        <muxc:RadioMenuFlyoutItem x:Name="spacingradio3" Text="1,5" Click="RadioMenuFlyoutItem_Click"/>
-                        <muxc:RadioMenuFlyoutItem x:Name="spacingradio4" Text="2" Click="RadioMenuFlyoutItem_Click"/>
+                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.0" x:Name="spacingradio1" Text="1,0" Click="RadioMenuFlyoutItem_Click"/>
+                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.15" x:Name="spacingradio2" Text="1,15" Click="RadioMenuFlyoutItem_Click"/>
+                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.5" x:Name="spacingradio3" Text="1,5" Click="RadioMenuFlyoutItem_Click"/>
+                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="2" x:Name="spacingradio4" Text="2" Click="RadioMenuFlyoutItem_Click"/>
                         <MenuFlyoutSeparator/>
-                        <ToggleMenuFlyoutItem Text="Add 10pt space after paragraphs"/>
+                        <ToggleMenuFlyoutItem x:Name="_10pt" Text="Add 10pt space after paragraphs" />
 
                     </MenuFlyout>
                 </Button.Flyout>

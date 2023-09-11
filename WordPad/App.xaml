@@ -19,6 +19,11 @@
                                              Color="#f7f7f7" />
                             <SolidColorBrush x:Key="RulerText"
                                              Color="#000000" />
+                            
+                            <SolidColorBrush x:Key="EditorGridBack"
+                                             Color="White" />
+                            <SolidColorBrush x:Key="EditorGridBorder"
+                                             Color="#e8e8e8" />
 
                             <x:String x:Key="Print">ms-appx:///Assets/theme-light/Print.svg</x:String>
                             <x:String x:Key="Copy">ms-appx:///Assets/theme-light/Copy.svg</x:String>
@@ -44,13 +49,13 @@
                             <x:String x:Key="UpScript">ms-appx:///Assets/theme-light/UpScript.svg</x:String>
                             <x:String x:Key="Date">ms-appx:///Assets/theme-light/Date.svg</x:String>
 
-                            <x:String x:Key="abc">ms-appx:///Assets/listnumberimages/abc.png</x:String>
-                            <x:String x:Key="ABCB">ms-appx:///Assets/listnumberimages/ABCB.png</x:String>
-                            <x:String x:Key="dot">ms-appx:///Assets/listnumberimages/dot.png</x:String>
-                            <x:String x:Key="iii">ms-appx:///Assets/listnumberimages/iii.png</x:String>
-                            <x:String x:Key="IIII">ms-appx:///Assets/listnumberimages/IIII.png</x:String>
-                            <x:String x:Key="none">ms-appx:///Assets/listnumberimages/none.png</x:String>
-                            <x:String x:Key="number">ms-appx:///Assets/listnumberimages/number.png</x:String>
+                            <x:String x:Key="abc">ms-appx:///Assets/listnumbersimages/abc.png</x:String>
+                            <x:String x:Key="ABCB">ms-appx:///Assets/listnumbersimages/ABCB.png</x:String>
+                            <x:String x:Key="dot">ms-appx:///Assets/listnumbersimages/dot.png</x:String>
+                            <x:String x:Key="iii">ms-appx:///Assets/listnumbersimages/iii.png</x:String>
+                            <x:String x:Key="IIII">ms-appx:///Assets/listnumbersimages/IIII.png</x:String>
+                            <x:String x:Key="none">ms-appx:///Assets/listnumberismages/none.png</x:String>
+                            <x:String x:Key="number">ms-appx:///Assets/listnumbersimages/number.png</x:String>
 
                             <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-light/l_indent_pos_lower.png</x:String>
                             <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-light/l_indet_pos_upper.png</x:String>
@@ -246,6 +251,11 @@
                                              Color="#282828" />
                             <SolidColorBrush x:Key="RulerText"
                                              Color="#FFFFFF" />
+
+                            <SolidColorBrush x:Key="EditorGridBack"
+                                             Color="#1e1e1e" />
+                            <SolidColorBrush x:Key="EditorGridBorder"
+                                             Color="#262626" />
                             <x:String x:Key="Print">ms-appx:///Assets/theme-dark/Print.svg</x:String>
                             <x:String x:Key="Copy">ms-appx:///Assets/theme-dark/Copy.svg</x:String>
                             <x:String x:Key="Cut">ms-appx:///Assets/theme-dark/Cut.svg</x:String>
@@ -270,13 +280,13 @@
                             <x:String x:Key="UpScript">ms-appx:///Assets/theme-dark/UpScript.svg</x:String>
                             <x:String x:Key="Date">ms-appx:///Assets/theme-dark/Date.svg</x:String>
 
-                            <x:String x:Key="abc">ms-appx:///Assets/listnumberimages/dark/abc.png</x:String>
-                            <x:String x:Key="ABCB">ms-appx:///Assets/listnumberimages/dark/ABCB.png</x:String>
-                            <x:String x:Key="dot">ms-appx:///Assets/listnumberimages/dark/dot.png</x:String>
-                            <x:String x:Key="iii">ms-appx:///Assets/listnumberimages/dark/iii.png</x:String>
-                            <x:String x:Key="IIII">ms-appx:///Assets/listnumberimages/dark/IIII.png</x:String>
-                            <x:String x:Key="none">ms-appx:///Assets/listnumberimages/dark/none.png</x:String>
-                            <x:String x:Key="number">ms-appx:///Assets/listnumberimages/dark/number.png</x:String>
+                            <x:String x:Key="abc">ms-appx:///Assets/listnumbersimages/Dark/abc.png</x:String>
+                            <x:String x:Key="ABCB">ms-appx:///Assets/listnumbersimages/Dark/ABCB.png</x:String>
+                            <x:String x:Key="dot">ms-appx:///Assets/listnumbersimages/Dark/dot.png</x:String>
+                            <x:String x:Key="iii">ms-appx:///Assets/listnumbersimages/Dark/iii.png</x:String>
+                            <x:String x:Key="IIII">ms-appx:///Assets/listnumbersimages/Dark/IIII.png</x:String>
+                            <x:String x:Key="none">ms-appx:///Assets/listnumbersimages/Dark/none.png</x:String>
+                            <x:String x:Key="number">ms-appx:///Assets/listnumbersimages/Dark/number.png</x:String>
 
                             <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-dark/l_indent_pos_lower.png</x:String>
                             <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-dark/l_indet_pos_upper.png</x:String>

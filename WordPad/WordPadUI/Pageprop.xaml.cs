@@ -158,7 +158,7 @@ namespace WordPad.WordPadUI
         {
             string no = "no";
             var settings = ApplicationData.Current.LocalSettings;
-            if (settings.Values.TryGetValue("is10ptenabled", out object value))
+            if (settings.Values.TryGetValue("isprintpagenumbers", out object value))
             {
                 string yesorno = value.ToString();
                 if (yesorno != null)

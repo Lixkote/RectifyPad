@@ -178,7 +178,7 @@ namespace RectifyPad
             string pagesetupRmargin = "1.25";
             string pagesetupTmargin = "1";
             string pagesetupLmargin = "1";
-            string isprintpagenumbers = "yes";
+            string isprintpagenumbers = "no";
             string orientation = "Portrait";
             string indentationL = "0";
             string indentationR = "0";
@@ -1983,7 +1983,7 @@ namespace RectifyPad
                 settings.Values["pagesetupBmargin"] = ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
 
                 // Save Print Page Numbers setting
-                settings.Values["is10ptenabled"] = printpagenumbers.IsChecked == true ? "yes" : "no";
+                settings.Values["isprintpagenumbers"] = printpagenumbers.IsChecked == true ? "yes" : "no";
 
                 Dictionary<string, (double Width, double Height)> paperSizes = pageprop.paperSizes;
 
