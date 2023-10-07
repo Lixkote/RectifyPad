@@ -275,7 +275,6 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void ParagraphSettingButton_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadSettings();
         }
 
         private void MenuFlyout_Closed(object sender, object e)

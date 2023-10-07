@@ -34,6 +34,15 @@ using Windows.ApplicationModel.Resources.Core;
 using System.Diagnostics;
 using Windows.ApplicationModel.Core;
 using Windows.Management.Deployment;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
+using Windows.UI.Xaml.Documents;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
+using Text = DocumentFormat.OpenXml.Wordprocessing.Text;
+using CheckBox = Windows.UI.Xaml.Controls.CheckBox;
+using Application = Windows.UI.Xaml.Application;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -608,6 +617,115 @@ namespace RectifyPad
             }
         }
 
+        public class RtfConverter
+        {
+            private readonly Document _document;
+
+            public RtfConverter(Document document)
+            {
+                _document = document;
+            }
+
+            public string ConvertToRtf()
+            {
+                var rtfWriter = new StringWriter();
+                rtfWriter.WriteLine("{\\rtf1\\ansi\\deff0");
+
+                // Define a color table with all possible RGB values
+                rtfWriter.WriteLine("{\\colortbl ;");
+
+                for (int r = 0; r <= 255; r++)
+                {
+                    for (int g = 0; g <= 255; g++)
+                    {
+                        for (int b = 0; b <= 255; b++)
+                        {
+                            rtfWriter.WriteLine($"\\red{r}\\green{g}\\blue{b};");
+                        }
+                    }
+                }
+
+                rtfWriter.WriteLine("}");
+
+                foreach (var paragraph in _document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
+                {
+                    rtfWriter.WriteLine("{\\pard");
+
+                    foreach (var run in paragraph.Elements<Run>())
+                    {
+                        if (run.RunProperties != null)
+                        {
+                            if (run.RunProperties.Bold != null && run.RunProperties.Bold.Val)
+                            {
+                                rtfWriter.Write("\\b ");
+                            }
+
+                            if (run.RunProperties.Italic != null && run.RunProperties.Italic.Val)
+                            {
+                                rtfWriter.Write("\\i ");
+                            }
+
+                            if (run.RunProperties.Color != null)
+                            {
+                                var colorHex = run.RunProperties.Color.Val;
+                                rtfWriter.Write($"\\cf{GetColorIndex(colorHex)} ");
+                            }
+
+                            if (run.RunProperties.FontSize != null)
+                            {
+                                var fontSize = run.RunProperties.FontSize.Val;
+                                rtfWriter.Write($"\\fs{fontSize} ");
+                            }
+                        }
+
+                        foreach (var text in run.Elements<Text>())
+                        {
+                            rtfWriter.Write(text.Text);
+                        }
+
+                        if (run.RunProperties != null && ((run.RunProperties.Bold != null && run.RunProperties.Bold.Val) ||
+                            (run.RunProperties.Italic != null && run.RunProperties.Italic.Val)))
+                        {
+                            rtfWriter.Write("\\b0\\i0 ");
+                        }
+                    }
+
+                    rtfWriter.WriteLine("}");
+                }
+
+                rtfWriter.WriteLine("}");
+
+                return rtfWriter.ToString();
+            }
+
+            private int GetColorIndex(string colorHex)
+            {
+                // You can calculate the color index based on the RGB values in the color table
+                // For simplicity, this example assumes that colorHex is in the format "RRGGBB"
+                int red = Convert.ToInt32(colorHex.Substring(0, 2), 16);
+                int green = Convert.ToInt32(colorHex.Substring(2, 2), 16);
+                int blue = Convert.ToInt32(colorHex.Substring(4, 2), 16);
+
+                // Calculate the color index
+                int colorIndex = (red * 256 * 256 + green * 256 + blue) + 1;
+
+                return colorIndex;
+            }
+
+        }
+
+        private async System.Threading.Tasks.Task<string> LoadDocxAndConvertToRtf(StorageFile file)
+        {
+            using (var stream = await file.OpenStreamForReadAsync())
+            {
+                using (var doc = WordprocessingDocument.Open(stream, false))
+                {
+                    var converter = new RtfConverter(doc.MainDocumentPart.Document);
+                    return converter.ConvertToRtf();
+                }
+            }
+        }
+
         private async void Open_Click(object sender, RoutedEventArgs e)
         {
             // Open a text file.
@@ -622,24 +740,68 @@ namespace RectifyPad
 
             if (file != null)
             {
-                using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                string fileExtension = file.FileType.ToLower(); // Get the file extension in lowercase
+
+                if (fileExtension == ".docx")
                 {
-                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
-                    var reader = DataReader.FromBuffer(buffer);
-                    reader.UnicodeEncoding = UnicodeEncoding.Utf8;
-                    string text = reader.ReadString(buffer.Length);
-                    // Load the file into the Document property of the RichEditBox.
-                    Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
-                    //editor.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, text);
-                    AppTitle.Text = file.Name + " - " + appTitleStr;
-                    fileNameWithPath = file.Path;
+                    // Load the DOCX file and convert it to RTF
+                    var rtfText = await LoadDocxAndConvertToRtf(file);
+                    if (!string.IsNullOrEmpty(rtfText))
+                    {
+                        // Get the RTF string from the TextBox
+                        string rtfString = rtfText;
+
+                        // Convert the RTF string to a byte array
+                        byte[] rtfBytes = Encoding.UTF8.GetBytes(rtfString);
+
+                        // Create a MemoryStream from the byte array
+                        using (MemoryStream stream = new MemoryStream(rtfBytes))
+                        {
+                            // Create a RandomAccessStream from the MemoryStream
+                            IRandomAccessStream randomAccessStream = stream.AsRandomAccessStream();
+
+                            // Create a StorageFile to save the RTF content
+                            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+                            StorageFile rtfFile = await localFolder.CreateFileAsync("output.rtf", CreationCollisionOption.ReplaceExisting);
+
+                            Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randomAccessStream);
+                        }
+                    }
                 }
+                else if (fileExtension == ".rtf" || fileExtension == ".odt")
+                {
+                    // Handle other file types (e.g., .rtf, .txt, .odt) loading here
+                    using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                        var reader = DataReader.FromBuffer(buffer);
+                        reader.UnicodeEncoding = UnicodeEncoding.Utf8;
+                        string text = reader.ReadString(buffer.Length);
+                        // Load the file into the Document property of the RichEditBox.
+                        Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+                    }
+                }
+                else if (fileExtension == ".txt")
+                {
+                    // Handle other file types (e.g., .rtf, .txt, .odt) loading here
+                    using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                        var reader = DataReader.FromBuffer(buffer);
+                        reader.UnicodeEncoding = UnicodeEncoding.Utf8;
+                        string text = reader.ReadString(buffer.Length);
+                        // Load the file into the Document property of the RichEditBox.
+                        Editor.Document.LoadFromStream(TextSetOptions.None, randAccStream);
+                    }
+                }
+
+                AppTitle.Text = file.Name + " - " + appTitleStr;
+                fileNameWithPath = file.Path;
+
                 saved = false;
                 Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
-
             }
-
         }
 
         private void SubscriptButton_Click(object sender, RoutedEventArgs e)
