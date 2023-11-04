@@ -37,13 +37,17 @@ namespace WordPad.WordPadUI
         private Rect capturedMarginHandle;
 
         private int lMargin = 20, rMargin = 15, llIndent = 20, luIndent = 20, rIndent = 15;
+
+        public RichEditBox Editor { get; set; }
+
+
         Color _strokeColor = Colors.Black;
         Color _baseColor = Colors.White;
         int pos = -1;
         bool mCaptured = false;
         bool noMargins = false;
         int capObject = -1, capTab = -1;
-        bool _tabsEnabled = true;
+        bool _tabsEnabled = false;
         float dotsPermm;
 
         internal enum ControlItems
@@ -95,6 +99,36 @@ namespace WordPad.WordPadUI
             canvas.PointerReleased += OnPointerReleased;
             canvas.PointerMoved += OnPointerMoved;
 
+        }
+
+        public void UpdateRulerFromEditor(RichEditBox editor)
+        {
+            // Assuming the values are directly convertible from the RichEditBox
+            // You may need to adjust these conversions based on the RichEditBox properties
+
+            // Example: Set llIndent from the left indentation of the RichEditBox
+            llIndent = ConvertDipsToPixels(editor.Document.Selection.ParagraphFormat.LeftIndent);
+
+            // Example: Set rIndent from the right indentation of the RichEditBox
+            rIndent = ConvertDipsToPixels(editor.Document.Selection.ParagraphFormat.RightIndent);
+
+            // Set other properties accordingly using values from the RichEditBox
+            // You need to determine how each property should be obtained from the editor
+            // For example:
+            lMargin = ConvertDipsToPixels(editor.Margin.Left);
+            rMargin = ConvertDipsToPixels(editor.Margin.Right);
+            luIndent = ConvertDipsToPixels(editor.Document.Selection.ParagraphFormat.FirstLineIndent);
+            // Set other properties based on the Editor's values
+
+            // You will need to define the ConvertDipsToPixels method according to your conversion logic
+        }
+
+        // You should define the ConvertDipsToPixels method as needed
+        private int ConvertDipsToPixels(double dips)
+        {
+            // Conversion logic from DIPs (Device-Independent Pixels) to actual pixels
+            // Implement the conversion based on your requirements and Editor's units
+            return (int)dips; // A simple example - converting directly assuming DIPs are already in pixels
         }
 
         /// <summary>
@@ -186,7 +220,7 @@ namespace WordPad.WordPadUI
         private void DrawBackGround(CanvasDrawingSession drawingSession)
         {
             // Set the corner radius
-            float cornerRadius = 2.0f; // Change this value as needed
+            float cornerRadius = 3.0f; // Change this value as needed
 
             // Calculate the position and size of the rounded background rectangle
             Rect backgroundRect = new Rect(me.Left, me.Top, me.Width, me.Height);
@@ -353,15 +387,13 @@ namespace WordPad.WordPadUI
 
         private async void DrawIndents(CanvasControl sender, CanvasDrawingSession drawingSession)
         {
-            items[2] = new Rect(luIndent * dotsPermm - 4.5, 0, 9, 8);
-            items[3] = new Rect(llIndent * dotsPermm - 4.5, 8.2, 9, 11.8);
+            items[2] = new Rect((float)luIndent * dotsPermm - 9f, 0f, 18f, 16f);
+            items[3] = new Rect((float)llIndent * dotsPermm - 9f, 8.2f, 18f, 16f);
+            items[4] = new Rect((float)(drawZone.Width - ((float)rIndent * dotsPermm - 9f) - 7f), 11f, 18f, 16f);
 
-
-            items[4] = new Rect(drawZone.Width - (rIndent * dotsPermm - 4.5) - 7, 11, 9, 8);
-
-            // Regions for moving left indentation marks
-            items[5] = new Rect(llIndent * dotsPermm - 4.5, 8.2, 9, 5.9);
-            items[6] = new Rect(llIndent * dotsPermm - 4.5, 14.1, 9, 5.9);
+            //regions for moving left indentation marks
+            items[5] = new Rect((float)llIndent * dotsPermm - 4.5f, 8.2f, 9f, 5.9f);
+            items[6] = new Rect((float)llIndent * dotsPermm - 4.5f, 14.1f, 9f, 5.9f);
 
             try
             {
@@ -544,7 +576,10 @@ namespace WordPad.WordPadUI
             }
         }
 
-
+        private void canvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateRulerFromEditor(Editor);
+        }
 
         private void OnPointerMoved(object sender, PointerRoutedEventArgs e)
         {

@@ -164,6 +164,7 @@ namespace RectifyPad
             TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
+            Editor.Margin = new Thickness(15);
 
         }
 
@@ -463,6 +464,7 @@ namespace RectifyPad
             insertribbontoolbarcol.Editor = Editor;
             pararibbontoolbarcol.Editor = Editor;
             fontribbontoolbarcol.Editor = Editor;
+            TextRuler.Editor = Editor;
         }
 
         private async void PopulateRecents()

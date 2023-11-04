@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml" Height="36">
 
     <Grid x:Name="hargrid" Margin="0,0,0,0" Width="812">
-        <canvas:CanvasControl CornerRadius="2" x:Name="canvas" Height="20" VerticalAlignment="Center"></canvas:CanvasControl>
+        <canvas:CanvasControl CornerRadius="2" x:Name="canvas" Height="20" VerticalAlignment="Center" Loaded="canvas_Loaded"></canvas:CanvasControl>
     </Grid>
 </UserControl>
