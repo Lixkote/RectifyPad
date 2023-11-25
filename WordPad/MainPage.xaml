@@ -2,6 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:RectifyPad"
+      xmlns:helpers="using:WordPad.Helpers"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -17,8 +18,8 @@
         <DataTemplate x:Key="ComboBoxItemTemplate">
             <!-- Your template here -->
         </DataTemplate>
-        <local:ZoomConverter x:Key="ZoomConverter"/>
-        <local:HalfValueConverter x:Key="HalfValueConverter"/>
+        <helpers:ZoomConverter x:Key="ZoomConverter"/>
+        <helpers:HalfValueConverter x:Key="HalfValueConverter"/>
         <Flyout x:Key="myColorPickerFlyout">
             <RelativePanel>
                 <ColorPicker x:Name="myColorPicker"
@@ -295,8 +296,6 @@
                             <FontIcon Glyph="&#xE792;" />
                         </MenuFlyoutSubItem.Icon>
                         <MenuFlyoutItem AccessKey="R" Text="RTF" x:Name="SaveAsRTF" Click="SaveAsRTF_Click"/>
-                        <MenuFlyoutItem AccessKey="D" Text="DOCX" x:Name="SaveAsDOCX" Click="SaveAsDOCX_Click"/>
-                        <MenuFlyoutItem AccessKey="P" Text="ODT" x:Name="SaveAsODT" Click="SaveAsODT_Click"/>
                         <MenuFlyoutItem AccessKey="T" Text="TXT" x:Name="SaveAsTXT" Click="SaveAsTXT_Click"/>
                         <MenuFlyoutItem AccessKey="O" Text="Other Format" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
                     </MenuFlyoutSubItem>

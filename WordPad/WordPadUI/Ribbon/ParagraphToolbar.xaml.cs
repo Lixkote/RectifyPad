@@ -197,30 +197,10 @@ namespace WordPad.WordPadUI.Ribbon
         private async void ParagraphButton_Click(object sender, RoutedEventArgs e)
         {
             // Create an instance of the ParagraphDialog
-            ParagraphDialog paragraphDialog = new ParagraphDialog();
+            NoImplement noimple = new NoImplement();
 
             // Show the dialog and wait for the user's input
-            ContentDialogResult result = await paragraphDialog.ShowAsync();
-
-            // If the user clicked the OK button, adjust the properties of the RichEditBox
-            if (result == ContentDialogResult.Primary)
-            {
-                // Get the values from the dialog's TextBoxes and ComboBoxes
-                TextBox leftTextBox = (TextBox)paragraphDialog.FindName("LeftTextBox");
-                TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightTextBox");
-                TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("FirstLineTextBox");
-                ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingComboBox");
-
-                // Parse the values and set the properties of the RichEditBox
-                double left = double.Parse(leftTextBox.Text);
-                double right = double.Parse(rightTextBox.Text);
-                double firstLine = double.Parse(firstLineTextBox.Text);
-                double lineSpacing = double.Parse(lineSpacingComboBox.SelectedItem.ToString());
-
-                Editor.Margin = new Thickness(left, 0, right, 0);
-                Editor.Document.Selection.ParagraphFormat.SetIndents((float)firstLine, 0, 0);
-                Editor.Document.Selection.ParagraphFormat.SetLineSpacing(Windows.UI.Text.LineSpacingRule.AtLeast, (float)lineSpacing);
-            }
+            ContentDialogResult result = await noimple.ShowAsync();
         }
 
         private void AlignRightButton_Click(object sender, RoutedEventArgs e)

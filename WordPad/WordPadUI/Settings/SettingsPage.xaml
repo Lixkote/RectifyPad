@@ -185,7 +185,7 @@
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" Text="About this app"/>
-                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2110.13.0"/>
+                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad Preview 11.2110.13.0"/>
                         <TextBlock x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2023 Rectify11 Team. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad" >
                             <TextBlock Text="Source Code"/>

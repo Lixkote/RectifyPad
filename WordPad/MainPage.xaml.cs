@@ -49,57 +49,11 @@ using Application = Windows.UI.Xaml.Application;
 
 namespace RectifyPad
 {
-
-    public class ZoomConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            if (value is double zoom)
-            {
-                return $"{zoom * 100}%";
-            }
-            return value;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            if (value is string text && text.EndsWith("%"))
-            {
-                if (double.TryParse(text.TrimEnd('%'), out double zoom))
-                {
-                    return zoom / 100;
-                }
-            }
-            return value;
-        }
-    }
-    public class HalfValueConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            if (value is double number)
-            {
-                return number / 2;
-            }
-            return value;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            if (value is double number)
-            {
-                return number * 2;
-            }
-            return value;
-        }
-    }
-
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
         private bool saved = true;
 
         public bool _wasOpen = false;
@@ -108,12 +62,13 @@ namespace RectifyPad
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
         private bool updateFontFormat = true;
-        public string ApplicationName => "RectifyPad";
         public string ZoomString => ZoomSlider.Value.ToString() + "%";
 
         private string fileNameWithPath = "";
 
         string originalDocText = "";
+
+        UnitConverter unitConverter = new UnitConverter();
 
         public List<string> Fonts
         {
@@ -126,7 +81,7 @@ namespace RectifyPad
         public ObservableCollection<double> ZoomOptions { get; } = new ObservableCollection<double> { 5, 4, 3, 2, 1, 0.75, 0.5, 0.25, 0.125 };
 
         public List<double> FontSizes { get; } = new List<double>()
-            {
+        {
                 8,
                 9,
                 10,
@@ -141,15 +96,19 @@ namespace RectifyPad
                 36,
                 48,
                 72
-            };
+        };
 
 
         public MainPage()
         {
+            /////
+            ///   Startup Procedure
+            /////
+
             // Enable navigation cache
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            // Run the startup voids
+            // Run the startup functions
             InitializeComponent();
             CheckFirstRun();
             LoadThemeFromSettings();
@@ -157,21 +116,44 @@ namespace RectifyPad
             PopulateRecents();
             ConnectRibbonToolbars();
 
-            // Connect the events and others
+            // Connect the controls events 
             TextRuler.LeftHangingIndentChanging += TextRuler_LeftHangingIndentChanging;
             TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
             TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
             TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
-            Editor.Margin = new Thickness(15);
+
+            // Get the margin values from settings as strings
+            string MarginLString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
+            string MarginRString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
+            string MarginBString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
+            string MarginTString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
+
+            // Convert string values to doubles
+            double MarginLInches = double.Parse(MarginLString);
+            double MarginRInches = double.Parse(MarginRString);
+            double MarginBInches = double.Parse(MarginBString);
+            double MarginTInches = double.Parse(MarginTString);
+
+            // Get the current unit value from settings
+            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+
+            // Convert margin values based on the selected unit
+            double MarginL = unitConverter.ConvertToPixels(MarginLInches, selectedUnit);
+            double MarginR = unitConverter.ConvertToPixels(MarginRInches, selectedUnit);
+            double MarginB = unitConverter.ConvertToPixels(MarginBInches, selectedUnit);
+            double MarginT = unitConverter.ConvertToPixels(MarginTInches, selectedUnit);
+
+            // Apply margin values to the RichEditBox
+            Editor.Margin = new Thickness(MarginL, MarginT, MarginR, MarginB);
 
         }
 
         private void CheckFirstRun()
         {
             /// This function is responsible for applying the default settings on the app's first startup.
-            /// Modifying these will change the default settings of the application:            
+            /// Modifying these will change the default settings of the application:         
 
 
             // Get the default resource context for the app
@@ -264,10 +246,10 @@ namespace RectifyPad
                 if (!string.IsNullOrEmpty(unit) && !string.IsNullOrEmpty(Lmargin) && !string.IsNullOrEmpty(Rmargin) && !string.IsNullOrEmpty(Tmargin) && !string.IsNullOrEmpty(Bmargin))
                 {
                     // Convert margin values to match the unit and format them as needed
-                    double left = ConvertToUnitAndFormat(Lmargin, unit);
-                    double right = ConvertToUnitAndFormat(Rmargin, unit);
-                    double top = ConvertToUnitAndFormat(Tmargin, unit);
-                    double bottom = ConvertToUnitAndFormat(Bmargin, unit);
+                    double left = unitConverter.ConvertToUnitAndFormat(Lmargin, unit);
+                    double right = unitConverter.ConvertToUnitAndFormat(Rmargin, unit);
+                    double top = unitConverter.ConvertToUnitAndFormat(Tmargin, unit);
+                    double bottom = unitConverter.ConvertToUnitAndFormat(Bmargin, unit);
 
                     Editor.Margin = new Thickness(left, top, right, bottom);
                 }
@@ -283,49 +265,6 @@ namespace RectifyPad
                 Debug.WriteLine($"An exception occurred: {ex.Message}");
             }
         }
-
-
-        private double ConvertFromUnit(double value, string unit)
-        {
-            switch (unit)
-            {
-                case "Inches":
-                    return value;
-                case "Centimeters":
-                    return value / 2.54; // Convert centimeters to inches
-                case "Points":
-                    return value / 72; // Convert points to inches
-                case "Picas":
-                    return value / 6; // Convert picas to inches
-                default:
-                    return value; // Default to inches
-            }
-        }
-
-        private double ConvertToUnitAndFormat(string value, string unit)
-        {
-            if (double.TryParse(value, out double margin))
-            {
-                // Convert margin values to inches
-                margin = ConvertToUnit(margin, unit);
-
-                // Limit the margin value
-                double maxMargin = 100.0; // Set a maximum margin value
-                margin = Math.Min(maxMargin, margin);
-
-                // Format the margin value as needed
-                string formattedMargin = margin.ToString("0.##"); // Display with up to 2 decimal places
-                return double.Parse(formattedMargin);
-            }
-            else
-            {
-                // Handle the case where the input value is not a valid number
-                Debug.WriteLine($"Invalid numeric value: {value}");
-                return 0.0; // or some default value
-            }
-        }
-
-
 
 
         private void LoadThemeFromSettings()
@@ -378,7 +317,7 @@ namespace RectifyPad
                 if (paragraph != null)
                 {
                     var textIndentInMillimeters = TextRuler.LeftIndent;
-                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
+                    var textIndentInPixels = unitConverter.ConvertDipsToPixels(textIndentInMillimeters);
                     paragraph.SetIndents((float)textIndentInPixels, 0, 0);
                 }
             }
@@ -386,14 +325,6 @@ namespace RectifyPad
             {
 
             }
-        }
-
-
-
-        private double ConvertDipsToPixels(double dips)
-        {
-            var dpiFactor = DisplayInformation.GetForCurrentView().LogicalDpi / 33; // Convert from DIPs to physical pixels
-            return dips * dpiFactor;
         }
 
         private void TextRuler_LeftHangingIndentChanging(int NewValue)
@@ -405,8 +336,8 @@ namespace RectifyPad
                 {
                     var textIndentInMillimeters = TextRuler.LeftIndent;
                     var hangingIndentInMillimeters = TextRuler.LeftHangingIndent;
-                    var textIndentInPixels = ConvertDipsToPixels(textIndentInMillimeters);
-                    var hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
+                    var textIndentInPixels = unitConverter.ConvertDipsToPixels(textIndentInMillimeters);
+                    var hangingIndentInPixels = unitConverter.ConvertDipsToPixels(hangingIndentInMillimeters);
                     Editor.Document.Selection.ParagraphFormat.SetIndents((float)textIndentInPixels, (float)hangingIndentInPixels, 0);
                     // Set the margins for the RichEditBox
                     Editor.Margin = new Thickness((float)textIndentInPixels, (float)hangingIndentInPixels, 0, 0);
@@ -425,8 +356,8 @@ namespace RectifyPad
                 double indentInMillimeters = leftIndent;
                 double hangingIndentInMillimeters = hangIndent;
 
-                double indentInPixels = ConvertDipsToPixels(indentInMillimeters);
-                double hangingIndentInPixels = ConvertDipsToPixels(hangingIndentInMillimeters);
+                double indentInPixels = unitConverter.ConvertDipsToPixels(indentInMillimeters);
+                double hangingIndentInPixels = unitConverter.ConvertDipsToPixels(hangingIndentInMillimeters);
 
                 Editor.Margin = new Thickness((float)indentInPixels, 0, (float)hangingIndentInPixels, 0);
             }
@@ -441,7 +372,7 @@ namespace RectifyPad
                 if (paragraph != null)
                 {
                     var rightIndentInMillimeters = TextRuler.RightIndent;
-                    var rightIndentInPixels = ConvertDipsToPixels(rightIndentInMillimeters);
+                    var rightIndentInPixels = unitConverter.ConvertDipsToPixels(rightIndentInMillimeters);
                     Editor.Margin = new Thickness(0, 0, -(float)rightIndentInPixels, 0);
                 }
             }
@@ -486,124 +417,6 @@ namespace RectifyPad
 
         private MarkerType _type = MarkerType.Bullet;
 
-        public SvgImageSource cutimgthemed
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "Cut.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource zoomin
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomIn.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource zoomout
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomOut.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource printpreviewprint
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "Print.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource printpreviewzoomminus
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomOut.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource printpreviewzoomminusdis
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomOutDisabled.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource printpreviewzoomplusdis
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomInDisabled.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-        public SvgImageSource printpreviewzoomplus
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "ZoomIn.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource pasteimgthemed
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "Paste.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
-
-        public SvgImageSource copyimgthemed
-        {
-            get
-            {
-                var theme = Application.Current.RequestedTheme;
-                var folderName = theme == ApplicationTheme.Dark ? "theme-dark" : "theme-light";
-                var imageName = "Copy.svg";
-                var imagePath = $"ms-appx:///Assets/{folderName}/{imageName}";
-                return new SvgImageSource(new Uri(imagePath));
-            }
-        }
 
         private void MyListButton_IsCheckedChanged(Microsoft.UI.Xaml.Controls.ToggleSplitButton sender, Microsoft.UI.Xaml.Controls.ToggleSplitButtonIsCheckedChangedEventArgs args)
         {
@@ -619,115 +432,6 @@ namespace RectifyPad
             }
         }
 
-        public class RtfConverter
-        {
-            private readonly Document _document;
-
-            public RtfConverter(Document document)
-            {
-                _document = document;
-            }
-
-            public string ConvertToRtf()
-            {
-                var rtfWriter = new StringWriter();
-                rtfWriter.WriteLine("{\\rtf1\\ansi\\deff0");
-
-                // Define a color table with all possible RGB values
-                rtfWriter.WriteLine("{\\colortbl ;");
-
-                for (int r = 0; r <= 255; r++)
-                {
-                    for (int g = 0; g <= 255; g++)
-                    {
-                        for (int b = 0; b <= 255; b++)
-                        {
-                            rtfWriter.WriteLine($"\\red{r}\\green{g}\\blue{b};");
-                        }
-                    }
-                }
-
-                rtfWriter.WriteLine("}");
-
-                foreach (var paragraph in _document.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>())
-                {
-                    rtfWriter.WriteLine("{\\pard");
-
-                    foreach (var run in paragraph.Elements<Run>())
-                    {
-                        if (run.RunProperties != null)
-                        {
-                            if (run.RunProperties.Bold != null && run.RunProperties.Bold.Val)
-                            {
-                                rtfWriter.Write("\\b ");
-                            }
-
-                            if (run.RunProperties.Italic != null && run.RunProperties.Italic.Val)
-                            {
-                                rtfWriter.Write("\\i ");
-                            }
-
-                            if (run.RunProperties.Color != null)
-                            {
-                                var colorHex = run.RunProperties.Color.Val;
-                                rtfWriter.Write($"\\cf{GetColorIndex(colorHex)} ");
-                            }
-
-                            if (run.RunProperties.FontSize != null)
-                            {
-                                var fontSize = run.RunProperties.FontSize.Val;
-                                rtfWriter.Write($"\\fs{fontSize} ");
-                            }
-                        }
-
-                        foreach (var text in run.Elements<Text>())
-                        {
-                            rtfWriter.Write(text.Text);
-                        }
-
-                        if (run.RunProperties != null && ((run.RunProperties.Bold != null && run.RunProperties.Bold.Val) ||
-                            (run.RunProperties.Italic != null && run.RunProperties.Italic.Val)))
-                        {
-                            rtfWriter.Write("\\b0\\i0 ");
-                        }
-                    }
-
-                    rtfWriter.WriteLine("}");
-                }
-
-                rtfWriter.WriteLine("}");
-
-                return rtfWriter.ToString();
-            }
-
-            private int GetColorIndex(string colorHex)
-            {
-                // You can calculate the color index based on the RGB values in the color table
-                // For simplicity, this example assumes that colorHex is in the format "RRGGBB"
-                int red = Convert.ToInt32(colorHex.Substring(0, 2), 16);
-                int green = Convert.ToInt32(colorHex.Substring(2, 2), 16);
-                int blue = Convert.ToInt32(colorHex.Substring(4, 2), 16);
-
-                // Calculate the color index
-                int colorIndex = (red * 256 * 256 + green * 256 + blue) + 1;
-
-                return colorIndex;
-            }
-
-        }
-
-        private async System.Threading.Tasks.Task<string> LoadDocxAndConvertToRtf(StorageFile file)
-        {
-            using (var stream = await file.OpenStreamForReadAsync())
-            {
-                using (var doc = WordprocessingDocument.Open(stream, false))
-                {
-                    var converter = new RtfConverter(doc.MainDocumentPart.Document);
-                    return converter.ConvertToRtf();
-                }
-            }
-        }
-
         private async void Open_Click(object sender, RoutedEventArgs e)
         {
             // Open a text file.
@@ -735,8 +439,6 @@ namespace RectifyPad
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             open.FileTypeFilter.Add(".rtf");
             open.FileTypeFilter.Add(".txt");
-            open.FileTypeFilter.Add(".odt");
-            open.FileTypeFilter.Add(".docx");
 
             StorageFile file = await open.PickSingleFileAsync();
 
@@ -746,29 +448,7 @@ namespace RectifyPad
 
                 if (fileExtension == ".docx")
                 {
-                    // Load the DOCX file and convert it to RTF
-                    var rtfText = await LoadDocxAndConvertToRtf(file);
-                    if (!string.IsNullOrEmpty(rtfText))
-                    {
-                        // Get the RTF string from the TextBox
-                        string rtfString = rtfText;
-
-                        // Convert the RTF string to a byte array
-                        byte[] rtfBytes = Encoding.UTF8.GetBytes(rtfString);
-
-                        // Create a MemoryStream from the byte array
-                        using (MemoryStream stream = new MemoryStream(rtfBytes))
-                        {
-                            // Create a RandomAccessStream from the MemoryStream
-                            IRandomAccessStream randomAccessStream = stream.AsRandomAccessStream();
-
-                            // Create a StorageFile to save the RTF content
-                            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-                            StorageFile rtfFile = await localFolder.CreateFileAsync("output.rtf", CreationCollisionOption.ReplaceExisting);
-
-                            Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randomAccessStream);
-                        }
-                    }
+                    Debug.WriteLine("Not Implemented :C");
                 }
                 else if (fileExtension == ".rtf" || fileExtension == ".odt")
                 {
@@ -1239,31 +919,7 @@ namespace RectifyPad
 
         private async void ParagraphButton_Click(object sender, RoutedEventArgs e)
         {
-            // Create an instance of the ParagraphDialog
-            ParagraphDialog paragraphDialog = new ParagraphDialog();
-
-            // Show the dialog and wait for the user's input
-            ContentDialogResult result = await paragraphDialog.ShowAsync();
-
-            // If the user clicked the OK button, adjust the properties of the RichEditBox
-            if (result == ContentDialogResult.Primary)
-            {
-                // Get the values from the dialog's TextBoxes and ComboBoxes
-                TextBox leftTextBox = (TextBox)paragraphDialog.FindName("LeftTextBox");
-                TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightTextBox");
-                TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("FirstLineTextBox");
-                ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingComboBox");
-
-                // Parse the values and set the properties of the RichEditBox
-                double left = double.Parse(leftTextBox.Text);
-                double right = double.Parse(rightTextBox.Text);
-                double firstLine = double.Parse(firstLineTextBox.Text);
-                double lineSpacing = double.Parse(lineSpacingComboBox.SelectedItem.ToString());
-
-                Editor.Margin = new Thickness(left, 0, right, 0);
-                Editor.Document.Selection.ParagraphFormat.SetIndents((float)firstLine, 0, 0);
-                Editor.Document.Selection.ParagraphFormat.SetLineSpacing(Windows.UI.Text.LineSpacingRule.AtLeast, (float)lineSpacing);
-            }
+            opennotimplement();
         }
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -2086,24 +1742,17 @@ namespace RectifyPad
 
         private void PageSetup_Click(object sender, RoutedEventArgs e)
         {
-            openpageprop();
+            // openpageprop();
+            opennotimplement();
         }
 
-        private double ConvertToUnit(double value, string unit)
+        private async void opennotimplement() 
         {
-            switch (unit)
-            {
-                case "Inches":
-                    return value;
-                case "Centimeters":
-                    return value * 2.54; // Convert inches to centimeters
-                case "Points":
-                    return value * 72; // Convert inches to points
-                case "Picas":
-                    return value * 6; // Convert inches to picas
-                default:
-                    return value; // Default to inches
-            }
+            // Create an instance of the ParagraphDialog
+            NoImplement noimple = new NoImplement();
+
+            // Show the dialog and wait for the user's input
+            ContentDialogResult result = await noimple.ShowAsync();
         }
 
         private async void openpageprop()
@@ -2141,10 +1790,10 @@ namespace RectifyPad
                 settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
 
                 // Save margin values
-                settings.Values["pagesetupLmargin"] = ConvertToUnit(double.Parse(LeftMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupRmargin"] = ConvertToUnit(double.Parse(RightMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupTmargin"] = ConvertToUnit(double.Parse(TopMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupBmargin"] = ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupLmargin"] = unitConverter.ConvertToUnit(double.Parse(LeftMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupRmargin"] = unitConverter.ConvertToUnit(double.Parse(RightMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupTmargin"] = unitConverter.ConvertToUnit(double.Parse(TopMarginTextBox.Text), marginsname.Text);
+                settings.Values["pagesetupBmargin"] = unitConverter.ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
 
                 // Save Print Page Numbers setting
                 settings.Values["isprintpagenumbers"] = printpagenumbers.IsChecked == true ? "yes" : "no";
@@ -2186,7 +1835,7 @@ namespace RectifyPad
 
         private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            openpageprop();
+            opennotimplement();
         }
     }
 }
