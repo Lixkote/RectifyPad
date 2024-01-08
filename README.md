@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
     <img src="https://raw.githubusercontent.com/Lixkote/RectifyPad/master/logo.png">
 </p>
 
