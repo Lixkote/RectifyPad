@@ -1,5 +1,8 @@
-# RectifyPad
-RectifyPad is a modern and unofficial replacement for Windows WordPad, written in C#. It is free and open source, and aims to provide almost the same functionality as its predecessor, with a fresh and updated look.
+<p align="left">
+    <img src="https://raw.githubusercontent.com/Lixkote/RectifyPad/master/logo.png">
+</p>
+
+RectifyPad is a modern and unofficial replacement for WordPad, written in C#. It is free and open source, and aims to provide almost the same functionality as its predecessor, with a fresh and updated look.
 
 ![RectifyPad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/darkpreview.png)
 ![RectifyPad Screenshot](https://github.com/Lixkote/WordPad11/blob/main/lightpreview.png)
