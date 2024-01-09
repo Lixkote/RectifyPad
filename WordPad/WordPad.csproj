@@ -132,6 +132,7 @@
     <Compile Include="Helpers\RecentlyUsedHelper.cs" />
     <Compile Include="Helpers\RecentlyUsedViewModel.cs" />
     <Compile Include="Helpers\RichEditHelpers.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Helpers\UnitConverter.cs" />
     <Compile Include="Helpers\ZoomConverter.cs" />
     <Compile Include="MainPage.xaml.cs">

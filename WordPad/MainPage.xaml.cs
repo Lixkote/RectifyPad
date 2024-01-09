@@ -43,6 +43,7 @@ using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
 using Text = DocumentFormat.OpenXml.Wordprocessing.Text;
 using CheckBox = Windows.UI.Xaml.Controls.CheckBox;
 using Application = Windows.UI.Xaml.Application;
+using DocumentFormat.OpenXml.Drawing;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -116,11 +117,6 @@ namespace RectifyPad
             PopulateRecents();
             ConnectRibbonToolbars();
 
-            // Connect the controls events 
-            TextRuler.LeftHangingIndentChanging += TextRuler_LeftHangingIndentChanging;
-            TextRuler.LeftIndentChanging += TextRuler_LeftIndentChanging;
-            TextRuler.RightIndentChanging += TextRuler_RightIndentChanging;
-            TextRuler.BothLeftIndentsChanged += TextRuler_BothLeftIndentsChanged;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
 
@@ -144,9 +140,6 @@ namespace RectifyPad
             double MarginR = unitConverter.ConvertToPixels(MarginRInches, selectedUnit);
             double MarginB = unitConverter.ConvertToPixels(MarginBInches, selectedUnit);
             double MarginT = unitConverter.ConvertToPixels(MarginTInches, selectedUnit);
-
-            // Apply margin values to the RichEditBox
-            Editor.Margin = new Thickness(MarginL, MarginT, MarginR, MarginB);
 
         }
 
@@ -250,8 +243,6 @@ namespace RectifyPad
                     double right = unitConverter.ConvertToUnitAndFormat(Rmargin, unit);
                     double top = unitConverter.ConvertToUnitAndFormat(Tmargin, unit);
                     double bottom = unitConverter.ConvertToUnitAndFormat(Bmargin, unit);
-
-                    Editor.Margin = new Thickness(left, top, right, bottom);
                 }
                 else
                 {
@@ -309,80 +300,6 @@ namespace RectifyPad
             Window.Current.SetTitleBar(AppTitleBar);
         }
 
-        private void TextRuler_LeftIndentChanging(int NewValue)
-        {
-            try
-            {
-                var paragraph = Editor.Document.Selection.ParagraphFormat;
-                if (paragraph != null)
-                {
-                    var textIndentInMillimeters = TextRuler.LeftIndent;
-                    var textIndentInPixels = unitConverter.ConvertDipsToPixels(textIndentInMillimeters);
-                    paragraph.SetIndents((float)textIndentInPixels, 0, 0);
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        private void TextRuler_LeftHangingIndentChanging(int NewValue)
-        {
-            try
-            {
-                var paragraph = Editor.Document.Selection.ParagraphFormat;
-                if (paragraph != null)
-                {
-                    var textIndentInMillimeters = TextRuler.LeftIndent;
-                    var hangingIndentInMillimeters = TextRuler.LeftHangingIndent;
-                    var textIndentInPixels = unitConverter.ConvertDipsToPixels(textIndentInMillimeters);
-                    var hangingIndentInPixels = unitConverter.ConvertDipsToPixels(hangingIndentInMillimeters);
-                    Editor.Document.Selection.ParagraphFormat.SetIndents((float)textIndentInPixels, (float)hangingIndentInPixels, 0);
-                    // Set the margins for the RichEditBox
-                    Editor.Margin = new Thickness((float)textIndentInPixels, (float)hangingIndentInPixels, 0, 0);
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-        private void TextRuler_BothLeftIndentsChanged(int leftIndent, int hangIndent)
-        {
-            var paragraph = Editor.Document.Selection.ParagraphFormat;
-            if (paragraph != null)
-            {
-                double indentInMillimeters = leftIndent;
-                double hangingIndentInMillimeters = hangIndent;
-
-                double indentInPixels = unitConverter.ConvertDipsToPixels(indentInMillimeters);
-                double hangingIndentInPixels = unitConverter.ConvertDipsToPixels(hangingIndentInMillimeters);
-
-                Editor.Margin = new Thickness((float)indentInPixels, 0, (float)hangingIndentInPixels, 0);
-            }
-        }
-
-
-        private void TextRuler_RightIndentChanging(int NewValue)
-        {
-            try
-            {
-                var paragraph = Editor.Document.Selection.ParagraphFormat;
-                if (paragraph != null)
-                {
-                    var rightIndentInMillimeters = TextRuler.RightIndent;
-                    var rightIndentInPixels = unitConverter.ConvertDipsToPixels(rightIndentInMillimeters);
-                    Editor.Margin = new Thickness(0, 0, -(float)rightIndentInPixels, 0);
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-
         private void ConnectRibbonToolbars()
         {
             editribbontoolbar.Editor = Editor;
@@ -395,7 +312,7 @@ namespace RectifyPad
             insertribbontoolbarcol.Editor = Editor;
             pararibbontoolbarcol.Editor = Editor;
             fontribbontoolbarcol.Editor = Editor;
-            TextRuler.Editor = Editor;
+            TextRuler.editor = Editor;
         }
 
         private async void PopulateRecents()
@@ -1659,36 +1576,7 @@ namespace RectifyPad
 
         private void AnimateZoomSecond(double fromValue, double toValue)
         {
-            // Get the scale transform of the rich edit box
-            var scaleTransform = EditorGrid.RenderTransform as ScaleTransform;
-
-            // Create a storyboard to animate the scale x and y properties
-            var storyboard = new Storyboard();
-            var animationX = new DoubleAnimation()
-            {
-                From = fromValue,
-                To = toValue,
-                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
-            };
-            var animationY = new DoubleAnimation()
-            {
-                From = fromValue,
-                To = toValue,
-                Duration = TimeSpan.FromSeconds(0.2), // Adjust the duration as needed
-                EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseInOut } // Adjust the easing function as needed
-            };
-            storyboard.Children.Add(animationX);
-            storyboard.Children.Add(animationY);
-
-            // Set the target of the animation to be the scale x and y properties of the scale transform
-            Storyboard.SetTarget(animationX, scaleTransform);
-            Storyboard.SetTargetProperty(animationX, "ScaleX");
-            Storyboard.SetTarget(animationY, scaleTransform);
-            Storyboard.SetTargetProperty(animationY, "ScaleY");
-
-            // Start the animation
-            storyboard.Begin();
+            RichTextScrollView.ChangeView(0, 0, (float)ZoomSlider.Value);
         }
 
         private void MenuCut_Click(object sender, RoutedEventArgs e)
@@ -1728,8 +1616,6 @@ namespace RectifyPad
                 double right = double.Parse(rightTextBox.Text);
                 double firstLine = double.Parse(firstLineTextBox.Text);
                 double lineSpacing = double.Parse(lineSpacingComboBox.SelectedItem.ToString());
-
-                Editor.Margin = new Thickness(left, 0, right, 0);
                 Editor.Document.Selection.ParagraphFormat.SetIndents((float)firstLine, 0, 0);
                 Editor.Document.Selection.ParagraphFormat.SetLineSpacing(Windows.UI.Text.LineSpacingRule.AtLeast, (float)lineSpacing);
             }
@@ -1827,8 +1713,8 @@ namespace RectifyPad
                     height *= minScaleFactor;
 
                     // Set the UWP's RichEditBox width and height
-                    EditorGrid.Width = width;
-                    EditorGrid.Height = height;
+                    // EditorGrid.Width = width;
+                    // EditorGrid.Height = height;
                 }
             }
         }
@@ -1836,6 +1722,11 @@ namespace RectifyPad
         private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
         {
             opennotimplement();
+        }
+
+        private void Editor_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            TextRuler.Width = Editor.Width;
         }
     }
 }
