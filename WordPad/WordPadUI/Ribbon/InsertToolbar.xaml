@@ -90,7 +90,7 @@
                      Grid.Column="2" Click="InsertObjectButton_Click" HorizontalAlignment="Center">
                 <Button.Content>
                     <Grid>
-                        <Image Width="19" Height="16" Source="{Binding Source={ThemeResource ObjectCube}}" VerticalAlignment="Top" Margin="3,0,0,20" Stretch="Fill" HorizontalAlignment="Left" />
+                        <Image Width="16" Height="16" Source="{Binding Source={ThemeResource ObjectCube}}" VerticalAlignment="Top" Margin="3,0,0,20" Stretch="Fill" HorizontalAlignment="Left" />
                         <TextBlock FontFamily="Segoe UI" Text="Object" FontSize="9" Margin="0,25,0,0"></TextBlock>
                     </Grid>
                 </Button.Content>

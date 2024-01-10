@@ -262,9 +262,6 @@
     <Content Include="Assets\theme-dark\FontSizeIncrease.svg" />
     <Content Include="Assets\theme-dark\Images.svg" />
     <Content Include="Assets\theme-dark\List.svg" />
-    <Content Include="Assets\theme-dark\l_indent_pos_lower.png" />
-    <Content Include="Assets\theme-dark\l_indet_pos_upper.png" />
-    <Content Include="Assets\theme-dark\l_indet_pos_upper.png" />
     <Content Include="Assets\theme-dark\MarginL.svg" />
     <Content Include="Assets\theme-dark\MarginR.svg" />
     <Content Include="Assets\theme-dark\ObjectCube.svg" />
@@ -272,7 +269,6 @@
     <Content Include="Assets\theme-dark\Paste.svg" />
     <Content Include="Assets\theme-dark\Print.svg" />
     <Content Include="Assets\theme-dark\Replace.svg" />
-    <Content Include="Assets\theme-dark\r_indent_pos.png" />
     <Content Include="Assets\theme-dark\SelectAll.svg" />
     <Content Include="Assets\theme-dark\Spacing.svg" />
     <Content Include="Assets\theme-dark\UpScript.svg" />
@@ -294,8 +290,6 @@
     <Content Include="Assets\theme-light\FontSizeIncrease.svg" />
     <Content Include="Assets\theme-light\Images.svg" />
     <Content Include="Assets\theme-light\List.svg" />
-    <Content Include="Assets\theme-light\l_indent_pos_lower.png" />
-    <Content Include="Assets\theme-light\l_indet_pos_upper.png" />
     <Content Include="Assets\theme-light\MarginL.svg" />
     <Content Include="Assets\theme-light\MarginR.svg" />
     <Content Include="Assets\theme-light\ObjectCube.svg" />
@@ -303,8 +297,6 @@
     <Content Include="Assets\theme-light\Paste.svg" />
     <Content Include="Assets\theme-light\Print.svg" />
     <Content Include="Assets\theme-light\Replace.svg" />
-    <Content Include="Assets\theme-light\r_indent_pos.png" />
-    <Content Include="Assets\theme-light\SelectAll.svg" />
     <Content Include="Assets\theme-light\Spacing.svg" />
     <Content Include="Assets\theme-light\UpScript.svg" />
     <Content Include="Assets\theme-light\ZoomIn.svg" />

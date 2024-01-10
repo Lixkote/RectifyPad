@@ -57,10 +57,6 @@
                             <x:String x:Key="none">ms-appx:///Assets/listnumberismages/none.png</x:String>
                             <x:String x:Key="number">ms-appx:///Assets/listnumbersimages/number.png</x:String>
 
-                            <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-light/l_indent_pos_lower.png</x:String>
-                            <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-light/l_indet_pos_upper.png</x:String>
-                            <x:String x:Key="r_indent_pos">ms-appx:///Assets/theme-light/r_indent_pos.png</x:String>
-
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"
                                              Color="#FFEBEBEB" />
@@ -287,10 +283,6 @@
                             <x:String x:Key="IIII">ms-appx:///Assets/listnumbersimages/Dark/IIII.png</x:String>
                             <x:String x:Key="none">ms-appx:///Assets/listnumbersimages/Dark/none.png</x:String>
                             <x:String x:Key="number">ms-appx:///Assets/listnumbersimages/Dark/number.png</x:String>
-
-                            <x:String x:Key="indent_pos_lower">ms-appx:///Assets/theme-dark/l_indent_pos_lower.png</x:String>
-                            <x:String x:Key="indent_pos_upper">ms-appx:///Assets/theme-dark/l_indet_pos_upper.png</x:String>
-                            <x:String x:Key="r_indent_pos">ms-appx:///Assets/theme-dark/r_indent_pos.png</x:String>
 
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />
                             <SolidColorBrush x:Key="RibbonBorder"

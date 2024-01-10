@@ -67,8 +67,6 @@
 					<uap:Logo>Assets\txt.png</uap:Logo>
 					<uap:SupportedFileTypes>
 						<uap:FileType>.txt</uap:FileType>
-						<uap:FileType>.odt</uap:FileType>
-						<uap:FileType>.docx</uap:FileType>
 					</uap:SupportedFileTypes>
 				</uap:FileTypeAssociation>
 			</uap:Extension>
