@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using DocumentFormat.OpenXml.Drawing;
+using Microsoft.UI.Xaml.Controls;
+using RectifyPad;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,6 +30,7 @@ namespace WordPad.WordPadUI.Ribbon
     public sealed partial class ParagraphToolbar : UserControl
     {
         public RichEditBox Editor { get; set; }
+        public MainPage MainPagea { get; set; }  
         public ParagraphToolbar()
         {
             this.InitializeComponent();
@@ -103,6 +106,172 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Set the line spacing rule to multiple
             paragraphFormat.SetLineSpacing(LineSpacingRule.Multiple, halal);
+        }
+
+        public string GetText(RichEditBox RichEditor)
+        {
+            RichEditor.Document.GetText(TextGetOptions.FormatRtf, out string Text);
+            ITextRange Range = RichEditor.Document.GetRange(0, Text.Length);
+            Range.GetText(TextGetOptions.FormatRtf, out string Value);
+            return Value;
+        }
+
+        private void SetParagraphIndents(float leftIndent, float rightIndent, float firstLineIndent, bool applyToSelectionOnly = true)
+        {
+            // Get the ITextDocument interface for the RichEditBox's document
+            ITextDocument document = Editor.Document;
+
+            // Get the current selection's start and end positions
+            int start = document.Selection.StartPosition;
+            int end = document.Selection.EndPosition;
+
+            // If applyToSelectionOnly is true, check if there's any selected text in the RichEditBox
+            if (applyToSelectionOnly && start == end)
+            {
+                //return;
+            }
+
+            // Get the ITextRange interface for the selection or the entire document
+            ITextRange textRange;
+            if (applyToSelectionOnly)
+            {
+                textRange = document.Selection;
+            }
+            else
+            {
+                textRange = document.GetRange(0, GetText(Editor).Length);
+            }
+
+            // Get the ITextParagraphFormat interface for the text range
+            ITextParagraphFormat paragraphFormat = textRange.ParagraphFormat;
+
+            // Set the left and right indents for the current selection's paragraph(s)
+            try
+            {
+                if (document.Selection.Length != 0)
+                {
+                    paragraphFormat.SetIndents(firstLineIndent, leftIndent, rightIndent);
+                }
+                else
+                {
+                    document.GetRange(document.Selection.StartPosition, document.Selection.EndPosition + 1);
+                    paragraphFormat.SetIndents(firstLineIndent, leftIndent, rightIndent);
+                }
+            }
+            catch
+            {
+
+            }
+
+            // Apply the new paragraph format to the current selection or the entire document
+            textRange.ParagraphFormat = paragraphFormat;
+
+            // LeftIndent.Text = leftIndent.ToString();
+
+            // RightIndent.Text = rightIndent.ToString();
+        }
+        public async void ShowParagraphDialog()
+        {
+            // Create an instance of the ParagraphDialog
+            ParagraphDialog paragraphDialog = new ParagraphDialog();
+            TextBox leftTextBox = (TextBox)paragraphDialog.FindName("LeftIndentBox");
+            TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightIndentBox");
+            TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("OneLineBox");
+            ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingCombo");
+            ComboBox align = (ComboBox)paragraphDialog.FindName("AlignCombo");
+
+            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left)
+            {
+                align.SelectedItem = "Left";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right)
+            {
+                align.SelectedItem = "Right";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Justify)
+            {
+                align.SelectedItem = "Justified";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center)
+            {
+                align.SelectedItem = "Center";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
+                Editor.Document.Selection.ParagraphFormat.LineSpacing == 1)
+            {
+                lineSpacingComboBox.SelectedItem = "1,00";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
+                Editor.Document.Selection.ParagraphFormat.LineSpacing == (float)1.15)
+            {
+                lineSpacingComboBox.SelectedItem = "1,15";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
+                Editor.Document.Selection.ParagraphFormat.LineSpacing == (float)1.50)
+            {
+                lineSpacingComboBox.SelectedItem = "1,50";
+            }
+            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
+            Editor.Document.Selection.ParagraphFormat.LineSpacing == 2)
+            {
+                lineSpacingComboBox.SelectedItem = "2,00";
+            }
+            leftTextBox.Text = Editor.Document.Selection.ParagraphFormat.LeftIndent.ToString();
+
+            rightTextBox.Text = Editor.Document.Selection.ParagraphFormat.RightIndent.ToString();
+
+            firstLineTextBox.Text = Editor.Document.Selection.ParagraphFormat.FirstLineIndent.ToString();
+
+
+            // Show the dialog and wait for the user's input
+            ContentDialogResult result = await paragraphDialog.ShowAsync();
+
+            // If the user clicked the OK button, adjust the properties of the RichEditBox
+            if (result == ContentDialogResult.Secondary)
+            {
+                // Set properties of the RichEditBox based on the values from controls
+                if (align.SelectedItem as string == "Left")
+                {
+                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
+                }
+                else if (align.SelectedItem as string == "Right")
+                {
+                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
+                }
+                else if (align.SelectedItem as string == "Justified")
+                {
+                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
+                }
+                else if (align.SelectedItem as string == "Center")
+                {
+                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                }
+
+                if (lineSpacingComboBox.SelectedItem.ToString() == "1,00")
+                {
+                    Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, 1);
+                }
+                else if(lineSpacingComboBox.SelectedItem.ToString() == "1,15")
+                {
+
+                    Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)1.15);
+                }
+                else if(lineSpacingComboBox.SelectedItem.ToString() == "1,50")
+                {
+
+                    Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)1.50);
+                }
+                else if(lineSpacingComboBox.SelectedItem.ToString() == "2,00")
+                {
+                    Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, 2);
+                }
+
+
+                float.TryParse(leftTextBox.Text, out float leftIndent);
+                float.TryParse(rightTextBox.Text, out float rightIndent);
+                float.TryParse(firstLineTextBox.Text, out float firstLineIndent);
+                SetParagraphIndents(leftIndent, rightIndent, firstLineIndent, false);
+            }
         }
 
 
@@ -196,11 +365,7 @@ namespace WordPad.WordPadUI.Ribbon
 
         private async void ParagraphButton_Click(object sender, RoutedEventArgs e)
         {
-            // Create an instance of the ParagraphDialog
-            NoImplement noimple = new NoImplement();
-
-            // Show the dialog and wait for the user's input
-            ContentDialogResult result = await noimple.ShowAsync();
+            ShowParagraphDialog();
         }
 
         private void AlignRightButton_Click(object sender, RoutedEventArgs e)
@@ -233,24 +398,23 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void RadioMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-            string selectedspacing = ((RadioMenuFlyoutItem)sender)?.Tag?.ToString();
-            // Save the selected theme in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = selectedspacing;
+            Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, 1);
+        }
 
-            float halal = (float)ConvertString2Float(selectedspacing, typeof(float), null, null);
+        private void RadioMenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
+        {
 
-            // Get the current document from the RichEditBox
-            ITextDocument document = Editor.Document;
+            Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)1.15);
+        }
 
-            // Get the current selection from the document
-            ITextSelection selection = document.Selection;
+        private void RadioMenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)1.5);
+        }
 
-            // Get the paragraph format of the selection
-            ITextParagraphFormat paragraphFormat = selection.ParagraphFormat;
-
-            // Set the line spacing rule to multiple
-            paragraphFormat.SetLineSpacing(LineSpacingRule.Multiple, halal);
-
+        private void RadioMenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, 2);
         }
 
         private void ParagraphSettingButton_Loaded(object sender, RoutedEventArgs e)

@@ -9,9 +9,11 @@
     mc:Ignorable="d"
     Style="{StaticResource DefaultContentDialogStyle}"
     Title="Paragraph"
-    PrimaryButtonText="OK"
-    DefaultButton="Primary"
-    SecondaryButtonText="Cancel">
+    PrimaryButtonText="Tabs..."
+    IsPrimaryButtonEnabled="False"
+    DefaultButton="Secondary"
+    SecondaryButtonText="OK"
+    CloseButtonText="Cancel">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition>
@@ -41,9 +43,9 @@
             <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Left:" Grid.ColumnSpan="2" />
             <TextBlock Margin="0,16,0,7" Grid.Row="2" FontSize="14" Text="Right:" Grid.ColumnSpan="2" />
             <TextBlock Margin="0,16,0,10" Grid.Row="3" FontSize="14" Text="First line:" Grid.ColumnSpan="2" />
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="1" Width="135"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="2" Width="135"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,10" TextWrapping="Wrap" Text="0 cm" VerticalAlignment="Top" Grid.Row="3" Width="135" Grid.RowSpan="2"/>
+            <TextBox x:Name="LeftIndentBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Row="1" Width="135"/>
+            <TextBox x:Name="RightIndentBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="2" Width="135"/>
+            <TextBox x:Name="OneLineBox" Grid.Column="1" HorizontalAlignment="Center" Margin="0,6,0,10" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="3" Width="135" Grid.RowSpan="2"/>
             
         </Grid>
         <Grid Grid.Row="1" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
@@ -64,10 +66,15 @@
             </Grid.ColumnDefinitions>
             <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Spacing" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Line spacing:" Grid.ColumnSpan="2" />
-            <ComboBox Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,0"/>
+            <ComboBox x:Name="LineSpacingCombo" PlaceholderText="Other" Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,0">
+                <x:String>1,00</x:String>
+                <x:String>1,15</x:String>
+                <x:String>1,50</x:String>
+                <x:String>2,00</x:String>
+            </ComboBox>
             <CheckBox Content="Add 10pt space after paragraphs" Grid.Row="2" Margin="0,3,0,10" />
         </Grid>
-        <Grid Grid.Row="2" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
+        <Grid Grid.Row="2"  BorderThickness="0,0,0,1">
             <Grid.RowDefinitions>
                 <RowDefinition>
 
@@ -85,7 +92,12 @@
             </Grid.ColumnDefinitions>
             <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Align" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBlock Margin="0,16,0,10" Grid.Row="1" FontSize="14" Text="Alignment:" Grid.ColumnSpan="2" />
-            <ComboBox Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,10"/>
+            <ComboBox x:Name="AlignCombo" Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,10">
+                <x:String>Left</x:String>
+                <x:String>Right</x:String>
+                <x:String>Center</x:String>
+                <x:String>Justified</x:String>
+            </ComboBox>
         </Grid>
     </Grid>
 

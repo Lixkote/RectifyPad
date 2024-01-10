@@ -855,9 +855,9 @@ VerticalAlignment="Top"
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />
-                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" IsEnabled="False" Click="MenuParagraph_Click">
+                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
                                     <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE903;" FontFamily="WordPad Fluent Icons"/>
+                                        <PathIcon Data="M 9 3 C 7 3 5 5 5 7 C 5 9 7 11 9 11 L 11 11 L 11 17 L 12 17 L 12 4 L 14 4 L 14 17 L 15 17 L 15 4 L 17 4 L 17 3 M 11 10 L 9 10 C 7.5 10 6 8.5 6 7 C 6 5.5 7.5 4 9 4 L 11 4" RenderTransformOrigin="0.5,0.5" Height="13" Width="14" />
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSubItem Text="Lists">

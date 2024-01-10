@@ -32,7 +32,7 @@
                        Width="32"
                      MinWidth="32"
                      MaxWidth="32"
-                     Height="15" FontSize="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,42,8,0">
+                     Height="15" FontSize="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,42,0,0">
                 <Button.Content>
                     <Grid>
                         <TextBlock FontFamily="Segoe Fluent Icons" Text="" FontSize="9" VerticalAlignment="Center" HorizontalAlignment="Center"/>

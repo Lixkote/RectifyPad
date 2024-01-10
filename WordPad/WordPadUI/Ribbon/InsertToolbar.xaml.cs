@@ -66,8 +66,15 @@ namespace WordPad.WordPadUI.Ribbon
             dialog.PrimaryButtonClick += (s, args) =>
             {
                 string selectedFormat = listView.SelectedItem as string;
-                string formattedDate = dateFormats[listView.SelectedIndex];
-                Editor.Document.Selection.Text = formattedDate;
+                try
+                {
+                    string formattedDate = dateFormats[listView.SelectedIndex];
+                    Editor.Document.Selection.Text = formattedDate;
+                }
+                catch
+                {
+
+                }
             };
 
             // Add a "Cancel" button to the ContentDialog
