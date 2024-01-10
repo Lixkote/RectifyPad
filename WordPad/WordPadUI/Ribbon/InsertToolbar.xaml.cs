@@ -230,5 +230,15 @@ namespace WordPad.WordPadUI.Ribbon
                 Editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "img", randAccStream);
             }
         }
+
+        private async void InsertPaintImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            var app = await GetAppByPackageFamilyNameAsync("Microsoft.Paint_8wekyb3d8bbwe");
+
+            if (app != null)
+            {
+                await app.LaunchAsync();
+            }
+        }
     }
 }

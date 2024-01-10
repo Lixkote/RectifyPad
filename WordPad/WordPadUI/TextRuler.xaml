@@ -392,13 +392,8 @@
     <Grid x:Name="RulerGrid" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
         <ScrollViewer x:Name="SCR3" ZoomMode="Disabled" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" ZoomSnapPointsType="None" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" IsVerticalScrollChainingEnabled="False" ViewChanged="SCR3_ViewChanged">
             <Grid Margin="0,-14,0,-6">
-                <Border BorderThickness="1" Margin="36,10,36,0" CornerRadius="4,4,4,4" Background="{ThemeResource SurfaceStrokeColorFlyoutBrush}" Height="28" VerticalAlignment="Center">
-                    <Border.BorderBrush>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#3FB9B9B9" Offset="0.782"/>
-                            <GradientStop Color="#3F5F5F5F" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
+                <Border BorderThickness="1" Margin="36,10,36,0" CornerRadius="2" Background="{ThemeResource EditorGridBack}" Height="28" VerticalAlignment="Center" BorderBrush="{ThemeResource EditorGridBorder}">
+                    
                 </Border>
                 <Grid Margin="37,0,36,0">
                     <StackPanel VerticalAlignment="Bottom" Spacing="19" Orientation="Horizontal" Opacity="0.65" Margin="20,0,0,15">

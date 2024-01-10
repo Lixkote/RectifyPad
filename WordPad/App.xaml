@@ -41,13 +41,16 @@
                             <x:String x:Key="List">ms-appx:///Assets/theme-light/List.svg</x:String>
                             <x:String x:Key="MarginL">ms-appx:///Assets/theme-light/MarginL.svg</x:String>
                             <x:String x:Key="MarginR">ms-appx:///Assets/theme-light/MarginR.svg</x:String>
-                            <x:String x:Key="ObjectCube">ms-appx:///Assets/theme-light/ObjectCube.svg</x:String>
                             <x:String x:Key="Paragraph">ms-appx:///Assets/theme-light/Paragraph.svg</x:String>
                             <x:String x:Key="Replace">ms-appx:///Assets/theme-light/Replace.svg</x:String>
                             <x:String x:Key="SelectAll">ms-appx:///Assets/theme-light/SelectAll.svg</x:String>
                             <x:String x:Key="Spacing">ms-appx:///Assets/theme-light/Spacing.svg</x:String>
                             <x:String x:Key="UpScript">ms-appx:///Assets/theme-light/UpScript.svg</x:String>
+                            
                             <x:String x:Key="Date">ms-appx:///Assets/theme-light/Date.svg</x:String>
+                            <x:String x:Key="Objects">ms-appx:///Assets/theme-light/Objects.svg</x:String>
+                            <x:String x:Key="PaintImage">ms-appx:///Assets/theme-light/PaintImage.svg</x:String>
+                            <x:String x:Key="Image">ms-appx:///Assets/theme-light/Image.svg</x:String>
 
                             <x:String x:Key="abc">ms-appx:///Assets/listnumbersimages/abc.png</x:String>
                             <x:String x:Key="ABCB">ms-appx:///Assets/listnumbersimages/ABCB.png</x:String>
@@ -268,13 +271,16 @@
                             <x:String x:Key="List">ms-appx:///Assets/theme-dark/List.svg</x:String>
                             <x:String x:Key="MarginL">ms-appx:///Assets/theme-dark/MarginL.svg</x:String>
                             <x:String x:Key="MarginR">ms-appx:///Assets/theme-dark/MarginR.svg</x:String>
-                            <x:String x:Key="ObjectCube">ms-appx:///Assets/theme-dark/ObjectCube.svg</x:String>
                             <x:String x:Key="Paragraph">ms-appx:///Assets/theme-dark/Paragraph.svg</x:String>
                             <x:String x:Key="Replace">ms-appx:///Assets/theme-dark/Replace.svg</x:String>
                             <x:String x:Key="SelectAll">ms-appx:///Assets/theme-dark/SelectAll.svg</x:String>
                             <x:String x:Key="Spacing">ms-appx:///Assets/theme-dark/Spacing.svg</x:String>
                             <x:String x:Key="UpScript">ms-appx:///Assets/theme-dark/UpScript.svg</x:String>
+
                             <x:String x:Key="Date">ms-appx:///Assets/theme-dark/Date.svg</x:String>
+                            <x:String x:Key="Objects">ms-appx:///Assets/theme-dark/Objects.svg</x:String>
+                            <x:String x:Key="PaintImage">ms-appx:///Assets/theme-dark/PaintImage.svg</x:String>
+                            <x:String x:Key="Image">ms-appx:///Assets/theme-dark/Image.svg</x:String>
 
                             <x:String x:Key="abc">ms-appx:///Assets/listnumbersimages/Dark/abc.png</x:String>
                             <x:String x:Key="ABCB">ms-appx:///Assets/listnumbersimages/Dark/ABCB.png</x:String>

@@ -701,7 +701,7 @@
                 </Grid.Children>
             </Grid>
 
-            <Border x:Name="Fullinserttoolbar" Height="120" Width="137" Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fullinserttoolbar" Height="120" Width="180" Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
                 <Custom:InsertToolbar x:Name="insertribbontoolbar" />
             </Border>
             <Grid x:Name="Collinserttoolbar" Grid.Column="3" Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"
