@@ -101,7 +101,7 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Create a list of insert options to display in the ListView
             List<string> insertOptions = new List<string>();
-            insertOptions.Add("Paint a picture");
+            //insertOptions.Add("Paint a picture");
             insertOptions.Add("Insert Table");
 
             // Set the ItemsSource of the ListView to the list of insert options

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace WordPad.WordPadUI.Ribbon
 {
     public sealed partial class FontToolbar : UserControl
     {
+        private bool updateFontFormat = true;
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         public RichEditBox Editor { get; set; }
 
@@ -45,6 +47,20 @@ namespace WordPad.WordPadUI.Ribbon
         public FontToolbar()
         {
             this.InitializeComponent();
+        }
+
+        private void UpdateFontSize()
+        {
+            FontSizesComboBox.SelectedItem = Editor.FontSize;
+        }
+
+        private void FontsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Editor.Document.Selection == null || !updateFontFormat)
+                return;
+
+            Editor.Document.Selection.CharacterFormat.Name = FontsComboBox.SelectedValue.ToString();
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void FontTextColorDropDownButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
@@ -96,10 +112,10 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void FontSizesComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-                if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
-                {
-                    FontSizesComboBox.TextSubmitted += FontSizesComboBox_TextSubmitted;
-                }
+            if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+            {
+                FontSizesComboBox.TextSubmitted += FontSizesComboBox_TextSubmitted;
+            }
         }
 
         private void FontSizesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,6 +175,8 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Increase the font size of the currently selected text by 2 points
             richEditBox.Document.Selection.CharacterFormat.Size += 2;
+            // Get the index of the currently selected item
+            FontSizesComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
         }
 
         private void FontDislargeButton_Click(object sender, RoutedEventArgs e)
@@ -168,9 +186,8 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Decrease the font size of the currently selected text by 2 points
             richEditBox.Document.Selection.CharacterFormat.Size -= 2;
+            FontSizesComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
         }
-
-
 
         private void TextColorPickerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -214,6 +231,21 @@ namespace WordPad.WordPadUI.Ribbon
                 FontsComboBox.SelectedItem = "Calibri";
                 Editor.FontFamily = new FontFamily("Calibri");
             }
+        }
+
+        private void FontsComboBox_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            FontsComboBox.SelectedItem = Editor.FontFamily;
+        }
+
+        private void FontSizesComboBox_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            Editor.SelectionChanging += Editor_SelectionChanging;
+        }
+
+        private void Editor_SelectionChanging(RichEditBox sender, RichEditBoxSelectionChangingEventArgs args)
+        {
+            FontSizesComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Size;
         }
     }
 }

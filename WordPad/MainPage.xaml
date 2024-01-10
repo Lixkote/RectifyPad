@@ -311,7 +311,7 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem x:Name="PageSetup" Text="Page setup" Click="PageSetup_Click"/>
-                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
+                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" IsEnabled="False" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Send" Click="SendButton_Click">
                         <MenuFlyoutItem.Icon>
@@ -330,28 +330,16 @@
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="X"
-                             Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Copy" Click="Copy_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="C"
-                             Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Paste" Click="MenuPaste_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
-                        <MenuFlyoutItem.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="V"
-                             Modifiers="Control" />
-                        </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
                 <muxc:MenuBarItem Title="View">
@@ -598,8 +586,8 @@
 
         </Grid>
 
-        <Grid x:Name="ribbongrid" Background="{ThemeResource RibbonBackground}"
-              BorderBrush="{ThemeResource RibbonBorder}"
+        <Grid x:Name="ribbongrid" Background="{ThemeResource LayerFillColorDefaultBrush}"
+              BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}"
               BorderThickness="0,1"
               Padding="4"
               Grid.Row="3" DataContext="{x:Bind}" Height="130">
@@ -867,7 +855,7 @@ VerticalAlignment="Top"
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />
-                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
+                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" IsEnabled="False" Click="MenuParagraph_Click">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE903;" FontFamily="WordPad Fluent Icons"/>
                                     </MenuFlyoutItem.Icon>
