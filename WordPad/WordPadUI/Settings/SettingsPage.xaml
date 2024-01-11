@@ -114,7 +114,7 @@
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"
                         VerticalAlignment="Top"
-                            IsExpanded="True" HorizontalAlignment="Stretch">
+                            IsExpanded="True" HorizontalAlignment="Stretch" IsEnabled="False">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
                                     <d:Grid.ColumnDefinitions>
@@ -139,7 +139,7 @@
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
                         VerticalAlignment="Top"
-                            IsExpanded="True" HorizontalAlignment="Stretch">
+                            IsExpanded="True" HorizontalAlignment="Stretch" IsEnabled="False">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
                                     <d:Grid.ColumnDefinitions>
@@ -186,7 +186,7 @@
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" Text="About this app"/>
-                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad Preview 11.2311.1"/>
+                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad Preview(1) 11.2311.1"/>
                         <TextBlock x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2024 Lixkote. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad" >
                             <TextBlock Text="Source Code"/>

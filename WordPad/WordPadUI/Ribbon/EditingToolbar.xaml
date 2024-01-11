@@ -85,6 +85,7 @@
     Width="132"
     Height="24"
     Grid.Row="0" HorizontalAlignment="Stretch" Click="FindButton_Click" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="8,0,0,0">
+                
                 <muxc:DropDownButton.Flyout>
                     <Flyout Placement="Bottom">
                         <StackPanel Orientation="Vertical">

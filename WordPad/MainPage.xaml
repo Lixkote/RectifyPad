@@ -813,8 +813,9 @@ VerticalAlignment="Top"
               SizeChanged="EditorContentHost_SizeChanged" Margin="0,40,0,0">
 
             <Grid x:Name="EditorContainer">
-                <ScrollViewer x:Name="RichTextScrollView" HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" MinZoomFactor="0.5" MaxZoomFactor="3" VerticalAlignment="Top">
-                    <RichEditBox x:Name="Editor" Padding="45,45,45,45" SizeChanged="Editor_SizeChanged"  Height="1116"   Width="816"   Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <ScrollViewer x:Name="RichTextScrollView"  HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" MinZoomFactor="0.5" MaxZoomFactor="3" VerticalAlignment="Top">
+                    <Grid x:Name="EditorMandatoryPrintingGrid" Height="1116"   Width="816">
+                        <RichEditBox x:Name="Editor" Padding="45,45,45,45" SizeChanged="Editor_SizeChanged" Height="1116"   Width="816"  Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <RichEditBox.Resources>
                             <Storyboard x:Name="REBOpenAnimation">
                                 <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleX" From="0.95" To="1.0" Duration="0:0:0.4">
@@ -932,6 +933,7 @@ VerticalAlignment="Top"
                             </MenuFlyout>
                         </RichEditBox.ContextFlyout>
                     </RichEditBox>
+                    </Grid>
                 </ScrollViewer>
             </Grid>
 

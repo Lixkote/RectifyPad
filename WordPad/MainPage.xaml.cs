@@ -45,6 +45,7 @@ using CheckBox = Windows.UI.Xaml.Controls.CheckBox;
 using Application = Windows.UI.Xaml.Application;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Bibliography;
+using System.Drawing;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -930,11 +931,13 @@ namespace RectifyPad
         private DataTemplate customPrintTemplate;
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
+            Editor.RequestedTheme = ElementTheme.Light;
             string value = string.Empty;
-            _printHelper = new PrintHelper(EditorContentHost);
+            _printHelper = new PrintHelper(EditorMandatoryPrintingGrid);
             var printHelperOptions = new PrintHelperOptions(true);
             printHelperOptions.Orientation = PrintOrientation.Default;
             await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
+            Editor.RequestedTheme = ElementTheme.Default;
         }
         private void pintpreview_Click(object sender, RoutedEventArgs e)
         {

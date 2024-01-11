@@ -44,7 +44,11 @@
                      Height="32"
                      Grid.Column="0"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignLeftButton_Click"/>
+                     GroupName="Alignment" Click="AlignLeftButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Align left" />
+                </ToolTipService.ToolTip>
+            </RadioButton>
 
             <RadioButton x:Name="AlignCenterButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe8e3;"
@@ -54,7 +58,11 @@
                      Height="32"
                      Grid.Column="1"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignCenterButton_Click" />
+                     GroupName="Alignment" Click="AlignCenterButton_Click" >
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Align center" />
+                </ToolTipService.ToolTip>
+            </RadioButton>
 
             <RadioButton x:Name="AlignRightButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe8e2;"
@@ -64,7 +72,11 @@
                      Height="32"
                      Grid.Column="2"
                      Grid.Row="1"
-                     GroupName="Alignment" Click="AlignRightButton_Click"/>
+                     GroupName="Alignment" Click="AlignRightButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Align right" />
+                </ToolTipService.ToolTip>
+            </RadioButton>
 
             <RadioButton x:Name="AlignJustifyButton" Style="{StaticResource PaintUIToggleButtonStyle}"
                      Content="&#xe700;"
@@ -75,7 +87,11 @@
                      Grid.Column="3"
                      Grid.Row="1"
                      GroupName="Alignment"
-                     Click="AlignJustifyButton_Click"/>
+                     Click="AlignJustifyButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Justified" />
+                </ToolTipService.ToolTip>
+            </RadioButton>
 
             <Button x:Name="ParagraphButton" Style="{StaticResource PaintUIButtonStyle}"
                      Width="32"
@@ -85,11 +101,17 @@
                      Click="ParagraphButton_Click"
                      Grid.Column="4"
                      Grid.Row="1" Padding="0" FontFamily="WordPad Fluent Icons" FontSize="20">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Paragraph settings" />
+                </ToolTipService.ToolTip>
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Paragraph}}" Margin="0,2,0,-2" />
                 </Button.Content>
             </Button>
             <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalToggleSplitButton}" x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="List" />
+                </ToolTipService.ToolTip>
                 <muxc:ToggleSplitButton.Flyout>
                     <Flyout Placement="Bottom">
                         <Grid>
@@ -169,6 +191,9 @@
                         </muxc:AnimatedIcon>
                     </Grid>
                 </Button.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Paragraph spacing" />
+                </ToolTipService.ToolTip>
                 <Button.Flyout>
                     <MenuFlyout>
                         <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.0" x:Name="spacingradio1" Text="1,0" Click="RadioMenuFlyoutItem_Click"/>
@@ -186,6 +211,9 @@
             MaxWidth="32"
             Height="32"
             HorizontalAlignment="Center" Click="IndentationIncreaseLeft_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Increase indent (left)" />
+                </ToolTipService.ToolTip>
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource MarginL}}" />
                 </Button.Content>
@@ -200,6 +228,9 @@
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource MarginR}}" />
                 </Button.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Increase indent (right)" />
+                </ToolTipService.ToolTip>
             </Button>
 
         </Grid>

@@ -68,6 +68,9 @@
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource FontDecrease}}" />
                 </Button.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Font enlarge" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <Button x:Name="FontDislargeButton" Style="{StaticResource PaintUIButtonStyle}"
@@ -80,6 +83,9 @@
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource FontIncrease}}" />
                 </Button.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Font dislarge" />
+                </ToolTipService.ToolTip>
             </Button>
 
 
@@ -89,6 +95,9 @@
                       Height="32"
                       Grid.Column="0"
                       Grid.Row="1" Click="TextBoldButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Bold" />
+                </ToolTipService.ToolTip>
             </ToggleButton>
 
 
@@ -98,6 +107,9 @@
                       Height="32"
                       Grid.Column="1"
                       Grid.Row="1" Click="TextItalicButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Italic" />
+                </ToolTipService.ToolTip>
             </ToggleButton>
 
 
@@ -107,6 +119,9 @@
                       Height="32"
                       Grid.Column="2"
                       Grid.Row="1" Click="TextUnderlineButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Underline" />
+                </ToolTipService.ToolTip>
             </ToggleButton>
 
 
@@ -116,6 +131,9 @@
                       Height="32"
                       Grid.Column="3"
                       Grid.Row="1" Click="TextStrikethroughButton_Click">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Strikethrough" />
+                </ToolTipService.ToolTip>
             </ToggleButton>
 
             <ToggleButton x:Name="TextSubscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -130,6 +148,9 @@
                 <ToggleButton.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource BottomScript}}" />
                 </ToggleButton.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Subscript" />
+                </ToolTipService.ToolTip>
             </ToggleButton>
 
             <ToggleButton x:Name="TextSuperscriptButton" Style="{StaticResource PaintUIToggleButtonStyle}"
@@ -141,6 +162,9 @@
                      Grid.Column="5"
                      Grid.Row="1"
                      Margin="-40,0,0,0" Grid.ColumnSpan="2" Click="TextSuperscriptButton_Click" FontFamily="WordPad Fluent Icons">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Superscript" />
+                </ToolTipService.ToolTip>
                 <ToggleButton.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource BottomScript}}" />
                 </ToggleButton.Content>
@@ -162,6 +186,9 @@
                         <TextBlock x:Name="FontColorMarker" Text="&#xE8FC;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
                     </Grid>
                 </muxc:SplitButton.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Font text color" />
+                </ToolTipService.ToolTip>
                 <muxc:SplitButton.Flyout>
                     <Flyout Placement="Bottom">
                         <RelativePanel>
@@ -494,6 +521,9 @@
                         <TextBlock x:Name="BackTextColorMarker" Text="&#xE8FE;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
                     </Grid>
                 </muxc:SplitButton.Content>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Font background color" />
+                </ToolTipService.ToolTip>
                 <muxc:SplitButton.Flyout>
                     <Flyout Placement="Bottom">
                         <RelativePanel>

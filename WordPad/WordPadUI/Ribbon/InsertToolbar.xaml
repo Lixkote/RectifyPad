@@ -67,6 +67,9 @@
                 <Grid Height="22" Width="22">
                     <Image Width="24" Height="22" Source="{Binding Source={ThemeResource Image}}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </Grid>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Picture" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <Button x:Name="InsertDateAndTimeButton" Style="{StaticResource PaintUIButtonStyle}"
@@ -79,6 +82,9 @@
                 <Grid>
                     <Image Width="22" Height="22" Source="{Binding Source={ThemeResource Date}}" VerticalAlignment="Top" Stretch="UniformToFill" HorizontalAlignment="Center" />
                 </Grid>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Date and time" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <Button x:Name="InsertObjectButton" Style="{StaticResource PaintUIButtonStyle}"
@@ -92,7 +98,9 @@
                         <Image Width="22" Height="22" Source="{Binding Source={ThemeResource Objects}}" VerticalAlignment="Top" Stretch="Fill" HorizontalAlignment="Center" />
                     </Grid>
                 </Button.Content>
-
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Insert object" />
+                </ToolTipService.ToolTip>
             </Button>
             <Button x:Name="InsertPaintImageButton" Style="{StaticResource PaintUIButtonStyle}"
                 Width="32"
@@ -103,7 +111,9 @@
                 <Grid>
                     <Image Width="22" Height="22" Source="{Binding Source={ThemeResource PaintImage}}" VerticalAlignment="Top" Stretch="Fill" HorizontalAlignment="Center" />
                 </Grid>
-
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Paint drawing" />
+                </ToolTipService.ToolTip>
             </Button>
 
 
