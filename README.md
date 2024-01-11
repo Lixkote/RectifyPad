@@ -37,8 +37,9 @@ If you want to contribute to RectifyPad, please contact me on the official Recti
 
 ## Projects used
  - [TowPad](https://github.com/itsWindows11/TowPad) for some of the mechanics.
- - [JD's lost WordPad Recreation] for the initial idea.
+ - JD's lost WordPad Recreation for the initial idea.
  - [Advanced Text Editor with Ruler from codeproject](https://www.codeproject.com/Articles/22783/Advanced-Text-Editor-with-Ruler) for the ruler idea and code.
+ - [Appxinstaller](https://github.com/aL3891/AppxInstaller/tree/master) for converting appx into msi.
 
 ## TO-DO
   - Improve functionality.
