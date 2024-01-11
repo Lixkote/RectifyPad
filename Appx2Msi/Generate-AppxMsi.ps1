@@ -7,8 +7,8 @@ if(!(Test-Path "$WixRoot\candle.exe"))
     
 	Write-Host Downloading Wixtools..
     New-Item $WixRoot -type directory -force | Out-Null
-    # Download Wix version 3.10.2 - https://wix.codeplex.com/releases/view/619491
-    Invoke-WebRequest -Uri https://wix.codeplex.com/downloads/get/1540241 -Method Get -OutFile $WixRoot\WixTools.zip
+    # Download Wix version 3.10.2 - https://wixtoolset.org/downloads/v3.14.0.6526/wix314-binaries.zip
+    Invoke-WebRequest -Uri https://wixtoolset.org/downloads/v3.14.0.6526/wix314-binaries.zip -Method Get -OutFile $WixRoot\WixTools.zip
 
     Write-Host Extracting Wixtools..
     Add-Type -AssemblyName System.IO.Compression.FileSystem

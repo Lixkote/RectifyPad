@@ -15,7 +15,7 @@ if($InstallCert -or $EnableSideLoad){
     exit 0
 }
 else{
-    $PackageSignature = Get-AuthenticodeSignature "$PSScriptRoot\$packageName.appx"
+    $PackageSignature = Get-AuthenticodeSignature "$PSScriptRoot\$packageName.msixbundle"
     $PackageCertificate = $PackageSignature.SignerCertificate
 
     if (!$PackageCertificate)
@@ -47,14 +47,14 @@ else{
         $AdminProcess = Start-Process "powershell.exe" -Verb RunAs -WorkingDirectory $PSScriptRoot -ArgumentList $RelaunchArgs -Wait
     }
 
-    $DependencyPackages = Get-ChildItem (Join-Path (Join-Path $PSScriptRoot "Dependencies") "*.appx")
+    $DependencyPackages = Get-ChildItem (Join-Path (Join-Path $PSScriptRoot "Dependencies") "*.msixbundle")
     
     if ($DependencyPackages.Count -gt 0)
     {
-    	Add-AppxPackage -Path "$PSScriptRoot\$packageName.appx" -DependencyPath $DependencyPackages.FullName -ForceApplicationShutdown -Verbose
+    	Add-AppxPackage -Path "$PSScriptRoot\$packageName.msixbundle" -DependencyPath $DependencyPackages.FullName -ForceApplicationShutdown -Verbose
     }
     else
     {
-    	Add-AppxPackage -Path "$PSScriptRoot\$packageName.appx" -ForceApplicationShutdown -Verbose
+    	Add-AppxPackage -Path "$PSScriptRoot\$packageName.msixbundle" -ForceApplicationShutdown -Verbose
     }
 }
