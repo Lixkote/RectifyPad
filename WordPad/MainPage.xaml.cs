@@ -46,6 +46,7 @@ using Application = Windows.UI.Xaml.Application;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Bibliography;
 using System.Drawing;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -388,12 +389,17 @@ namespace RectifyPad
                     // Handle other file types (e.g., .rtf, .txt, .odt) loading here
                     using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
                     {
-                        IBuffer buffer = await FileIO.ReadBufferAsync(file);
-                        var reader = DataReader.FromBuffer(buffer);
-                        reader.UnicodeEncoding = UnicodeEncoding.Utf8;
-                        string text = reader.ReadString(buffer.Length);
-                        // Load the file into the Document property of the RichEditBox.
-                        Editor.Document.LoadFromStream(TextSetOptions.None, randAccStream);
+                        using (Stream stream = randAccStream.AsStreamForRead())
+                        {
+                            // Use StreamReader with the appropriate encoding (e.g., UTF-8)
+                            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                            {
+                                string text = await reader.ReadToEndAsync();
+
+                                // Load the file into the Document property of the RichEditBox.
+                                Editor.Document.SetText(TextSetOptions.None, text);
+                            }
+                        }
                     }
                 }
 
@@ -721,10 +727,24 @@ namespace RectifyPad
                                 }
                                 break;
                             case ".txt":
-                                // TXT File, disable RTF formatting so that this is plain text
+                                // TXT File, save as plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                             case ".docx":
@@ -1039,8 +1059,22 @@ namespace RectifyPad
                             case true:
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                         }
@@ -1147,8 +1181,22 @@ namespace RectifyPad
                             case true:
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                         }
@@ -1255,8 +1303,22 @@ namespace RectifyPad
                             case true:
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                         }
@@ -1363,8 +1425,22 @@ namespace RectifyPad
                             case true:
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                         }
@@ -1472,8 +1548,22 @@ namespace RectifyPad
                             case true:
                                 // TXT File, disable RTF formatting so that this is plain text
                                 {
-                                    Editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.None, randAccStream);
-                                    randAccStream.Dispose();
+                                    using (IOutputStream outputStream = randAccStream.GetOutputStreamAt(0))
+                                    {
+                                        using (DataWriter dataWriter = new DataWriter(outputStream))
+                                        {
+                                            // Get the text content from the RichEditBox
+                                            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string text);
+
+                                            // Write the text to the file with UTF-8 encoding
+                                            dataWriter.WriteString(text);
+                                            dataWriter.UnicodeEncoding = UnicodeEncoding.Utf8;
+
+                                            // Save the changes
+                                            await dataWriter.StoreAsync();
+                                            await outputStream.FlushAsync();
+                                        }
+                                    }
                                 }
                                 break;
                         }
