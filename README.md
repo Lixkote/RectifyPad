@@ -38,12 +38,14 @@ If you want to contribute to RectifyPad, please contact me on the official Recti
 ## Projects used
  - [TowPad](https://github.com/itsWindows11/TowPad) for some of the mechanics.
  - JD's lost WordPad Recreation for the initial idea.
- - [Advanced Text Editor with Ruler from codeproject](https://www.codeproject.com/Articles/22783/Advanced-Text-Editor-with-Ruler) for the ruler idea and code.
+ - [Ivirius Text Editor Free](https://apps.microsoft.com/detail/9mv281zzf51p?hl=pl-pl&gl=TW) for the ruler code.
  - [Appxinstaller](https://github.com/aL3891/AppxInstaller/tree/master) for converting appx into msi.
+ - [Syncfusion Doc.IO UWP](https://www.nuget.org/packages/Syncfusion.DocIO.UWP/19.2.0.51) for docx and doc support.
 
 ## TO-DO
   - Improve functionality.
-  - Implement OLE(Object Inserting).
+  - Possibly Implement OLE (Object Inserting and Embedding).
   - Improve stability.
+  - 
   
 RectifyPad is licensed under the [MIT License](./LICENSE).
