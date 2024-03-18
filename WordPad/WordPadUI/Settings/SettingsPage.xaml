@@ -114,7 +114,7 @@
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"
                         VerticalAlignment="Top"
-                            IsExpanded="True" HorizontalAlignment="Stretch" IsEnabled="False">
+                            IsExpanded="True" HorizontalAlignment="Stretch">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
                                     <d:Grid.ColumnDefinitions>
@@ -139,7 +139,7 @@
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
                         VerticalAlignment="Top"
-                            IsExpanded="True" HorizontalAlignment="Stretch" IsEnabled="False">
+                            IsExpanded="True" HorizontalAlignment="Stretch">
                             <muxc:Expander.Header>
                                 <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
                                     <d:Grid.ColumnDefinitions>

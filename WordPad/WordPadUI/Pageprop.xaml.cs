@@ -146,6 +146,8 @@ namespace WordPad.WordPadUI
                     finalBottomMargin);
 
                 exampletextgrid.Margin = currentMargins;
+                Debug.WriteLine(currentMargins.ToString());
+                Debug.WriteLine(maxLeftMargin.ToString());
             }
             catch (Exception ex)
             {

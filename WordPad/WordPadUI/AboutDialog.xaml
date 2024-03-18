@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Style="{StaticResource DefaultContentDialogStyle}"
-    Title="About RectifyPad (Preview)"
+    Title="About RectifyPad"
     PrimaryButtonText="OK">
 
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="PackageVersionText" Text="RectifyPad Preview TargetOSver.yymm.day.revision" IsTextSelectionEnabled="True"/>
         <TextBlock Text="© 2023 Lixkote." Padding="0,0,0,16"/>
-        <HyperlinkButton Content="Source code" HorizontalAlignment="Stretch" NavigateUri="https://github.com/Lixkote/WritePad"/>
+        <HyperlinkButton Content="Source code" HorizontalAlignment="Left" NavigateUri="https://github.com/Lixkote/WritePad"/>
     </StackPanel>
 </ContentDialog>

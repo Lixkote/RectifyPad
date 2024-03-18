@@ -124,25 +124,25 @@ namespace RectifyPad
             ribbongrid.DataContext = this;
 
             // Get the margin values from settings as strings
-            string MarginLString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
-            string MarginRString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
-            string MarginBString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
-            string MarginTString = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
+            double MarginLString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
+            double MarginRString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
+            double MarginBString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
+            double MarginTString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
 
             // Convert string values to doubles
-            double MarginLInches = double.Parse(MarginLString);
-            double MarginRInches = double.Parse(MarginRString);
-            double MarginBInches = double.Parse(MarginBString);
-            double MarginTInches = double.Parse(MarginTString);
+            // double MarginLInches = double.Parse(MarginLString);
+            // double MarginRInches = double.Parse(MarginRString);
+            // double MarginBInches = double.Parse(MarginBString);
+            // double MarginTInches = double.Parse(MarginTString);
 
             // Get the current unit value from settings
             string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
 
             // Convert margin values based on the selected unit
-            double MarginL = unitConverter.ConvertToPixels(MarginLInches, selectedUnit);
-            double MarginR = unitConverter.ConvertToPixels(MarginRInches, selectedUnit);
-            double MarginB = unitConverter.ConvertToPixels(MarginBInches, selectedUnit);
-            double MarginT = unitConverter.ConvertToPixels(MarginTInches, selectedUnit);
+            double MarginL = unitConverter.ConvertToPixels(MarginLString, selectedUnit);
+            double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
+            double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
+            double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
 
         }
 
@@ -1857,8 +1857,7 @@ namespace RectifyPad
 
         private void PageSetup_Click(object sender, RoutedEventArgs e)
         {
-            // openpageprop();
-            opennotimplement();
+            openpageprop();
         }
 
         private async void opennotimplement() 
@@ -1950,7 +1949,7 @@ namespace RectifyPad
 
         private void PageSetupMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            opennotimplement();
+            openpageprop();
         }
 
         private void Editor_SizeChanged(object sender, SizeChangedEventArgs e)
