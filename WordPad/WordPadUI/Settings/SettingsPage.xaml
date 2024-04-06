@@ -106,7 +106,7 @@
                             <muxc:RadioButtons x:Name="radiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
                                 <RadioButton x:Name="LightRadio" IsEnabled="False" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
                                 <RadioButton x:Name="DarkRadio" IsEnabled="False" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="Default" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <TextBlock Style="{StaticResource SectionHeader}" Text="Words" />
@@ -154,10 +154,10 @@
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="unitradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="inchesr" GroupName="u" Content="Inches" Tag="Inches" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="centir" GroupName="u" Content="Centimeters" Tag="Centimeters" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="poinr" GroupName="u" Content="Points" Tag="Points" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="Picas" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="inchesr" GroupName="u" Content="Inches" Tag="inches" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="centir" GroupName="u" Content="Centimeters" Tag="cm" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="poinr" GroupName="u" Content="Points" Tag="points" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="picas" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <!--<muxc:Expander

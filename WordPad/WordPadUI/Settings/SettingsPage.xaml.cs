@@ -30,7 +30,7 @@ namespace WordPad.WordPadUI.Settings
 
         private void InitializeThemeRadioButtons()
         {
-            string selectedTheme = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"];
+            string selectedTheme = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["theme"];
             if (!string.IsNullOrEmpty(selectedTheme))
             {
                 // Find the RadioButton with a matching Tag
@@ -65,7 +65,7 @@ namespace WordPad.WordPadUI.Settings
 
         private void InitializeUnitRadioButtons()
         {
-            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unit"];
             if (!string.IsNullOrEmpty(selectedUnit))
             {
                 // Find the RadioButton with a matching Tag
@@ -128,7 +128,7 @@ namespace WordPad.WordPadUI.Settings
             ApplyTheme(selectedTheme);
 
             // Save the selected theme in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = selectedTheme;
+            Windows.Storage.ApplicationData.Current.LocalSettings.Values["theme"] = selectedTheme;
         }
 
         private void UnitRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -136,7 +136,7 @@ namespace WordPad.WordPadUI.Settings
             string selectedUnit = ((RadioButton)sender)?.Tag?.ToString();
 
             // Save the selected unit in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = selectedUnit;
+            Windows.Storage.ApplicationData.Current.LocalSettings.Values["unit"] = selectedUnit;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -72,7 +72,9 @@ namespace RectifyPad
 
         string originalDocText = "";
 
-        UnitConverter unitConverter = new UnitConverter();
+        UnitManager unitConverter = new UnitManager();
+
+        SettingsManager settingsManager = new SettingsManager();
 
         public List<string> Fonts
         {
@@ -106,7 +108,7 @@ namespace RectifyPad
         public MainPage()
         {
             /////
-            ///   Startup Procedure
+            /// Startup Procedure
             /////
 
             // Enable navigation cache
@@ -114,7 +116,7 @@ namespace RectifyPad
 
             // Run the startup functions
             InitializeComponent();
-            CheckFirstRun();
+            settingsManager.InitializeDefaults();
             LoadThemeFromSettings();
             LoadSettingsValues();
             PopulateRecents();
@@ -144,67 +146,6 @@ namespace RectifyPad
             double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
             double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
 
-        }
-
-        private void CheckFirstRun()
-        {
-            /// This function is responsible for applying the default settings on the app's first startup.
-            /// Modifying these will change the default settings of the application:         
-
-
-            // Get the default resource context for the app
-            ResourceContext defaultContext = ResourceContext.GetForCurrentView();
-
-            // Set the default settings:
-            string marginUnit = "Inches";
-            string fontName = "Calibri";
-            string fontSize = "11";
-            string theme = "Light";
-            string papersize = "A4";
-            string papersource = "Auto";
-            string pagesetupBmargin = "1.25";
-            string pagesetupRmargin = "1.25";
-            string pagesetupTmargin = "1";
-            string pagesetupLmargin = "1";
-            string isprintpagenumbers = "no";
-            string orientation = "Portrait";
-            string indentationL = "0";
-            string indentationR = "0";
-            string indentationFL = "0";
-            string linespacing = "1,0";
-            string is10ptenabled = "no";
-            string alignment = "Left";
-            string textwrapping = "wrapruler";
-            // Get the local settings
-            var localSettings = ApplicationData.Current.LocalSettings;
-
-            // Check if the app has been launched before and if not, set the default settings.
-            if (localSettings.Values["FirstRun"] == null)
-            {
-                // Set the settings values to the default ones
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"] = marginUnit;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["themeSetting"] = theme;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontfamilySetting"] = fontName;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontSizeSetting"] = fontSize;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersize"] = papersize;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersource"] = papersource;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = pagesetupBmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = pagesetupRmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = pagesetupTmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = pagesetupLmargin;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["isprintpagenumbers"] = isprintpagenumbers;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationL"] = indentationL;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationR"] = indentationR;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationFL"] = indentationFL;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["is10ptenabled"] = is10ptenabled;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["alignment"] = alignment;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["orientation"] = orientation;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["linespacing"] = linespacing;
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"] = textwrapping;
-
-                // Set the value to indicate that the app has been launched
-                localSettings.Values["FirstRun"] = false;
-            }
         }
 
         private void LoadSettingsValues()
