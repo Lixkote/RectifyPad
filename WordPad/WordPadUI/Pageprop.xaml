@@ -10,6 +10,7 @@
     Style="{StaticResource DefaultContentDialogStyle}"
     Title="Page Setup"
     PrimaryButtonText="OK"
+    x:Uid="pagesetupdialog"
     DefaultButton="Primary"
     SecondaryButtonText="Cancel">
     <Grid>
@@ -51,8 +52,8 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Paper" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold" Height="20"/>
-            <TextBlock Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Size:" Grid.ColumnSpan="2" />
+            <TextBlock x:Uid="paper" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Paper" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold" Height="20"/>
+            <TextBlock x:Uid="size" Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Size:" Grid.ColumnSpan="2" />
             <ComboBox x:Name="PaperTypeCombo" Grid.Column="1" SelectionChanged="PaperTypeCombo_SelectionChanged" HorizontalAlignment="Stretch" Margin="0,6,0,10" VerticalAlignment="Top" Grid.Row="1">
                 <ComboBoxItem Content="A3"/>
                 <ComboBoxItem Content="A4"/>
@@ -81,9 +82,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Orientation" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
-            <RadioButton x:Name="orientationportait" Checked="orientationportait_Checked" Tag="Portrait" Content="Landscape" Grid.Row="2" Margin="0,3,0,10" />
-            <RadioButton x:Name="orientationlandscape" Checked="orientationlandscape_Checked" Tag="Landscape" Content="Portrait" Grid.Row="1" Margin="0,3,0,1" />
+            <TextBlock x:Uid="orientation" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Orientation" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <RadioButton x:Uid="landscape" x:Name="orientationportait" Checked="orientationportait_Checked" Tag="Portrait" Content="Landscape" Grid.Row="2" Margin="0,3,0,10" />
+            <RadioButton x:Uid="portrait" x:Name="orientationlandscape" Checked="orientationlandscape_Checked" Tag="Landscape" Content="Portrait" Grid.Row="1" Margin="0,3,0,1" />
         </Grid>
         <Grid Grid.Row="3" BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="0,0,0,1">
             <Grid.RowDefinitions>
@@ -104,18 +105,18 @@
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="112*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="marginsname" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Margins (unitplaceholder)" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <TextBlock x:Name="marginsname" x:Uid="marginsnametr" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Margins (unitplaceholder)" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBox x:Name="RightMarginTextBox" Grid.Row="1" Grid.Column="3" Margin="0,0,0,10" Grid.RowSpan="2"/>
             <TextBox x:Name="BottomMarginTextBox" Grid.Row="3" Grid.Column="3" Margin="0,0,0,10"/>
             <TextBox x:Name="TopMarginTextBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
             <TextBox x:Name="LeftMarginTextBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Grid.RowSpan="2"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Left:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-            <TextBlock Grid.Row="2" Grid.Column="2" Text="Right:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Top:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-            <TextBlock Grid.Row="3" Grid.Column="2" Text="Bottom:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock x:Uid="lefttr" Grid.Row="2" Grid.Column="0" Text="Left:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock x:Uid="righttr" Grid.Row="2" Grid.Column="2" Text="Right:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock x:Uid="toptr" Grid.Row="3" Grid.Column="0" Text="Top:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock x:Uid="bottr" Grid.Row="3" Grid.Column="2" Text="Bottom:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
         </Grid>
         <Grid Grid.Row="4">
-            <CheckBox x:Name="printpagenumbers" Content="Print Page Numbers" Margin="0,10,0,0" />
+            <CheckBox x:Name="printpagenumbers" x:Uid="printpageTR" Content="Print Page Numbers" Margin="0,10,0,0" />
         </Grid>
     </Grid>
 

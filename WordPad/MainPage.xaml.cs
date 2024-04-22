@@ -126,10 +126,10 @@ namespace RectifyPad
             ribbongrid.DataContext = this;
 
             // Get the margin values from settings as strings
-            double MarginLString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
-            double MarginRString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
-            double MarginBString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
-            double MarginTString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
+            // double MarginLString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
+            // double MarginRString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
+            // double MarginBString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
+            // double MarginTString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
 
             // Convert string values to doubles
             // double MarginLInches = double.Parse(MarginLString);
@@ -141,10 +141,10 @@ namespace RectifyPad
             string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
 
             // Convert margin values based on the selected unit
-            double MarginL = unitConverter.ConvertToPixels(MarginLString, selectedUnit);
-            double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
-            double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
-            double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
+            // double MarginL = unitConverter.ConvertToPixels(MarginLString, selectedUnit);
+            // double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
+            // double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
+            // double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
 
         }
 

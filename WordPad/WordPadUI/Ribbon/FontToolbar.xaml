@@ -709,7 +709,7 @@
 
         </Grid>
 
-        <TextBlock Text="Font"
+        <TextBlock Text="Font" x:Uid="FontToolbarTitle"
                Style="{StaticResource ColumnDescriptionTextblockStyle}"
                Grid.Row="1" VerticalAlignment="Bottom" />
 

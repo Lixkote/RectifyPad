@@ -77,9 +77,9 @@
             </muxc:DropDownButton>
 
 
-            <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Replace" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
-            <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Select All" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
-            <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Find" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+            <TextBlock x:Uid="EditingReplaceBox" HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Replace" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+            <TextBlock x:Uid="EditingSelAllBox" HorizontalAlignment="Left" Margin="37,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Select All" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
+            <TextBlock x:Uid="EditingFindBox" HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Find" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display"/>
             <muxc:DropDownButton x:Name="FindButton" Style="{StaticResource PaintUIButtonStyle}"
     Content="&#xE11A;"
     Width="132"
@@ -120,7 +120,7 @@
 
         </Grid>
 
-        <TextBlock Text="Editing"
+        <TextBlock Text="Editing" x:Uid="EditingText"
         Style="{StaticResource ColumnDescriptionTextblockStyle}"
         Grid.Row="1" VerticalAlignment="Bottom" />
 

@@ -68,7 +68,7 @@
                     <Image Width="24" Height="22" Source="{Binding Source={ThemeResource Image}}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </Grid>
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Picture" />
+                    <ToolTip Content="Picture" x:Uid="TooltipPicture"/>
                 </ToolTipService.ToolTip>
             </Button>
 
@@ -83,7 +83,7 @@
                     <Image Width="22" Height="22" Source="{Binding Source={ThemeResource Date}}" VerticalAlignment="Top" Stretch="UniformToFill" HorizontalAlignment="Center" />
                 </Grid>
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Date and time" />
+                    <ToolTip Content="Date and time" x:Uid="TooltipDateTime" />
                 </ToolTipService.ToolTip>
             </Button>
 
@@ -99,7 +99,7 @@
                     </Grid>
                 </Button.Content>
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Insert object" />
+                    <ToolTip Content="Insert object" x:Uid="TooltipObject" />
                 </ToolTipService.ToolTip>
             </Button>
             <Button x:Name="InsertPaintImageButton" Style="{StaticResource PaintUIButtonStyle}"
@@ -112,14 +112,14 @@
                     <Image Width="22" Height="22" Source="{Binding Source={ThemeResource PaintImage}}" VerticalAlignment="Top" Stretch="Fill" HorizontalAlignment="Center" />
                 </Grid>
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Paint drawing" />
+                    <ToolTip Content="Paint drawing" x:Uid="TooltipPaint" />
                 </ToolTipService.ToolTip>
             </Button>
 
 
         </Grid>
 
-        <TextBlock Text="Insert"
+        <TextBlock Text="Insert" x:Uid="insertbox"
                Style="{StaticResource ColumnDescriptionTextblockStyle}"
                Grid.Row="1" VerticalAlignment="Bottom" />
 

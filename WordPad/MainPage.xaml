@@ -247,7 +247,8 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - RectifyPad"
+                       
+                x:Uid="apptitle"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
@@ -257,8 +258,8 @@
                     Grid.Row="2"
                     Orientation="Horizontal">
             <muxc:MenuBar>
-                <muxc:MenuBarItem Title="File" x:Name="FileMenuRoot">
-                    <MenuFlyoutItem Text="New" Click="NewDoc_Click">
+                <muxc:MenuBarItem Title="File" x:Uid="filemenuitem" x:Name="FileMenuRoot">
+                    <MenuFlyoutItem Text="New" Click="NewDoc_Click" x:Uid="new">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE8A5;" />
                         </MenuFlyoutItem.Icon>
@@ -267,7 +268,7 @@
                                                  Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Open"
+                    <MenuFlyoutItem Text="Open" x:Uid="openmenuitem"
                                     Click="Open_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE838;" />
@@ -277,12 +278,12 @@
                                                  Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutSubItem Text="Recent" x:Name="RecentItemsSubItem">
+                    <MenuFlyoutSubItem Text="Recent" x:Uid="recentmenuitem" x:Name="RecentItemsSubItem">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE823;" />
                         </MenuFlyoutSubItem.Icon>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Save" Click="SaveButton_Click">
+                    <MenuFlyoutItem Text="Save" x:Uid="savemenuitem" Click="SaveButton_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE74E;" />
                         </MenuFlyoutItem.Icon>
@@ -291,7 +292,7 @@
                                                  Modifiers="Control" />
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
-                    <MenuFlyoutSubItem Text="Save as">
+                    <MenuFlyoutSubItem Text="Save as" x:Uid="saveasmenuitem">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE792;" />
                         </MenuFlyoutSubItem.Icon>
@@ -300,7 +301,7 @@
                         <MenuFlyoutItem AccessKey="O" Text="Other Format" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutSubItem Text="Print">
+                    <MenuFlyoutSubItem x:Uid="printmfsi" Text="Print">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE749;" />
                         </MenuFlyoutSubItem.Icon>
@@ -310,7 +311,7 @@
                                                      Modifiers="Control" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="PageSetup" Text="Page setup" Click="PageSetup_Click"/>
+                        <MenuFlyoutItem x:Name="PageSetup" x:Uid="pgset" Text="Page setup" Click="PageSetup_Click"/>
                         <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" IsEnabled="False" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Send" Click="SendButton_Click">
@@ -325,37 +326,37 @@
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
-                <muxc:MenuBarItem Title="Edit">
+                <muxc:MenuBarItem Title="Edit" x:Uid="edit">
                     <MenuFlyoutItem Text="Cut" Click="Cut_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Copy" Click="Copy_Click">
+                    <MenuFlyoutItem Text="Copy" x:Uid="copy" Click="Copy_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
-                    <MenuFlyoutItem Text="Paste" Click="MenuPaste_Click">
+                    <MenuFlyoutItem Text="Paste" x:Uid="paste" Click="MenuPaste_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
-                <muxc:MenuBarItem Title="View">
+                <muxc:MenuBarItem Title="View" x:Uid="view">
                     <MenuFlyoutItem Text="100%">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE9A6;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
-                    <ToggleMenuFlyoutItem Text="Ruler"
+                    <ToggleMenuFlyoutItem Text="Ruler" x:Uid="ruler"
                                           IsChecked="True"
                                           x:Name="RulerToggle"
                                           />
 
                     <MenuFlyoutSeparator />
                     <ToggleMenuFlyoutItem Text="Status bar"
-                                          IsChecked="True"
+                                          IsChecked="True" x:Uid="statusbar"
                                           x:Name="StatusbarToggle" />
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
@@ -379,7 +380,7 @@
 
         <Button Style="{StaticResource MenuButton}"
                 Content="&#xE115;"
-                ToolTipService.ToolTip="Send feedback"
+                ToolTipService.ToolTip="Settings"
                 ToolTipService.Placement="Bottom"
                 Grid.Row="2"
                 Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />

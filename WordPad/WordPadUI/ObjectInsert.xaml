@@ -9,6 +9,7 @@
     mc:Ignorable="d"
     Style="{StaticResource DefaultContentDialogStyle}"
     Title="Insert an object"
+    x:Uid="InsertObjectDialog"
     PrimaryButtonText="OK"
     DefaultButton="Primary"
     SecondaryButtonText="Cancel">
@@ -16,14 +17,10 @@
 
     <StackPanel Orientation="Vertical">
         <ListView SelectionMode="Single">
-        <ListViewItem x:Name="piuctureitem">
-            Paint a picture
-        </ListViewItem>
-            <ListViewItem x:Name="tableitem">
-                Insert Table
+            <ListViewItem x:Name="tableitem" x:Uid="tableitemtr">
             </ListViewItem>
         </ListView>
-        <RadioButton Content="Create from file" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="8,7,0,0"/>
-        <RadioButton Content="Create new" HorizontalAlignment="Left"/>
+        <RadioButton Visibility="Collapsed" Content="Create from file" x:Uid="createFile" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="8,7,0,0"/>
+        <RadioButton Visibility="Collapsed" Content="Create new" x:Uid="createNew" HorizontalAlignment="Left"/>
     </StackPanel>
 </ContentDialog>
