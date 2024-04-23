@@ -147,7 +147,7 @@
   <data name="copyrighttext.Text" xml:space="preserve">
     <value>© 2024 Lixkote. All rights reserved.</value>
   </data>
-  <data name="edit.Text" xml:space="preserve">
+  <data name="edit.Title" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="EditingFindBox.Text" xml:space="preserve">
@@ -180,7 +180,7 @@
   <data name="InsertObjectDialog.Title" xml:space="preserve">
     <value>Insert an object</value>
   </data>
-  <data name="landscape.Text" xml:space="preserve">
+  <data name="landscape.Content" xml:space="preserve">
     <value>Landscape</value>
   </data>
   <data name="lefti.Text" xml:space="preserve">
@@ -237,7 +237,7 @@
   <data name="pgset.Text" xml:space="preserve">
     <value>Page Setup</value>
   </data>
-  <data name="portrait.Text" xml:space="preserve">
+  <data name="portrait.Content" xml:space="preserve">
     <value>Portrait</value>
   </data>
   <data name="printmfsi.Text" xml:space="preserve">
@@ -285,7 +285,7 @@
   <data name="tableitemtr.Content" xml:space="preserve">
     <value>Insert a table</value>
   </data>
-  <data name="TitlePara.Content" xml:space="preserve">
+  <data name="TitlePara.Text" xml:space="preserve">
     <value>Paragraph</value>
   </data>
   <data name="TooltipDateTime.Content" xml:space="preserve">

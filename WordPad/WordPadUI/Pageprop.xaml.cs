@@ -105,13 +105,14 @@ namespace WordPad.WordPadUI
 
             if (settings.Values.TryGetValue(settingKey, out object value))
             {
-                double margin = ConvertFromUnit(Convert.ToDouble(value), "Inches");
+                // double margin = ConvertFromUnit(Convert.ToDouble(value), "Inches");
+                Debug.WriteLine("unitsetting!" + value);
 
                 // Limit the margin value
-                margin = Math.Min(maxMargin, margin);
+                // margin = Math.Min(maxMargin, margin);
 
-                string formattedMargin = ConvertToUnit(margin, unit).ToString("0.##"); // Display with up to 2 decimal places
-                textBox.Text = formattedMargin.TrimEnd('0').TrimEnd('.'); // Remove trailing "00" or "." if present
+                //string formattedMargin = ConvertToUnit(margin, unit).ToString("0.##"); // Display with up to 2 decimal places
+                //textBox.Text = formattedMargin.TrimEnd('0').TrimEnd('.'); // Remove trailing "00" or "." if present
             }
         }
 
