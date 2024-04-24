@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="aboutapp.Text" xml:space="preserve">
+    <value>Az alkalmazásról</value>
+  </data>
+  <data name="addspace.Content" xml:space="preserve">
+    <value>Adj 10 pont térközt a bekezdések után</value>
+  </data>
+  <data name="align.Text" xml:space="preserve">
+    <value>Igazítás</value>
+  </data>
+  <data name="alignm.Text" xml:space="preserve">
+    <value>Igazítás:</value>
+  </data>
+  <data name="appearance.Text" xml:space="preserve">
+    <value>Kinézet</value>
+  </data>
+  <data name="apptheme.Text" xml:space="preserve">
+    <value>Alkalmazás téma</value>
+  </data>
+  <data name="apptitle.Text" xml:space="preserve">
+    <value>Dokumentum - RectifyPad</value>
+  </data>
+  <data name="bottr.Text" xml:space="preserve">
+    <value>Alsó rész:</value>
+  </data>
+  <data name="copy.Text" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="copyrighttext.Text" xml:space="preserve">
+    <value>© 2024 Lixkote. Minden jog fenntartva.</value>
+  </data>
+  <data name="edit.Title" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="EditingFindBox.Text" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="EditingReplaceBox.Text" xml:space="preserve">
+    <value>Minden cseréje</value>
+  </data>
+  <data name="EditingSelAllBox.Text" xml:space="preserve">
+    <value>Összes kijelölése</value>
+  </data>
+  <data name="EditingText.Text" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="feedback.Content" xml:space="preserve">
+    <value>Visszajelzés küldése</value>
+  </data>
+  <data name="filemenuitem.Title" xml:space="preserve">
+    <value>Fájl</value>
+  </data>
+  <data name="fli.Text" xml:space="preserve">
+    <value>Első sor:</value>
+  </data>
+  <data name="FontToolbarTitle.Text" xml:space="preserve">
+    <value>Betűtípus</value>
+  </data>
+  <data name="insertbox.Text" xml:space="preserve">
+    <value>Beszúrás</value>
+  </data>
+  <data name="InsertObjectDialog.Title" xml:space="preserve">
+    <value>Tárgy beszúrása</value>
+  </data>
+  <data name="landscape.Content" xml:space="preserve">
+    <value>Fekvő elrendezés</value>
+  </data>
+  <data name="lefti.Text" xml:space="preserve">
+    <value>Bal:</value>
+  </data>
+  <data name="lefttr.Text" xml:space="preserve">
+    <value>Bal:</value>
+  </data>
+  <data name="linespacing.Text" xml:space="preserve">
+    <value>Sortávolság:</value>
+  </data>
+  <data name="marginsnametr.Text" xml:space="preserve">
+    <value>Margók (mértékegység helye)</value>
+  </data>
+  <data name="new.Text" xml:space="preserve">
+    <value>Új</value>
+  </data>
+  <data name="openmenuitem.Text" xml:space="preserve">
+    <value>Megnyitás</value>
+  </data>
+  <data name="orientation.Text" xml:space="preserve">
+    <value>Elrendezés</value>
+  </data>
+  <data name="packageversiontext.Text" xml:space="preserve">
+    <value>RectifyPad 11.2311.1</value>
+  </data>
+  <data name="pagesetupdialog.SecondaryButtonText" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="pagesetupdialog.Title" xml:space="preserve">
+    <value>Oldalbeállítás</value>
+  </data>
+  <data name="paintpicture.Content" xml:space="preserve">
+    <value>Rajzolj egy képet</value>
+  </data>
+  <data name="paper.Text" xml:space="preserve">
+    <value>Papír</value>
+  </data>
+  <data name="paradialog.CloseButtonText" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="paradialog.PrimaryButtonText" xml:space="preserve">
+    <value>Tabok...</value>
+  </data>
+  <data name="paradialog.SecondaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="paradialog.Title" xml:space="preserve">
+    <value>Bekezdés</value>
+  </data>
+  <data name="paste.Text" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="pgset.Text" xml:space="preserve">
+    <value>Oldalbeállítás</value>
+  </data>
+  <data name="portrait.Content" xml:space="preserve">
+    <value>Álló elrendezés</value>
+  </data>
+  <data name="printmfsi.Text" xml:space="preserve">
+    <value>Nyomtatás</value>
+  </data>
+  <data name="printpageTR.Content" xml:space="preserve">
+    <value>Oldalszámok nyomtatása</value>
+  </data>
+  <data name="recentmenuitem.Text" xml:space="preserve">
+    <value>Legutóbbi</value>
+  </data>
+  <data name="righti.Text" xml:space="preserve">
+    <value>Jobbra:</value>
+  </data>
+  <data name="righttr.Text" xml:space="preserve">
+    <value>Jobbra:</value>
+  </data>
+  <data name="ruler.Text" xml:space="preserve">
+    <value>Vonalzó</value>
+  </data>
+  <data name="saveasmenuitem.Text" xml:space="preserve">
+    <value>Mentés másként</value>
+  </data>
+  <data name="savemenuitem.Text" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="selappthem.Text" xml:space="preserve">
+    <value>Válassza ki, melyik alkalmazástémát szeretné megjeleníteni</value>
+  </data>
+  <data name="settings.Text" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="size.Text" xml:space="preserve">
+    <value>Méret</value>
+  </data>
+  <data name="spacing.Text" xml:space="preserve">
+    <value>Távolság</value>
+  </data>
+  <data name="srccode.Text" xml:space="preserve">
+    <value>Forráskód</value>
+  </data>
+  <data name="statusbar.Text" xml:space="preserve">
+    <value>Állapot sáv</value>
+  </data>
+  <data name="tableitemtr.Content" xml:space="preserve">
+    <value>Táblázat beszúrása</value>
+  </data>
+  <data name="TitlePara.Text" xml:space="preserve">
+    <value>Bekezdés</value>
+  </data>
+  <data name="TooltipDateTime.Content" xml:space="preserve">
+    <value>Dátum és idő</value>
+  </data>
+  <data name="TooltipObject.Content" xml:space="preserve">
+    <value>Tárgy beszúrása</value>
+  </data>
+  <data name="TooltipPaint.Content" xml:space="preserve">
+    <value>Rajzolás</value>
+  </data>
+  <data name="TooltipPicture.Content" xml:space="preserve">
+    <value>Kép</value>
+  </data>
+  <data name="toptr.Text" xml:space="preserve">
+    <value>Felső rész:</value>
+  </data>
+  <data name="view.Title" xml:space="preserve">
+    <value>Nézet</value>
+  </data>
+</root>
