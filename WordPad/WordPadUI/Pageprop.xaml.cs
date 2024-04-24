@@ -59,7 +59,10 @@ namespace WordPad.WordPadUI
 
             // Load the saved unit value
             string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-            marginsname.Text = "Margins (" + unit + ")";
+            string text = marginsname.Text;
+            // string newtext = text.Replace("unitplaceholder", unit);
+            string newtext = text.Replace("unitplaceholder", "W centymetrach");
+            marginsname.Text = newtext;
         }
 
         private void SetPaperSizeAndOrientation(double width, double height, string orientation)

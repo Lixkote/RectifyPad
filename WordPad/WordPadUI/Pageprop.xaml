@@ -10,7 +10,7 @@
     Style="{StaticResource DefaultContentDialogStyle}"
     x:Uid="pagesetupdialog"
     DefaultButton="Primary"
-    SecondaryButtonText="OK">
+    PrimaryButtonText="OK">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto">
