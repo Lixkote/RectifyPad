@@ -597,7 +597,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="137"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
@@ -752,7 +752,7 @@ VerticalAlignment="Top"
                 </Grid.Children>
             </Grid>
 
-            <Border x:Name="Fulledittoolbar" Height="120" Width="137" Grid.Column="4" BorderThickness="0,0,0,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fulledittoolbar" Height="120" Grid.Column="4" BorderThickness="0,0,0,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
                 <Custom:EditingToolbar x:Name="editribbontoolbar" />
             </Border>
             <Grid x:Name="Colledittoolbar" Grid.Column="4" Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"

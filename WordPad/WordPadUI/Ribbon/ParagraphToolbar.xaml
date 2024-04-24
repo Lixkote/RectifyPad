@@ -235,7 +235,7 @@
 
         </Grid>
 
-        <TextBlock Text="Paragraph" x:Uid="TitlePara"
+        <TextBlock x:Uid="TitlePara"
                Style="{StaticResource ColumnDescriptionTextblockStyle}"
                Grid.Row="1" VerticalAlignment="Bottom" />
 

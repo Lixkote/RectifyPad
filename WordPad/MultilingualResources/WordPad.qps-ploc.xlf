@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="pl-PL" original="WORDPAD/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="en-US" target-language="qps-ploc" original="WORDPAD/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
     </header>
@@ -8,255 +8,255 @@
       <group id="WORDPAD/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
         <trans-unit id="aboutapp.Text" translate="yes" xml:space="preserve">
           <source>About this app</source>
-          <target state="translated">Informacje o programie RectifyPad</target>
+          <target state="new">About this app</target>
         </trans-unit>
         <trans-unit id="addspace.Content" translate="yes" xml:space="preserve">
           <source>Add 10pt space after paragraphs</source>
-          <target state="translated">Dodaj 10-punktową spację po akapitach</target>
+          <target state="new">Add 10pt space after paragraphs</target>
         </trans-unit>
         <trans-unit id="align.Text" translate="yes" xml:space="preserve">
           <source>Align</source>
-          <target state="translated">Wyrównaj</target>
+          <target state="new">Align</target>
         </trans-unit>
         <trans-unit id="alignm.Text" translate="yes" xml:space="preserve">
           <source>Alignment:</source>
-          <target state="translated">Wyrównanie:</target>
+          <target state="new">Alignment:</target>
         </trans-unit>
         <trans-unit id="appearance.Text" translate="yes" xml:space="preserve">
           <source>Appearance</source>
-          <target state="translated">Wygląd</target>
+          <target state="new">Appearance</target>
         </trans-unit>
         <trans-unit id="apptheme.Text" translate="yes" xml:space="preserve">
           <source>App theme</source>
-          <target state="translated">Motyw aplikacji</target>
+          <target state="new">App theme</target>
         </trans-unit>
         <trans-unit id="apptitle.Text" translate="yes" xml:space="preserve">
           <source>Document - RectifyPad</source>
-          <target state="translated">Dokument - RectifyPad</target>
+          <target state="new">Document - RectifyPad</target>
         </trans-unit>
         <trans-unit id="bottr.Text" translate="yes" xml:space="preserve">
           <source>Bottom:</source>
-          <target state="translated">Dolny:</target>
+          <target state="new">Bottom:</target>
         </trans-unit>
         <trans-unit id="copy.Text" translate="yes" xml:space="preserve">
           <source>Copy</source>
-          <target state="translated">Kopiuj</target>
+          <target state="new">Copy</target>
         </trans-unit>
         <trans-unit id="copyrighttext.Text" translate="yes" xml:space="preserve">
           <source>© 2024 Lixkote. All rights reserved.</source>
-          <target state="translated">© 2024 Lixkote. Wszelkie prawa zastrzeżone.</target>
-        </trans-unit>
-        <trans-unit id="EditingFindBox.Text" translate="yes" xml:space="preserve">
-          <source>Find</source>
-          <target state="translated">Znajdź</target>
-        </trans-unit>
-        <trans-unit id="EditingReplaceBox.Text" translate="yes" xml:space="preserve">
-          <source>Replace All</source>
-          <target state="translated">Zamień</target>
-        </trans-unit>
-        <trans-unit id="EditingSelAllBox.Text" translate="yes" xml:space="preserve">
-          <source>Select All</source>
-          <target state="translated">Zaznacz wszystko</target>
-        </trans-unit>
-        <trans-unit id="EditingText.Text" translate="yes" xml:space="preserve">
-          <source>Editing</source>
-          <target state="translated">Edytowanie</target>
-        </trans-unit>
-        <trans-unit id="feedback.Content" translate="yes" xml:space="preserve">
-          <source>Send feedback</source>
-          <target state="translated">Wyślij opinię</target>
-        </trans-unit>
-        <trans-unit id="filemenuitem.Title" translate="yes" xml:space="preserve">
-          <source>File</source>
-          <target state="translated">Plik</target>
-        </trans-unit>
-        <trans-unit id="fli.Text" translate="yes" xml:space="preserve">
-          <source>First line:</source>
-          <target state="translated">Pierwszy wiersz:</target>
-        </trans-unit>
-        <trans-unit id="FontToolbarTitle.Text" translate="yes" xml:space="preserve">
-          <source>Font</source>
-          <target state="translated">Czcionka</target>
-        </trans-unit>
-        <trans-unit id="insertbox.Text" translate="yes" xml:space="preserve">
-          <source>Insert</source>
-          <target state="translated">Wstaw</target>
-        </trans-unit>
-        <trans-unit id="InsertObjectDialog.Title" translate="yes" xml:space="preserve">
-          <source>Insert an object</source>
-          <target state="translated">Wstaw obiekt</target>
-        </trans-unit>
-        <trans-unit id="lefti.Text" translate="yes" xml:space="preserve">
-          <source>Left:</source>
-          <target state="translated">Z lewej:</target>
-        </trans-unit>
-        <trans-unit id="lefttr.Text" translate="yes" xml:space="preserve">
-          <source>Left:</source>
-          <target state="translated">Z lewej:</target>
-        </trans-unit>
-        <trans-unit id="linespacing.Text" translate="yes" xml:space="preserve">
-          <source>Line spacing:</source>
-          <target state="translated">Line spacing:</target>
-        </trans-unit>
-        <trans-unit id="marginsnametr.Text" translate="yes" xml:space="preserve">
-          <source>Margins (unitplaceholder)</source>
-          <target state="translated">Marginesy (unitplaceholder)</target>
-        </trans-unit>
-        <trans-unit id="new.Text" translate="yes" xml:space="preserve">
-          <source>New</source>
-          <target state="translated">Nowy</target>
-        </trans-unit>
-        <trans-unit id="openmenuitem.Text" translate="yes" xml:space="preserve">
-          <source>Open</source>
-          <target state="translated">Otwórz</target>
-        </trans-unit>
-        <trans-unit id="orientation.Text" translate="yes" xml:space="preserve">
-          <source>Orientation</source>
-          <target state="translated">Orientacja</target>
-        </trans-unit>
-        <trans-unit id="packageversiontext.Text" translate="yes" xml:space="preserve">
-          <source>RectifyPad 11.2311.1</source>
-          <target state="translated">RectifyPad 11.2311.1</target>
-        </trans-unit>
-        <trans-unit id="pagesetupdialog.SecondaryButtonText" translate="yes" xml:space="preserve">
-          <source>Cancel</source>
-          <target state="translated">Anuluj</target>
-        </trans-unit>
-        <trans-unit id="pagesetupdialog.Title" translate="yes" xml:space="preserve">
-          <source>Page Setup</source>
-          <target state="translated">Ustawienia strony</target>
-        </trans-unit>
-        <trans-unit id="paintpicture.Content" translate="yes" xml:space="preserve">
-          <source>Paint a picture</source>
-          <target state="translated">Paint a picture</target>
-        </trans-unit>
-        <trans-unit id="paper.Text" translate="yes" xml:space="preserve">
-          <source>Paper</source>
-          <target state="translated">Papier</target>
-        </trans-unit>
-        <trans-unit id="paradialog.CloseButtonText" translate="yes" xml:space="preserve">
-          <source>Close</source>
-          <target state="translated">Anuluj</target>
-        </trans-unit>
-        <trans-unit id="paradialog.PrimaryButtonText" translate="yes" xml:space="preserve">
-          <source>Tabs...</source>
-          <target state="translated">Tabulatory...</target>
-        </trans-unit>
-        <trans-unit id="paradialog.SecondaryButtonText" translate="yes" xml:space="preserve">
-          <source>OK</source>
-          <target state="translated">OK</target>
-        </trans-unit>
-        <trans-unit id="paradialog.Title" translate="yes" xml:space="preserve">
-          <source>Paragraph</source>
-          <target state="translated">Akapit</target>
-        </trans-unit>
-        <trans-unit id="paste.Text" translate="yes" xml:space="preserve">
-          <source>Paste</source>
-          <target state="translated">Wklej</target>
-        </trans-unit>
-        <trans-unit id="pgset.Text" translate="yes" xml:space="preserve">
-          <source>Page Setup</source>
-          <target state="translated">Ustawienia strony</target>
-        </trans-unit>
-        <trans-unit id="printmfsi.Text" translate="yes" xml:space="preserve">
-          <source>Print</source>
-          <target state="translated">Drukuj</target>
-        </trans-unit>
-        <trans-unit id="printpageTR.Content" translate="yes" xml:space="preserve">
-          <source>Print Page Numbers</source>
-          <target state="translated">Drukuj numery stron</target>
-        </trans-unit>
-        <trans-unit id="recentmenuitem.Text" translate="yes" xml:space="preserve">
-          <source>Recent</source>
-          <target state="translated">Ostatnie</target>
-        </trans-unit>
-        <trans-unit id="righti.Text" translate="yes" xml:space="preserve">
-          <source>Right:</source>
-          <target state="translated">Z prawej:</target>
-        </trans-unit>
-        <trans-unit id="righttr.Text" translate="yes" xml:space="preserve">
-          <source>Right:</source>
-          <target state="translated">Z prawej:</target>
-        </trans-unit>
-        <trans-unit id="ruler.Text" translate="yes" xml:space="preserve">
-          <source>Ruler</source>
-          <target state="translated">Linijka</target>
-        </trans-unit>
-        <trans-unit id="saveasmenuitem.Text" translate="yes" xml:space="preserve">
-          <source>Save as</source>
-          <target state="translated">Zapisz jako</target>
-        </trans-unit>
-        <trans-unit id="savemenuitem.Text" translate="yes" xml:space="preserve">
-          <source>Save</source>
-          <target state="translated">Zapisz</target>
-        </trans-unit>
-        <trans-unit id="selappthem.Text" translate="yes" xml:space="preserve">
-          <source>Select which app theme to display</source>
-          <target state="translated">Wybierz motyw aplikacji do wyświetlenia</target>
-        </trans-unit>
-        <trans-unit id="settings.Text" translate="yes" xml:space="preserve">
-          <source>Settings</source>
-          <target state="translated">Ustawienia</target>
-        </trans-unit>
-        <trans-unit id="size.Text" translate="yes" xml:space="preserve">
-          <source>Size</source>
-          <target state="translated">Wielkość</target>
-        </trans-unit>
-        <trans-unit id="spacing.Text" translate="yes" xml:space="preserve">
-          <source>Spacing</source>
-          <target state="translated">Odstęp</target>
-        </trans-unit>
-        <trans-unit id="srccode.Text" translate="yes" xml:space="preserve">
-          <source>Source Code</source>
-          <target state="translated">Kod źródłowy</target>
-        </trans-unit>
-        <trans-unit id="statusbar.Text" translate="yes" xml:space="preserve">
-          <source>Status bar</source>
-          <target state="translated">Pasek stanu</target>
-        </trans-unit>
-        <trans-unit id="tableitemtr.Content" translate="yes" xml:space="preserve">
-          <source>Insert a table</source>
-          <target state="translated">Wstaw tabelę</target>
-        </trans-unit>
-        <trans-unit id="TooltipDateTime.Content" translate="yes" xml:space="preserve">
-          <source>Date and time</source>
-          <target state="translated">Data i godzina</target>
-        </trans-unit>
-        <trans-unit id="TooltipObject.Content" translate="yes" xml:space="preserve">
-          <source>Insert object</source>
-          <target state="translated">Wstaw obiekt</target>
-        </trans-unit>
-        <trans-unit id="TooltipPaint.Content" translate="yes" xml:space="preserve">
-          <source>Paint drawing</source>
-          <target state="translated">Paint drawing</target>
-        </trans-unit>
-        <trans-unit id="TooltipPicture.Content" translate="yes" xml:space="preserve">
-          <source>Picture</source>
-          <target state="translated">Obraz</target>
-        </trans-unit>
-        <trans-unit id="toptr.Text" translate="yes" xml:space="preserve">
-          <source>Top:</source>
-          <target state="translated">Górny:</target>
-        </trans-unit>
-        <trans-unit id="view.Title" translate="yes" xml:space="preserve">
-          <source>View</source>
-          <target state="translated">Widok</target>
+          <target state="new">© 2024 Lixkote. All rights reserved.</target>
         </trans-unit>
         <trans-unit id="edit.Title" translate="yes" xml:space="preserve">
           <source>Edit</source>
-          <target state="translated">Edytuj</target>
+          <target state="new">Edit</target>
         </trans-unit>
-        <trans-unit id="TitlePara.Text" translate="yes" xml:space="preserve">
-          <source>Paragraph</source>
-          <target state="translated">Akapit</target>
+        <trans-unit id="EditingFindBox.Text" translate="yes" xml:space="preserve">
+          <source>Find</source>
+          <target state="new">Find</target>
+        </trans-unit>
+        <trans-unit id="EditingReplaceBox.Text" translate="yes" xml:space="preserve">
+          <source>Replace All</source>
+          <target state="new">Replace All</target>
+        </trans-unit>
+        <trans-unit id="EditingSelAllBox.Text" translate="yes" xml:space="preserve">
+          <source>Select All</source>
+          <target state="new">Select All</target>
+        </trans-unit>
+        <trans-unit id="EditingText.Text" translate="yes" xml:space="preserve">
+          <source>Editing</source>
+          <target state="new">Editing</target>
+        </trans-unit>
+        <trans-unit id="feedback.Content" translate="yes" xml:space="preserve">
+          <source>Send feedback</source>
+          <target state="new">Send feedback</target>
+        </trans-unit>
+        <trans-unit id="filemenuitem.Title" translate="yes" xml:space="preserve">
+          <source>File</source>
+          <target state="new">File</target>
+        </trans-unit>
+        <trans-unit id="fli.Text" translate="yes" xml:space="preserve">
+          <source>First line:</source>
+          <target state="new">First line:</target>
+        </trans-unit>
+        <trans-unit id="FontToolbarTitle.Text" translate="yes" xml:space="preserve">
+          <source>Font</source>
+          <target state="new">Font</target>
+        </trans-unit>
+        <trans-unit id="insertbox.Text" translate="yes" xml:space="preserve">
+          <source>Insert</source>
+          <target state="new">Insert</target>
+        </trans-unit>
+        <trans-unit id="InsertObjectDialog.Title" translate="yes" xml:space="preserve">
+          <source>Insert an object</source>
+          <target state="new">Insert an object</target>
         </trans-unit>
         <trans-unit id="landscape.Content" translate="yes" xml:space="preserve">
           <source>Landscape</source>
-          <target state="translated">Pozioma</target>
+          <target state="new">Landscape</target>
+        </trans-unit>
+        <trans-unit id="lefti.Text" translate="yes" xml:space="preserve">
+          <source>Left:</source>
+          <target state="new">Left:</target>
+        </trans-unit>
+        <trans-unit id="lefttr.Text" translate="yes" xml:space="preserve">
+          <source>Left:</source>
+          <target state="new">Left:</target>
+        </trans-unit>
+        <trans-unit id="linespacing.Text" translate="yes" xml:space="preserve">
+          <source>Line spacing:</source>
+          <target state="new">Line spacing:</target>
+        </trans-unit>
+        <trans-unit id="marginsnametr.Text" translate="yes" xml:space="preserve">
+          <source>Margins (unitplaceholder)</source>
+          <target state="new">Marginesy (unitplaceholder)</target>
+        </trans-unit>
+        <trans-unit id="new.Text" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <target state="new">New</target>
+        </trans-unit>
+        <trans-unit id="openmenuitem.Text" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <target state="new">Open</target>
+        </trans-unit>
+        <trans-unit id="orientation.Text" translate="yes" xml:space="preserve">
+          <source>Orientation</source>
+          <target state="new">Orientation</target>
+        </trans-unit>
+        <trans-unit id="packageversiontext.Text" translate="yes" xml:space="preserve">
+          <source>RectifyPad 11.2311.1</source>
+          <target state="new">RectifyPad 11.2311.1</target>
+        </trans-unit>
+        <trans-unit id="pagesetupdialog.SecondaryButtonText" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+        </trans-unit>
+        <trans-unit id="pagesetupdialog.Title" translate="yes" xml:space="preserve">
+          <source>Page Setup</source>
+          <target state="new">Page Setup</target>
+        </trans-unit>
+        <trans-unit id="paintpicture.Content" translate="yes" xml:space="preserve">
+          <source>Paint a picture</source>
+          <target state="new">Paint a picture</target>
+        </trans-unit>
+        <trans-unit id="paper.Text" translate="yes" xml:space="preserve">
+          <source>Paper</source>
+          <target state="new">Paper</target>
+        </trans-unit>
+        <trans-unit id="paradialog.CloseButtonText" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <target state="new">Close</target>
+        </trans-unit>
+        <trans-unit id="paradialog.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>Tabs...</source>
+          <target state="new">Tabs...</target>
+        </trans-unit>
+        <trans-unit id="paradialog.SecondaryButtonText" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="new">OK</target>
+        </trans-unit>
+        <trans-unit id="paradialog.Title" translate="yes" xml:space="preserve">
+          <source>Paragraph</source>
+          <target state="new">Paragraph</target>
+        </trans-unit>
+        <trans-unit id="paste.Text" translate="yes" xml:space="preserve">
+          <source>Paste</source>
+          <target state="new">Paste</target>
+        </trans-unit>
+        <trans-unit id="pgset.Text" translate="yes" xml:space="preserve">
+          <source>Page Setup</source>
+          <target state="new">Page Setup</target>
         </trans-unit>
         <trans-unit id="portrait.Content" translate="yes" xml:space="preserve">
           <source>Portrait</source>
-          <target state="translated">Pionowa</target>
+          <target state="new">Portrait</target>
+        </trans-unit>
+        <trans-unit id="printmfsi.Text" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target state="new">Print</target>
+        </trans-unit>
+        <trans-unit id="printpageTR.Content" translate="yes" xml:space="preserve">
+          <source>Print Page Numbers</source>
+          <target state="new">Print Page Numbers</target>
+        </trans-unit>
+        <trans-unit id="recentmenuitem.Text" translate="yes" xml:space="preserve">
+          <source>Recent</source>
+          <target state="new">Recent</target>
+        </trans-unit>
+        <trans-unit id="righti.Text" translate="yes" xml:space="preserve">
+          <source>Right:</source>
+          <target state="new">Right:</target>
+        </trans-unit>
+        <trans-unit id="righttr.Text" translate="yes" xml:space="preserve">
+          <source>Right:</source>
+          <target state="new">Right:</target>
+        </trans-unit>
+        <trans-unit id="ruler.Text" translate="yes" xml:space="preserve">
+          <source>Ruler</source>
+          <target state="new">Ruler</target>
+        </trans-unit>
+        <trans-unit id="saveasmenuitem.Text" translate="yes" xml:space="preserve">
+          <source>Save as</source>
+          <target state="new">Save as</target>
+        </trans-unit>
+        <trans-unit id="savemenuitem.Text" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="new">Save</target>
+        </trans-unit>
+        <trans-unit id="selappthem.Text" translate="yes" xml:space="preserve">
+          <source>Select which app theme to display</source>
+          <target state="new">Select which app theme to display</target>
+        </trans-unit>
+        <trans-unit id="settings.Text" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="new">Settings</target>
+        </trans-unit>
+        <trans-unit id="size.Text" translate="yes" xml:space="preserve">
+          <source>Size</source>
+          <target state="new">Size</target>
+        </trans-unit>
+        <trans-unit id="spacing.Text" translate="yes" xml:space="preserve">
+          <source>Spacing</source>
+          <target state="new">Spacing</target>
+        </trans-unit>
+        <trans-unit id="srccode.Text" translate="yes" xml:space="preserve">
+          <source>Source Code</source>
+          <target state="new">Source Code</target>
+        </trans-unit>
+        <trans-unit id="statusbar.Text" translate="yes" xml:space="preserve">
+          <source>Status bar</source>
+          <target state="new">Status bar</target>
+        </trans-unit>
+        <trans-unit id="tableitemtr.Content" translate="yes" xml:space="preserve">
+          <source>Insert a table</source>
+          <target state="new">Insert a table</target>
+        </trans-unit>
+        <trans-unit id="TitlePara.Text" translate="yes" xml:space="preserve">
+          <source>Paragraph</source>
+          <target state="new">Paragraph</target>
+        </trans-unit>
+        <trans-unit id="TooltipDateTime.Content" translate="yes" xml:space="preserve">
+          <source>Date and time</source>
+          <target state="new">Date and time</target>
+        </trans-unit>
+        <trans-unit id="TooltipObject.Content" translate="yes" xml:space="preserve">
+          <source>Insert object</source>
+          <target state="new">Insert object</target>
+        </trans-unit>
+        <trans-unit id="TooltipPaint.Content" translate="yes" xml:space="preserve">
+          <source>Paint drawing</source>
+          <target state="new">Paint drawing</target>
+        </trans-unit>
+        <trans-unit id="TooltipPicture.Content" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <target state="new">Picture</target>
+        </trans-unit>
+        <trans-unit id="toptr.Text" translate="yes" xml:space="preserve">
+          <source>Top:</source>
+          <target state="new">Top:</target>
+        </trans-unit>
+        <trans-unit id="view.Title" translate="yes" xml:space="preserve">
+          <source>View</source>
+          <target state="new">View</target>
         </trans-unit>
       </group>
     </body>

@@ -119,7 +119,7 @@
 
         </Grid>
 
-        <TextBlock Text="Insert" x:Uid="insertbox"
+        <TextBlock x:Uid="insertbox"
                Style="{StaticResource ColumnDescriptionTextblockStyle}"
                Grid.Row="1" VerticalAlignment="Bottom" />
 

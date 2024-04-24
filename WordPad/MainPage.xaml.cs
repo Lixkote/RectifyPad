@@ -145,7 +145,15 @@ namespace RectifyPad
             // double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
             // double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
             // double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
+            InitEnglishOnce();
+        }
 
+
+        public void InitEnglishOnce()
+        {           
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "pl-PL";
+                Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse().Reset();
+                Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().Reset();
         }
 
         private void LoadSettingsValues()

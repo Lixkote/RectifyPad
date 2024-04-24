@@ -12,4 +12,193 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="aboutapp.Text" xml:space="preserve">
+    <value>Informacje o programie RectifyPad</value>
+  </data>
+  <data name="addspace.Content" xml:space="preserve">
+    <value>Dodaj 10-punktową spację po akapitach</value>
+  </data>
+  <data name="align.Text" xml:space="preserve">
+    <value>Wyrównaj</value>
+  </data>
+  <data name="alignm.Text" xml:space="preserve">
+    <value>Wyrównanie:</value>
+  </data>
+  <data name="appearance.Text" xml:space="preserve">
+    <value>Wygląd</value>
+  </data>
+  <data name="apptheme.Text" xml:space="preserve">
+    <value>Motyw aplikacji</value>
+  </data>
+  <data name="apptitle.Text" xml:space="preserve">
+    <value>Dokument - RectifyPad</value>
+  </data>
+  <data name="bottr.Text" xml:space="preserve">
+    <value>Dolny:</value>
+  </data>
+  <data name="copy.Text" xml:space="preserve">
+    <value>Kopiuj</value>
+  </data>
+  <data name="copyrighttext.Text" xml:space="preserve">
+    <value>© 2024 Lixkote. Wszelkie prawa zastrzeżone.</value>
+  </data>
+  <data name="EditingFindBox.Text" xml:space="preserve">
+    <value>Znajdź</value>
+  </data>
+  <data name="EditingReplaceBox.Text" xml:space="preserve">
+    <value>Zamień</value>
+  </data>
+  <data name="EditingSelAllBox.Text" xml:space="preserve">
+    <value>Zaznacz wszystko</value>
+  </data>
+  <data name="EditingText.Text" xml:space="preserve">
+    <value>Edytowanie</value>
+  </data>
+  <data name="feedback.Content" xml:space="preserve">
+    <value>Wyślij opinię</value>
+  </data>
+  <data name="filemenuitem.Title" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="fli.Text" xml:space="preserve">
+    <value>Pierwszy wiersz:</value>
+  </data>
+  <data name="FontToolbarTitle.Text" xml:space="preserve">
+    <value>Czcionka</value>
+  </data>
+  <data name="insertbox.Text" xml:space="preserve">
+    <value>Wstaw</value>
+  </data>
+  <data name="InsertObjectDialog.Title" xml:space="preserve">
+    <value>Wstaw obiekt</value>
+  </data>
+  <data name="lefti.Text" xml:space="preserve">
+    <value>Z lewej:</value>
+  </data>
+  <data name="lefttr.Text" xml:space="preserve">
+    <value>Z lewej:</value>
+  </data>
+  <data name="linespacing.Text" xml:space="preserve">
+    <value>Line spacing:</value>
+  </data>
+  <data name="marginsnametr.Text" xml:space="preserve">
+    <value>Marginesy (unitplaceholder)</value>
+  </data>
+  <data name="new.Text" xml:space="preserve">
+    <value>Nowy</value>
+  </data>
+  <data name="openmenuitem.Text" xml:space="preserve">
+    <value>Otwórz</value>
+  </data>
+  <data name="orientation.Text" xml:space="preserve">
+    <value>Orientacja</value>
+  </data>
+  <data name="packageversiontext.Text" xml:space="preserve">
+    <value>RectifyPad 11.2311.1</value>
+  </data>
+  <data name="pagesetupdialog.SecondaryButtonText" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="pagesetupdialog.Title" xml:space="preserve">
+    <value>Ustawienia strony</value>
+  </data>
+  <data name="paintpicture.Content" xml:space="preserve">
+    <value>Paint a picture</value>
+  </data>
+  <data name="paper.Text" xml:space="preserve">
+    <value>Papier</value>
+  </data>
+  <data name="paradialog.CloseButtonText" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="paradialog.PrimaryButtonText" xml:space="preserve">
+    <value>Tabulatory...</value>
+  </data>
+  <data name="paradialog.SecondaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="paradialog.Title" xml:space="preserve">
+    <value>Akapit</value>
+  </data>
+  <data name="paste.Text" xml:space="preserve">
+    <value>Wklej</value>
+  </data>
+  <data name="pgset.Text" xml:space="preserve">
+    <value>Ustawienia strony</value>
+  </data>
+  <data name="printmfsi.Text" xml:space="preserve">
+    <value>Drukuj</value>
+  </data>
+  <data name="printpageTR.Content" xml:space="preserve">
+    <value>Drukuj numery stron</value>
+  </data>
+  <data name="recentmenuitem.Text" xml:space="preserve">
+    <value>Ostatnie</value>
+  </data>
+  <data name="righti.Text" xml:space="preserve">
+    <value>Z prawej:</value>
+  </data>
+  <data name="righttr.Text" xml:space="preserve">
+    <value>Z prawej:</value>
+  </data>
+  <data name="ruler.Text" xml:space="preserve">
+    <value>Linijka</value>
+  </data>
+  <data name="saveasmenuitem.Text" xml:space="preserve">
+    <value>Zapisz jako</value>
+  </data>
+  <data name="savemenuitem.Text" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="selappthem.Text" xml:space="preserve">
+    <value>Wybierz motyw aplikacji do wyświetlenia</value>
+  </data>
+  <data name="settings.Text" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="size.Text" xml:space="preserve">
+    <value>Wielkość</value>
+  </data>
+  <data name="spacing.Text" xml:space="preserve">
+    <value>Odstęp</value>
+  </data>
+  <data name="srccode.Text" xml:space="preserve">
+    <value>Kod źródłowy</value>
+  </data>
+  <data name="statusbar.Text" xml:space="preserve">
+    <value>Pasek stanu</value>
+  </data>
+  <data name="tableitemtr.Content" xml:space="preserve">
+    <value>Wstaw tabelę</value>
+  </data>
+  <data name="TooltipDateTime.Content" xml:space="preserve">
+    <value>Data i godzina</value>
+  </data>
+  <data name="TooltipObject.Content" xml:space="preserve">
+    <value>Wstaw obiekt</value>
+  </data>
+  <data name="TooltipPaint.Content" xml:space="preserve">
+    <value>Paint drawing</value>
+  </data>
+  <data name="TooltipPicture.Content" xml:space="preserve">
+    <value>Obraz</value>
+  </data>
+  <data name="toptr.Text" xml:space="preserve">
+    <value>Górny:</value>
+  </data>
+  <data name="view.Title" xml:space="preserve">
+    <value>Widok</value>
+  </data>
+  <data name="edit.Title" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="TitlePara.Text" xml:space="preserve">
+    <value>Akapit</value>
+  </data>
+  <data name="landscape.Content" xml:space="preserve">
+    <value>Pozioma</value>
+  </data>
+  <data name="portrait.Content" xml:space="preserve">
+    <value>Pionowa</value>
+  </data>
 </root>
