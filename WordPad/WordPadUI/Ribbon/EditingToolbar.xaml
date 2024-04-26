@@ -113,7 +113,7 @@
             <Button x:Name="SelectAllButton" Style="{StaticResource PaintUIButtonStyle}"
     MinWidth="32"
     Height="24"
-    Grid.Row="2" HorizontalAlignment="Stretch" Click="SelectAllButton_Click" VerticalAlignment="Stretch" Padding="8,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+    Grid.Row="2" HorizontalAlignment="Stretch" Click="SelectAllButton_Click" VerticalAlignment="Stretch" Padding="8,0,8,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <Image Width="17" Height="17" Source="{Binding Source={ThemeResource SelectAll}}" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="Fill" />
