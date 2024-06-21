@@ -224,17 +224,16 @@
         </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="12" />
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="29" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="130" />
+            <RowDefinition Height="110" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="38" />
 
         </Grid.RowDefinitions>
 
         <Grid x:Name="AppTitleBar"
-              Background="Transparent" Grid.RowSpan="2">
+              Background="Transparent" Height="29" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8" />
                 <ColumnDefinition Width="Auto" />
@@ -255,7 +254,7 @@
         </Grid>
 
         <StackPanel x:Name="MenuStack"
-                    Grid.Row="2"
+                    Grid.Row="1"
                     Orientation="Horizontal">
             <muxc:MenuBar>
                 <muxc:MenuBarItem Title="File" x:Uid="filemenuitem" x:Name="FileMenuRoot">
@@ -382,12 +381,12 @@
                 Content="&#xE115;"
                 ToolTipService.ToolTip="Settings"
                 ToolTipService.Placement="Bottom"
-                Grid.Row="2"
-                Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
+                Grid.Row="1"
+                Click="Feedback_Click" Margin="1460,0,0,0" />
         <Grid x:Name="PrintPreviewRibbon"
             BorderBrush="{ThemeResource RibbonBorder}"
             BorderThickness="0,1"
-            Padding="4" DataContext="{x:Bind}" Grid.Row="3" Visibility="Collapsed">
+            Padding="4" DataContext="{x:Bind}" Grid.Row="2" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -591,7 +590,7 @@
               BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}"
               BorderThickness="0,1"
               Padding="4"
-              Grid.Row="3" DataContext="{x:Bind}" Height="130">
+              Grid.Row="2" DataContext="{x:Bind}" Height="110" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -602,7 +601,7 @@
                 <ColumnDefinition Width="0" />
             </Grid.ColumnDefinitions>
 
-            <Border x:Name="Fullfonttoolbar" Height="120" Width="430" Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fullfonttoolbar" Height="110" Width="430" Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}" VerticalAlignment="Top">
                 <Custom:FontToolbar x:Name="fontribbontoolbar" />
             </Border>
             <Grid x:Name="Collfonttoolbar" Grid.Column="1"  Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -652,7 +651,7 @@
                 </Grid.Children>
             </Grid>
 
-            <Border x:Name="Fullparatoolbar" Height="120" Width="264" Grid.Column="2" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fullparatoolbar" Height="109" Width="264" Grid.Column="2" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
                 <Custom:ParagraphToolbar x:Name="pararibbontoolbar" />
             </Border>
             <Grid x:Name="Collparatoolbar" Grid.Column="2" Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -702,7 +701,7 @@
                 </Grid.Children>
             </Grid>
 
-            <Border x:Name="Fullinserttoolbar" Height="120" Width="180" Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fullinserttoolbar" Height="109" Width="180" Grid.Column="3" BorderThickness="0,0,1,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
                 <Custom:InsertToolbar x:Name="insertribbontoolbar" />
             </Border>
             <Grid x:Name="Collinserttoolbar" Grid.Column="3" Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -752,7 +751,7 @@ VerticalAlignment="Top"
                 </Grid.Children>
             </Grid>
 
-            <Border x:Name="Fulledittoolbar" Height="120" Grid.Column="4" BorderThickness="0,0,0,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
+            <Border x:Name="Fulledittoolbar" Height="109" Grid.Column="4" BorderThickness="0,0,0,0" BorderBrush="{ThemeResource RibbonColumnBorder}">
                 <Custom:EditingToolbar x:Name="editribbontoolbar" />
             </Border>
             <Grid x:Name="Colledittoolbar" Grid.Column="4" Visibility="Collapsed" BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -804,136 +803,136 @@ VerticalAlignment="Top"
 
 
         </Grid>
-        <Border x:Name="RulerBorder" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Top" Height="36" Grid.Row="4">
+        <Border x:Name="RulerBorder" BorderBrush="Transparent" BorderThickness="1" VerticalAlignment="Top"  Grid.Row="3">
             <my:TextRuler x:Name="TextRuler" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{x:Bind Mode=OneWay, Path=RulerToggle.IsChecked}"/>
         </Border>
 
         <Grid x:Name="EditorContentHost"
              RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="RulerBorder" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
-              Grid.Row="4"
+              Grid.Row="3"
               SizeChanged="EditorContentHost_SizeChanged" Margin="0,40,0,0">
 
             <Grid x:Name="EditorContainer">
                 <ScrollViewer x:Name="RichTextScrollView"  HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" MinZoomFactor="0.5" MaxZoomFactor="3" VerticalAlignment="Top">
                     <Grid x:Name="EditorMandatoryPrintingGrid" Height="1116"   Width="816">
                         <RichEditBox x:Name="Editor" Padding="45,45,45,45" SizeChanged="Editor_SizeChanged" Height="1116"   Width="816"  Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <RichEditBox.Resources>
-                            <Storyboard x:Name="REBOpenAnimation">
-                                <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleX" From="0.95" To="1.0" Duration="0:0:0.4">
-                                    <DoubleAnimation.EasingFunction>
-                                        <QuadraticEase EasingMode="EaseOut"/>
-                                    </DoubleAnimation.EasingFunction>
-                                </DoubleAnimation>
-                                <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleY" From="0.95" To="1.0" Duration="0:0:0.4">
-                                    <DoubleAnimation.EasingFunction>
-                                        <QuadraticEase EasingMode="EaseOut"/>
-                                    </DoubleAnimation.EasingFunction>
-                                </DoubleAnimation>
-                                <DoubleAnimation Storyboard.TargetName="REB" Storyboard.TargetProperty="Opacity" From="0.3" To="1" Duration="0:0:0.35">
-                                    <DoubleAnimation.EasingFunction>
-                                        <QuadraticEase EasingMode="EaseOut"/>
-                                    </DoubleAnimation.EasingFunction>
-                                </DoubleAnimation>
-                            </Storyboard>
-                        </RichEditBox.Resources>
-                        <RichEditBox.RenderTransform>
-                            <CompositeTransform x:Name="REBScale"/>
-                        </RichEditBox.RenderTransform>
-                        <RichEditBox.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE16B;"/>
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="MenuCopy" Text="Copy" Click="MenuCopy_Click">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE16F;"/>
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="MenuPaste" Text="Paste" Click="MenuPaste_Click">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE16D;"/>
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator />
-                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
-                                    <MenuFlyoutItem.Icon>
-                                        <PathIcon Data="M 9 3 C 7 3 5 5 5 7 C 5 9 7 11 9 11 L 11 11 L 11 17 L 12 17 L 12 4 L 14 4 L 14 17 L 15 17 L 15 4 L 17 4 L 17 3 M 11 10 L 9 10 C 7.5 10 6 8.5 6 7 C 6 5.5 7.5 4 9 4 L 11 4" RenderTransformOrigin="0.5,0.5" Height="13" Width="14" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSubItem Text="Lists">
-                                    <MenuFlyoutSubItem.Icon>
-                                        <FontIcon Glyph="&#xE8FD;"/>
-                                    </MenuFlyoutSubItem.Icon>
-                                    <MenuFlyoutItem>
-                                        <MenuFlyoutItem.Template>
-                                            <ControlTemplate>
-                                                <Grid>
-                                                    <Grid.Resources>
-                                                        <Style TargetType="Button">
-                                                            <Setter Property="Padding" Value="4"/>
-                                                            <Setter Property="MinWidth" Value="0"/>
-                                                            <Setter Property="MinHeight" Value="0"/>
-                                                            <Setter Property="Margin" Value="6"/>
-                                                            <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
-                                                            <Setter Property="Background" Value="Transparent" />
-                                                        </Style>
-                                                    </Grid.Resources>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                    </Grid.RowDefinitions>
-
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=none}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=dot}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=number}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=abc}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=ABCB}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=iii}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                    <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
-                                                        <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
-                                                            <Image Source="{ThemeResource ResourceKey=IIII}" Width="50" Height="50" />
-                                                        </Border>
-                                                    </Button>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </MenuFlyoutItem.Template>
+                            <RichEditBox.Resources>
+                                <Storyboard x:Name="REBOpenAnimation">
+                                    <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleX" From="0.95" To="1.0" Duration="0:0:0.4">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleY" From="0.95" To="1.0" Duration="0:0:0.4">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="REB" Storyboard.TargetProperty="Opacity" From="0.3" To="1" Duration="0:0:0.35">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </RichEditBox.Resources>
+                            <RichEditBox.RenderTransform>
+                                <CompositeTransform x:Name="REBScale"/>
+                            </RichEditBox.RenderTransform>
+                            <RichEditBox.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE16B;"/>
+                                        </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
-                                </MenuFlyoutSubItem>
-                            </MenuFlyout>
-                        </RichEditBox.ContextFlyout>
-                    </RichEditBox>
+                                    <MenuFlyoutItem x:Name="MenuCopy" Text="Copy" Click="MenuCopy_Click">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE16F;"/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem x:Name="MenuPaste" Text="Paste" Click="MenuPaste_Click">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE16D;"/>
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutSeparator />
+                                    <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
+                                        <MenuFlyoutItem.Icon>
+                                            <PathIcon Data="M 9 3 C 7 3 5 5 5 7 C 5 9 7 11 9 11 L 11 11 L 11 17 L 12 17 L 12 4 L 14 4 L 14 17 L 15 17 L 15 4 L 17 4 L 17 3 M 11 10 L 9 10 C 7.5 10 6 8.5 6 7 C 6 5.5 7.5 4 9 4 L 11 4" RenderTransformOrigin="0.5,0.5" Height="13" Width="14" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutSubItem Text="Lists">
+                                        <MenuFlyoutSubItem.Icon>
+                                            <FontIcon Glyph="&#xE8FD;"/>
+                                        </MenuFlyoutSubItem.Icon>
+                                        <MenuFlyoutItem>
+                                            <MenuFlyoutItem.Template>
+                                                <ControlTemplate>
+                                                    <Grid>
+                                                        <Grid.Resources>
+                                                            <Style TargetType="Button">
+                                                                <Setter Property="Padding" Value="4"/>
+                                                                <Setter Property="MinWidth" Value="0"/>
+                                                                <Setter Property="MinHeight" Value="0"/>
+                                                                <Setter Property="Margin" Value="6"/>
+                                                                <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}"/>
+                                                                <Setter Property="Background" Value="Transparent" />
+                                                            </Style>
+                                                        </Grid.Resources>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button x:Name="NoneNumeral" Grid.Row="0" Grid.Column="0" Click="NoneNumeral_Click" Width="64" Height="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=none}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="DottedNumeral" Grid.Row="0" Grid.Column="1" Click="DottedNumeral_Click" Width="64" Height="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=dot}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="NumberNumeral" Grid.Row="0" Grid.Column="2" Click="NumberNumeral_Click" Height="64" Width="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=number}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="LetterSmallNumeral" Grid.Row="1" Grid.Column="0" Click="LetterSmallNumeral_Click" Height="64" Width="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=abc}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="LetterBigNumeral"  Grid.Row="1" Grid.Column="1" Click="LetterBigNumeral_Click" Height="64" Width="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=ABCB}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="SmalliNumeral" Grid.Row="1" Grid.Column="2" Click="SmalliNumeral_Click" Height="64" Width="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=iii}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                        <Button x:Name="BigINumeral" Grid.Row="2" Grid.Column="0" Click="BigINumeral_Click" Height="64" Width="64">
+                                                            <Border Width="50" Height="50" CornerRadius="{StaticResource ControlCornerRadius}">
+                                                                <Image Source="{ThemeResource ResourceKey=IIII}" Width="50" Height="50" />
+                                                            </Border>
+                                                        </Button>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </MenuFlyoutItem.Template>
+                                        </MenuFlyoutItem>
+                                    </MenuFlyoutSubItem>
+                                </MenuFlyout>
+                            </RichEditBox.ContextFlyout>
+                        </RichEditBox>
                     </Grid>
                 </ScrollViewer>
             </Grid>
@@ -944,8 +943,8 @@ VerticalAlignment="Top"
                 BackgroundSizing="OuterBorderEdge"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}"
                 BorderThickness="0,1,0,0"
-                Height="36"
-                Grid.Row="5"
+                Height="38"
+                Grid.Row="4"
                 Visibility="{x:Bind Mode=OneWay, Path=StatusbarToggle.IsChecked}">
 
             <StackPanel Orientation="Horizontal"
@@ -990,7 +989,7 @@ VerticalAlignment="Top"
                 
                 -->
                 <Slider x:Name="ZoomSlider" Width="130" Maximum="3" Minimum="0.5" Value="1" ValueChanged="ZoomSlider_ValueChanged" TickPlacement="None" TickFrequency="0.25" StepFrequency="0.1" IsThumbToolTipEnabled="False" VerticalAlignment="Center"/>
-                
+
 
                 <Button Style="{StaticResource PaintUIButtonStyle}"
                         FontSize="14"

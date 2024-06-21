@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="120"
+    d:DesignHeight="110"
     d:DesignWidth="264">
 
     <Grid x:Name="ParagraphGrid" BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -108,7 +108,7 @@
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Paragraph}}" Margin="0,2,0,-2" />
                 </Button.Content>
             </Button>
-            <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalToggleSplitButton}" x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20">
+            <muxc:ToggleSplitButton  x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20" VerticalAlignment="Stretch" Background="{x:Null}"  >
                 <ToolTipService.ToolTip>
                     <ToolTip Content="List" />
                 </ToolTipService.ToolTip>
@@ -175,7 +175,7 @@
                     </Flyout>
                 </muxc:ToggleSplitButton.Flyout>
             </muxc:ToggleSplitButton>
-            <Button x:Name="ParagraphSettingButton" Grid.Column="4" Height="29" Width="77" Margin="2,0,0,0" Style="{StaticResource PaintUIButtonStyle}" HorizontalContentAlignment="Stretch" Padding="0,0,0,0" Loaded="ParagraphSettingButton_Loaded">
+            <Button x:Name="ParagraphSettingButton" Grid.Column="4" Width="77" Margin="2,0,0,0" HorizontalContentAlignment="Stretch" Padding="0,0,0,0" Loaded="ParagraphSettingButton_Loaded" VerticalAlignment="Stretch" BorderBrush="{x:Null}" Background="{x:Null}">
                 <Button.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>

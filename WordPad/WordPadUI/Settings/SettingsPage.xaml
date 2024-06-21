@@ -73,9 +73,9 @@
                    Width="16"
                    Height="16"
                    Grid.Column="1" />
-                        <TextBlock x:Uid="apptitle"
+                        <TextBlock
                        x:Name="AppTitle"
-                       Text="Document - RectifyPad"
+                       x:Uid="apptitle"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
