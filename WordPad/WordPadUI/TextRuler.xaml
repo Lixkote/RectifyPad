@@ -31,9 +31,9 @@
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Thumb">
                                                 <Grid>
-                                                    <PathIcon Data="F1 M 2 16 C 2 18 3 19 5 19 L 15 19 C 17 19 18 18 18 16 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z" Foreground="{StaticResource ControlSolidFillColorDefaultBrush}"/>
+                                                    <PathIcon Data="F1 M 2 16 C 2 18 3 19 5 19 L 15 19 C 17 19 18 18 18 16 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z" Foreground="{StaticResource ControlFillColorDefaultBrush}"/>
                                                     <PathIcon Data="F1 M 5 14 C 5 15 6 16 7 16 L 13 16 C 14 16 15 15 15 14 L 15 11 C 15 10 15 10 14 9 L 12 7 C 10 5 10 5 8 7 L 6 9 C 5 10 5 10 5 11 Z" Foreground="{StaticResource AccentFillColorDefaultBrush}"/>
-                                                    <PathIcon Data="F1 M 2 16 C 2 18 3 19 5 19 L 15 19 C 17 19 18 18 18 16 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z L 1 16 L 1 11 c 0 -2.5 0 -2.75 3 -5.5 L 7 2.5 C 10 -0.5 10 -0.5 13 2.5 L 17 6.5 C 19 8.3 19 8.5 19 11 L 19 16 C 19 19 18 20 15 20 L 5 20 C 2 20 1 19 1 16" Foreground="{StaticResource ControlElevationBorderBrush}"/>
+                                                    <PathIcon Data="F1 M 2 16 C 2 18 3 19 5 19 L 15 19 C 17 19 18 18 18 16 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z L 1 16 L 1 11 c 0 -2.5 0 -2.75 3 -5.5 L 7 2.5 C 10 -0.5 10 -0.5 13 2.5 L 17 6.5 C 19 8.3 19 8.5 19 11 L 19 16 C 19 19 18 20 15 20 L 5 20 C 2 20 1 19 1 16" Foreground="{StaticResource ControlStrokeColorDefaultBrush}"/>
                                                 </Grid>
                                             </ControlTemplate>
                                         </Setter.Value>
@@ -380,25 +380,20 @@
                             <Grid.RenderTransform>
                                 <CompositeTransform Rotation="180"/>
                             </Grid.RenderTransform>
-                            <PathIcon Data="F1 M 2 12 C 2 14 4 16 6 16 L 14 16 C 16 16 18 14 18 12 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z" Foreground="{StaticResource ControlSolidFillColorDefaultBrush}"/>
+                            <PathIcon Data="F1 M 2 12 C 2 14 4 16 6 16 L 14 16 C 16 16 18 14 18 12 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z" Foreground="{StaticResource ControlFillColorDefaultBrush}"/>
                             <PathIcon Data="F1 M 5 11 C 5 12 6 13 7 13 L 13 13 C 14 13 15 12 15 11 L 15 11 C 15 10 15 10 14 9 L 12 7 C 10 5 10 5 8 7 L 6 9 C 5 10 5 10 5 11 Z" Foreground="{StaticResource AccentFillColorDefaultBrush}"/>
-                            <PathIcon Data="F1 M 2 12 C 2 14 4 16 6 16 L 14 16 C 16 16 18 14 18 12 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z L 1 12 L 1 11 c 0 -2.5 0 -2.75 3 -5.5 L 7 2.5 C 10 -0.5 10 -0.5 13 2.5 L 17 6.5 C 19 8.3 19 8.5 19 11 L 19 12 C 19 15 17 17 14 17 L 6 17 C 3 17 1 15 1 12" Foreground="{StaticResource ControlElevationBorderBrush}"/>
+                            <PathIcon Data="F1 M 2 12 C 2 14 4 16 6 16 L 14 16 C 16 16 18 14 18 12 L 18 11 C 18 9 18 9 16 7 L 12 3 C 10 1 10 1 8 3 L 4 7 C 2 9 2 9 2 11 Z L 1 12 L 1 11 c 0 -2.5 0 -2.75 3 -5.5 L 7 2.5 C 10 -0.5 10 -0.5 13 2.5 L 17 6.5 C 19 8.3 19 8.5 19 11 L 19 12 C 19 15 17 17 14 17 L 6 17 C 3 17 1 15 1 12" Foreground="{StaticResource ControlStrokeColorDefaultBrush}"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <ThemeShadow x:Key="panelShadow" />
-        <Style x:Key="RightPanelStyle" TargetType="Border">
-            <Setter Property="Padding" Value="0,8" />
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultSolidBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-        </Style>
     </UserControl.Resources>
     <Grid x:Name="RulerGrid" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
         <ScrollViewer x:Name="SCR3" ZoomMode="Disabled" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" ZoomSnapPointsType="None" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" IsVerticalScrollChainingEnabled="False" ViewChanged="SCR3_ViewChanged">
             <Grid Margin="0,-14,0,-6">
-                <Border BorderThickness="1" Margin="36,10,36,0" CornerRadius="6" Style="{StaticResource RightPanelStyle}" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" Shadow="{StaticResource panelShadow}" Translation="0,0,20" Height="28" VerticalAlignment="Center" BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}">
+                <Border BorderThickness="1" Margin="36,10,36,0" CornerRadius="2" Background="{ThemeResource EditorGridBack}" Height="28" VerticalAlignment="Center" BorderBrush="{ThemeResource EditorGridBorder}">
+                    
                 </Border>
                 <Grid Margin="37,0,36,0">
                     <StackPanel VerticalAlignment="Bottom" Spacing="19" Orientation="Horizontal" Opacity="0.65" Margin="20,0,0,15">

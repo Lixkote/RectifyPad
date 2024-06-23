@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="110"
+    d:DesignHeight="120"
     d:DesignWidth="{Binding ActualWidth, ElementName=ReplaceButton, Mode=OneWay}">
 
     <Grid x:Name="EditionGrid" BorderBrush="{ThemeResource RibbonColumnBorder}"

@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="110"
+    d:DesignHeight="120"
     d:DesignWidth="430">
 
     <UserControl.Resources>
@@ -179,7 +179,7 @@
 
             <ComboBox x:Name="FontSizesComboBox" Loaded="FontSizesComboBox_Loaded_1" SelectedIndex="3" ItemsSource="{x:Bind FontSizes, Mode=OneWay}" PlaceholderText="Mixed" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
                    Margin="43,0,106,0" TextSubmitted="FontSizesComboBox_TextSubmitted" SelectionChanged="FontSizesComboBox_SelectionChanged"/>
-            <muxc:SplitButton x:Name="FontTextColorDropDownButton" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True" Background="{x:Null}" BorderBrush="{x:Null}">
+            <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
                 <muxc:SplitButton.Content>
                     <Grid>
                         <FontIcon Glyph="" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
@@ -514,7 +514,7 @@
                     </Flyout>
                 </muxc:SplitButton.Flyout>
             </muxc:SplitButton>
-            <muxc:SplitButton x:Name="FontBackgroundColorDropDownButton" Grid.Column="6" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontBackgroundColorDropDownButton_Click" Height="27" Padding="0,0,0.2,0" BorderBrush="{x:Null}" Background="{x:Null}">
+            <muxc:SplitButton Template="{StaticResource PaintUIHorizontalSplitButton}" x:Name="FontBackgroundColorDropDownButton" Grid.Column="6" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontBackgroundColorDropDownButton_Click" Height="27" Padding="0,0,0.2,0">
                 <muxc:SplitButton.Content>
                     <Grid>
                         <FontIcon Glyph="&#xE8FF;" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
