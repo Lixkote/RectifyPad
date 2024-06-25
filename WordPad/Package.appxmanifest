@@ -4,6 +4,7 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
   xmlns:rescap3="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities/3"
   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:a="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
@@ -55,12 +56,12 @@
 
       </uap:VisualElements>
 		<Extensions>
-			<uap3:Extension Category="windows.appExecutionAlias" EntryPoint="FluentPad.App">
-				<uap3:AppExecutionAlias>
-					<desktop:ExecutionAlias Alias="wordpad.exe"/>
-					<desktop:ExecutionAlias Alias="write.exe"/>
-				</uap3:AppExecutionAlias>
-			</uap3:Extension>
+			<uap5:Extension Category="windows.appExecutionAlias" EntryPoint="FluentPad.App">
+				<uap5:AppExecutionAlias>
+					<uap5:ExecutionAlias Alias="wordpad.exe"/>
+					<uap5:ExecutionAlias Alias="write.exe"/>
+				</uap5:AppExecutionAlias>
+			</uap5:Extension>
 			<uap:Extension Category="windows.fileTypeAssociation">
 				<uap:FileTypeAssociation Name="rtf">
 					<uap:Logo>Assets\wordpaddocument.png</uap:Logo>

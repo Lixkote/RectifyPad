@@ -102,6 +102,23 @@ namespace RectifyPad
             }
         }
 
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (rootFrame == null)
+            {
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                Window.Current.Content = rootFrame;
+            }
+
+            rootFrame.Navigate(typeof(MainPage));
+            Window.Current.Activate();
+        }
+
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             // Get the file that was opened
