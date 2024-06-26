@@ -57,7 +57,7 @@
                             <x:String x:Key="dot">ms-appx:///Assets/listnumbersimages/dot.png</x:String>
                             <x:String x:Key="iii">ms-appx:///Assets/listnumbersimages/iii.png</x:String>
                             <x:String x:Key="IIII">ms-appx:///Assets/listnumbersimages/IIII.png</x:String>
-                            <x:String x:Key="none">ms-appx:///Assets/listnumberismages/none.png</x:String>
+                            <x:String x:Key="none">ms-appx:///Assets/listnumbersimages/none.png</x:String>
                             <x:String x:Key="number">ms-appx:///Assets/listnumbersimages/number.png</x:String>
 
                             <StaticResource x:Key="RibbonBackground" ResourceKey="SolidBackgroundFillColorTertiaryBrush" />

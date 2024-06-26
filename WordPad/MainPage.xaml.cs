@@ -125,6 +125,9 @@ namespace RectifyPad
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
 
+            // Get the current unit value from settings
+            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
+
             // Get the margin values from settings as strings
             // double MarginLString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
             // double MarginRString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
@@ -137,23 +140,11 @@ namespace RectifyPad
             // double MarginBInches = double.Parse(MarginBString);
             // double MarginTInches = double.Parse(MarginTString);
 
-            // Get the current unit value from settings
-            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-
             // Convert margin values based on the selected unit
             // double MarginL = unitConverter.ConvertToPixels(MarginLString, selectedUnit);
             // double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
             // double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
             // double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
-            InitEnglishOnce();
-        }
-
-
-        public void InitEnglishOnce()
-        {           
-                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "pl-PL";
-                Windows.ApplicationModel.Resources.Core.ResourceContext.GetForViewIndependentUse().Reset();
-                Windows.ApplicationModel.Resources.Core.ResourceContext.GetForCurrentView().Reset();
         }
 
         private void LoadSettingsValues()

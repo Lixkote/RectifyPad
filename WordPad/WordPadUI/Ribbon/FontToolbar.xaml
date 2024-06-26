@@ -169,7 +169,7 @@
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource BottomScript}}" />
                 </ToggleButton.Content>
             </ToggleButton>
-            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" SelectionChanged="FontsCombo_SelectionChanged" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Font" Margin="0,0,40,0">
+            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" SelectionChanged="FontsCombo_SelectionChanged" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Selected Font" Margin="0,0,40,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
@@ -177,8 +177,10 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <ComboBox x:Name="FontSizesComboBox" Loaded="FontSizesComboBox_Loaded_1" SelectedIndex="3" ItemsSource="{x:Bind FontSizes, Mode=OneWay}" PlaceholderText="Mixed" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
-                   Margin="43,0,106,0" TextSubmitted="FontSizesComboBox_TextSubmitted" SelectionChanged="FontSizesComboBox_SelectionChanged"/>
+            <ComboBox x:Name="fontSizeComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
+                               Margin="43,0,106,0" TextSubmitted="FontSizeCombo_TextSubmitted" ItemsSource="{x:Bind FontSizes}" PlaceholderText="Initial" Loaded="FontSizesComboBox_Loaded_1" SelectionChanged="FontSizeCombo_SelectionChanged">
+            </ComboBox>
+            
             <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
                 <muxc:SplitButton.Content>
                     <Grid>

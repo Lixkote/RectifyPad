@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -44,14 +45,76 @@ namespace WordPad.WordPadUI.Ribbon
                 48,
                 72
             };
+
+        private void UpdateFontSize()
+        {
+            fontSizeComboBox.SelectedItem = Editor.FontSize;
+        }
+
         public FontToolbar()
         {
             this.InitializeComponent();
         }
 
-        private void UpdateFontSize()
+        private void FontSizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            FontSizesComboBox.SelectedItem = Editor.FontSize;
+            if (sender is ComboBox comboBox)
+            {
+                if (comboBox.SelectedItem is double selectedValue)
+                {
+                    Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
+                }
+            }
+        }
+
+
+        private void FontSizeCombo_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+        {
+            bool isDouble = double.TryParse(sender.Text, out double newValue);
+
+            // Check if the user selected a predefined font size from the ComboBox.
+            if (sender.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is double predefinedSize)
+            {
+                newValue = predefinedSize;
+            }
+
+            // Set the selected item if:
+            // - The value successfully parsed to double AND
+            // - The value is in the list of sizes OR is a custom value between 8 and 100
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
+            {
+                // Update the SelectedItem to the new value. 
+                sender.SelectedItem = newValue;
+                Editor.Document.Selection.CharacterFormat.Size = (float)newValue;
+            }
+            else
+            {
+                // If the item is invalid, reject it and revert the text. 
+                sender.Text = sender.SelectedValue?.ToString();
+
+                var dialog = new ContentDialog
+                {
+                    Content = "The font size must be a number between 8 and 100.",
+                    CloseButtonText = "Close",
+                    DefaultButton = ContentDialogButton.Close
+                };
+                var task = dialog.ShowAsync();
+            }
+
+            // Mark the event as handled so the framework doesn’t update the selected item automatically. 
+            args.Handled = true;
+        }
+
+        private void fontSizeComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            {
+                fontSizeComboBox.SelectedIndex = 3;
+
+                if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+                {
+                    fontSizeComboBox.TextSubmitted += FontSizeCombo_TextSubmitted;
+                }
+            }
         }
 
         private void FontsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,28 +173,6 @@ namespace WordPad.WordPadUI.Ribbon
             args.Handled = true;
         }
 
-        private void FontSizesComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
-            {
-                FontSizesComboBox.TextSubmitted += FontSizesComboBox_TextSubmitted;
-            }
-        }
-
-        private void FontSizesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                if (sender is ComboBox comboBox)
-                {
-                    if (comboBox.SelectedItem is double selectedValue)
-                    {
-                        Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
-                    }
-                }
-            }
-            catch { }
-        }
 
         private void FontsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -176,7 +217,7 @@ namespace WordPad.WordPadUI.Ribbon
             // Increase the font size of the currently selected text by 2 points
             richEditBox.Document.Selection.CharacterFormat.Size += 2;
             // Get the index of the currently selected item
-            FontSizesComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
+            fontSizeComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
         }
 
         private void FontDislargeButton_Click(object sender, RoutedEventArgs e)
@@ -186,7 +227,7 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Decrease the font size of the currently selected text by 2 points
             richEditBox.Document.Selection.CharacterFormat.Size -= 2;
-            FontSizesComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
+            fontSizeComboBox.SelectedItem = richEditBox.Document.Selection.CharacterFormat.Size;
         }
 
         private void TextColorPickerButton_Click(object sender, RoutedEventArgs e)
@@ -240,12 +281,32 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void FontSizesComboBox_Loaded_1(object sender, RoutedEventArgs e)
         {
-            Editor.SelectionChanging += Editor_SelectionChanging;
+            Editor.SelectionChanged += Editor_SelectionChanged;
         }
 
-        private void Editor_SelectionChanging(RichEditBox sender, RichEditBoxSelectionChangingEventArgs args)
+        private void Editor_SelectionChanged(object sender, RoutedEventArgs args)
         {
-            FontSizesComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Size;
+            TextBoldButton.IsChecked = Editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
+
+            TextItalicButton.IsChecked = Editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On;
+
+            TextUnderlineButton.IsChecked = Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.None &&
+                                        Editor.Document.Selection.CharacterFormat.Underline != UnderlineType.Undefined;
+
+            TextStrikethroughButton.IsChecked = Editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
+
+            TextSubscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Subscript == FormatEffect.On;
+
+            TextSuperscriptButton.IsChecked = Editor.Document.Selection.CharacterFormat.Superscript == FormatEffect.On;
+
+            if (Editor.Document.Selection.CharacterFormat.Size > 0)
+                // Font size is negative when selection contains multiple font sizes
+                fontSizeComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Size;
+
+            // Prevent accidental font changes when selection contains multiple styles
+            updateFontFormat = false;
+            FontsComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Name;
+            updateFontFormat = true;
         }
     }
 }
