@@ -82,7 +82,7 @@
                     </Grid>
                     <TextBlock x:Uid="settings" Style="{StaticResource PageHeader}" Grid.ColumnSpan="2" Text="Settings" Margin="0,0,0,24.2" Height="30" VerticalAlignment="Bottom" />
                     <StackPanel Grid.Row="1" Margin="{StaticResource ContentBottomWideSpacing}">
-                        <TextBlock x:Uid="appearance" x:Name="appe" Style="{StaticResource SectionHeader}" Text="Appearance" />
+                        <TextBlock x:Uid="appearance" x:Name="appe" Style="{StaticResource SectionHeader}" Text="Appearance" Margin="0,10,0,10" />
                         <muxc:Expander
                         x:Name="Theme"
                         HorizontalAlignment="Stretch"
@@ -109,7 +109,7 @@
                                 <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Words" />
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Words" Margin="0,10,0,10" />
                         <muxc:Expander
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"
@@ -134,7 +134,7 @@
                                 <RadioButton x:Name="WrapRuler" GroupName="w" Tag="wrapruler" Content="Wrap to ruler" Checked="WrapRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" />
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" Margin="0,10,0,10" />
                         <muxc:Expander
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
@@ -160,35 +160,25 @@
                                 <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="picas" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                        <!--<muxc:Expander
-                            x:Name="Theme_Copy"
-                            HorizontalContentAlignment="Stretch"
-                            IsExpanded="True" HorizontalAlignment="Stretch">
-                            <muxc:Expander.Header>
-                                <Grid Padding="{StaticResource ContentUpAndDownNormalSpacing}">
-                                    <d:Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon2" VerticalAlignment="Center" Glyph="&#xE790;"  />
-                                    <StackPanel Grid.Column="1" Margin="{StaticResource ContentLeftNormalSpacing}" VerticalAlignment="Center">
-                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Font" />
-
-                                    </StackPanel>
-                                </Grid>
-                            </muxc:Expander.Header>
-                            <muxc:RadioButtons Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" />
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" />
-                                <RadioButton Margin="{StaticResource ContentBottomNormalSpacing}" Content="System setting" />
-                            </muxc:RadioButtons>
-                        </muxc:Expander>-->
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Spell" Margin="0,10,0,10" />
+                        <Grid CornerRadius="4" Background="{StaticResource ExpanderHeaderBackground}" BorderThickness="1" BorderBrush="{StaticResource ExpanderHeaderBorderBrush}" Height="60">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="49"/>
+                                <ColumnDefinition Width="77"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="156"/>
+                            </Grid.ColumnDefinitions>
+                            <FontIcon x:Name="SpellCheckIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
+                            <TextBlock Text="Spell check" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Height="19" Width="69" Grid.ColumnSpan="2">
+                            </TextBlock>
+                            <ToggleSwitch x:Name="SpellCheckToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
+                        </Grid>
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" x:Uid="aboutapp" Text="About this app"/>
                         <TextBlock x:Uid="packageversiontext" x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2311.1"/>
                         <TextBlock x:Uid="copyrighttext" x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2024 Lixkote. All rights reserved."/>
-                        <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/WritePad" >
+                        <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/RectifyPad" >
                             <TextBlock x:Uid="srccode" Text="Source Code"/>
                         </HyperlinkButton>
 

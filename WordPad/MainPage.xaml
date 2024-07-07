@@ -312,7 +312,7 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                         <MenuFlyoutItem x:Name="PageSetup" x:Uid="pgset" Text="Page setup" Click="PageSetup_Click"/>
-                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" IsEnabled="False" Click="pintpreview_Click"/>
+                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutItem Text="Send" Click="SendButton_Click">
                         <MenuFlyoutItem.Icon>
@@ -385,17 +385,17 @@
                 Grid.Row="2"
                 Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
         <Grid x:Name="PrintPreviewRibbon"
-            BorderBrush="{ThemeResource RibbonBorder}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
             BorderThickness="0,1"
-            Padding="4" DataContext="{x:Bind}" Grid.Row="3" Visibility="Collapsed">
+            Padding="4" DataContext="{x:Bind}" Height="130" Grid.Row="3" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="137"/>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="0" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
@@ -404,7 +404,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="72" />
-                    <RowDefinition Height="24" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Print"
@@ -416,13 +416,8 @@
                         MinWidth="40"
                         MaxWidth="40"
                         Height="40"
-                        VerticalAlignment="Top" Margin="3,16,0,0" Click="Button_Click_4Async"
+                        VerticalAlignment="Top" Margin="0,16,0,0" Click="PrintPreviewPrintButton_Click" HorizontalAlignment="Center" Content="" FontSize="26"
                                  >
-                    <Image x:Name="printicon" Width="32"
-                               Height="32"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Source="{Binding printpreviewprint}" />
                 </Button>
 
             </Grid>
@@ -437,28 +432,36 @@
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
 
-                <Grid ColumnSpacing="8">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                    </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
 
                     <Button x:Name="printpreviewzoomplusbutton" Style="{StaticResource PaintUIButtonStyle}"
 
                         Width="40"
                         MinWidth="40"
                         MaxWidth="40"
-                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center"
+                        Height="40" Click="IncreaseZoomButton_Click" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center"
                                  >
-                        <Image x:Name="zoomminusicons" Width="32"
+                        <Image x:Name="zoomplusicons" Width="32"
                                Height="32"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="{Binding printpreviewzoomplus}" />
+                               Source="{ThemeResource ResourceKey=ZoomIn}" />
+                    </Button>
+                    <Button x:Name="printpreviewzoomminusbutton" Style="{StaticResource PaintUIButtonStyle}"
+
+    Width="40"
+    MinWidth="40"
+    MaxWidth="40"
+    Height="40" VerticalAlignment="Top" Margin="10,10,0,0" Click="DecreaseZoomButton_Click" HorizontalAlignment="Center"
+             >
+                        <Image x:Name="zoomminusicons" Width="32"
+           Height="32"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           Source="{ThemeResource ResourceKey=ZoomOut}" />
                     </Button>
 
-
-                </Grid>
+                </StackPanel>
 
                 <TextBlock Text="Zoom"
                     Style="{StaticResource ColumnDescriptionTextblockStyle}"
@@ -468,126 +471,106 @@
             <Grid BorderBrush="{ThemeResource RibbonColumnBorder}"
                 BorderThickness="0,0,1,0"
                 Padding="12"
-                Grid.Column="4" Grid.ColumnSpan="2" Margin="4,5,133,5">
+                Grid.Column="4" Margin="4,5,10,5">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="72" />
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
 
-                <Grid ColumnSpacing="8">
+                <StackPanel Orientation="Horizontal">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button x:Name="onepage" Style="{StaticResource PaintUIButtonStyle}"
+                    <Button IsEnabled="False" x:Name="onepage" Style="{StaticResource PaintUIButtonStyle}"
 
                         Width="40"
                         MinWidth="40"
                         MaxWidth="40"
-                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons" FontSize="24" Content=""
                                  >
-                        <Image x:Name="onepageico" Width="32"
-                            Height="32"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Source="{Binding printpreviewzoomplus}" />
                     </Button>
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages"
+                    <Button IsEnabled="False" Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages"
                         Width="40"
                         MinWidth="40"
                         MaxWidth="32"
                         Height="40"
-                        Grid.Column="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center">
-                        <Image x:Name="twopagesico" Width="32"
-                            Height="32"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Source="{Binding printpreviewzoomminus}" />
+                        Grid.Column="1" VerticalAlignment="Top" Margin="10,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center"  FontFamily="Segoe Fluent Icons" FontSize="24" Content="">
                     </Button>
 
 
-                </Grid>
+                </StackPanel>
 
                 <TextBlock Text="Display"
                     Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
 
             </Grid>
-            <Grid
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="5" HorizontalAlignment="Right">
+
+                <Grid  BorderBrush="{ThemeResource RibbonColumnBorder}"
                 BorderThickness="0,0,1,0"
                 Padding="12"
-                Grid.Column="6" Margin="1013,5,-1107,9">
+                Grid.Column="6">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="72" />
-                    <RowDefinition Height="24" />
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="72" />
+                        <RowDefinition Height="24" />
+                    </Grid.RowDefinitions>
 
-                <Grid ColumnSpacing="8">
+                    <Grid ColumnSpacing="8">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="40" />
+                            <ColumnDefinition Width="Auto" MinWidth="40" />
+                        </Grid.ColumnDefinitions>
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="closeprintpreview"
-                        Width="40"
-                        MinWidth="40"
-                        MaxWidth="32"
-                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewclick" HorizontalAlignment="Center" Content="X"/>
-
-
-                </Grid>
-
-                <TextBlock Text="Close Preivew"
-                    Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
-
-            </Grid>
-            <Grid
-                BorderThickness="0,0,1,0"
-                Padding="12"
-                Grid.Column="6" Margin="878,5,-987,4">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="72" />
-                    <RowDefinition Height="24" />
-                </Grid.RowDefinitions>
-
-                <Grid ColumnSpacing="8">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                        <ColumnDefinition Width="Auto" MinWidth="40" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button x:Name="onepage2" Style="{StaticResource PaintUIButtonStyle}"
+                        <Button x:Name="onepage2" IsEnabled="False" Style="{StaticResource PaintUIButtonStyle}"
 
                         Width="40"
                         MinWidth="40"
                         MaxWidth="40"
-                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center" Content="\/"
+                        Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_4Async" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons" FontSize="24" Content=""
                                  />
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages2"
+                        <Button IsEnabled="False" Style="{StaticResource PaintUIButtonStyle}" x:Name="twopages2"
                         Width="40"
                         MinWidth="40"
                         MaxWidth="32"
                         Height="40"
-                        Grid.Column="1" VerticalAlignment="Top" Margin="0,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center" Content="/\"/>
+                        Grid.Column="1" VerticalAlignment="Top" Margin="10,10,0,0" Click="Button_Click_3Async" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons" FontSize="24" Content=""/>
 
 
-                </Grid>
+                    </Grid>
 
-                <TextBlock Text="Pages"
+                    <TextBlock Text="Pages"
                     Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
 
-            </Grid>
+                </Grid>
+                <Grid 
+            BorderThickness="0,0,1,0"
+            Padding="12"
+            Grid.Column="6">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="72" />
+                        <RowDefinition Height="24" />
+                    </Grid.RowDefinitions>
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}" x:Name="closeprintpreview"
+Width="40"
+MinWidth="40"
+MaxWidth="32"
+Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewclick" HorizontalAlignment="Center" Content="" FontSize="32" FontFamily="Segoe Fluent Icons"/>
+
+                    <TextBlock Text="Close Preview"
+                Style="{StaticResource ColumnDescriptionTextblockStyle}" Margin="0,1,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" />
+
+                </Grid>
+            </StackPanel>
 
         </Grid>
 
-        <Grid x:Name="ribbongrid" Background="{ThemeResource LayerFillColorDefaultBrush}"
+        <Grid x:Name="ribbongrid" Visibility="Visible" Background="{ThemeResource LayerFillColorDefaultBrush}"
               BorderBrush="{ThemeResource CardStrokeColorDefaultSolidBrush}"
               BorderThickness="0,1"
               Padding="4"
@@ -947,67 +930,80 @@ VerticalAlignment="Top"
                 Height="36"
                 Grid.Row="5"
                 Visibility="{x:Bind Mode=OneWay, Path=StatusbarToggle.IsChecked}">
-
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-
-
-                <ComboBox x:Name="ZoomComboBox"  ItemsSource="{x:Bind Path=ZoomOptions}" SelectedItem="{x:Bind Mode=TwoWay, Path=ZoomSlider.Value}" Margin="0,4,8,4"
-                           FontSize="12"
-                           VerticalAlignment="Center"
-                           IsEditable="True" Width="88">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Converter={StaticResource ZoomConverter}}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-
-                <Button Style="{StaticResource PaintUIButtonStyle}"
-                        FontSize="14"
-                        x:Name="DecreaseZoomButton"
-                        Click="DecreaseZoomButton_Click"
-                        Margin="4"
-                        Width="32"
-                        VerticalAlignment="Stretch"
-                        ToolTipService.ToolTip="Zoom out">
-                    <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="PageDown" Modifiers="Control" />
-                    </Button.KeyboardAccelerators>
-                    <Image x:Name="pastesimgfull" Width="16"
-                               Height="16"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Source="{ThemeResource ResourceKey=ZoomOut}" Stretch="Fill" />
+            <Grid>
+                <Button Width="80" Margin="10,5,0,5" Content="PREVIEW" FontSize="12" Padding="0,0,0,0" VerticalAlignment="Stretch" CornerRadius="2">
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel Orientation="Vertical" Spacing="12">
+                                <TextBlock Text="This is a preview version, many bugs may occur!"></TextBlock>
+                                <TextBlock Text="You can report bugs on the official GitHub page for the project:"></TextBlock>
+                                <Button Click="Button_Click_2" Content="RectifyPad GitHub"></Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
                 </Button>
+                <StackPanel x:Name="ZoomStack" Orientation="Horizontal"
+            HorizontalAlignment="Right">
 
-                <!--
-                
-                Did you ever notice that the slider's thumb in paint, is slightly clipped when the thumb is
-                near the edge of the slider?
-                
-                yeah that happens here too, not sure why tho
-                
-                -->
-                <Slider x:Name="ZoomSlider" Width="130" Maximum="3" Minimum="0.5" Value="1" ValueChanged="ZoomSlider_ValueChanged" TickPlacement="None" TickFrequency="0.25" StepFrequency="0.1" IsThumbToolTipEnabled="False" VerticalAlignment="Center"/>
-                
 
-                <Button Style="{StaticResource PaintUIButtonStyle}"
-                        FontSize="14"
-                        x:Name="IncreaseZoomButton"
-                        Margin="4"
-                        Width="32"
-                        Click="IncreaseZoomButton_Click"
-                        VerticalAlignment="Stretch"
-                        ToolTipService.ToolTip="Zoom in">
-                    <Image x:Name="zoomimgplys" Width="16"
-                               Height="16"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Source="{ThemeResource ResourceKey=ZoomIn}" />
-                </Button>
+                    <ComboBox x:Name="ZoomComboBox"  ItemsSource="{x:Bind Path=ZoomOptions}" SelectedItem="{x:Bind Mode=TwoWay, Path=ZoomSlider.Value}" Margin="0,4,8,4"
+               FontSize="12"
+               VerticalAlignment="Center"
+               IsEditable="True" Width="88">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource ZoomConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
 
-            </StackPanel>
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+            FontSize="14"
+            x:Name="DecreaseZoomButton"
+            Click="DecreaseZoomButton_Click"
+            Margin="4"
+            Width="32"
+            VerticalAlignment="Stretch"
+            ToolTipService.ToolTip="Zoom out">
+                        <Button.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="PageDown" Modifiers="Control" />
+                        </Button.KeyboardAccelerators>
+                        <Image x:Name="pastesimgfull" Width="16"
+                   Height="16"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Source="{ThemeResource ResourceKey=ZoomOut}" Stretch="Fill" />
+                    </Button>
+
+                    <!--
+    
+    Did you ever notice that the slider's thumb in paint, is slightly clipped when the thumb is
+    near the edge of the slider?
+    
+    yeah that happens here too, not sure why tho
+    
+    -->
+                    <Slider x:Name="ZoomSlider" Width="130" Maximum="3" Minimum="0.5" Value="1" ValueChanged="ZoomSlider_ValueChanged" TickPlacement="None" TickFrequency="0.25" StepFrequency="0.1" IsThumbToolTipEnabled="False" VerticalAlignment="Center"/>
+
+
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+            FontSize="14"
+            x:Name="IncreaseZoomButton"
+            Margin="4"
+            Width="32"
+            Click="IncreaseZoomButton_Click"
+            VerticalAlignment="Stretch"
+            ToolTipService.ToolTip="Zoom in">
+                        <Image x:Name="zoomimgplys" Width="16"
+                   Height="16"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Source="{ThemeResource ResourceKey=ZoomIn}" />
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            
 
         </Border>
 

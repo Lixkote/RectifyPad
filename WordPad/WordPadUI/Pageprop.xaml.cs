@@ -61,7 +61,7 @@ namespace WordPad.WordPadUI
             string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
             string text = marginsname.Text;
             // string newtext = text.Replace("unitplaceholder", unit);
-            string newtext = text.Replace("unitplaceholder", "W centymetrach");
+            string newtext = text.Replace("unitplaceholder", "");
             marginsname.Text = newtext;
         }
 

@@ -161,5 +161,10 @@ namespace WordPad.WordPadUI.Settings
             // Save the selected unit in app data
             Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"] = selectedWrap;
         }
+
+        private void SpellCheckToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

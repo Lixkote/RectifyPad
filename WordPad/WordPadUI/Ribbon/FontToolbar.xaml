@@ -13,9 +13,31 @@
     <UserControl.Resources>
         <Flyout x:Key="myColorPickerFlyout">
             <RelativePanel>
-                <ColorPicker x:Name="myColorPicker"
-                         IsColorChannelTextInputVisible="True"
-                         IsHexInputVisible="True"/>
+                <ColorPicker
+                    x:Name="myColorPicker"
+                    IsColorChannelTextInputVisible="False"
+                    IsHexInputVisible="True" />
+
+                <Grid
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.Below="myColorPicker">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Margin="0,12,2,0"
+                        HorizontalAlignment="Stretch"
+                        Click="ConfirmColor_Click"
+                        Content="OK" Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="2,12,0,0"
+                        HorizontalAlignment="Stretch"
+                        Click="CancelColor_Click"
+                        Content="Cancel" />
+                </Grid>
             </RelativePanel>
         </Flyout>
     </UserControl.Resources>
@@ -178,7 +200,7 @@
             </ComboBox>
 
             <ComboBox x:Name="fontSizeComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" IsEditable="True" 
-                               Margin="43,0,106,0" TextSubmitted="FontSizeCombo_TextSubmitted" ItemsSource="{x:Bind FontSizes}" PlaceholderText="Initial" Loaded="FontSizesComboBox_Loaded_1" SelectionChanged="FontSizeCombo_SelectionChanged">
+                               Margin="43,0,106,0" TextSubmitted="FontSizeCombo_TextSubmitted" ItemsSource="{x:Bind FontSizes}" PlaceholderText="" SelectionChanged="FontSizeCombo_SelectionChanged" SelectedIndex="3">
             </ComboBox>
             
             <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
@@ -504,7 +526,7 @@
                                     </Grid>
                                 </Button.Content>
                             </Button>
-                            <ToggleButton Width="155" x:Name="Autobutton" Style="{StaticResource PaintUIToggleButtonStyle}" FontFamily="Segoe UI" Height="35">
+                            <ToggleButton Width="155" x:Name="Autobutton" Checked="Autobutton_Checked" Unchecked="Autobutton_Unchecked" Style="{StaticResource PaintUIToggleButtonStyle}" FontFamily="Segoe UI" Height="35">
                                 <ToggleButton.Content>
                                     <Grid>
                                         <TextBlock Text="Automatical" Margin="25,0,0,0" FontSize="11"></TextBlock>
@@ -696,7 +718,7 @@
                                     </Button.Content>
                                 </Button>
                             </VariableSizedWrapGrid>
-                            <Button RelativePanel.Below="colorGrid2" Width="177" x:Name="NoColorButton" Margin="0,5,0,0" Style="{StaticResource PaintUIButtonStyle}" Height="35">
+                            <Button RelativePanel.Below="colorGrid2" Click="NoColorButton_Click" Width="177" x:Name="NoColorButton" Margin="0,5,0,0" Style="{StaticResource PaintUIButtonStyle}" Height="35">
                                 <Grid>
                                     <TextBlock Text="No color" Margin="31,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI" HorizontalAlignment="Left" Height="24">
                                     </TextBlock>

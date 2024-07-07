@@ -51,6 +51,19 @@ namespace WordPad.WordPadUI.Ribbon
             fontSizeComboBox.SelectedItem = Editor.FontSize;
         }
 
+        private void CancelColor_Click(object sender, RoutedEventArgs e)
+        // Cancel flyout
+        => colorPickerButton.Flyout.Hide();
+
+        private void ConfirmColor_Click(object sender, RoutedEventArgs e)
+        {
+            // Confirm color picker choice and apply color to text
+            Windows.UI.Color color = myColorPicker.Color;
+            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+
+            // Hide flyout
+            colorPickerButton.Flyout.Hide();
+        }
         public FontToolbar()
         {
             this.InitializeComponent();
@@ -81,7 +94,7 @@ namespace WordPad.WordPadUI.Ribbon
             // Set the selected item if:
             // - The value successfully parsed to double AND
             // - The value is in the list of sizes OR is a custom value between 8 and 100
-            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 100 && newValue > 8)))
+            if (isDouble && (FontSizes.Contains(newValue) || (newValue < 300 && newValue > 0)))
             {
                 // Update the SelectedItem to the new value. 
                 sender.SelectedItem = newValue;
@@ -94,7 +107,7 @@ namespace WordPad.WordPadUI.Ribbon
 
                 var dialog = new ContentDialog
                 {
-                    Content = "The font size must be a number between 8 and 100.",
+                    Content = "The font size must be a number between 0 and 300.",
                     CloseButtonText = "Close",
                     DefaultButton = ContentDialogButton.Close
                 };
@@ -307,6 +320,36 @@ namespace WordPad.WordPadUI.Ribbon
             updateFontFormat = false;
             FontsComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Name;
             updateFontFormat = true;
+        }
+
+        private void Autobutton_Checked(object sender, RoutedEventArgs e)
+        {
+            // Black is the default
+            Windows.UI.Color color = Windows.UI.Colors.Black;
+            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+        }
+
+        private void Autobutton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush fontColorMarkerBrush = FontColorMarker.Foreground as SolidColorBrush;
+            if (fontColorMarkerBrush != null)
+            {
+                Windows.UI.Color markerColor = fontColorMarkerBrush.Color;
+
+                // Set the selection color in the RichEditBox
+                var selectedText = Editor.Document.Selection;
+                if (selectedText != null)
+                {
+                    selectedText.CharacterFormat.ForegroundColor = markerColor;
+                }
+            }
+        }
+
+        private void NoColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Transparent is the default
+            Windows.UI.Color color = Windows.UI.Colors.Transparent;
+            Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
         }
     }
 }

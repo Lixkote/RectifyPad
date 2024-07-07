@@ -902,11 +902,17 @@ namespace RectifyPad
         private void pintpreview_Click(object sender, RoutedEventArgs e)
         {
             ribbongrid.Visibility = Visibility.Collapsed;
+            RulerBorder.Visibility = Visibility.Collapsed;
+            ZoomStack.Visibility = Visibility.Collapsed;
+            Editor.IsEnabled = false;
             PrintPreviewRibbon.Visibility = Visibility.Visible;
         }
         private void closeprintpreviewclick(object sender, RoutedEventArgs e)
         {
             ribbongrid.Visibility = Visibility.Visible;
+            RulerBorder.Visibility = Visibility.Visible;
+            ZoomStack.Visibility = Visibility.Visible;
+            Editor.IsEnabled = true;
             PrintPreviewRibbon.Visibility = Visibility.Collapsed;
         }
 
@@ -1895,6 +1901,22 @@ namespace RectifyPad
         private void Editor_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             TextRuler.Width = Editor.Width;
+        }
+
+        private async void PrintPreviewPrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            Editor.RequestedTheme = ElementTheme.Light;
+            string value = string.Empty;
+            _printHelper = new PrintHelper(EditorMandatoryPrintingGrid);
+            var printHelperOptions = new PrintHelperOptions(true);
+            printHelperOptions.Orientation = PrintOrientation.Default;
+            await _printHelper.ShowPrintUIAsync("Print Document", printHelperOptions, true);
+            Editor.RequestedTheme = ElementTheme.Default;
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/Lixkote/RectifyPad"));
         }
     }
 }

@@ -196,7 +196,7 @@
                 </ToolTipService.ToolTip>
                 <Button.Flyout>
                     <MenuFlyout>
-                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.0" x:Name="spacingradio1" Text="1,0" Click="RadioMenuFlyoutItem_Click"/>
+                        <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.0" x:Name="spacingradio1" Text="1,0" IsChecked="True" Click="RadioMenuFlyoutItem_Click"/>
                         <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.15" x:Name="spacingradio2" Text="1,15" Click="RadioMenuFlyoutItem_Click_1"/>
                         <muxc:RadioMenuFlyoutItem GroupName="s" Tag="1.5" x:Name="spacingradio3" Text="1,5" Click="RadioMenuFlyoutItem_Click_2"/>
                         <muxc:RadioMenuFlyoutItem GroupName="s" Tag="2" x:Name="spacingradio4" Text="2" Click="RadioMenuFlyoutItem_Click_3"/>
