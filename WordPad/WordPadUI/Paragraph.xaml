@@ -67,7 +67,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Uid="spacing" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Spacing" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBlock x:Uid="linespacing" Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Line spacing:" Grid.ColumnSpan="2" />
-            <ComboBox x:Name="LineSpacingCombo" PlaceholderText="Other" Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,0" SelectedIndex="0">
+            <ComboBox x:Name="LineSpacingCombo" Grid.Row="1" Grid.ColumnSpan="2" Width="135" HorizontalAlignment="Right" Margin="0,8,0,0">
                 <x:String>1,00</x:String>
                 <x:String>1,15</x:String>
                 <x:String>1,50</x:String>

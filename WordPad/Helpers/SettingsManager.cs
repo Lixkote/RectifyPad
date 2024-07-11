@@ -47,10 +47,10 @@ namespace WordPad.Helpers
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["fontsize"] = "11";
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersize"] = "A4";
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["papersource"] = "Auto";
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = "";
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = "";
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = "";
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = "";
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"] = "0";
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"] = "0";
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"] = "0";
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"] = "0";
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["isprintpagenumbers"] = "no";
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationL"] = "0";
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values["indentationR"] = "0";

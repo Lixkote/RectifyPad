@@ -328,16 +328,28 @@
                 </muxc:MenuBarItem>
                 <muxc:MenuBarItem Title="Edit" x:Uid="edit">
                     <MenuFlyoutItem Text="Cut" Click="Cut_Click">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="X"
+                                                 Modifiers="Control" />
+                        </MenuFlyoutItem.KeyboardAccelerators>
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Copy" x:Uid="copy" Click="Copy_Click">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="C"
+                                                 Modifiers="Control" />
+                        </MenuFlyoutItem.KeyboardAccelerators>
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem Text="Paste" x:Uid="paste" Click="MenuPaste_Click">
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="V"
+                                                 Modifiers="Control" />
+                        </MenuFlyoutItem.KeyboardAccelerators>
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
@@ -799,7 +811,7 @@ VerticalAlignment="Top"
             <Grid x:Name="EditorContainer">
                 <ScrollViewer x:Name="RichTextScrollView"  HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" MinZoomFactor="0.5" MaxZoomFactor="3" VerticalAlignment="Top">
                     <Grid x:Name="EditorMandatoryPrintingGrid" Height="1116"   Width="816">
-                        <RichEditBox x:Name="Editor" Padding="45,45,45,45" SizeChanged="Editor_SizeChanged" Height="1116" Width="816" Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <RichEditBox x:Name="Editor" Padding="45,45,45,45" KeyDown="Editor_KeyDown" SizeChanged="Editor_SizeChanged" Height="1116" Width="816" Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <RichEditBox.Resources>
                             <Storyboard x:Name="REBOpenAnimation">
                                 <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleX" From="0.95" To="1.0" Duration="0:0:0.4">
@@ -842,7 +854,7 @@ VerticalAlignment="Top"
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
                                     <MenuFlyoutItem.Icon>
-                                        <PathIcon Data="M 9 3 C 7 3 5 5 5 7 C 5 9 7 11 9 11 L 11 11 L 11 17 L 12 17 L 12 4 L 14 4 L 14 17 L 15 17 L 15 4 L 17 4 L 17 3 M 11 10 L 9 10 C 7.5 10 6 8.5 6 7 C 6 5.5 7.5 4 9 4 L 11 4" RenderTransformOrigin="0.5,0.5" Height="13" Width="14" />
+                                        <FontIcon Glyph="" FontSize="20" FontFamily="WordPad Fluent Icons"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSubItem Text="Lists">
