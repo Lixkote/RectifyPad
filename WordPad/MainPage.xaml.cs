@@ -183,10 +183,10 @@ namespace RectifyPad
                 if (!string.IsNullOrEmpty(unit) && !string.IsNullOrEmpty(Lmargin) && !string.IsNullOrEmpty(Rmargin) && !string.IsNullOrEmpty(Tmargin) && !string.IsNullOrEmpty(Bmargin))
                 {
                     // Convert margin values to match the unit and format them as needed
-                    double left = unitConverter.ConvertToUnitAndFormat(Lmargin, unit);
-                    double right = unitConverter.ConvertToUnitAndFormat(Rmargin, unit);
-                    double top = unitConverter.ConvertToUnitAndFormat(Tmargin, unit);
-                    double bottom = unitConverter.ConvertToUnitAndFormat(Bmargin, unit);
+                    // double left = unitConverter.ConvertToUnitAndFormat(Lmargin, unit);
+                    // double right = unitConverter.ConvertToUnitAndFormat(Rmargin, unit);
+                    // double top = unitConverter.ConvertToUnitAndFormat(Tmargin, unit);
+                    // double bottom = unitConverter.ConvertToUnitAndFormat(Bmargin, unit);
                 }
                 else
                 {
@@ -1851,10 +1851,10 @@ namespace RectifyPad
                 settings.Values["orientation"] = orientationportait.IsChecked == true ? "Portrait" : "Landscape";
 
                 // Save margin values
-                settings.Values["pagesetupLmargin"] = unitConverter.ConvertToUnit(double.Parse(LeftMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupRmargin"] = unitConverter.ConvertToUnit(double.Parse(RightMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupTmargin"] = unitConverter.ConvertToUnit(double.Parse(TopMarginTextBox.Text), marginsname.Text);
-                settings.Values["pagesetupBmargin"] = unitConverter.ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
+                // settings.Values["pagesetupLmargin"] = unitConverter.ConvertToUnit(double.Parse(LeftMarginTextBox.Text), marginsname.Text);
+                // settings.Values["pagesetupRmargin"] = unitConverter.ConvertToUnit(double.Parse(RightMarginTextBox.Text), marginsname.Text);
+                // settings.Values["pagesetupTmargin"] = unitConverter.ConvertToUnit(double.Parse(TopMarginTextBox.Text), marginsname.Text);
+                // settings.Values["pagesetupBmargin"] = unitConverter.ConvertToUnit(double.Parse(BottomMarginTextBox.Text), marginsname.Text);
 
                 // Save Print Page Numbers setting
                 settings.Values["isprintpagenumbers"] = printpagenumbers.IsChecked == true ? "yes" : "no";
