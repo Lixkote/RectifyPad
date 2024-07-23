@@ -11,10 +11,9 @@ RectifyPad is a modern and unofficial replacement for WordPad, written in C#. It
 - Standard WordPad features, such as basic text operations and inserting various multimedia items.
 - Modern Windows 11-style design, based on the new paint redesign.
 
-## Acknowledgements
-I would like to thank the following people for their contributions and inspiration:
- - [Jd](https://github.com/Jd-1206) for the initial concept and visual recreation of the lost application.
- - [WinEX](https://github.com/WinExperiments) from the Rectify11 Team for helping me with icon design and other aspects.
+## Credits
+ - [Jd](https://github.com/Jd-1206) for the initial concept of the application.
+ - [WinEX](https://github.com/WinExperiments) or helping me with icon design and other visual aspects.
 
 ## Getting started
 To run RectifyPad, you will need the following prerequisites:
@@ -33,7 +32,7 @@ To run RectifyPad, you will need the following prerequisites:
 - To test the app, compile it and run it in debug mode.
 
 ## Contributing
-If you want to contribute to RectifyPad, please contact me on the official Rectify11 Discord.
+If you want to contribute to RectifyPad, please contact me on the official Rectify11 Discord or using the alias 'lixkote'.
 
 ## Projects used
  - [TowPad](https://github.com/itsWindows11/TowPad) for some of the mechanics.
@@ -41,11 +40,5 @@ If you want to contribute to RectifyPad, please contact me on the official Recti
  - [Ivirius Text Editor Free](https://apps.microsoft.com/detail/9mv281zzf51p?hl=pl-pl&gl=TW) for the ruler code.
  - [Appxinstaller](https://github.com/aL3891/AppxInstaller/tree/master) for converting appx into msi.
  - [Syncfusion Doc.IO UWP](https://www.nuget.org/packages/Syncfusion.DocIO.UWP/19.2.0.51) for docx and doc support.
-
-## TO-DO
-  - Improve functionality.
-  - Possibly Implement OLE (Object Inserting and Embedding).
-  - Improve stability.
-  - 
   
 RectifyPad is licensed under the [MIT License](./LICENSE).
