@@ -29,6 +29,7 @@ To run RectifyPad, you will need the following prerequisites:
     ```
 
 - Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the RectifyPad app.
+- Install the font from here: https://github.com/Lixkote/RectifyPad/blob/Preview1/WordPad/Assets/WordPadIcons.ttf
 - To test the app, compile it and run it in debug mode.
 
 ## Contributing
