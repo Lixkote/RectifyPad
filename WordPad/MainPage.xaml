@@ -943,7 +943,7 @@ VerticalAlignment="Top"
                 Grid.Row="5"
                 Visibility="{x:Bind Mode=OneWay, Path=StatusbarToggle.IsChecked}">
             <Grid>
-                <Button Width="80" Margin="10,5,0,5" Content="PREVIEW" FontSize="12" Padding="0,0,0,0" VerticalAlignment="Stretch" CornerRadius="2">
+                <Button Width="25" Margin="10,5,0,5" Content="" FontFamily="Segoe Fluent Icons" FontSize="16" Padding="0,0,0,0" VerticalAlignment="Stretch" CornerRadius="2">
                     <Button.Flyout>
                         <Flyout>
                             <StackPanel Orientation="Vertical" Spacing="12">

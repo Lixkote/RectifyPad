@@ -227,6 +227,13 @@ namespace WordPad.WordPadUI.Ribbon
             ContentDialogResult result = await paragraphDialog.ShowAsync();
 
             // If the user clicked the OK button, adjust the properties of the RichEditBox
+            if (result == ContentDialogResult.Primary)
+            {
+                TabsDialog tabsDialog = new TabsDialog();
+                ContentDialogResult result2 = await tabsDialog.ShowAsync();
+            }
+
+            // If the user clicked the OK button, adjust the properties of the RichEditBox
             if (result == ContentDialogResult.Secondary)
             {
                 // Set properties of the RichEditBox based on the values from controls

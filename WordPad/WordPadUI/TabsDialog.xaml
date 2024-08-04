@@ -26,9 +26,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Tab stop position" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
-        <TextBox x:Name="EnteringBox" KeyDown="MyTextBox_KeyDown" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,10,0,0" />
+        <TextBox x:Name="EnteringBox" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,10,0,0" />
         <ListView Grid.Row="2" BorderThickness="1" CornerRadius="4" BorderBrush="{ThemeResource SystemChromeMediumColor}" Margin="0,10,0,0" Grid.ColumnSpan="3" Height="100">
-
+            <ListViewItem>Test item 1</ListViewItem>
         </ListView>
         <Button IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="0,10,0,0" Content="Set"></Button>
         <Button IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear" Grid.Column="1"></Button>
