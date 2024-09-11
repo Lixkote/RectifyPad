@@ -224,6 +224,11 @@
     <Content Include="Assets\SmallTile.scale-200.png" />
     <Content Include="Assets\SmallTile.scale-400.png" />
     <Content Include="Assets\splashw.png" />
+    <Content Include="Assets\splashw.scale-100.png" />
+    <Content Include="Assets\splashw.scale-125.png" />
+    <Content Include="Assets\splashw.scale-150.png" />
+    <Content Include="Assets\splashw.scale-200.png" />
+    <Content Include="Assets\splashw.scale-400.png" />
     <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Square150x150Logo.scale-125.png" />
