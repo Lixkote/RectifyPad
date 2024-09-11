@@ -192,11 +192,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\HolderSplash.scale-100.png" />
-    <Content Include="Assets\HolderSplash.scale-125.png" />
-    <Content Include="Assets\HolderSplash.scale-150.png" />
-    <Content Include="Assets\HolderSplash.scale-200.png" />
-    <Content Include="Assets\HolderSplash.scale-400.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -223,7 +218,6 @@
     <Content Include="Assets\SmallTile.scale-150.png" />
     <Content Include="Assets\SmallTile.scale-200.png" />
     <Content Include="Assets\SmallTile.scale-400.png" />
-    <Content Include="Assets\splashw.png" />
     <Content Include="Assets\splashw.scale-100.png" />
     <Content Include="Assets\splashw.scale-125.png" />
     <Content Include="Assets\splashw.scale-150.png" />
