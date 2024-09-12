@@ -426,9 +426,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Assets\WordPadIcons.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </PRIResource>
+    <Content Include="Assets\WordPadIcons.ttf" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw" />
