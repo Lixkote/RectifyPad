@@ -137,6 +137,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\CUnit.cs" />
+    <Compile Include="Editor.cs" />
     <Compile Include="Helpers\FileFormatsHelper.cs" />
     <Compile Include="Helpers\RecentlyUsedHelper.cs" />
     <Compile Include="Helpers\RecentlyUsedViewModel.cs" />

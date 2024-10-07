@@ -48,6 +48,7 @@ using DocumentFormat.OpenXml.Bibliography;
 using System.Drawing;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Input;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -1918,6 +1919,17 @@ namespace RectifyPad
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/Lixkote/RectifyPad"));
+        }
+
+        private void EOnKeyDown(KeyRoutedEventArgs e)
+        {
+            var ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control);
+
+            if (ctrl.HasFlag(CoreVirtualKeyStates.Down))
+            {
+                return;
+            }
+            base.OnKeyDown(e);
         }
 
         private void Editor_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

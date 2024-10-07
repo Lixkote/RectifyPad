@@ -376,18 +376,34 @@
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Save"
                     ToolTipService.Placement="Top"
-                    Content="&#xE74E;" Click="SaveButton_Click"/>
+                    Content="&#xE74E;" Click="SaveButton_Click">
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="S"
+                                                 Modifiers="Control" />
+                </Button.KeyboardAccelerators>
+            </Button>
             <AppBarSeparator />
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Undo"
                     ToolTipService.Placement="Top"
                     Content="&#xE7A7;"
-                    Click="Undo_Click" />
+                    Click="Undo_Click" 
+                    >
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="Z"
+                                                 Modifiers="Control" />
+                </Button.KeyboardAccelerators>
+            </Button>
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Redo"
                     ToolTipService.Placement="Top"
                     Content="&#xE7A6;"
-                    Click="Redo_Click" />
+                    Click="Redo_Click">
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="Y"
+                                                 Modifiers="Control" />
+                </Button.KeyboardAccelerators>
+            </Button>
         </StackPanel>
 
         <Button Style="{StaticResource MenuButton}"
@@ -811,7 +827,7 @@ VerticalAlignment="Top"
             <Grid x:Name="EditorContainer">
                 <ScrollViewer x:Name="RichTextScrollView"  HorizontalScrollBarVisibility="Visible" ZoomMode="Enabled" MinZoomFactor="0.5" MaxZoomFactor="3" VerticalAlignment="Top">
                     <Grid x:Name="EditorMandatoryPrintingGrid" Height="1116"   Width="816">
-                        <RichEditBox x:Name="Editor" Padding="45,45,45,45" KeyDown="Editor_KeyDown" SizeChanged="Editor_SizeChanged" Height="1116" Width="816" Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <local:Editor x:Name="Editor" Padding="45,45,45,45" SizeChanged="Editor_SizeChanged" Height="1116" Width="816" Style="{StaticResource MinEditStyleNeo}" SelectionChanged="editor_SelectionChanged" TextChanged="Editor_TextChanged" RenderTransformOrigin="0.5,0.5" IsSpellCheckEnabled="False" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <RichEditBox.Resources>
                             <Storyboard x:Name="REBOpenAnimation">
                                 <DoubleAnimation Storyboard.TargetName="REBScale" Storyboard.TargetProperty="ScaleX" From="0.95" To="1.0" Duration="0:0:0.4">
@@ -928,7 +944,7 @@ VerticalAlignment="Top"
                                 </MenuFlyoutSubItem>
                             </MenuFlyout>
                         </RichEditBox.ContextFlyout>
-                    </RichEditBox>
+                    </local:Editor>
                     </Grid>
                 </ScrollViewer>
             </Grid>
@@ -943,17 +959,6 @@ VerticalAlignment="Top"
                 Grid.Row="5"
                 Visibility="{x:Bind Mode=OneWay, Path=StatusbarToggle.IsChecked}">
             <Grid>
-                <Button Width="25" Margin="10,5,0,5" Content="" FontFamily="Segoe Fluent Icons" FontSize="16" Padding="0,0,0,0" VerticalAlignment="Stretch" CornerRadius="2">
-                    <Button.Flyout>
-                        <Flyout>
-                            <StackPanel Orientation="Vertical" Spacing="12">
-                                <TextBlock Text="This is a preview version, many bugs may occur!"></TextBlock>
-                                <TextBlock Text="You can report bugs on the official GitHub page for the project:"></TextBlock>
-                                <Button Click="Button_Click_2" Content="RectifyPad GitHub"></Button>
-                            </StackPanel>
-                        </Flyout>
-                    </Button.Flyout>
-                </Button>
                 <StackPanel x:Name="ZoomStack" Orientation="Horizontal"
             HorizontalAlignment="Right">
 

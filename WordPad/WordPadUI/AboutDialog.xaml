@@ -12,7 +12,7 @@
 
     <StackPanel Orientation="Vertical">
         <TextBlock x:Name="PackageVersionText" Text="RectifyPad Preview TargetOSver.yymm.day.revision" IsTextSelectionEnabled="True"/>
-        <TextBlock Text="© 2023 Lixkote." Padding="0,0,0,16"/>
+        <TextBlock Text="© 2024 Lixkote." Padding="0,0,0,16"/>
         <HyperlinkButton Content="Source code" HorizontalAlignment="Left" NavigateUri="https://github.com/Lixkote/WritePad"/>
     </StackPanel>
 </ContentDialog>
