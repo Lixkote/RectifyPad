@@ -9,7 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="120"
-    d:DesignWidth="264">
+    d:DesignWidth="264"
+    Loaded="UserControl_Loaded">
 
     <Grid x:Name="ParagraphGrid" BorderBrush="{ThemeResource RibbonColumnBorder}"
       BorderThickness="0,0,0,0"
@@ -108,7 +109,7 @@
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource Paragraph}}" Margin="0,2,0,-2" />
                 </Button.Content>
             </Button>
-            <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalToggleSplitButton}" x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20">
+            <muxc:ToggleSplitButton Template="{StaticResource PaintUIHorizontalToggleSplitButton}" x:Name="TextBulletingButton" Grid.Column="2" Grid.ColumnSpan="3" Width="77" Height="29" Padding="11,0,11,0" FontFamily="Segoe Fluent Icons" Content="" FontSize="20" Click="BulletButton_Click">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="List" />
                 </ToolTipService.ToolTip>

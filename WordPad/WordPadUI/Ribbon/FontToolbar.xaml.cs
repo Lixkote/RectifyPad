@@ -69,6 +69,11 @@ namespace WordPad.WordPadUI.Ribbon
             this.InitializeComponent();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Editor.SelectionChanged += Editor_SelectionChanged;
+        }
+
         private void FontSizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox comboBox)
@@ -292,11 +297,6 @@ namespace WordPad.WordPadUI.Ribbon
             FontsComboBox.SelectedItem = Editor.FontFamily;
         }
 
-        private void FontSizesComboBox_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            Editor.SelectionChanged += Editor_SelectionChanged;
-        }
-
         private void Editor_SelectionChanged(object sender, RoutedEventArgs args)
         {
             TextBoldButton.IsChecked = Editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
@@ -314,7 +314,7 @@ namespace WordPad.WordPadUI.Ribbon
 
             if (Editor.Document.Selection.CharacterFormat.Size > 0)
                 // Font size is negative when selection contains multiple font sizes
-                fontSizeComboBox.SelectedItem = Editor.Document.Selection.CharacterFormat.Size;
+                fontSizeComboBox.Text = Editor.Document.Selection.CharacterFormat.Size.ToString();
 
             // Prevent accidental font changes when selection contains multiple styles
             updateFontFormat = false;
