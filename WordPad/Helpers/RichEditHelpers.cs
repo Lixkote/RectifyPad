@@ -74,7 +74,8 @@ namespace WordPad.Helpers
                         charFormatting.Italic = charFormatting.Italic == FormatEffect.On ? FormatEffect.Off : FormatEffect.On;
                         break;
                     case FormattingMode.Underline:
-                        charFormatting.Underline = charFormatting.Underline == UnderlineType.Single ? UnderlineType.None : UnderlineType.Single;
+                        charFormatting.Underline = (charFormatting.Underline != UnderlineType.None && charFormatting.Underline != UnderlineType.Undefined) ? 
+                                                    UnderlineType.None : UnderlineType.Single;
                         break;
                     case FormattingMode.Strikethrough:
                         charFormatting.Strikethrough = charFormatting.Strikethrough == FormatEffect.On ? FormatEffect.Off : FormatEffect.On;

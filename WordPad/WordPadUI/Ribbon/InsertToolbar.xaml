@@ -40,7 +40,7 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutItem x:Name="MenuPicture" Text="Picture">
+                        <MenuFlyoutItem x:Name="MenuPicture" Text="Picture" Click="InsertImageButton_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xe91b;" FontSize="22" />
                             </MenuFlyoutItem.Icon>
@@ -61,8 +61,7 @@
 
             </Button>
 
-            <Button x:Name="InsertImageButtona"  Style="{StaticResource PaintUIButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Stretch" Margin="0,0,0,20"
-              >
+            <Button x:Name="InsertImageButtona"  Style="{StaticResource PaintUIButtonStyle}" Click="InsertImageButton_Click" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Stretch" Margin="0,0,0,20">
 
                 <Grid Height="22" Width="22">
                     <Image Width="24" Height="22" Source="{Binding Source={ThemeResource Image}}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
