@@ -73,7 +73,7 @@
                    Width="16"
                    Height="16"
                    Grid.Column="1" />
-                        <TextBlock x:Uid="apptitle"
+                        <TextBlock
                        x:Name="AppTitle"
                        Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
@@ -109,6 +109,19 @@
                                 <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
+                        <Grid CornerRadius="4" Background="{StaticResource ExpanderHeaderBackground}" BorderThickness="1" BorderBrush="{StaticResource ExpanderHeaderBorderBrush}" Height="60" Margin="0,5,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="49"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="156"/>
+                            </Grid.ColumnDefinitions>
+                            <FontIcon x:Name="EditorDarkIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
+                            <StackPanel Grid.Column="1"  VerticalAlignment="Center" Grid.ColumnSpan="2">
+                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Editor dark mode" />
+                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Experimental feature - Enables dark mode in the editor section" TextWrapping="WrapWholeWords" />
+                            </StackPanel>                            <ToggleSwitch x:Name="SpellChesckToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
+                        </Grid>
                         <TextBlock Style="{StaticResource SectionHeader}" Text="Words" Margin="0,10,0,10" />
                         <muxc:Expander
                             x:Name="Theme_Copy"
@@ -169,9 +182,24 @@
                                 <ColumnDefinition Width="156"/>
                             </Grid.ColumnDefinitions>
                             <FontIcon x:Name="SpellCheckIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
-                            <TextBlock Text="Spell check" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Height="19" Width="69" Grid.ColumnSpan="2">
-                            </TextBlock>
-                            <ToggleSwitch x:Name="SpellCheckToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
+                            <StackPanel Grid.Column="1"  VerticalAlignment="Center" Grid.ColumnSpan="2">
+                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="spellcheckset" Text="Spell check" />
+                            </StackPanel>
+                            <ToggleSwitch x:Name="SpellCheckToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154" HorizontalAlignment="Left"></ToggleSwitch>
+                        </Grid>
+                        <Grid CornerRadius="4" Background="{StaticResource ExpanderHeaderBackground}" BorderThickness="1" BorderBrush="{StaticResource ExpanderHeaderBorderBrush}" Height="60" Margin="0,5,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="49"/>
+                                <ColumnDefinition Width="77"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="156"/>
+                            </Grid.ColumnDefinitions>
+                            <FontIcon x:Name="AurocorrectIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
+                            <StackPanel Grid.Column="1"  VerticalAlignment="Center" Grid.ColumnSpan="2">
+                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="autocorrect" Text="Aurocorrect" />
+                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" x:Uid="autocorrecttext" FontWeight="SemiLight" Text="Typos are automatically corrected when spell check is turned on" TextWrapping="WrapWholeWords" />
+                            </StackPanel>
+                            <ToggleSwitch x:Name="AurocorrectToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
                         </Grid>
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">

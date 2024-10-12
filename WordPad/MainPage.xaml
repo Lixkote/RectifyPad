@@ -248,7 +248,7 @@
             <TextBlock
                        x:Name="AppTitle"
                        
-                x:Uid="apptitle"
+                
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3"/>
