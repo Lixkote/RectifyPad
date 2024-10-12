@@ -36,6 +36,11 @@ namespace WordPad.WordPadUI.Ribbon
             this.InitializeComponent();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Editor.SelectionChanged += editor_SelectionChanged;
+        }
+
         public object ConvertString2Float(string value, Type targetType, object parameter, string language)
         {
             // Convert a string to a float.
@@ -298,12 +303,18 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Focus(FocusState.Keyboard);
         }
 
-        private void BulletButton_Click(object sender, RoutedEventArgs e)
+        private void BulletButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs e)
         {
-            Button clickedBullet = (Button)sender;
-            Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
-
-            TextBulletingButton.IsChecked = true;
+            if (Editor.Document.Selection.ParagraphFormat.ListType != MarkerType.None)
+            {
+                Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.None;
+                TextBulletingButton.IsChecked = false;
+            }
+            else
+            {
+                Editor.Document.Selection.ParagraphFormat.ListType = MarkerType.Bullet;
+                TextBulletingButton.IsChecked = true;
+            }
             TextBulletingButton.Flyout.Hide();
             Editor.Focus(FocusState.Keyboard);
         }
@@ -352,6 +363,7 @@ namespace WordPad.WordPadUI.Ribbon
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Justify);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -359,6 +371,8 @@ namespace WordPad.WordPadUI.Ribbon
             AlignLeftButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
             AlignCenterButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
             AlignRightButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
+            AlignJustifyButton.IsChecked = Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Justify;
+            TextBulletingButton.IsChecked = Editor.Document.Selection.ParagraphFormat.ListType != MarkerType.None;
             if (Editor.Document.Selection.CharacterFormat.Size > 0)
             {
                 //font size is negative when selection contains multiple font sizes
@@ -379,28 +393,37 @@ namespace WordPad.WordPadUI.Ribbon
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Right);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void AlignLeftButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Left);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void AlignCenterButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Center);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void IndentationIncreaseRight_Click(object sender, RoutedEventArgs e)
         {
-
+            Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
+                                                                 Editor.Document.Selection.ParagraphFormat.LeftIndent + 10,
+                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent - 10);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void IndentationIncreaseLeft_Click(object sender, RoutedEventArgs e)
         {
-
+            Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
+                                                                 Editor.Document.Selection.ParagraphFormat.LeftIndent - 10,
+                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent + 10);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void RadioMenuFlyoutItem_Click(object sender, RoutedEventArgs e)

@@ -70,6 +70,7 @@ namespace WordPad.WordPadUI.Ribbon
                 {
                     string formattedDate = dateFormats[listView.SelectedIndex];
                     Editor.Document.Selection.Text = formattedDate;
+                    Editor.Focus(FocusState.Keyboard);
                 }
                 catch
                 {
@@ -235,6 +236,7 @@ namespace WordPad.WordPadUI.Ribbon
 
                 // Load the file into the Document property of the RichEditBox.
                 Editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "img", randAccStream);
+                Editor.Focus(FocusState.Keyboard);
             }
         }
 
