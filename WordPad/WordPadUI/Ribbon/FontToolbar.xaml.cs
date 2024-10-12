@@ -52,18 +52,24 @@ namespace WordPad.WordPadUI.Ribbon
         }
 
         private void CancelColor_Click(object sender, RoutedEventArgs e)
-        // Cancel flyout
-        => colorPickerButton.Flyout.Hide();
+        {
+            // Cancel flyout
+            colorPickerButton.Flyout.Hide();
+        }
 
         private void ConfirmColor_Click(object sender, RoutedEventArgs e)
         {
             // Confirm color picker choice and apply color to text
             Windows.UI.Color color = myColorPicker.Color;
             Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+            FontColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
 
             // Hide flyout
             colorPickerButton.Flyout.Hide();
+            FontTextColorDropDownButton.Flyout.Hide();
+            Editor.Focus(FocusState.Programmatic);
         }
+
         public FontToolbar()
         {
             this.InitializeComponent();
@@ -81,6 +87,7 @@ namespace WordPad.WordPadUI.Ribbon
                 if (comboBox.SelectedItem is double selectedValue)
                 {
                     Editor.Document.Selection.CharacterFormat.Size = (float)selectedValue;
+                    Editor.Focus(FocusState.Programmatic);
                 }
             }
         }
@@ -146,12 +153,16 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void FontTextColorDropDownButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {
-
+            var color = ((SolidColorBrush)FontColorMarker.Foreground).Color;
+            Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void FontBackgroundColorDropDownButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {
-
+            var color = ((SolidColorBrush)BackTextColorMarker.Foreground).Color;
+            Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void FontSizesComboBox_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
@@ -189,42 +200,43 @@ namespace WordPad.WordPadUI.Ribbon
 
             // Mark the event as handled so the framework doesn’t update the selected item automatically. 
             args.Handled = true;
-        }
-
-
-        private void FontsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Editor.Document.Selection.CharacterFormat.Name = FontsComboBox.SelectedValue.ToString();
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextBoldButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Bold);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextItalicButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Italic);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextUnderlineButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Underline);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextStrikethroughButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Strikethrough);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextSubscriptButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Subscript);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void TextSuperscriptButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.FormatSelected(RichEditHelpers.FormattingMode.Superscript);
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void FontEnlargeButton_Click(object sender, RoutedEventArgs e)
@@ -259,7 +271,7 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
             FontColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
 
-            // SplitButton.Flyout.Hide();
+            FontTextColorDropDownButton.Flyout.Hide();
             Editor.Focus(FocusState.Keyboard);
         }
 
@@ -274,7 +286,7 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
             BackTextColorMarker.SetValue(ForegroundProperty, new SolidColorBrush(color));
 
-            // SplitButton.Flyout.Hide();
+            FontBackgroundColorDropDownButton.Flyout.Hide();
             Editor.Focus(FocusState.Keyboard);
         }
 
@@ -290,11 +302,6 @@ namespace WordPad.WordPadUI.Ribbon
                 FontsComboBox.SelectedItem = "Calibri";
                 Editor.FontFamily = new FontFamily("Calibri");
             }
-        }
-
-        private void FontsComboBox_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            FontsComboBox.SelectedItem = Editor.FontFamily;
         }
 
         private void Editor_SelectionChanged(object sender, RoutedEventArgs args)
@@ -325,8 +332,10 @@ namespace WordPad.WordPadUI.Ribbon
         private void Autobutton_Checked(object sender, RoutedEventArgs e)
         {
             // Black is the default
-            Windows.UI.Color color = Windows.UI.Colors.Black;
+            Windows.UI.Color color = ActualTheme == ElementTheme.Light ? Windows.UI.Colors.Black : Windows.UI.Colors.White;
             Editor.Document.Selection.CharacterFormat.ForegroundColor = color;
+            FontTextColorDropDownButton.Flyout.Hide();
+            Editor.Focus(FocusState.Programmatic);
         }
 
         private void Autobutton_Unchecked(object sender, RoutedEventArgs e)
@@ -341,6 +350,8 @@ namespace WordPad.WordPadUI.Ribbon
                 if (selectedText != null)
                 {
                     selectedText.CharacterFormat.ForegroundColor = markerColor;
+                    FontTextColorDropDownButton.Flyout.Hide();
+                    Editor.Focus(FocusState.Programmatic);
                 }
             }
         }
@@ -350,6 +361,8 @@ namespace WordPad.WordPadUI.Ribbon
             // Transparent is the default
             Windows.UI.Color color = Windows.UI.Colors.Transparent;
             Editor.Document.Selection.CharacterFormat.BackgroundColor = color;
+            FontTextColorDropDownButton.Flyout.Hide();
+            Editor.Focus(FocusState.Programmatic);
         }
     }
 }

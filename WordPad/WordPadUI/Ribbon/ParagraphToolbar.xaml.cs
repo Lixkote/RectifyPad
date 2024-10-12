@@ -363,6 +363,7 @@ namespace WordPad.WordPadUI.Ribbon
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Justify);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -392,18 +393,21 @@ namespace WordPad.WordPadUI.Ribbon
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Right);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void AlignLeftButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Left);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void AlignCenterButton_Click(object sender, RoutedEventArgs e)
         {
             Editor.AlignSelectedTo(RichEditHelpers.AlignMode.Center);
             editor_SelectionChanged(sender, e);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void IndentationIncreaseRight_Click(object sender, RoutedEventArgs e)
@@ -411,6 +415,7 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
                                                                  Editor.Document.Selection.ParagraphFormat.LeftIndent + 10,
                                                                  Editor.Document.Selection.ParagraphFormat.RightIndent - 10);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void IndentationIncreaseLeft_Click(object sender, RoutedEventArgs e)
@@ -418,6 +423,7 @@ namespace WordPad.WordPadUI.Ribbon
             Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
                                                                  Editor.Document.Selection.ParagraphFormat.LeftIndent - 10,
                                                                  Editor.Document.Selection.ParagraphFormat.RightIndent + 10);
+            Editor.Focus(FocusState.Keyboard);
         }
 
         private void RadioMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
