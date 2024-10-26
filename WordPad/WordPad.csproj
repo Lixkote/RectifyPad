@@ -142,7 +142,7 @@
     <Compile Include="Helpers\RecentlyUsedHelper.cs" />
     <Compile Include="Helpers\RecentlyUsedViewModel.cs" />
     <Compile Include="Helpers\RichEditHelpers.cs" />
-    <Compile Include="Helpers\SettingsManager.cs" />
+    <Compile Include="Helpers\SettingsManagerMain.cs" />
     <Compile Include="Helpers\UnitManager.cs" />
     <Compile Include="Helpers\ZoomConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -177,6 +177,7 @@
     <Compile Include="WordPadUI\Ribbon\ParagraphToolbar.xaml.cs">
       <DependentUpon>ParagraphToolbar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WordPadUI\Settings\SettingsPageManager.cs" />
     <Compile Include="WordPadUI\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>

@@ -1,5 +1,7 @@
-﻿using RectifyPad;
+﻿using DocumentFormat.OpenXml.Drawing;
+using RectifyPad;
 using System;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -9,6 +11,7 @@ namespace WordPad.WordPadUI.Settings
 {
     public sealed partial class SettingsPage : Page
     {
+        private ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -26,11 +29,24 @@ namespace WordPad.WordPadUI.Settings
 
             // Initialize text wrapping radio buttons
             InitializeWrapRadioButtons();
+
+            if (localSettings.Values["IsDarkThemeEditor"] != null)
+            {
+                EditorDarkModeToggle.IsOn = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["IsDarkThemeEditor"];
+            }
+            if (localSettings.Values["isSpellCheckEnabled"] != null)
+            {
+                SpellCheckToggle.IsOn = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["isSpellCheckEnabled"];
+            }
+            if (localSettings.Values["isTextPredictEnabled"] != null)
+            {
+                AutocorrectToggle.IsOn = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["isTextPredictEnabled"];
+            }
         }
 
         private void InitializeThemeRadioButtons()
         {
-            string selectedTheme = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["theme"];
+            string selectedTheme = (string)localSettings.Values["theme"];
             if (!string.IsNullOrEmpty(selectedTheme))
             {
                 // Find the RadioButton with a matching Tag
@@ -48,7 +64,7 @@ namespace WordPad.WordPadUI.Settings
 
         private void InitializeWrapRadioButtons()
         {
-            string selectedWrap = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"];
+            string selectedWrap = (string)localSettings.Values["textwrapping"];
             if (!string.IsNullOrEmpty(selectedWrap))
             {
                 // Find the RadioButton with a matching Tag
@@ -65,7 +81,7 @@ namespace WordPad.WordPadUI.Settings
 
         private void InitializeUnitRadioButtons()
         {
-            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unit"];
+            string selectedUnit = (string)localSettings.Values["unit"];
             if (!string.IsNullOrEmpty(selectedUnit))
             {
                 // Find the RadioButton with a matching Tag
@@ -128,7 +144,7 @@ namespace WordPad.WordPadUI.Settings
             ApplyTheme(selectedTheme);
 
             // Save the selected theme in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["theme"] = selectedTheme;
+            localSettings.Values["theme"] = selectedTheme;
         }
 
         private void UnitRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -136,7 +152,7 @@ namespace WordPad.WordPadUI.Settings
             string selectedUnit = ((RadioButton)sender)?.Tag?.ToString();
 
             // Save the selected unit in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["unit"] = selectedUnit;
+            localSettings.Values["unit"] = selectedUnit;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -159,12 +175,40 @@ namespace WordPad.WordPadUI.Settings
             string selectedWrap = ((RadioButton)sender)?.Tag?.ToString();
 
             // Save the selected unit in app data
-            Windows.Storage.ApplicationData.Current.LocalSettings.Values["textwrapping"] = selectedWrap;
+            localSettings.Values["textwrapping"] = selectedWrap;
         }
 
         private void SpellCheckToggle_Toggled(object sender, RoutedEventArgs e)
         {
+            bool isSpellCheck = SpellCheckToggle.IsOn;
 
+            // Save the setting
+            localSettings.Values["isSpellCheckEnabled"] = isSpellCheck;
+
+            // Apply the theme using ThemeManager
+            SettingsPageManager.SetSpellCheck(isSpellCheck);
+        }
+
+        private void EditorDarkModeToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            bool isDarkTheme = EditorDarkModeToggle.IsOn;
+
+            // Save the setting
+            localSettings.Values["IsDarkThemeEditor"] = isDarkTheme;
+
+            // Apply the theme using ThemeManager
+            SettingsPageManager.SetTheme(isDarkTheme);
+        }
+
+        private void AutocorrectToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            bool isPredict = AutocorrectToggle.IsOn;
+
+            // Save the setting
+            localSettings.Values["isTextPredictEnabled"] = isPredict;
+
+            // Apply the theme using ThemeManager
+            SettingsPageManager.SetPredict(isPredict);
         }
     }
 }

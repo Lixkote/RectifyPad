@@ -8,7 +8,7 @@ using Windows.Storage;
 
 namespace WordPad.Helpers
 {
-    public class SettingsManager
+    public class SettingsManagerMain
     {
         public object GetSetting(string key)
         {

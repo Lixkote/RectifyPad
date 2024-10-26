@@ -246,12 +246,11 @@
                    Height="16"
                    Grid.Column="1" />
             <TextBlock
-                       x:Name="AppTitle"
-                       
+                       x:Name="AppTitle"                       
                 
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
-                       Grid.Column="3"/>
+                       Grid.Column="3" Text="Document - RectifyPad"/>
         </Grid>
 
         <StackPanel x:Name="MenuStack"
@@ -301,7 +300,7 @@
                         <MenuFlyoutItem AccessKey="O" Text="Other Format" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />
-                    <MenuFlyoutSubItem x:Uid="printmfsi" Text="Print">
+                    <MenuFlyoutSubItem x:Name="PrintSubItem" x:Uid="printmfsi" Text="Print">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE749;" />
                         </MenuFlyoutSubItem.Icon>
@@ -314,7 +313,7 @@
                         <MenuFlyoutItem x:Name="PageSetup" x:Uid="pgset" Text="Page setup" Click="PageSetup_Click"/>
                         <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Send" Click="SendButton_Click">
+                    <MenuFlyoutItem Text="Share" Click="SendButton_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE72D;" />
                         </MenuFlyoutItem.Icon>
@@ -373,6 +372,7 @@
                 </muxc:MenuBarItem>
             </muxc:MenuBar>
             <AppBarSeparator />
+            
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Save"
                     ToolTipService.Placement="Top"
@@ -383,17 +383,25 @@
                 </Button.KeyboardAccelerators>
             </Button>
             <AppBarSeparator />
+            <Button x:Name="ShareButton" Style="{StaticResource MenuButton}"
+        Content=""
+        ToolTipService.ToolTip="Settings"
+        ToolTipService.Placement="Bottom"
+        Click="ShareButton_Click" />
+            <AppBarSeparator />
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Undo"
                     ToolTipService.Placement="Top"
                     Content="&#xE7A7;"
                     Click="Undo_Click" 
                     >
+            
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Key="Z"
                                                  Modifiers="Control" />
                 </Button.KeyboardAccelerators>
             </Button>
+            
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Redo"
                     ToolTipService.Placement="Top"
@@ -406,12 +414,14 @@
             </Button>
         </StackPanel>
 
-        <Button Style="{StaticResource MenuButton}"
-                Content="&#xE115;"
-                ToolTipService.ToolTip="Settings"
-                ToolTipService.Placement="Bottom"
-                Grid.Row="2"
-                Click="Feedback_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button x:Name="SettingsButton" Style="{StaticResource MenuButton}"
+        Content="&#xE115;"
+        ToolTipService.ToolTip="Settings"
+        ToolTipService.Placement="Bottom"
+        Grid.Row="2"
+        Click="SettingsButton_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
+        </StackPanel>
         <Grid x:Name="PrintPreviewRibbon"
             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
             Background="{ThemeResource LayerFillColorDefaultBrush}"
@@ -962,6 +972,17 @@ VerticalAlignment="Top"
                 <StackPanel x:Name="ZoomStack" Orientation="Horizontal"
             HorizontalAlignment="Right">
 
+                    <Button Style="{StaticResource PaintUIButtonStyle}"
+            FontSize="14"
+            x:Name="AdjustZoomToWindowButton"
+            Margin="4,4,8,4"
+            Width="32"
+            CornerRadius="2"
+            Height="20"
+            Content=""
+            FontFamily="Segoe Fluent Icons"
+            VerticalAlignment="Stretch"
+            ToolTipService.ToolTip="Adjust to window"></Button>
 
                     <ComboBox x:Name="ZoomComboBox"  ItemsSource="{x:Bind Path=ZoomOptions}" SelectedItem="{x:Bind Mode=TwoWay, Path=ZoomSlider.Value}" Margin="0,4,8,4"
                FontSize="12"
@@ -973,6 +994,7 @@ VerticalAlignment="Top"
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    
 
                     <Button Style="{StaticResource PaintUIButtonStyle}"
             FontSize="14"
@@ -980,6 +1002,8 @@ VerticalAlignment="Top"
             Click="DecreaseZoomButton_Click"
             Margin="4"
             Width="32"
+                                        CornerRadius="2"
+            Height="20"
             VerticalAlignment="Stretch"
             ToolTipService.ToolTip="Zoom out">
                         <Button.KeyboardAccelerators>
@@ -1007,6 +1031,8 @@ VerticalAlignment="Top"
             FontSize="14"
             x:Name="IncreaseZoomButton"
             Margin="4"
+                        CornerRadius="2"
+            Height="20"
             Width="32"
             Click="IncreaseZoomButton_Click"
             VerticalAlignment="Stretch"

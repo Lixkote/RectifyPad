@@ -49,6 +49,7 @@ using System.Drawing;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
+using Windows.ApplicationModel.DataTransfer;
 
 // RectifyPad made by Lixkote with help of some others for Rectify11.
 // Main page c# source code.
@@ -75,8 +76,7 @@ namespace RectifyPad
         string originalDocText = "";
 
         UnitManager unitConverter = new UnitManager();
-
-        SettingsManager settingsManager = new SettingsManager();
+        SettingsManagerMain settingsManager = new SettingsManagerMain();
 
         public List<string> Fonts
         {
@@ -147,6 +147,40 @@ namespace RectifyPad
             // double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
             // double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
             // double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
+
+
+            // Load the saved settings and apply them
+            if (localSettings.Values["IsDarkThemeEditor"] != null)
+            {
+                EditorContainer.RequestedTheme = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["IsDarkThemeEditor"] ? ElementTheme.Dark : ElementTheme.Light;
+            }
+            if (localSettings.Values["isSpellCheckEnabled"] != null)
+            {
+                Editor.IsSpellCheckEnabled = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["isSpellCheckEnabled"] ? true : false;
+            } 
+            if (localSettings.Values["isTextPredictEnabled"] != null)
+            {
+                Editor.IsTextPredictionEnabled = (bool)Windows.Storage.ApplicationData.Current.LocalSettings.Values["isTextPredictEnabled"] ? true : false;
+            }
+            // Subscribe to theme change events
+            SettingsPageManager.ThemeChanged += ChangeEditorContainerTheme;
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += DataTransferManager_DataRequested;
+        }
+        public void ChangeEditorContainerTheme(bool isDarkThemeEditor)
+        {
+            EditorContainer.RequestedTheme = isDarkThemeEditor ? ElementTheme.Dark : ElementTheme.Light;
+            PrintSubItem.IsEnabled = isDarkThemeEditor ? false : true;
+        }
+
+        public void EnableEditorSpellCheck(bool isSpellCheckEnabled)
+        {
+            Editor.IsSpellCheckEnabled = isSpellCheckEnabled ? true : false;
+        }
+
+        public void EnableEditorAutocorrect(bool isTextPredictEnabled)
+        {
+            Editor.IsTextPredictionEnabled = isTextPredictEnabled ? true : false;
         }
 
         private void LoadSettingsValues()
@@ -492,11 +526,6 @@ namespace RectifyPad
             RectangleGeometry rectangle = new RectangleGeometry();
             rectangle.Rect = new Rect(0, 0, EditorContentHost.ActualWidth, EditorContentHost.ActualHeight);
             EditorContentHost.Clip = rectangle;
-        }
-
-        private void Feedback_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(SettingsPage));
         }
 
         private async void About_Click(object sender, RoutedEventArgs e)
@@ -1591,12 +1620,7 @@ namespace RectifyPad
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            EmailMessage emailMessage = new EmailMessage();
-            emailMessage.Subject = "Hello";
-            string value = string.Empty;
-            Editor.Document.GetText(TextGetOptions.None, out value);
-            emailMessage.Body = value;
-            await EmailManager.ShowComposeNewEmailAsync(emailMessage);
+            DataTransferManager.ShowShareUI();
         }
 
         private void AlignJustifyButton_Click(object sender, RoutedEventArgs e)
@@ -1941,6 +1965,39 @@ namespace RectifyPad
                 return;
             }
             base.OnKeyDown(e);
+        }
+
+        private void ShareButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataTransferManager.ShowShareUI();
+        }
+        async void DataTransferManager_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            DataRequest request = args.Request;
+            request.Data.Properties.Title = "My Custom Subject";
+
+            // Retrieve the RTF content from the RichEditBox.
+            string rtfContent;
+            Editor.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out rtfContent);
+
+            // Access the temporary folder.
+            var storageFolder = Windows.Storage.ApplicationData.Current.TemporaryFolder;
+            var fileName = "Document.rtf";
+
+            // Create a new file.
+            var rtfFile = await storageFolder.CreateFileAsync(fileName, Windows.Storage.CreationCollisionOption.ReplaceExisting);
+
+            // Write the RTF content to the new file.
+            await Windows.Storage.FileIO.WriteTextAsync(rtfFile, rtfContent);
+
+            // Attach the file to the DataRequest.
+            request.Data.SetStorageItems(new List<Windows.Storage.IStorageItem> { rtfFile });
+        }
+
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage));
         }
     }
 }

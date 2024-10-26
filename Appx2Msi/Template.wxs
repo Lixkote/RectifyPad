@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" UpgradeCode="7b0af2d8-d27b-4a07-9be5-88185a9153be"
-           Name="RectifyPad" Version="1.0.0" Manufacturer="Recitfy11 Team" Language="1033">
+           Name="RectifyPad" Version="11.2408.30" Manufacturer="Lixkote" Language="1033">
     <Package InstallerVersion="200" Compressed="yes" Comments="Windows Installer Package" Platform="x64"/>
     <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 

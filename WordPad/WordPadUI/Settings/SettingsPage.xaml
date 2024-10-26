@@ -50,7 +50,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <ScrollViewer.Content>
-            <Grid Padding="56.1,24,56,0" ColumnSpacing="56" Height="1066">
+            <Grid Padding="56.1,24,56,0" ColumnSpacing="56">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
                     <RowDefinition Height="Auto" />
@@ -104,8 +104,8 @@
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="radiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="LightRadio" IsEnabled="False" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="DarkRadio" IsEnabled="False" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="LightRadio"  GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="DarkRadio"  GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
                                 <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
@@ -119,8 +119,8 @@
                             <FontIcon x:Name="EditorDarkIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
                             <StackPanel Grid.Column="1"  VerticalAlignment="Center" Grid.ColumnSpan="2">
                                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Editor dark mode" />
-                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Experimental feature - Enables dark mode in the editor section" TextWrapping="WrapWholeWords" />
-                            </StackPanel>                            <ToggleSwitch x:Name="SpellChesckToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
+                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Experimental feature - Enables dark mode in the editor section. Printing is not possible with this setting turned on." TextWrapping="WrapWholeWords" />
+                            </StackPanel>                            <ToggleSwitch x:Name="EditorDarkModeToggle" Toggled="EditorDarkModeToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
                         </Grid>
                         <TextBlock Style="{StaticResource SectionHeader}" Text="Words" Margin="0,10,0,10" />
                         <muxc:Expander
@@ -199,12 +199,12 @@
                                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="autocorrect" Text="Aurocorrect" />
                                 <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" x:Uid="autocorrecttext" FontWeight="SemiLight" Text="Typos are automatically corrected when spell check is turned on" TextWrapping="WrapWholeWords" />
                             </StackPanel>
-                            <ToggleSwitch x:Name="AurocorrectToggle" Toggled="SpellCheckToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
+                            <ToggleSwitch x:Name="AutocorrectToggle" Toggled="AutocorrectToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
                         </Grid>
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" x:Uid="aboutapp" Text="About this app"/>
-                        <TextBlock x:Uid="packageversiontext" x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2311.1"/>
+                        <TextBlock x:Uid="packageversiontext" x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2408.30.0"/>
                         <TextBlock x:Uid="copyrighttext" x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2024 Lixkote. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/RectifyPad" >
                             <TextBlock x:Uid="srccode" Text="Source Code"/>
@@ -213,7 +213,7 @@
 
                         <Button x:Uid="feedback" x:Name="feedback" Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="feedback_Click" />
                         <TextBlock x:Name="GithubText" Margin="0,15,0,24">
-                            To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/Lixkote/RectifyPad" TextDecorations="None"> GitHub</Hyperlink> page
+                            To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
                     </StackPanel>
                     <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-55,23,0,0" VerticalAlignment="Top" Height="35" Width="44" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="16"/>

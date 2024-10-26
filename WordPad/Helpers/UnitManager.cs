@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static WordPad.Helpers.SettingsManager;
+using static WordPad.Helpers.SettingsManagerMain;
 
 ////////////////////////////////////////////////
 // Lixkote RectifyPad Project Unit Calculator //
