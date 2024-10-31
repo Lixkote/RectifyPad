@@ -2219,9 +2219,12 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    <FontFamily x:Key="CustomIconFont">/Assets/WordPadIcons.ttf#WordPad Fluent Icons</FontFamily>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <FontFamily x:Key="CustomIconFont">ms-appx:///Assets/WordPadIcons.ttf#WordPad Fluent Icons</FontFamily>
                 </ResourceDictionary>
             </controls:XamlControlsResources.MergedDictionaries>
         </controls:XamlControlsResources>
+        
     </Application.Resources>
 </Application>

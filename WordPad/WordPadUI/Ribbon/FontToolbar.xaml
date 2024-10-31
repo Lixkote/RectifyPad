@@ -167,7 +167,7 @@
                      Height="32"
                      Grid.Column="4"
                      Grid.Row="1"
-                     Margin="2,0,0,0" Grid.ColumnSpan="2" Click="TextSubscriptButton_Click" FontFamily="WordPad Fluent Icons">
+                     Margin="2,0,0,0" Grid.ColumnSpan="2" Click="TextSubscriptButton_Click">
                 <ToggleButton.Content>
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource BottomScript}}" />
                 </ToggleButton.Content>
@@ -207,7 +207,7 @@
             <muxc:SplitButton x:Name="FontTextColorDropDownButton" Template="{StaticResource PaintUIHorizontalSplitButton}" Grid.Column="6" Margin="-38,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontTextColorDropDownButton_Click" Height="27" Padding="0,0,0,0" UseLayoutRounding="True">
                 <muxc:SplitButton.Content>
                     <Grid>
-                        <FontIcon Glyph="" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
+                        <FontIcon x:Name="FontColorMarkerMain" Glyph="" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
                         <TextBlock x:Name="FontColorMarker" Text="&#xE8FC;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
                     </Grid>
                 </muxc:SplitButton.Content>
@@ -542,8 +542,8 @@
             <muxc:SplitButton Template="{StaticResource PaintUIHorizontalSplitButton}" x:Name="FontBackgroundColorDropDownButton" Grid.Column="6" Margin="43,0,0,0" Grid.Row="1" Width="77" FontFamily="WordPad Fluent Icons" FontSize="20" Click="FontBackgroundColorDropDownButton_Click" Height="27" Padding="0,0,0.2,0">
                 <muxc:SplitButton.Content>
                     <Grid>
-                        <FontIcon Glyph="&#xE8FF;" FontSize="20" FontFamily="WordPad Fluent Icons"></FontIcon>
-                        <TextBlock x:Name="BackTextColorMarker" Text="&#xE8FE;" FontFamily="WordPad Fluent Icons" FontSize="20" Foreground="Transparent"/>
+                        <FontIcon x:Name="BackTextColorMarkerMain" Glyph="&#xE8FF;" FontSize="20" ></FontIcon>
+                        <TextBlock x:Name="BackTextColorMarker" Text="&#xE8FE;" FontSize="20" Foreground="Transparent"/>
                     </Grid>
                 </muxc:SplitButton.Content>
                 <ToolTipService.ToolTip>

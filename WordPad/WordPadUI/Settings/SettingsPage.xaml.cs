@@ -6,6 +6,7 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace WordPad.WordPadUI.Settings
 {
@@ -15,6 +16,7 @@ namespace WordPad.WordPadUI.Settings
         public SettingsPage()
         {
             this.InitializeComponent();
+            WordWrapIcon.FontFamily = (FontFamily)Application.Current.Resources["CustomIconFont"];
         }
 
         protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)

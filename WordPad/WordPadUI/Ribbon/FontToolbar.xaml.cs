@@ -73,6 +73,10 @@ namespace WordPad.WordPadUI.Ribbon
         public FontToolbar()
         {
             this.InitializeComponent();
+            BackTextColorMarkerMain.FontFamily = (FontFamily)Application.Current.Resources["CustomIconFont"];
+            BackTextColorMarker.FontFamily = (FontFamily)Application.Current.Resources["CustomIconFont"]; 
+            FontColorMarkerMain.FontFamily = (FontFamily)Application.Current.Resources["CustomIconFont"];
+            FontColorMarker.FontFamily = (FontFamily)Application.Current.Resources["CustomIconFont"];
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

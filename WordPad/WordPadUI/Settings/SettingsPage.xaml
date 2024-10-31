@@ -134,7 +134,7 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </d:Grid.ColumnDefinitions>
-                                    <FontIcon x:Name="AppearanceIcon1" Glyph="" FontFamily="WordPad Fluent Icons" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                    <FontIcon x:Name="WordWrapIcon" Glyph="" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                     <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
                                         <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Word wrap" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
