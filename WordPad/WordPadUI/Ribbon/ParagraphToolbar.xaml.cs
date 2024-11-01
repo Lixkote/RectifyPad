@@ -35,6 +35,7 @@ namespace WordPad.WordPadUI.Ribbon
         {
             this.InitializeComponent();
         }
+        private ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -221,11 +222,11 @@ namespace WordPad.WordPadUI.Ribbon
             {
                 lineSpacingComboBox.SelectedItem = "2,00";
             }
-            leftTextBox.Text = Editor.Document.Selection.ParagraphFormat.LeftIndent.ToString();
+            leftTextBox.Text = Editor.Document.Selection.ParagraphFormat.LeftIndent.ToString() + " " + (string)localSettings.Values["unit"];
 
-            rightTextBox.Text = Editor.Document.Selection.ParagraphFormat.RightIndent.ToString();
+            rightTextBox.Text = Editor.Document.Selection.ParagraphFormat.RightIndent.ToString() + " " + (string)localSettings.Values["unit"];
 
-            firstLineTextBox.Text = Editor.Document.Selection.ParagraphFormat.FirstLineIndent.ToString();
+            firstLineTextBox.Text = Editor.Document.Selection.ParagraphFormat.FirstLineIndent.ToString() + " " + (string)localSettings.Values["unit"];
 
 
             // Show the dialog and wait for the user's input

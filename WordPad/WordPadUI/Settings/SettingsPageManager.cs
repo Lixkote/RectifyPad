@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace WordPad.WordPadUI.Settings
 {
@@ -73,6 +75,10 @@ namespace WordPad.WordPadUI.Settings
         public static bool GetPredictCheckBool()
         {
             return IsTextPredictEnabled ? true : false;
-        }
+        }     
+
+
+
+        
     }
 }

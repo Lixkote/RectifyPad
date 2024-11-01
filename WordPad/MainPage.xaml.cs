@@ -106,6 +106,20 @@ namespace RectifyPad
                 72
         };
 
+        private void SetLineSpacing(double lineSpacingValue, LineSpacingRule lineSpacingRule = LineSpacingRule.Exactly)
+        {
+            // Get the document from the RichEditBox
+            var document = Editor.Document;
+
+            // Select the entire document (or specify a different range if needed)
+            document.Selection.Expand(TextRangeUnit.Paragraph);
+
+            // Modify the line spacing using ITextParagraphFormat
+            var paragraphFormat = document.Selection.ParagraphFormat;
+
+            // Use SetLineSpacing to set both the rule and the spacing value
+            paragraphFormat.SetLineSpacing(lineSpacingRule, (float)lineSpacingValue);
+        }
 
         public MainPage()
         {
@@ -130,28 +144,6 @@ namespace RectifyPad
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
 
-            // Get the current unit value from settings
-            string selectedUnit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-
-            // Get the margin values from settings as strings
-            // double MarginLString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupLmargin"];
-            // double MarginRString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupRmargin"];
-            // double MarginBString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupBmargin"];
-            // double MarginTString = (double)Windows.Storage.ApplicationData.Current.LocalSettings.Values["pagesetupTmargin"];
-
-            // Convert string values to doubles
-            // double MarginLInches = double.Parse(MarginLString);
-            // double MarginRInches = double.Parse(MarginRString);
-            // double MarginBInches = double.Parse(MarginBString);
-            // double MarginTInches = double.Parse(MarginTString);
-
-            // Convert margin values based on the selected unit
-            // double MarginL = unitConverter.ConvertToPixels(MarginLString, selectedUnit);
-            // double MarginR = unitConverter.ConvertToPixels(MarginRString, selectedUnit);
-            // double MarginB = unitConverter.ConvertToPixels(MarginBString, selectedUnit);
-            // double MarginT = unitConverter.ConvertToPixels(MarginTString, selectedUnit);
-
-
             // Load the saved settings and apply them
             if (localSettings.Values["IsDarkThemeEditor"] != null)
             {
@@ -169,6 +161,7 @@ namespace RectifyPad
             SettingsPageManager.ThemeChanged += ChangeEditorContainerTheme;
             DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
             dataTransferManager.DataRequested += DataTransferManager_DataRequested;
+            SetLineSpacing(1, LineSpacingRule.Multiple); // Single spacing
         }
         public void ChangeEditorContainerTheme(bool isDarkThemeEditor)
         {
@@ -833,7 +826,7 @@ namespace RectifyPad
 
         private async void ParagraphButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowParagraphDialog();
+            pararibbontoolbar.ShowParagraphDialog();
         }
 
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -1666,7 +1659,7 @@ namespace RectifyPad
 
         private async void MenuParagraph_Click(object sender, RoutedEventArgs e)
         {
-            ShowParagraphDialog();
+            pararibbontoolbar.ShowParagraphDialog();
         }
 
         public string GetText(RichEditBox RichEditor)
@@ -1732,98 +1725,7 @@ namespace RectifyPad
             // RightIndent.Text = rightIndent.ToString();
         }
 
-        public async void ShowParagraphDialog()
-        {
-            // Create an instance of the ParagraphDialog
-            ParagraphDialog paragraphDialog = new ParagraphDialog();
-            TextBox leftTextBox = (TextBox)paragraphDialog.FindName("LeftIndentBox");
-            TextBox rightTextBox = (TextBox)paragraphDialog.FindName("RightIndentBox");
-            TextBox firstLineTextBox = (TextBox)paragraphDialog.FindName("OneLineBox");
-            ComboBox lineSpacingComboBox = (ComboBox)paragraphDialog.FindName("LineSpacingCombo");
-            ComboBox align = (ComboBox)paragraphDialog.FindName("AlignCombo");
-
-            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left)
-            {
-                align.SelectedItem = "Left";
-            }
-            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right)
-            {
-                align.SelectedItem = "Right";
-            }
-            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Justify)
-            {
-                align.SelectedItem = "Justified";
-            }
-            if (Editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center)
-            {
-                align.SelectedItem = "Center";
-            }
-            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
-                Editor.Document.Selection.ParagraphFormat.LineSpacing == 1)
-            {
-                lineSpacingComboBox.SelectedIndex = 0;
-            }
-            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
-                Editor.Document.Selection.ParagraphFormat.LineSpacing == (float)1.15)
-            {
-                lineSpacingComboBox.SelectedIndex = 1;
-            }
-            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
-                Editor.Document.Selection.ParagraphFormat.LineSpacing == (float)1.50)
-            {
-                lineSpacingComboBox.SelectedIndex = 2;
-            }
-            if (Editor.Document.Selection.ParagraphFormat.LineSpacingRule == LineSpacingRule.Multiple &&
-            Editor.Document.Selection.ParagraphFormat.LineSpacing == 2)
-            {
-                lineSpacingComboBox.SelectedIndex = 3;
-            }
-            leftTextBox.Text = Editor.Document.Selection.ParagraphFormat.LeftIndent.ToString();
-
-            rightTextBox.Text = Editor.Document.Selection.ParagraphFormat.RightIndent.ToString();
-
-            firstLineTextBox.Text = Editor.Document.Selection.ParagraphFormat.FirstLineIndent.ToString();
-
-
-            // Show the dialog and wait for the user's input
-            ContentDialogResult result = await paragraphDialog.ShowAsync();
-
-            // If the user clicked the OK button, adjust the properties of the RichEditBox
-            if (result == ContentDialogResult.Secondary)
-            {
-                // Set properties of the RichEditBox based on the values from controls
-                if (align.SelectedItem as string == "Left")
-                {
-                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
-                }
-                else if (align.SelectedItem as string == "Right")
-                {
-                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
-                }
-                else if (align.SelectedItem as string == "Justified")
-                {
-                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
-                }
-                else if (align.SelectedItem as string == "Center")
-                {
-                    Editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-                }
-
-                if (lineSpacingComboBox.SelectedItem != null)
-                {
-                    float selectedLineSpacing;
-                    if (float.TryParse(lineSpacingComboBox.SelectedItem.ToString(), out selectedLineSpacing))
-                    {
-                        Editor.Document.Selection.ParagraphFormat.SetLineSpacing(LineSpacingRule.Multiple, (float)selectedLineSpacing);
-                    }
-                }
-
-                float.TryParse(leftTextBox.Text, out float leftIndent);
-                float.TryParse(rightTextBox.Text, out float rightIndent);
-                float.TryParse(firstLineTextBox.Text, out float firstLineIndent);
-                SetParagraphIndents(leftIndent, rightIndent, firstLineIndent, false);
-            }
-        }
+        
 
         private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
