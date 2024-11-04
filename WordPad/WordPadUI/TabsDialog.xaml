@@ -7,6 +7,7 @@
     xmlns:Custom="using:Microsoft.UI.Xaml.Controls" x:Name="TabsDialog1"
     x:Class="WordPad.WordPadUI.TabsDialog"
     mc:Ignorable="d"
+    x:Uid="tabsdialog"
     Style="{StaticResource DefaultContentDialogStyle}"
     Title="Tabs"
     IsPrimaryButtonEnabled="False"
@@ -25,12 +26,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Tab stop position" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+        <TextBlock Margin="0,16,0,7" x:Uid="tabstopposition" Grid.Row="0" FontSize="14" Text="Tab stop position" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
         <TextBox x:Name="EnteringBox" TextChanged="EnteringBox_TextChanged" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,10,0,0" />
         <ListView x:Name="TabsPostitionsListView" Grid.Row="2" BorderThickness="1" CornerRadius="4" BorderBrush="{ThemeResource SystemChromeMediumColor}" Margin="0,10,0,0" Grid.ColumnSpan="3" Height="100">
         </ListView>
-        <Button x:Name="SetButton" Click="SetButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="0,10,0,0" Content="Set"></Button>
-        <Button x:Name="ClearButton" Click="ClearButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear" Grid.Column="1"></Button>
-        <Button x:Name="ClearAllButton" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear All" Grid.Column="2"></Button>
+        <Button x:Name="SetButton" x:Uid="tabsset" Click="SetButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="0,10,0,0" Content="Set"></Button>
+        <Button x:Name="ClearButton" x:Uid="tabsclear" Click="ClearButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear" Grid.Column="1"></Button>
+        <Button x:Name="ClearAllButton" x:Uid="tabsclearall" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear All" Grid.Column="2"></Button>
     </Grid>
 </ContentDialog>

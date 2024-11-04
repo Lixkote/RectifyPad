@@ -79,7 +79,7 @@
     <value>Z lewej:</value>
   </data>
   <data name="linespacing.Text" xml:space="preserve">
-    <value>Line spacing:</value>
+    <value>Interlinia:</value>
   </data>
   <data name="marginsnametr.Text" xml:space="preserve">
     <value>Marginesy (unitplaceholder)</value>
@@ -103,7 +103,7 @@
     <value>Ustawienia strony</value>
   </data>
   <data name="paintpicture.Content" xml:space="preserve">
-    <value>Paint a picture</value>
+    <value>Rysunek programu Paint</value>
   </data>
   <data name="paper.Text" xml:space="preserve">
     <value>Papier</value>
@@ -178,7 +178,7 @@
     <value>Wstaw obiekt</value>
   </data>
   <data name="TooltipPaint.Content" xml:space="preserve">
-    <value>Paint drawing</value>
+    <value>Rysunek programu Paint</value>
   </data>
   <data name="TooltipPicture.Content" xml:space="preserve">
     <value>Obraz</value>
@@ -227,7 +227,7 @@
     <value>Udostępnij</value>
   </data>
   <data name="toolbarsetbutton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>Otwórz ustawienia</value>
   </data>
   <data name="undobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
     <value>Cofnij (Ctrl+Z)</value>
@@ -243,5 +243,98 @@
   </data>
   <data name="closebuttonmenu.Text" xml:space="preserve">
     <value>Zakończ</value>
+  </data>
+  <data name="autocorrect.Text" xml:space="preserve">
+    <value>Autokorekta</value>
+  </data>
+  <data name="autocorrecttext.Text" xml:space="preserve">
+    <value>Literówki są poprawiane automatycznie po włączeniu sprawdzania pisowni</value>
+  </data>
+  <data name="spellcheckset.Text" xml:space="preserve">
+    <value>Pisownia</value>
+  </data>
+  <data name="darkeditor.Text" xml:space="preserve">
+    <value>Motyw ciemny edytora</value>
+  </data>
+  <data name="darkeditortext.Text" xml:space="preserve">
+    <value>Funkcja eksperymentalna - włącza motyw ciemny w oknie edytora. Drukowanie z tą opcją nie jest możliwe.</value>
+  </data>
+  <data name="spell.Text" xml:space="preserve">
+    <value>Pisownia</value>
+  </data>
+  <data name="measurement.Text" xml:space="preserve">
+    <value>Jednostki miary</value>
+  </data>
+  <data name="words.Text" xml:space="preserve">
+    <value>Formatowanie tekstu</value>
+  </data>
+  <data name="measurementunits.Text" xml:space="preserve">
+    <value>Jednostki miary</value>
+  </data>
+  <data name="sysradio.Content" xml:space="preserve">
+    <value>Ustawienie systemowe</value>
+  </data>
+  <data name="lightradio.Content" xml:space="preserve">
+    <value>Jasny</value>
+  </data>
+  <data name="darkradio.Content" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
+  <data name="measurementunitstext.Text" xml:space="preserve">
+    <value>Wybierz jednostki miary dla linijki i ustawień strony.</value>
+  </data>
+  <data name="inches.Content" xml:space="preserve">
+    <value>Cale</value>
+  </data>
+  <data name="centimeters.Content" xml:space="preserve">
+    <value>Centymetry</value>
+  </data>
+  <data name="points.Content" xml:space="preserve">
+    <value>Punkty</value>
+  </data>
+  <data name="picas.Content" xml:space="preserve">
+    <value>Cycera</value>
+  </data>
+  <data name="wrapruler.Content" xml:space="preserve">
+    <value>Zawijaj według linijki</value>
+  </data>
+  <data name="nowrap.Content" xml:space="preserve">
+    <value>Bez zawijania</value>
+  </data>
+  <data name="wrapwindow.Content" xml:space="preserve">
+    <value>Zawijaj według okna</value>
+  </data>
+  <data name="wordwrap" xml:space="preserve">
+    <value>Zawijanie wierszy</value>
+  </data>
+  <data name="wordwraptext.Text" xml:space="preserve">
+    <value>Wybierz opcję zawijania wierszy, aby zmienić sposób wyświetlania tekstu na ekranie. Nie wpłynie to na wygląd dokumentu po wydrukowaniu.</value>
+  </data>
+  <data name="notimplement1.Text" xml:space="preserve">
+    <value>Ta funkcja nie jest jeszcze dostępna.</value>
+  </data>
+  <data name="notimplement2.Text" xml:space="preserve">
+    <value>Jeśli chcesz, możesz pomóc w jej zaimplementowaniu, wykonując pull request na GitHubie.</value>
+  </data>
+  <data name="notimplementdialog.Title" xml:space="preserve">
+    <value>🚫 Przepraszamy, jeszcze nie możemy tego zrobić</value>
+  </data>
+  <data name="tabsclear.Content" xml:space="preserve">
+    <value>Wyczyść</value>
+  </data>
+  <data name="tabsclearall.Content" xml:space="preserve">
+    <value>Wyczyść wszystko</value>
+  </data>
+  <data name="tabsdialog.CloseButtonText" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="tabsdialog.Title" xml:space="preserve">
+    <value>Tabulatory</value>
+  </data>
+  <data name="tabsset.Content" xml:space="preserve">
+    <value>Ustaw</value>
+  </data>
+  <data name="tabstopposition.Text" xml:space="preserve">
+    <value>Pozycja tabulatora</value>
   </data>
 </root>

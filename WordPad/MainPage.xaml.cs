@@ -525,13 +525,6 @@ namespace RectifyPad
             EditorContentHost.Clip = rectangle;
         }
 
-        private async void About_Click(object sender, RoutedEventArgs e)
-        {
-            AboutDialog dialog = new AboutDialog();
-            await dialog.ShowAsync();
-
-        }
-
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
 

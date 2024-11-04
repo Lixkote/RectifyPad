@@ -644,7 +644,7 @@ Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewcl
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 <Grid.Children>
-                    <TextBlock Text="Font"
+                    <TextBlock Text="Font" x:Uid="FontToolbarTitle"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
                            Grid.Row="1" />
                     <Button
@@ -694,7 +694,7 @@ Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewcl
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 <Grid.Children>
-                    <TextBlock Text="Paragraph"
+                    <TextBlock Text="Paragraph" x:Uid="TitlePara"
                            Style="{StaticResource ColumnDescriptionTextblockStyle}"
                            Grid.Row="1" />
                     <Button
@@ -744,7 +744,7 @@ Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewcl
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 <Grid.Children>
-                    <TextBlock Text="Insert"
+                    <TextBlock Text="Insert" x:Uid="insertbox"
                Style="{StaticResource ColumnDescriptionTextblockStyle}"
                Grid.Row="1" />
                     <Button
@@ -794,7 +794,7 @@ Padding="12">
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 <Grid.Children>
-                    <TextBlock Text="Editing"
+                    <TextBlock Text="Editing" x:Uid="EditingText"
          Style="{StaticResource ColumnDescriptionTextblockStyle}"
          Grid.Row="1" />
                     <Button

@@ -75,6 +75,7 @@
                    Grid.Column="1" />
                         <TextBlock
                        x:Name="AppTitle"
+                            x:Uid="apptitle"
                        Text="Document - RectifyPad"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
@@ -104,9 +105,9 @@
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="radiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="LightRadio"  GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="DarkRadio"  GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
-                                <RadioButton x:Name="SysRadio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="LightRadio" x:Uid="lightradio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Light" Tag="Light" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="DarkRadio"  x:Uid="darkradio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="Dark" Tag="Dark" Checked="RadioButton_Checked"/>
+                                <RadioButton x:Name="SysRadio" x:Uid="sysradio" GroupName="t" Margin="{StaticResource ContentBottomNormalSpacing}" Content="System theme" Tag="System" Checked="RadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
                         <Grid CornerRadius="4" Background="{StaticResource ExpanderHeaderBackground}" BorderThickness="1" BorderBrush="{StaticResource ExpanderHeaderBorderBrush}" Height="60" Margin="0,5,0,0">
@@ -118,11 +119,11 @@
                             </Grid.ColumnDefinitions>
                             <FontIcon x:Name="EditorDarkIcon" VerticalAlignment="Center" Glyph="" Height="20"  />
                             <StackPanel Grid.Column="1"  VerticalAlignment="Center" Grid.ColumnSpan="2">
-                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Editor dark mode" />
-                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Experimental feature - Enables dark mode in the editor section. Printing is not possible with this setting turned on." TextWrapping="WrapWholeWords" />
+                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="darkeditor" Text="Editor dark mode" />
+                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" x:Uid="darkeditortext" FontWeight="SemiLight" Text="Experimental feature - Enables dark mode in the editor section. Printing is not possible with this setting turned on." TextWrapping="WrapWholeWords" />
                             </StackPanel>                            <ToggleSwitch x:Name="EditorDarkModeToggle" Toggled="EditorDarkModeToggle_Toggled" Grid.Column="3" Height="40" Width="154"></ToggleSwitch>
                         </Grid>
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Words" Margin="0,10,0,10" />
+                        <TextBlock Style="{StaticResource SectionHeader}" x:Uid="words" Text="Words" Margin="0,10,0,10" />
                         <muxc:Expander
                             x:Name="Theme_Copy"
                             HorizontalContentAlignment="Stretch"
@@ -136,18 +137,18 @@
                                     </d:Grid.ColumnDefinitions>
                                     <FontIcon x:Name="WordWrapIcon" Glyph="" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                     <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
-                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Word wrap" />
-                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
+                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="wordwrap" Text="Word wrap" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" x:Uid="wordwraptext" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
                                     </StackPanel>
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="wrapradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="NoWrap" GroupName="w" Tag="nowrap" Content="No wrap" Checked="WrapRadioButton_Checked"/>
-                                <RadioButton x:Name="WrapWindow" GroupName="w" Tag="wrapwindow" Content="Wrap to window" Checked="WrapRadioButton_Checked"/>
-                                <RadioButton x:Name="WrapRuler" GroupName="w" Tag="wrapruler" Content="Wrap to ruler" Checked="WrapRadioButton_Checked"/>
+                                <RadioButton x:Name="NoWrap" x:Uid="nowrap" GroupName="w" Tag="nowrap" Content="No wrap" Checked="WrapRadioButton_Checked"/>
+                                <RadioButton x:Name="WrapWindow" x:Uid="wrapwindow" GroupName="w" Tag="wrapwindow" Content="Wrap to window" Checked="WrapRadioButton_Checked"/>
+                                <RadioButton x:Name="WrapRuler" x:Uid="wrapruler" GroupName="w" Tag="wrapruler" Content="Wrap to ruler" Checked="WrapRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" Margin="0,10,0,10" />
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Measurement" x:Uid="measurement" Margin="0,10,0,10" />
                         <muxc:Expander
                             x:Name="Theme_Copy1"
                             HorizontalContentAlignment="Stretch"
@@ -161,19 +162,19 @@
                                     </d:Grid.ColumnDefinitions>
                                     <FontIcon x:Name="AppearanceIcon2" Glyph="" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                     <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
-                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Measurement units" />
-                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" Text="Select the measurement units for the ruler and page setup." TextWrapping="WrapWholeWords" />
+                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Measurement units"  x:Uid="measurementunits"/>
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="SemiLight" x:Uid="measurementunitstext" Text="Select the measurement units for the ruler and page setup." TextWrapping="WrapWholeWords" />
                                     </StackPanel>
                                 </Grid>
                             </muxc:Expander.Header>
                             <muxc:RadioButtons x:Name="unitradiocontainer" Margin="{StaticResource ContentLeftWideSpacing}">
-                                <RadioButton x:Name="inchesr" GroupName="u" Content="Inches" Tag="inches" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="centir" GroupName="u" Content="Centimeters" Tag="cm" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="poinr" GroupName="u" Content="Points" Tag="points" Checked="UnitRadioButton_Checked"/>
-                                <RadioButton x:Name="cicr" GroupName="u" Content="Picas" Tag="picas" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="inchesr" x:Uid="inches" GroupName="u" Content="Inches" Tag="inches" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="centir" x:Uid="centimeters" GroupName="u" Content="Centimeters" Tag="cm" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="poinr" x:Uid="points" GroupName="u" Content="Points" Tag="points" Checked="UnitRadioButton_Checked"/>
+                                <RadioButton x:Name="cicr" x:Uid="picas" GroupName="u" Content="Picas" Tag="picas" Checked="UnitRadioButton_Checked"/>
                             </muxc:RadioButtons>
                         </muxc:Expander>
-                        <TextBlock Style="{StaticResource SectionHeader}" Text="Spell" Margin="0,10,0,10" />
+                        <TextBlock Style="{StaticResource SectionHeader}" Text="Spell" x:Uid="spell" Margin="0,10,0,10" />
                         <Grid CornerRadius="4" Background="{StaticResource ExpanderHeaderBackground}" BorderThickness="1" BorderBrush="{StaticResource ExpanderHeaderBorderBrush}" Height="60">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="49"/>
@@ -204,7 +205,7 @@
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" x:Uid="aboutapp" Text="About this app"/>
-                        <TextBlock x:Uid="packageversiontext" x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2408.30.0"/>
+                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2408.30.0"/>
                         <TextBlock x:Uid="copyrighttext" x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2024 Lixkote. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/RectifyPad" >
                             <TextBlock x:Uid="srccode" Text="Source Code"/>
@@ -212,7 +213,7 @@
 
 
                         <Button x:Uid="feedback" x:Name="feedback" Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="feedback_Click" />
-                        <TextBlock x:Name="GithubText" Margin="0,15,0,24">
+                        <TextBlock  x:Name="GithubText" Margin="0,15,0,24">
                             To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
                     </StackPanel>

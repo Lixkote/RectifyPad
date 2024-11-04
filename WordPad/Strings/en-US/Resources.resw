@@ -349,4 +349,106 @@
   <data name="closebuttonmenu.Text" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="autocorrect.Text" xml:space="preserve">
+    <value>Autocorrect</value>
+  </data>
+  <data name="autocorrecttext.Text" xml:space="preserve">
+    <value>Typos are automatically corrected when spell check is turned on</value>
+  </data>
+  <data name="spellcheckset.Text" xml:space="preserve">
+    <value>Spell check</value>
+  </data>
+  <data name="darkeditor.Text" xml:space="preserve">
+    <value>Editor dark mode</value>
+  </data>
+  <data name="darkeditortext.Text" xml:space="preserve">
+    <value>Experimental feature - Enables dark mode in the editor section. Printing is not possible with this setting turned on.</value>
+  </data>
+  <data name="githubtext.Text" xml:space="preserve">
+    <value>To learn how you can contribute to Rectify11 and RectifyPad,  &lt;LineBreak/&gt;check out the projects on their &lt;Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"&gt; GitHub&lt;/Hyperlink&gt; page</value>
+  </data>
+  <data name="spell.Text" xml:space="preserve">
+    <value>Spell</value>
+  </data>
+  <data name="measurement.Text" xml:space="preserve">
+    <value>Measurement</value>
+  </data>
+  <data name="words.Text" xml:space="preserve">
+    <value>Words</value>
+  </data>
+  <data name="measurementunits.Text" xml:space="preserve">
+    <value>Measurement units</value>
+  </data>
+  <data name="sysradio.Content" xml:space="preserve">
+    <value>System theme</value>
+  </data>
+  <data name="lightradio.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="darkradio.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="measurementunitstext.Text" xml:space="preserve">
+    <value>Select the measurement units for the ruler and page setup.</value>
+  </data>
+  <data name="inches.Content" xml:space="preserve">
+    <value>Inches</value>
+  </data>
+  <data name="centimeters.Content" xml:space="preserve">
+    <value>Centimeters</value>
+  </data>
+  <data name="points.Content" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="picas.Content" xml:space="preserve">
+    <value>Picas</value>
+  </data>
+  <data name="wrapruler.Content" xml:space="preserve">
+    <value>Wrap to ruler</value>
+  </data>
+  <data name="nowrap.Content" xml:space="preserve">
+    <value>No wrap</value>
+  </data>
+  <data name="wrapwindow.Content" xml:space="preserve">
+    <value>Wrap to window</value>
+  </data>
+  <data name="wordwrap" xml:space="preserve">
+    <value>Word wrap</value>
+  </data>
+  <data name="wordwraptext.Text" xml:space="preserve">
+    <value>Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed.</value>
+  </data>
+  <data name="automatical.Text" xml:space="preserve">
+    <value>Automatical</value>
+  </data>
+  <data name="morecolors.Text" xml:space="preserve">
+    <value>More colors...</value>
+  </data>
+  <data name="notimplement1.Text" xml:space="preserve">
+    <value>This feature is not yet available.</value>
+  </data>
+  <data name="notimplement2.Text" xml:space="preserve">
+    <value>If you want, you can help to implement it by doing a pull request on GitHub.</value>
+  </data>
+  <data name="notimplementdialog.Title" xml:space="preserve">
+    <value>🚫 Sorry, we cannot do that yet</value>
+  </data>
+  <data name="tabsclear.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="tabsclearall.Content" xml:space="preserve">
+    <value>Clear all</value>
+  </data>
+  <data name="tabsdialog.CloseButtonText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="tabsdialog.Title" xml:space="preserve">
+    <value>Tabs</value>
+  </data>
+  <data name="tabsset.Content" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="tabstopposition.Text" xml:space="preserve">
+    <value>Tab stop position</value>
+  </data>
 </root>

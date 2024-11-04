@@ -522,7 +522,7 @@
                             <Button Style="{StaticResource PaintUIButtonStyle}" Flyout="{StaticResource myColorPickerFlyout}" RelativePanel.Below="colorGrid" Width="154" x:Name="colorPickerButton" FontFamily="Segoe UI" FontSize="11" Height="34">
                                 <Button.Content>
                                     <Grid>
-                                        <TextBlock Text="More colors..." Margin="25,0,0,0"></TextBlock>
+                                        <TextBlock x:Uid="morecolors" Text="More colors..." Margin="25,0,0,0"></TextBlock>
                                         <FontIcon Glyph="" HorizontalAlignment="Left" FontSize="16"></FontIcon>
                                     </Grid>
                                 </Button.Content>
@@ -530,7 +530,7 @@
                             <ToggleButton Width="155" x:Name="Autobutton" Checked="Autobutton_Checked" Unchecked="Autobutton_Unchecked" Style="{StaticResource PaintUIToggleButtonStyle}" FontFamily="Segoe UI" Height="35">
                                 <ToggleButton.Content>
                                     <Grid>
-                                        <TextBlock Text="Automatical" Margin="25,0,0,0" FontSize="11"></TextBlock>
+                                        <TextBlock x:Uid="Automatical" Text="Automatical" Margin="25,0,0,0" FontSize="11"></TextBlock>
                                         <FontIcon Glyph="" HorizontalAlignment="Left" FontSize="16"></FontIcon>
                                     </Grid>
                                 </ToggleButton.Content>

@@ -6,14 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Sorry, but we cannot do that yet 🙁"
-    SecondaryButtonText="Close"
+    Title="🚫 Sorry, we cannot do that yet"
+    x:Uid="notimplementdialog"
+    SecondaryButtonText="OK"
     Style="{StaticResource DefaultContentDialogStyle}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel>
-        <TextBlock Text="This feature/option is not yet implemented properly." />
-        <TextBlock Text="If you want, you can help us implement it by doing a pull request." />
+        <TextBlock x:Uid="notimplement1" Text="This feature is not yet available." />
+        <TextBlock x:Uid="notimplement2" Text="If you want, you can help to implement it by doing a pull request on GitHub." />
     </StackPanel>
 </ContentDialog>
