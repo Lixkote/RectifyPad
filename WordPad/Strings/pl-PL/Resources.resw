@@ -201,4 +201,47 @@
   <data name="portrait.Content" xml:space="preserve">
     <value>Pionowa</value>
   </data>
+  <data name="printpreview.Text" xml:space="preserve">
+    <value>Podgląd wydruku</value>
+  </data>
+  <data name="qprint.Text" xml:space="preserve">
+    <value>Szybkie drukowanie</value>
+  </data>
+  <data name="redobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ponów (Ctrl+Y) </value>
+  </data>
+  <data name="saveasdocx.Text" xml:space="preserve">
+    <value>Dokument Office Open XML</value>
+  </data>
+  <data name="saveasrtf.Text" xml:space="preserve">
+    <value>Dokument sformatowany</value>
+    <comment>Save the document in the Rich Text Format</comment>
+  </data>
+  <data name="savebutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Zapisz (Ctrl+S)</value>
+  </data>
+  <data name="sharebuttonmenu.Text" xml:space="preserve">
+    <value>Udostępnij</value>
+  </data>
+  <data name="sharebuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Udostępnij</value>
+  </data>
+  <data name="toolbarsetbutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="undobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cofnij (Ctrl+Z)</value>
+  </data>
+  <data name="saveasodt.Text" xml:space="preserve">
+    <value>Tekst w formacie OpenDocument</value>
+  </data>
+  <data name="saveastxt.Text" xml:space="preserve">
+    <value>Dokument tekstowy</value>
+  </data>
+  <data name="saveasother.Text" xml:space="preserve">
+    <value>Inne formaty</value>
+  </data>
+  <data name="closebuttonmenu.Text" xml:space="preserve">
+    <value>Zakończ</value>
+  </data>
 </root>

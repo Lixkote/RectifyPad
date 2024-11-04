@@ -247,7 +247,7 @@
                    Grid.Column="1" />
             <TextBlock
                        x:Name="AppTitle"                       
-                
+                       x:Uid="apptitle"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
                        Grid.Column="3" Text="Document - RectifyPad"/>
@@ -295,33 +295,40 @@
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE792;" />
                         </MenuFlyoutSubItem.Icon>
-                        <MenuFlyoutItem AccessKey="R" Text="RTF" x:Name="SaveAsRTF" Click="SaveAsRTF_Click"/>
-                        <MenuFlyoutItem AccessKey="T" Text="TXT" x:Name="SaveAsTXT" Click="SaveAsTXT_Click"/>
-                        <MenuFlyoutItem AccessKey="O" Text="Other Format" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
+                        <MenuFlyoutItem AccessKey="R" Text="RTF" x:Uid="saveasrtf" x:Name="SaveAsRTF" Click="SaveAsRTF_Click"/>
+                        <MenuFlyoutItem AccessKey="D" Text="DOCX" x:Uid="saveasdocx" x:Name="SaveAsDOCX"/>
+                        <MenuFlyoutItem AccessKey="O" Text="ODT" x:Uid="saveasodt" x:Name="SaveAsODT"/>
+                        <MenuFlyoutItem AccessKey="T" Text="TXT" x:Uid="saveastxt" x:Name="SaveAsTXT" Click="SaveAsTXT_Click"/>
+                        <MenuFlyoutItem AccessKey="F" Text="Other format" x:Uid="saveasother" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />
                     <MenuFlyoutSubItem x:Name="PrintSubItem" x:Uid="printmfsi" Text="Print">
                         <MenuFlyoutSubItem.Icon>
                             <FontIcon Glyph="&#xE749;" />
                         </MenuFlyoutSubItem.Icon>
-                        <MenuFlyoutItem Text="Print" Click="MenuFlyoutItem_Click">
+                        <MenuFlyoutItem Text="Print" x:Uid="printmfsi" Click="MenuFlyoutItem_Click">
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="P"
                                                      Modifiers="Control" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="PageSetup" x:Uid="pgset" Text="Page setup" Click="PageSetup_Click"/>
-                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" Click="pintpreview_Click"/>
+                        <MenuFlyoutItem x:Name="QuickPrint" Text="Quick print" x:Uid="qprint" Click="QuickPrint_Click"/>
+                        <MenuFlyoutItem Text="Print preview" x:Name="pintpreview" x:Uid="printpreview" Click="pintpreview_Click"/>
                     </MenuFlyoutSubItem>
-                    <MenuFlyoutItem Text="Share" Click="SendButton_Click">
+                    <MenuFlyoutItem Text="Page setup" x:Uid="pgset" x:Name="PageSetupMenuItem" Click="PageSetupMenuItem_Click">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon Glyph="" />
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+                    <MenuFlyoutItem x:Uid="sharebuttonmenu" Click="SendButton_Click">
                         <MenuFlyoutItem.Icon>
                             <FontIcon Glyph="&#xE72D;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
-                    <MenuFlyoutSeparator />
-                    <MenuFlyoutItem Text="Page Setup" x:Name="PageSetupMenuItem" Click="PageSetupMenuItem_Click">
+                    <MenuFlyoutSeparator></MenuFlyoutSeparator>
+                    <MenuFlyoutItem x:Name="CloseMenuFlyoutItem" x:Uid="closebuttonmenu" Click="CloseMenuFlyoutItem_Click">
                         <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE160;" />
+                            <FontIcon Glyph="" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                 </muxc:MenuBarItem>
@@ -375,6 +382,7 @@
             
             <Button Style="{StaticResource MenuButton}"
                     ToolTipService.ToolTip="Save"
+                    x:Uid="savebutton"
                     ToolTipService.Placement="Top"
                     Content="&#xE74E;" Click="SaveButton_Click">
                 <Button.KeyboardAccelerators>
@@ -385,12 +393,13 @@
             <AppBarSeparator />
             <Button x:Name="ShareButton" Style="{StaticResource MenuButton}"
         Content=""
-        ToolTipService.ToolTip="Settings"
-        ToolTipService.Placement="Bottom"
+        ToolTipService.ToolTip="Share"
+        ToolTipService.Placement="Top"
+                    x:Uid="sharebuttontoolbar"
         Click="ShareButton_Click" />
             <AppBarSeparator />
             <Button Style="{StaticResource MenuButton}"
-                    ToolTipService.ToolTip="Undo"
+                    x:Uid="undobuttontoolbar"
                     ToolTipService.Placement="Top"
                     Content="&#xE7A7;"
                     Click="Undo_Click" 
@@ -403,7 +412,7 @@
             </Button>
             
             <Button Style="{StaticResource MenuButton}"
-                    ToolTipService.ToolTip="Redo"
+                    x:Uid="redobuttontoolbar"
                     ToolTipService.Placement="Top"
                     Content="&#xE7A6;"
                     Click="Redo_Click">
@@ -417,7 +426,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
             <Button x:Name="SettingsButton" Style="{StaticResource MenuButton}"
         Content="&#xE115;"
-        ToolTipService.ToolTip="Settings"
+                    x:Uid="toolbarsetbutton"
         ToolTipService.Placement="Bottom"
         Grid.Row="2"
         Click="SettingsButton_Click" Margin="0,0,8,0" HorizontalAlignment="Right" />
@@ -696,12 +705,12 @@ Height="40" VerticalAlignment="Top" Margin="0,10,0,0" Click="closeprintpreviewcl
                         <Button.Content>
                             <StackPanel>
                                 <StackPanel.Children>
-                                    <FontIcon Width="24"
+                                    <FontIcon x:Name="ParagraphIconHost" Width="24"
                                Height="24" FontSize="24" Glyph=""
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                                 Margin="0,0,0,2" FontFamily="WordPad Fluent Icons" />
-                                    <FontIcon x:Name="ParagraphMenuIcon" FontSize="8" Glyph="" VerticalAlignment="Bottom" Margin="0,2,0,0" />
+                                 Margin="0,0,0,2" />
+                                    <FontIcon x:Name="ParagraphMenuIcon" FontSize="8" FontFamily="Segoe Fluent Icons" Glyph="" VerticalAlignment="Bottom" Margin="0,2,0,0" />
                                 </StackPanel.Children>
                             </StackPanel>
                         </Button.Content>
@@ -880,7 +889,7 @@ VerticalAlignment="Top"
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
                                     <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="" x:Name="MenuParagraphIcon"  FontSize="20" FontFamily="WordPad Fluent Icons"/>
+                                            <FontIcon Glyph="" x:Name="MenuParagraphIcon"  FontSize="20"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSubItem Text="Lists">

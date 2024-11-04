@@ -443,14 +443,10 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\pl-PL\Resources.resw" />
     <PRIResource Include="Strings\qps-ploc\Resources.resw" />
-    <PRIResource Include="Strings\pl\Resources.resw" />
     <None Include="WordPad_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\WordPad.pl-PL.xlf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </XliffResource>
-    <XliffResource Include="MultilingualResources\WordPad.pl.xlf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </XliffResource>
     <XliffResource Include="MultilingualResources\WordPad.qps-ploc.xlf" />

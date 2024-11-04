@@ -258,6 +258,63 @@
           <source>Portrait</source>
           <target state="translated">Pionowa</target>
         </trans-unit>
+        <trans-unit id="printpreview.Text" translate="yes" xml:space="preserve">
+          <source>Print preview</source>
+          <target state="translated">Podgląd wydruku</target>
+        </trans-unit>
+        <trans-unit id="qprint.Text" translate="yes" xml:space="preserve">
+          <source>Quick print</source>
+          <target state="translated">Szybkie drukowanie</target>
+        </trans-unit>
+        <trans-unit id="redobuttontoolbar.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Redo</source>
+          <target state="translated">Ponów (Ctrl+Y) </target>
+        </trans-unit>
+        <trans-unit id="saveasdocx.Text" translate="yes" xml:space="preserve">
+          <source>Office Open XML document</source>
+          <target state="translated">Dokument Office Open XML</target>
+        </trans-unit>
+        <trans-unit id="saveasrtf.Text" translate="yes" xml:space="preserve">
+          <source>Rich Text document</source>
+          <target state="translated">Dokument sformatowany</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Save the document in the Rich Text Format</note>
+        </trans-unit>
+        <trans-unit id="savebutton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Save (Ctrl+S)</source>
+          <target state="translated">Zapisz (Ctrl+S)</target>
+        </trans-unit>
+        <trans-unit id="sharebuttonmenu.Text" translate="yes" xml:space="preserve">
+          <source>Share</source>
+          <target state="translated">Udostępnij</target>
+        </trans-unit>
+        <trans-unit id="sharebuttontoolbar.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Share</source>
+          <target state="translated">Udostępnij</target>
+        </trans-unit>
+        <trans-unit id="toolbarsetbutton.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Ustawienia</target>
+        </trans-unit>
+        <trans-unit id="undobuttontoolbar.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Undo</source>
+          <target state="translated">Cofnij (Ctrl+Z)</target>
+        </trans-unit>
+        <trans-unit id="saveasodt.Text" translate="yes" xml:space="preserve">
+          <source>OpenDocument text</source>
+          <target state="translated">Tekst w formacie OpenDocument</target>
+        </trans-unit>
+        <trans-unit id="saveastxt.Text" translate="yes" xml:space="preserve">
+          <source>Plain text document</source>
+          <target state="translated">Dokument tekstowy</target>
+        </trans-unit>
+        <trans-unit id="saveasother.Text" translate="yes" xml:space="preserve">
+          <source>Other formats</source>
+          <target state="translated">Inne formaty</target>
+        </trans-unit>
+        <trans-unit id="closebuttonmenu.Text" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <target state="translated">Zakończ</target>
+        </trans-unit>
       </group>
     </body>
   </file>

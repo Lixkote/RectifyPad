@@ -138,8 +138,9 @@ namespace RectifyPad
             PopulateRecents();
             ConnectRibbonToolbars();
 
-            ParagraphMenuIcon.FontFamily = (Windows.UI.Xaml.Media.FontFamily)Application.Current.Resources["CustomIconFont"];
+            // ParagraphMenuIcon.FontFamily = (Windows.UI.Xaml.Media.FontFamily)Application.Current.Resources["CustomIconFont"];
             MenuParagraphIcon.FontFamily = (Windows.UI.Xaml.Media.FontFamily)Application.Current.Resources["CustomIconFont"];
+            ParagraphIconHost.FontFamily = (Windows.UI.Xaml.Media.FontFamily)Application.Current.Resources["CustomIconFont"];
 
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
             ribbongrid.DataContext = this;
@@ -1903,6 +1904,16 @@ namespace RectifyPad
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void QuickPrint_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

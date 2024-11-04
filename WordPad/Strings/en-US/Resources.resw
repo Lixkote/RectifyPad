@@ -246,8 +246,17 @@
   <data name="printpageTR.Content" xml:space="preserve">
     <value>Print Page Numbers</value>
   </data>
+  <data name="printpreview.Text" xml:space="preserve">
+    <value>Print preview</value>
+  </data>
+  <data name="qprint.Text" xml:space="preserve">
+    <value>Quick print</value>
+  </data>
   <data name="recentmenuitem.Text" xml:space="preserve">
     <value>Recent</value>
+  </data>
+  <data name="redobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Redo</value>
   </data>
   <data name="righti.Text" xml:space="preserve">
     <value>Right:</value>
@@ -261,6 +270,16 @@
   <data name="saveasmenuitem.Text" xml:space="preserve">
     <value>Save as</value>
   </data>
+  <data name="saveasdocx.Text" xml:space="preserve">
+    <value>Office Open XML document</value>
+  </data>
+  <data name="saveasrtf.Text" xml:space="preserve">
+    <value>Rich Text document</value>
+    <comment>Save the document in the Rich Text Format</comment>
+  </data>
+  <data name="savebutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save (Ctrl+S)</value>
+  </data>
   <data name="savemenuitem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -269,6 +288,12 @@
   </data>
   <data name="settings.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="sharebuttonmenu.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="sharebuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Share</value>
   </data>
   <data name="size.Text" xml:space="preserve">
     <value>Size</value>
@@ -288,6 +313,9 @@
   <data name="TitlePara.Text" xml:space="preserve">
     <value>Paragraph</value>
   </data>
+  <data name="toolbarsetbutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="TooltipDateTime.Content" xml:space="preserve">
     <value>Date and time</value>
   </data>
@@ -303,7 +331,22 @@
   <data name="toptr.Text" xml:space="preserve">
     <value>Top:</value>
   </data>
+  <data name="undobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Undo</value>
+  </data>
   <data name="view.Title" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="saveasodt.Text" xml:space="preserve">
+    <value>OpenDocument text</value>
+  </data>
+  <data name="saveastxt.Text" xml:space="preserve">
+    <value>Plain text document</value>
+  </data>
+  <data name="saveasother.Text" xml:space="preserve">
+    <value>Other formats</value>
+  </data>
+  <data name="closebuttonmenu.Text" xml:space="preserve">
+    <value>Close</value>
   </data>
 </root>
