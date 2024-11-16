@@ -77,6 +77,7 @@ namespace RectifyPad
 
         UnitManager unitConverter = new UnitManager();
         SettingsManagerMain settingsManager = new SettingsManagerMain();
+        OdtHelper odtHelper = new OdtHelper();
 
         public List<string> Fonts
         {
@@ -331,6 +332,8 @@ namespace RectifyPad
             // Open a text file.
             FileOpenPicker open = new FileOpenPicker();
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            open.FileTypeFilter.Add(".odt");
+            open.FileTypeFilter.Add(".docx");
             open.FileTypeFilter.Add(".rtf");
             open.FileTypeFilter.Add(".txt");
 
@@ -342,11 +345,10 @@ namespace RectifyPad
 
                 if (fileExtension == ".docx")
                 {
-                    Debug.WriteLine("Not Implemented :C");
+                    Debug.WriteLine("Not Implemented");
                 }
-                else if (fileExtension == ".rtf" || fileExtension == ".odt")
+                else if (fileExtension == ".rtf")
                 {
-                    // Handle other file types (e.g., .rtf, .txt, .odt) loading here
                     using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
                     {
                         IBuffer buffer = await FileIO.ReadBufferAsync(file);
@@ -357,9 +359,48 @@ namespace RectifyPad
                         Editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
                     }
                 }
+                else if (fileExtension == ".odt")
+                {
+                    // Handle .odt file loading
+                    using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        // Read the file as a stream
+                        using (Stream stream = randAccStream.AsStreamForRead())
+                        {
+                            // Use ZipArchive to extract ODT contents
+                            using (var archive = new System.IO.Compression.ZipArchive(stream, System.IO.Compression.ZipArchiveMode.Read))
+                            {
+                                // Find the content.xml file inside the ODT archive
+                                var contentEntry = archive.GetEntry("content.xml");
+                                var stylesEntry = archive.GetEntry("styles.xml");
+                                if (contentEntry != null && stylesEntry != null)
+                                {
+                                    string contentXml, stylesXml;
+
+                                    // Read content.xml
+                                    using (var contentStream = contentEntry.Open())
+                                    using (var reader = new StreamReader(contentStream))
+                                        contentXml = await reader.ReadToEndAsync();
+
+                                    // Read styles.xml
+                                    using (var stylesStream = stylesEntry.Open())
+                                    using (var reader = new StreamReader(stylesStream))
+                                        stylesXml = await reader.ReadToEndAsync();
+
+                                    // Load the ODT content into the RichEditBox
+                                    await odtHelper.LoadOdtContentWithStyling(contentXml, stylesXml, archive, Editor);
+                                }
+                                else
+                                {
+                                    // Handle case where content.xml is missing
+                                    await new Windows.UI.Popups.MessageDialog("Invalid ODT file: content.xml not found.").ShowAsync();
+                                }
+                            }
+                        }
+                    }
+                }
                 else if (fileExtension == ".txt")
                 {
-                    // Handle other file types (e.g., .rtf, .txt, .odt) loading here
                     using (IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.ReadWrite))
                     {
                         using (Stream stream = randAccStream.AsStreamForRead())
