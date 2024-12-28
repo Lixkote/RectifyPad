@@ -150,10 +150,32 @@ namespace WordPad.WordPadUI.Ribbon
         {
             if (Editor.Document.Selection == null || !updateFontFormat)
                 return;
+            try
+            {
+                // Check if SelectedValue is null before attempting to access it
+                var selectedValue = FontsComboBox.SelectedValue;
+                if (selectedValue != null)
+                {
+                    string choosenvalue = selectedValue.ToString();
+                    Editor.Document.Selection.CharacterFormat.Name = choosenvalue;
+                }
+                else
+                {
+                    // Handle the case where SelectedValue is null (fallback to a default font)
+                    Editor.Document.Selection.CharacterFormat.Name = "Calibri";
+                }
 
-            Editor.Document.Selection.CharacterFormat.Name = FontsComboBox.SelectedValue.ToString();
-            Editor.Focus(FocusState.Programmatic);
+                // Ensure the editor gets focus
+                Editor.Focus(FocusState.Programmatic);
+            }
+            catch
+            {
+                // In case of any other unexpected errors, fallback to the default font
+                Editor.Document.Selection.CharacterFormat.Name = "Calibri";
+                Editor.Focus(FocusState.Programmatic);
+            }
         }
+
 
         private void FontTextColorDropDownButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {

@@ -192,7 +192,7 @@
                     <Image Width="16" Height="16" Source="{Binding Source={ThemeResource UpScript}}" />
                 </ToggleButton.Content>
             </ToggleButton>
-            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" SelectionChanged="FontsCombo_SelectionChanged" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" PlaceholderText="Selected Font" Margin="0,0,40,0">
+            <ComboBox x:Name="FontsComboBox" Loaded="FontsComboBox_Loaded" ItemsSource="{Binding Fonts}" SelectionChanged="FontsCombo_SelectionChanged" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" IsEditable="True" Margin="0,0,40,0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
