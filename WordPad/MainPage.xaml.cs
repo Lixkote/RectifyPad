@@ -1949,5 +1949,12 @@ namespace RectifyPad
         {
 
         }
+
+        private void Editor_Loaded(object sender, RoutedEventArgs e)
+        {
+            var format = Editor.Document.GetDefaultParagraphFormat();
+            format.ListStart = 1;
+            Editor.Document.SetDefaultParagraphFormat(format);
+        }
     }
 }
