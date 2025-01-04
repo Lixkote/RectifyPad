@@ -414,16 +414,16 @@ namespace WordPad.WordPadUI.Ribbon
         private void IndentationIncreaseRight_Click(object sender, RoutedEventArgs e)
         {
             Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
-                                                                 Editor.Document.Selection.ParagraphFormat.LeftIndent + 10,
-                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent - 10);
+                                                                 Editor.Document.Selection.ParagraphFormat.LeftIndent + 20,
+                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent);
             Editor.Focus(FocusState.Keyboard);
         }
 
         private void IndentationIncreaseLeft_Click(object sender, RoutedEventArgs e)
         {
             Editor.Document.Selection.ParagraphFormat.SetIndents(Editor.Document.Selection.ParagraphFormat.FirstLineIndent,
-                                                                 Editor.Document.Selection.ParagraphFormat.LeftIndent - 10,
-                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent + 10);
+                                                                 Math.Max(Editor.Document.Selection.ParagraphFormat.LeftIndent - 20, 0),
+                                                                 Editor.Document.Selection.ParagraphFormat.RightIndent);
             Editor.Focus(FocusState.Keyboard);
         }
 
