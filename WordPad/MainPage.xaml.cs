@@ -332,8 +332,8 @@ namespace RectifyPad
             // Open a text file.
             FileOpenPicker open = new FileOpenPicker();
             open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            open.FileTypeFilter.Add(".odt");
-            open.FileTypeFilter.Add(".docx");
+            // open.FileTypeFilter.Add(".odt");
+            // open.FileTypeFilter.Add(".docx");
             open.FileTypeFilter.Add(".rtf");
             open.FileTypeFilter.Add(".txt");
 
@@ -1528,8 +1528,8 @@ namespace RectifyPad
 
                 savePicker.FileTypeChoices.Add("Formatted Document", new List<string>() { ".rtf" });
                 savePicker.FileTypeChoices.Add("Text Document", new List<string>() { ".txt" });
-                savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
-                savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
+                // savePicker.FileTypeChoices.Add("OpenDocument Text", new List<string>() { ".odt" });
+                // savePicker.FileTypeChoices.Add("Office Open XML Document", new List<string>() { ".docx" });
 
                 // Default file name if the user does not type one in or select a file to replace
                 savePicker.SuggestedFileName = "New Document";

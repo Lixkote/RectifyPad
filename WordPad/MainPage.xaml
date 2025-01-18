@@ -296,9 +296,9 @@
                             <FontIcon Glyph="&#xE792;" />
                         </MenuFlyoutSubItem.Icon>
                         <MenuFlyoutItem AccessKey="R" Text="RTF" x:Uid="saveasrtf" x:Name="SaveAsRTF" Click="SaveAsRTF_Click"/>
-                        <MenuFlyoutItem AccessKey="D" Text="DOCX" x:Uid="saveasdocx" x:Name="SaveAsDOCX"/>
-                        <MenuFlyoutItem AccessKey="O" Text="ODT" x:Uid="saveasodt" x:Name="SaveAsODT"/>
-                        <MenuFlyoutItem AccessKey="T" Text="TXT" x:Uid="saveastxt" x:Name="SaveAsTXT" Click="SaveAsTXT_Click"/>
+                        <MenuFlyoutItem AccessKey="D" Text="DOCX" Visibility="Collapsed" x:Uid="saveasdocx" x:Name="SaveAsDOCX"/>
+                        <MenuFlyoutItem AccessKey="O" Text="ODT" Visibility="Collapsed" x:Uid="saveasodt" x:Name="SaveAsODT"/>
+                        <MenuFlyoutItem AccessKey="T" Text="TXT"  x:Uid="saveastxt" x:Name="SaveAsTXT" Click="SaveAsTXT_Click"/>
                         <MenuFlyoutItem AccessKey="F" Text="Other format" x:Uid="saveasother" x:Name="SaveAsOther" Click="SaveAsOther_Click"/>
                     </MenuFlyoutSubItem>
                     <MenuFlyoutSeparator />

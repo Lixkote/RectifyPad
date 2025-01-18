@@ -24,6 +24,7 @@ namespace WordPad.WordPadUI.Ribbon
 {
     public sealed partial class FontToolbar : UserControl
     {
+        private bool textboxwasalreadyloaded = false;
         private bool updateFontFormat = true;
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         public RichEditBox Editor { get; set; }
@@ -318,15 +319,19 @@ namespace WordPad.WordPadUI.Ribbon
 
         private void FontsComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            if (localSettings.Values["FontFamily"] is string fontSetting)
+            if (textboxwasalreadyloaded == false)
             {
-                FontsComboBox.SelectedItem = fontSetting;
-                Editor.FontFamily = new FontFamily(fontSetting);
-            }
-            else
-            {
-                FontsComboBox.SelectedItem = "Calibri";
-                Editor.FontFamily = new FontFamily("Calibri");
+                if (localSettings.Values["FontFamily"] is string fontSetting)
+                {
+                    FontsComboBox.SelectedItem = fontSetting;
+                    Editor.FontFamily = new FontFamily(fontSetting);
+                }
+                else
+                {
+                    FontsComboBox.SelectedItem = "Calibri";
+                    Editor.FontFamily = new FontFamily("Calibri");
+                }
+                textboxwasalreadyloaded = true;
             }
         }
 
