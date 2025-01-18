@@ -419,8 +419,6 @@ namespace RectifyPad
 
                 AppTitle.Text = file.Name + " - " + appTitleStr;
                 fileNameWithPath = file.Path;
-
-                saved = false;
                 Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList.Add(file);
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("CurrentlyOpenFile", file);
             }
@@ -994,9 +992,6 @@ namespace RectifyPad
             {
                 saved = false;
             }
-
-            SolidColorBrush highlightBackgroundColor = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
-            Editor.Document.Selection.CharacterFormat.BackgroundColor = highlightBackgroundColor.Color;
         }
 
         private async void OnCloseRequest(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
