@@ -32,6 +32,10 @@ To run RectifyPad, you will need the following prerequisites:
 - Install the font from here: https://github.com/Lixkote/RectifyPad/blob/Preview1/WordPad/Assets/WordPadIcons.ttf
 - To test the app, compile it and run it in debug mode.
 
+## Donate
+If you find this project important, or you like what i am doing and my work, please consider buying me a cofee to support the development through the kofi link button at the bottom of this message, so that i can continue to keep fixing bugs, and implement new features like ODT/DOCX support.
+- [Buy me a cofee](https://ko-fi.com/lixkote)
+
 ## Contributing
 If you want to contribute to RectifyPad, please contact me on the official Rectify11 Discord or using the alias 'lixkote'.
 
