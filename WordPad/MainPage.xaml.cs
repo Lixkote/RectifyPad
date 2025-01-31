@@ -1942,7 +1942,7 @@ namespace RectifyPad
 
         private void CloseMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Exit();
         }
 
         private void Editor_Loaded(object sender, RoutedEventArgs e)
