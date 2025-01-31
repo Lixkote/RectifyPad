@@ -212,5 +212,10 @@ namespace WordPad.WordPadUI.Settings
             // Apply the theme using ThemeManager
             SettingsPageManager.SetPredict(isPredict);
         }
+
+        private async void donatebutton_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://ko-fi.com/lixkote"));
+        }
     }
 }
