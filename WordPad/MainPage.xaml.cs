@@ -1951,5 +1951,18 @@ namespace RectifyPad
             format.ListStart = 1;
             Editor.Document.SetDefaultParagraphFormat(format);
         }
+
+        private void Editor_KeyDown_1(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Tab)
+            {
+                RichEditBox richEditBox = sender as RichEditBox;
+                if (richEditBox != null)
+                {
+                    richEditBox.Document.Selection.TypeText("\t");
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

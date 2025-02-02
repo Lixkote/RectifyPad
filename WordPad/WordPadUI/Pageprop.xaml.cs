@@ -59,11 +59,23 @@ namespace WordPad.WordPadUI
             LoadPrintPageNumbersSetting();
 
             // Load the saved unit value
-            string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unitSetting"];
-            string text = marginsname.Text;
-            // string newtext = text.Replace("unitplaceholder", unit);
-            string newtext = text.Replace("unitplaceholder", "");
-            marginsname.Text = newtext;
+            string unit = (string)Windows.Storage.ApplicationData.Current.LocalSettings.Values["unit"];
+            if (unit == "inches")
+            {
+                marginsnameinch.Visibility = Visibility.Visible;
+            }
+            if (unit == "cm")
+            {
+                marginsnamecm.Visibility = Visibility.Visible;
+            }
+            if (unit == "points")
+            {
+                marginsnamept.Visibility = Visibility.Visible;
+            }
+            if (unit == "picas")
+            {
+                marginsnamepicas.Visibility = Visibility.Visible;
+            }
         }
 
         private void SetPaperSizeAndOrientation(double width, double height, string orientation)

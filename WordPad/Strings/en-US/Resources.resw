@@ -451,4 +451,16 @@
   <data name="tabstopposition.Text" xml:space="preserve">
     <value>Tab stop position</value>
   </data>
+  <data name="marginsnamecm.Text" xml:space="preserve">
+    <value>Margins (centimeters)</value>
+  </data>
+  <data name="marginsnameinch.Text" xml:space="preserve">
+    <value>Margins (inches)</value>
+  </data>
+  <data name="marginsnamepicas.Text" xml:space="preserve">
+    <value>Margins (picas)</value>
+  </data>
+  <data name="marginsnamept.Text" xml:space="preserve">
+    <value>Margins (points)</value>
+  </data>
 </root>
