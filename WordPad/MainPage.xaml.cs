@@ -64,6 +64,8 @@ namespace RectifyPad
         private bool saved = true;
 
         public bool _wasOpen = false;
+
+        public StorageFile RichEditFile;
         private string appTitleStr => "RectifyPad";
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
@@ -616,7 +618,7 @@ namespace RectifyPad
             }
         }
 
-        private async Task ShowUnsavedDialogSE()
+        private async Task<bool> ShowUnsavedDialogSE()
         {
             string fileName = AppTitle.Text.Replace(" - " + appTitleStr, "");
             ContentDialog aboutDialog = new ContentDialog()
@@ -626,19 +628,22 @@ namespace RectifyPad
                 CloseButtonText = "Cancel",
                 PrimaryButtonText = "Save",
                 SecondaryButtonText = "Don't save",
-
             };
+
             aboutDialog.DefaultButton = ContentDialogButton.Primary;
             ContentDialogResult result = await aboutDialog.ShowAsync();
+
             if (result == ContentDialogResult.Primary)
             {
                 SaveFile(true);
+                return false; // Don't proceed with clearing document
             }
             else if (result == ContentDialogResult.Secondary)
             {
-                // Clear the current document.
-                this.Frame.Navigate(typeof(MainPage));
+                return true; // Proceed with clearing document
             }
+
+            return false; // Cancel pressed, don't proceed
         }
 
         private void ToggleButton_Checked_2(object sender, RoutedEventArgs e)
@@ -1639,10 +1644,13 @@ namespace RectifyPad
 
         private async void NewDoc_Click(object sender, RoutedEventArgs e)
         {
-            await ShowUnsavedDialogSE();
+            bool proceed = await ShowUnsavedDialogSE(); // Ensure this returns a bool indicating user choice
 
+            if (proceed)
+            {
+                Editor.Document.SetText(Windows.UI.Text.TextSetOptions.None, string.Empty); // Clear content
+            }
         }
-
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
