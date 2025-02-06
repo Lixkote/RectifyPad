@@ -409,9 +409,6 @@
   <data name="wrapwindow.Content" xml:space="preserve">
     <value>Zawijaj według okna</value>
   </data>
-  <data name="wordwrap" xml:space="preserve">
-    <value>Zawijanie wierszy</value>
-  </data>
   <data name="wordwraptext.Text" xml:space="preserve">
     <value>Wybierz opcję zawijania wierszy, aby zmienić sposób wyświetlania tekstu na ekranie. Nie wpłynie to na wygląd dokumentu po wydrukowaniu.</value>
   </data>
@@ -459,5 +456,35 @@
   </data>
   <data name="marginsnamept.Text" xml:space="preserve">
     <value>Marginesy (punkty)</value>
+  </data>
+  <data name="githubtext.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MenuResizePicture.Text" xml:space="preserve">
+    <value>Zmień rozmiar obrazu</value>
+  </data>
+  <data name="MenuChangePicture.Text" xml:space="preserve">
+    <value>Zmień obraz</value>
+  </data>
+  <data name="menupicture.Text" xml:space="preserve">
+    <value>Obraz</value>
+  </data>
+  <data name="donatebutton.Content" xml:space="preserve">
+    <value>Wesprzyj projekt</value>
+  </data>
+  <data name="wordwrap.Text" xml:space="preserve">
+    <value>Zawijanie wierszy</value>
+  </data>
+  <data name="indentation.Text" xml:space="preserve">
+    <value>Wcięcia</value>
+  </data>
+  <data name="lists.Text" xml:space="preserve">
+    <value>Listy</value>
+  </data>
+  <data name="paragr.Text" xml:space="preserve">
+    <value>Akapit</value>
+  </data>
+  <data name="cut.Text" xml:space="preserve">
+    <value>Wytnij</value>
   </data>
 </root>

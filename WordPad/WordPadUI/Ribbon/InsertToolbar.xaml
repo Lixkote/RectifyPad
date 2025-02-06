@@ -40,19 +40,19 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout Placement="Bottom">
-                        <MenuFlyoutItem x:Name="MenuPicture" Text="Picture" Click="InsertImageButton_Click">
+                        <MenuFlyoutItem x:Name="MenuPicture" x:Uid="menupicture" Click="InsertImageButton_Click">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xe91b;" FontSize="22" />
+                                <FontIcon Glyph="&#xe91b;" FontFamily="Segoe Fluent Icons" FontSize="22" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="MenuChangePicture" Text="Change picture">
+                        <MenuFlyoutItem x:Name="MenuChangePicture" IsEnabled="False" x:Uid="menuchangepicture">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xf0e3;" />
+                                <FontIcon Glyph="" FontFamily="Segoe Fluent Icons" FontSize="22" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="MenuResizePicture" Text="Resize picture">
+                        <MenuFlyoutItem x:Name="MenuResizePicture" IsEnabled="False" x:Uid="menuresizepicture">
                             <MenuFlyoutItem.Icon>
-                                <FontIcon Glyph="&#xf0e3;" Margin="0,20,0,0" />
+                                <FontIcon Glyph="" FontFamily="Segoe Fluent Icons" FontSize="22" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
                     </MenuFlyout>

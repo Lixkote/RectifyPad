@@ -39,7 +39,7 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Uid="indentation" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Text="Indentation" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
+            <TextBlock x:Uid="indentation" Margin="0,16,0,7" Grid.Row="0" FontSize="14" Grid.ColumnSpan="2" FontFamily="Segoe UI Variable Display Semibold" FontWeight="Bold"/>
             <TextBlock  x:Uid="lefti" Margin="0,16,0,7" Grid.Row="1" FontSize="14" Text="Left:" Grid.ColumnSpan="2" />
             <TextBlock x:Uid="righti" Margin="0,16,0,7" Grid.Row="2" FontSize="14" Text="Right:" Grid.ColumnSpan="2" />
             <TextBlock x:Uid="fli" Margin="0,16,0,10" Grid.Row="3" FontSize="14" Text="First line:" Grid.ColumnSpan="2" />

@@ -871,28 +871,28 @@ VerticalAlignment="Top"
                         </RichEditBox.RenderTransform>
                         <RichEditBox.ContextFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem x:Name="MenuCut" Text="Cut" Click="MenuCut_Click">
+                                <MenuFlyoutItem x:Name="MenuCut" x:Uid="cut" Click="MenuCut_Click">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE16B;"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="MenuCopy" Text="Copy" Click="MenuCopy_Click">
+                                <MenuFlyoutItem x:Name="MenuCopy" x:Uid="copy" Click="MenuCopy_Click">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE16F;"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Name="MenuPaste" Text="Paste" Click="MenuPaste_Click">
+                                <MenuFlyoutItem x:Name="MenuPaste" x:Uid="paste" Click="MenuPaste_Click">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE16D;"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
                                 <MenuFlyoutSeparator />
-                                <MenuFlyoutItem x:Name="MenuParagraph" Text="Paragraph" Click="MenuParagraph_Click">
+                                <MenuFlyoutItem x:Name="MenuParagraph" x:Uid="paragr" Click="MenuParagraph_Click">
                                     <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="" x:Name="MenuParagraphIcon"  FontSize="20"/>
                                     </MenuFlyoutItem.Icon>
                                 </MenuFlyoutItem>
-                                <MenuFlyoutSubItem Text="Lists">
+                                <MenuFlyoutSubItem x:Uid="lists">
                                     <MenuFlyoutSubItem.Icon>
                                         <FontIcon Glyph="&#xE8FD;"/>
                                     </MenuFlyoutSubItem.Icon>

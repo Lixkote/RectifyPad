@@ -147,9 +147,6 @@
   <data name="copyrighttext.Text" xml:space="preserve">
     <value>© 2024 Lixkote. All rights reserved.</value>
   </data>
-  <data name="edit.Title" xml:space="preserve">
-    <value>Edit</value>
-  </data>
   <data name="EditingFindBox.Text" xml:space="preserve">
     <value>Find</value>
   </data>
@@ -179,9 +176,6 @@
   </data>
   <data name="InsertObjectDialog.Title" xml:space="preserve">
     <value>Insert an object</value>
-  </data>
-  <data name="landscape.Content" xml:space="preserve">
-    <value>Landscape</value>
   </data>
   <data name="lefti.Text" xml:space="preserve">
     <value>Left:</value>
@@ -237,26 +231,14 @@
   <data name="pgset.Text" xml:space="preserve">
     <value>Page Setup</value>
   </data>
-  <data name="portrait.Content" xml:space="preserve">
-    <value>Portrait</value>
-  </data>
   <data name="printmfsi.Text" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="printpageTR.Content" xml:space="preserve">
     <value>Print Page Numbers</value>
   </data>
-  <data name="printpreview.Text" xml:space="preserve">
-    <value>Print preview</value>
-  </data>
-  <data name="qprint.Text" xml:space="preserve">
-    <value>Quick print</value>
-  </data>
   <data name="recentmenuitem.Text" xml:space="preserve">
     <value>Recent</value>
-  </data>
-  <data name="redobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Redo</value>
   </data>
   <data name="righti.Text" xml:space="preserve">
     <value>Right:</value>
@@ -270,16 +252,6 @@
   <data name="saveasmenuitem.Text" xml:space="preserve">
     <value>Save as</value>
   </data>
-  <data name="saveasdocx.Text" xml:space="preserve">
-    <value>Office Open XML document</value>
-  </data>
-  <data name="saveasrtf.Text" xml:space="preserve">
-    <value>Rich Text document</value>
-    <comment>Save the document in the Rich Text Format</comment>
-  </data>
-  <data name="savebutton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Save (Ctrl+S)</value>
-  </data>
   <data name="savemenuitem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -288,12 +260,6 @@
   </data>
   <data name="settings.Text" xml:space="preserve">
     <value>Settings</value>
-  </data>
-  <data name="sharebuttonmenu.Text" xml:space="preserve">
-    <value>Share</value>
-  </data>
-  <data name="sharebuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Share</value>
   </data>
   <data name="size.Text" xml:space="preserve">
     <value>Size</value>
@@ -310,12 +276,6 @@
   <data name="tableitemtr.Content" xml:space="preserve">
     <value>Insert a table</value>
   </data>
-  <data name="TitlePara.Text" xml:space="preserve">
-    <value>Paragraph</value>
-  </data>
-  <data name="toolbarsetbutton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="TooltipDateTime.Content" xml:space="preserve">
     <value>Date and time</value>
   </data>
@@ -331,11 +291,51 @@
   <data name="toptr.Text" xml:space="preserve">
     <value>Top:</value>
   </data>
-  <data name="undobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Undo</value>
-  </data>
   <data name="view.Title" xml:space="preserve">
     <value>View</value>
+  </data>
+  <data name="edit.Title" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TitlePara.Text" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="landscape.Content" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="portrait.Content" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="printpreview.Text" xml:space="preserve">
+    <value>Print preview</value>
+  </data>
+  <data name="qprint.Text" xml:space="preserve">
+    <value>Quick print</value>
+  </data>
+  <data name="redobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="saveasdocx.Text" xml:space="preserve">
+    <value>Office Open XML document</value>
+  </data>
+  <data name="saveasrtf.Text" xml:space="preserve">
+    <value>Rich Text document</value>
+    <comment>Save the document in the Rich Text Format</comment>
+  </data>
+  <data name="savebutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save (Ctrl+S)</value>
+  </data>
+  <data name="sharebuttonmenu.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="sharebuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="toolbarsetbutton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="undobuttontoolbar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Undo</value>
   </data>
   <data name="saveasodt.Text" xml:space="preserve">
     <value>OpenDocument text</value>
@@ -363,9 +363,6 @@
   </data>
   <data name="darkeditortext.Text" xml:space="preserve">
     <value>Experimental feature - Enables dark mode in the editor section. Printing is not possible with this setting turned on.</value>
-  </data>
-  <data name="githubtext.Text" xml:space="preserve">
-    <value>To learn how you can contribute to Rectify11 and RectifyPad,  &lt;LineBreak/&gt;check out the projects on their &lt;Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"&gt; GitHub&lt;/Hyperlink&gt; page</value>
   </data>
   <data name="spell.Text" xml:space="preserve">
     <value>Spell</value>
@@ -412,17 +409,8 @@
   <data name="wrapwindow.Content" xml:space="preserve">
     <value>Wrap to window</value>
   </data>
-  <data name="wordwrap" xml:space="preserve">
-    <value>Word wrap</value>
-  </data>
   <data name="wordwraptext.Text" xml:space="preserve">
     <value>Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed.</value>
-  </data>
-  <data name="automatical.Text" xml:space="preserve">
-    <value>Automatical</value>
-  </data>
-  <data name="morecolors.Text" xml:space="preserve">
-    <value>More colors...</value>
   </data>
   <data name="notimplement1.Text" xml:space="preserve">
     <value>This feature is not yet available.</value>
@@ -451,6 +439,12 @@
   <data name="tabstopposition.Text" xml:space="preserve">
     <value>Tab stop position</value>
   </data>
+  <data name="automatical.Text" xml:space="preserve">
+    <value>Automatical</value>
+  </data>
+  <data name="morecolors.Text" xml:space="preserve">
+    <value>More colors...</value>
+  </data>
   <data name="marginsnamecm.Text" xml:space="preserve">
     <value>Margins (centimeters)</value>
   </data>
@@ -462,5 +456,35 @@
   </data>
   <data name="marginsnamept.Text" xml:space="preserve">
     <value>Margins (points)</value>
+  </data>
+  <data name="githubtext.Text" xml:space="preserve">
+    <value>To learn how you can contribute to Rectify11 and RectifyPad,  &lt;LineBreak/&gt;check out the projects on their &lt;Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"&gt; GitHub&lt;/Hyperlink&gt; page</value>
+  </data>
+  <data name="MenuResizePicture.Text" xml:space="preserve">
+    <value>Resize picture</value>
+  </data>
+  <data name="MenuChangePicture.Text" xml:space="preserve">
+    <value>Change picture</value>
+  </data>
+  <data name="menupicture.Text" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="donatebutton.Content" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="wordwrap.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cut.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="indentation.Text" xml:space="preserve">
+    <value>Indentation</value>
+  </data>
+  <data name="lists.Text" xml:space="preserve">
+    <value>Lists</value>
+  </data>
+  <data name="paragr.Text" xml:space="preserve">
+    <value>Paragraph</value>
   </data>
 </root>

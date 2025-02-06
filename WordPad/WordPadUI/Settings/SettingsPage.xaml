@@ -137,7 +137,7 @@
                                     </d:Grid.ColumnDefinitions>
                                     <FontIcon x:Name="WordWrapIcon" Glyph="" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                     <StackPanel Grid.Column="1" Margin="35,0,0,0" VerticalAlignment="Center">
-                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="wordwrap" Text="Word wrap" />
+                                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Uid="wordwrap" />
                                         <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" x:Uid="wordwraptext" FontWeight="SemiLight" Text="Select a line wrap option to change the way text is displayed on the screen. This will not affect the appearance of the document when printed." TextWrapping="WrapWholeWords" />
                                     </StackPanel>
                                 </Grid>
@@ -213,12 +213,12 @@
 
 
                         <Button x:Uid="feedback" x:Name="feedback" Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="feedback_Click" />
-                        <TextBlock  x:Name="GithubText" Margin="0,15,0,24">
+                        <TextBlock  x:Name="GithubText" Margin="0,15,0,40">
                             To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
                         <TextBlock  x:Name="GithubText_Kopiuj">If you consider this project useful or helpful for your daily use,<LineBreak></LineBreak>please consider donating to support the development of <LineBreak></LineBreak>new features, and bugfixes for this, and another projects on my GitHub Page.</TextBlock>
 
-                        <Button x:Uid="donate" x:Name="donatebutton" Content="Donate" Click="donatebutton_Click" Margin="0,10,0,0" />
+                        <Button x:Name="donatebutton" x:Uid="donatebutton" Style="{ThemeResource AccentButtonStyle}" Click="donatebutton_Click" Margin="0,10,0,0" />
                     </StackPanel>
                     <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-55,23,0,0" VerticalAlignment="Top" Height="35" Width="44" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="16"/>
                 </Grid.Children>
