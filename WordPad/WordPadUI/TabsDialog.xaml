@@ -32,6 +32,6 @@
         </ListView>
         <Button x:Name="SetButton" x:Uid="tabsset" Click="SetButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="0,10,0,0" Content="Set"></Button>
         <Button x:Name="ClearButton" x:Uid="tabsclear" Click="ClearButton_Click" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear" Grid.Column="1"></Button>
-        <Button x:Name="ClearAllButton" x:Uid="tabsclearall" IsEnabled="False" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear All" Grid.Column="2"></Button>
+        <Button x:Name="ClearAllButton" x:Uid="tabsclearall" Click="ClearAllButton_Click" Grid.Row="3" Height="34" Width="90" Margin="5,10,0,0" Content="Clear All" Grid.Column="2"></Button>
     </Grid>
 </ContentDialog>

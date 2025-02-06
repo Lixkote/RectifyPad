@@ -425,7 +425,7 @@
     <value>Wyczyść</value>
   </data>
   <data name="tabsclearall.Content" xml:space="preserve">
-    <value>Wyczyść wszystko</value>
+    <value>Wycz. wsz.</value>
   </data>
   <data name="tabsdialog.CloseButtonText" xml:space="preserve">
     <value>Zamknij</value>

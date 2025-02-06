@@ -12,6 +12,7 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -97,6 +98,13 @@ namespace WordPad.WordPadUI
             string enteredvalue = EnteringBox.Text;
             string unitprefix = (string)localSettings.Values["unit"];
             TabsPostitionsListView.Items.Add(enteredvalue + " " + unitprefix);
+        }
+
+        private void ClearAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            TabsPostitionsListView.Items.Clear();
+            IndicateTextBoxImproperValue();
+            EnteringBox.Text = string.Empty;
         }
     }
 }
