@@ -981,7 +981,7 @@ VerticalAlignment="Top"
                 <StackPanel x:Name="ZoomStack" Orientation="Horizontal"
             HorizontalAlignment="Right">
 
-                    <Button Style="{StaticResource PaintUIButtonStyle}"
+                    <Button Visibility="Collapsed" Style="{StaticResource PaintUIButtonStyle}"
             FontSize="14"
             x:Name="AdjustZoomToWindowButton"
             Margin="4,4,8,4"
