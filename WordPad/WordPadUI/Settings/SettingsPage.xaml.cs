@@ -164,7 +164,7 @@ namespace WordPad.WordPadUI.Settings
 
         private async void feedback_Click(object sender, RoutedEventArgs e)
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://discord.gg/gsgu9GCtsk"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://discord.gg/NzusbfSmPp"));
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

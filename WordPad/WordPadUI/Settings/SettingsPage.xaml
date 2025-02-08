@@ -205,20 +205,20 @@
                     </StackPanel>
                     <StackPanel x:Name="AboutSection" Grid.Row="2" Margin="{StaticResource ContentBottomWideSpacing}">
                         <TextBlock Style="{StaticResource SectionHeader}" x:Uid="aboutapp" Text="About this app"/>
-                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.241.471.0"/>
+                        <TextBlock x:Name="PackageVersionText" IsTextSelectionEnabled="True" Text="RectifyPad 11.2502.100.0"/>
                         <TextBlock x:Uid="copyrighttext" x:Name="CopyrightText" Margin="{StaticResource ContentBottomWideSpacing}" Text="© 2025 Lixkote. All rights reserved."/>
                         <HyperlinkButton  Margin="{StaticResource HyperlinkButtonMargin}" NavigateUri="https://github.com/Lixkote/RectifyPad" >
                             <TextBlock x:Uid="srccode" Text="Source Code"/>
                         </HyperlinkButton>
 
 
-                        <Button x:Uid="feedback" x:Name="feedback" Margin="{StaticResource ContentTopLargeSpacing}" Content="Send feedback" Click="feedback_Click" />
-                        <TextBlock  x:Name="GithubText" Margin="0,15,0,40">
+                        <Button x:Uid="feedback" x:Name="feedback"  Content="Send feedback" Click="feedback_Click" Margin="0,16,0,16" />
+                        <TextBlock Visibility="Collapsed" x:Name="GithubText" Margin="0,15,0,40">
                             To learn how you can contribute to Rectify11 and RectifyPad,  <LineBreak/>check out the projects on their <Hyperlink NavigateUri="https://github.com/Rectify11" TextDecorations="None"> GitHub</Hyperlink> page
                         </TextBlock>
-                        <TextBlock  x:Name="GithubText_Kopiuj">If you consider this project useful or helpful for your daily use,<LineBreak></LineBreak>please consider donating to support the development of <LineBreak></LineBreak>new features, and bugfixes for this, and another projects on my GitHub Page.</TextBlock>
+                        <TextBlock  x:Name="GithubText_Kopiuj">If you consider this project useful or helpful for your daily use,<LineBreak></LineBreak>please consider donating to support the development of <LineBreak></LineBreak>new features, bugfixes for this, and another projects on my GitHub Page.</TextBlock>
 
-                        <Button x:Name="donatebutton" x:Uid="donatebutton" Style="{ThemeResource AccentButtonStyle}" Click="donatebutton_Click" Margin="0,10,0,0" />
+                        <Button x:Name="donatebutton" x:Uid="donatebutton" Click="donatebutton_Click" Margin="0,10,0,0" />
                     </StackPanel>
                     <Button Style="{StaticResource MenuButton}" x:Name="BackButton" Click="BackButton_Click" Content="&#xE0A6;" Margin="-55,23,0,0" VerticalAlignment="Top" Height="35" Width="44" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Segoe Fluent Icons" FontSize="16"/>
                 </Grid.Children>
