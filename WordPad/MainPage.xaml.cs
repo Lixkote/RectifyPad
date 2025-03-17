@@ -1888,28 +1888,6 @@ namespace RectifyPad
             await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/Lixkote/RectifyPad"));
         }
 
-        private void EOnKeyDown(KeyRoutedEventArgs e)
-        {
-            var ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control);
-
-            if (ctrl.HasFlag(CoreVirtualKeyStates.Down))
-            {
-                return;
-            }
-            base.OnKeyDown(e);
-        }
-
-        private void Editor_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            var ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control);
-
-            if (ctrl.HasFlag(CoreVirtualKeyStates.Down))
-            {
-                return;
-            }
-            base.OnKeyDown(e);
-        }
-
         private void ShareButton_Click(object sender, RoutedEventArgs e)
         {
             DataTransferManager.ShowShareUI();
@@ -1960,6 +1938,35 @@ namespace RectifyPad
             Editor.Document.SetDefaultParagraphFormat(format);
         }
 
+        private int FindWordStart(RichEditBox richEditBox, int position)
+        {
+            string text;
+            richEditBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+            int start = position;
+            while (start > 0 && !char.IsWhiteSpace(text[start - 1]) && !IsPunctuation(text[start - 1]))
+            {
+                start--;
+            }
+            return start;
+        }
+
+        private int FindWordEnd(RichEditBox richEditBox, int position)
+        {
+            string text;
+            richEditBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out text);
+            int end = position;
+            while (end < text.Length && !char.IsWhiteSpace(text[end]) && !IsPunctuation(text[end]))
+            {
+                end++;
+            }
+            return end;
+        }
+
+        private bool IsPunctuation(char c)
+        {
+            return char.IsPunctuation(c);
+        }
+
         private void Editor_KeyDown_1(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Tab)
@@ -1970,6 +1977,36 @@ namespace RectifyPad
                     richEditBox.Document.Selection.TypeText("\t");
                     e.Handled = true;
                 }
+            }
+            else if (e.Key == VirtualKey.A && (Window.Current.CoreWindow.GetKeyState(VirtualKey.Control) & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down)
+            {
+                RichEditBox richEditBox = sender as RichEditBox;
+                if (richEditBox != null)
+                {
+                    Editor.Focus(FocusState.Programmatic);
+                    int lastPosition = Editor.Document.Selection.EndPosition;
+                    Editor.Document.Selection.SetRange(0, lastPosition);
+                    e.Handled = true;
+                }
+            }
+            else if (e.Key == VirtualKey.Back && (Window.Current.CoreWindow.GetKeyState(VirtualKey.Control) & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down)
+            {
+                var selection = Editor.Document.Selection;
+                var startPos = selection.StartPosition;
+                int wordStart = FindWordStart(Editor, startPos);
+                selection.SetRange(wordStart, startPos);
+                selection.Delete(Windows.UI.Text.TextRangeUnit.Character, 1);
+                e.Handled = true;
+            }
+            else if (e.Key == VirtualKey.Delete && (Window.Current.CoreWindow.GetKeyState(VirtualKey.Control) & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down)
+            {
+                var selection = Editor.Document.Selection;
+                var endPos = selection.EndPosition;
+                int wordEnd = FindWordEnd(Editor, endPos);
+                selection.SetRange(endPos, wordEnd);
+                selection.Delete(Windows.UI.Text.TextRangeUnit.Character, 1);
+
+                e.Handled = true;
             }
         }
     }
