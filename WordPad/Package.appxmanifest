@@ -72,8 +72,7 @@
 			</uap:Extension>
 			<uap:Extension Category="windows.fileTypeAssociation">
 				<uap:FileTypeAssociation Name="txt">
-					<!--remember here to update the txt icon here to the app's main icon, as it is wordpad-->
-					<uap:Logo>Assets\txt.png</uap:Logo>
+					<uap:Logo>Assets\txtdocument.png</uap:Logo>
 					<uap:SupportedFileTypes>
 						<uap:FileType>.txt</uap:FileType>
 					</uap:SupportedFileTypes>

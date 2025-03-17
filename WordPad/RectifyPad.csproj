@@ -322,8 +322,11 @@
     <Content Include="Assets\theme-light\ZoomOut.svg" />
     <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
     <Content Include="Assets\theme-light\ZoomOutDisabled.svg" />
-    <Content Include="Assets\txt.png" />
-    <Content Include="Assets\txt.png" />
+    <Content Include="Assets\txtdocument.targetsize-16.png" />
+    <Content Include="Assets\txtdocument.targetsize-256.png" />
+    <Content Include="Assets\txtdocument.targetsize-32.png" />
+    <Content Include="Assets\txtdocument.targetsize-48.png" />
+    <Content Include="Assets\txtdocument.targetsize-64.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
