@@ -12,8 +12,7 @@ RectifyPad is a modern and unofficial replacement for WordPad, written in C#. It
 - Modern Windows 11-style design, based on the new paint redesign.
 
 ## Credits
- - [Jd](https://github.com/Jd-1206) for the initial concept of the application.
- - [WinEX](https://github.com/WinExperiments) or helping me with icon design and other visual aspects.
+ - [Jd](https://github.com/Jd-1206) for the initial idea to recreate WordPad in Windows 11 style.
 
 ## Getting started
 To run RectifyPad, you will need the following prerequisites:
@@ -37,13 +36,10 @@ If you find this project important, or you like what i am doing and my work, ple
 - [Buy me a cofee](https://ko-fi.com/lixkote)
 
 ## Contributing
-If you want to contribute to RectifyPad, please contact me on the official Rectify11 Discord or using the alias 'lixkote'.
+If you want to contribute to RectifyPad, please send me an email to lixkote@gmail.com.
 
 ## Projects used
  - [TowPad](https://github.com/itsWindows11/TowPad) for some of the mechanics.
- - JD's lost WordPad Recreation for the initial idea.
- - [Ivirius Text Editor Free](https://apps.microsoft.com/detail/9mv281zzf51p?hl=pl-pl&gl=TW) for the ruler code.
  - [Appxinstaller](https://github.com/aL3891/AppxInstaller/tree/master) for converting appx into msi.
- - [Syncfusion Doc.IO UWP](https://www.nuget.org/packages/Syncfusion.DocIO.UWP/19.2.0.51) for docx and doc support.
   
 RectifyPad is licensed under the [MIT License](./LICENSE).
