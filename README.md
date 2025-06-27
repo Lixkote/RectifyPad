@@ -14,9 +14,9 @@ RectifyPad is a modern and unofficial replacement for WordPad, written in C#. It
 ## Credits
  - [Jd](https://github.com/Jd-1206) for the initial idea to recreate WordPad in Windows 11 style.
 
-## Getting started
-To run RectifyPad, you will need the following prerequisites:
-- A computer running Windows 11 21H1, build 22000 or newer (Windows 10 support will be coming soon).
+## Compilation
+To compile RectifyPad, you will need the following prerequisites:
+- A computer running Windows 11, build 22000 or newer.
 - The latest version of [Visual Studio](https://developer.microsoft.com/en-us/windows/downloads) (the free community edition is sufficient).
   - The "Universal Windows Platform Development" workload installed.
   - The latest Windows 11 SDK and Windows 10 SDKs installed.
@@ -28,11 +28,11 @@ To run RectifyPad, you will need the following prerequisites:
     ```
 
 - Open [src\WordPad.sln](/src/WordPad.sln) in Visual Studio to build and run the RectifyPad app.
-- Install the font from here: https://github.com/Lixkote/RectifyPad/blob/Preview1/WordPad/Assets/WordPadIcons.ttf
-- To test the app, compile it and run it in debug mode.
+- If some icons appear as empty boxes, please install the font provided here: https://github.com/Lixkote/RectifyPad/blob/Preview1/WordPad/Assets/WordPadIcons.ttf
+- Now you can press the compile button and the app should be ran in debug mode.
 
 ## Donate
-If you find this project important, or you like what i am doing and my work, please consider buying me a cofee to support the development through the kofi link button at the bottom of this message, so that i can continue to keep fixing bugs, and implement new features like ODT/DOCX support.
+If you find this project useful, or you like what i am doing and my work, please consider buying me a cofee to support the development through the kofi link button at the bottom of this message, so that i can continue to keep fixing bugs, and implement new features like ODT/DOCX support. Much thanks for any support :)
 - [Buy me a cofee](https://ko-fi.com/lixkote)
 
 ## Contributing
